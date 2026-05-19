@@ -1,0 +1,26 @@
+# Local config
+app/config.local.php
+.env
+
+# Runtime files
+storage/
+public/storage/
+*.log
+
+# OS/editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Python tools later
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Temporary exports
+exports/
+tmp/

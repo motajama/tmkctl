@@ -1,0 +1,150 @@
+[
+  {
+    "id": "q01",
+    "title": "Masová kultura a kulturní průmysl",
+    "short_title": "Kulturní průmysl",
+    "outline": [
+      "Vymezit pojem masová kultura.",
+      "Vysvětlit rozdíl mezi masovou, populární a vysokou kulturou.",
+      "Představit kritiku kulturního průmyslu.",
+      "Uvést příklad ze současné mediální kultury."
+    ],
+    "key_terms": [
+      {
+        "term": "masová kultura",
+        "definition": "Kultura produkovaná a šířená pro široké publikum prostřednictvím moderních médií.",
+        "authors": []
+      },
+      {
+        "term": "kulturní průmysl",
+        "definition": "Pojem označující standardizovanou produkci kultury v podmínkách moderní kapitalistické společnosti.",
+        "authors": ["Theodor W. Adorno", "Max Horkheimer"]
+      }
+    ],
+    "authors": [
+      {
+        "name": "Theodor W. Adorno",
+        "role": "kritika kulturního průmyslu"
+      },
+      {
+        "name": "Max Horkheimer",
+        "role": "spoluautor konceptu kulturního průmyslu"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má umět odlišit masovou kulturu od populární kultury.",
+      "Studující má vysvětlit, proč je kultura u Frankfurtské školy spojena s mocí, standardizací a reprodukcí společnosti."
+    ],
+    "followup_questions": [
+      "Jaký je rozdíl mezi masovou a populární kulturou?",
+      "Lze pojem kulturního průmyslu použít na streamovací platformy?",
+      "Je kritika kulturního průmyslu stále aktuální?"
+    ],
+    "common_mistakes": [
+      "Zaměnění masové kultury a populární kultury bez vysvětlení rozdílu.",
+      "Redukce Frankfurtské školy na prosté odmítání zábavy."
+    ],
+    "source_refs": [],
+    "review_status": "reviewed"
+  },
+  {
+    "id": "q02",
+    "title": "Populární kultura a její interpretace",
+    "short_title": "Populární kultura",
+    "outline": [
+      "Vymezit pojem populární kultura.",
+      "Vysvětlit rozdíl mezi kulturou produkovanou shora a kulturou užívanou publikem.",
+      "Popsat význam publika, recepce a každodennosti.",
+      "Uvést konkrétní příklad interpretace populárního textu."
+    ],
+    "key_terms": [
+      {
+        "term": "populární kultura",
+        "definition": "Kultura široce sdílená, užívaná a interpretovaná různými skupinami publika.",
+        "authors": []
+      },
+      {
+        "term": "recepce",
+        "definition": "Proces, v němž publikum přijímá, vykládá a někdy i přetváří mediální obsahy.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Stuart Hall",
+        "role": "kódování/dekódování a aktivní role publika"
+      },
+      {
+        "name": "John Fiske",
+        "role": "populární kultura jako prostor významového vyjednávání"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má ukázat, že populární kultura není jen pasivně konzumovaná.",
+      "Má vysvětlit roli publika při tvorbě významu."
+    ],
+    "followup_questions": [
+      "Co znamená aktivní publikum?",
+      "Jak může publikum číst tentýž mediální text různě?",
+      "Jak se liší elitní kritika populární kultury od kulturálních studií?"
+    ],
+    "common_mistakes": [
+      "Ztotožnění populární kultury s nekvalitní kulturou.",
+      "Opomenutí role publika a recepce."
+    ],
+    "source_refs": [],
+    "review_status": "reviewed"
+  },
+  {
+    "id": "q03",
+    "title": "Kulturální studia a Birminghamská škola",
+    "short_title": "Kulturální studia",
+    "outline": [
+      "Představit vznik a zaměření kulturálních studií.",
+      "Vysvětlit vztah kultury, moci a každodennosti.",
+      "Popsat význam třídy, rasy, genderu a subkultur.",
+      "Uvést rozdíl oproti elitní kritice masové kultury."
+    ],
+    "key_terms": [
+      {
+        "term": "kulturální studia",
+        "definition": "Interdisciplinární přístup ke studiu kultury jako prostoru významů, konfliktů a mocenských vztahů.",
+        "authors": []
+      },
+      {
+        "term": "hegemonie",
+        "definition": "Forma kulturní a politické dominance, která funguje skrze souhlas, významy a každodenní praxi.",
+        "authors": ["Antonio Gramsci"]
+      }
+    ],
+    "authors": [
+      {
+        "name": "Stuart Hall",
+        "role": "reprezentace, hegemonie, kódování/dekódování"
+      },
+      {
+        "name": "Raymond Williams",
+        "role": "kultura jako způsob života"
+      },
+      {
+        "name": "Richard Hoggart",
+        "role": "každodennost, dělnická kultura a média"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má vysvětlit, proč kulturální studia odmítají jednoduché dělení na vysokou a nízkou kulturu.",
+      "Má ukázat vztah kultury a moci."
+    ],
+    "followup_questions": [
+      "Co znamená kultura jako způsob života?",
+      "Jak kulturální studia rozumí moci?",
+      "Proč jsou pro kulturální studia důležité subkultury?"
+    ],
+    "common_mistakes": [
+      "Redukce kulturálních studií na studium populární zábavy.",
+      "Opomenutí politického a mocenského rozměru kultury."
+    ],
+    "source_refs": [],
+    "review_status": "reviewed"
+  }
+]

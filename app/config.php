@@ -1,29 +1,40 @@
 <?php
 
-return [
-    // Flat config keys
-    'db_host' => '127.0.0.1',
-    'db_port' => '3306',
-    'db_name' => 'tmkctl',
-    'db_user' => 'tmkctl',
-    'db_pass' => 'tmkctl_dev_password',
+$defaults = [
+    'db_host' => getenv('TMKCTL_DB_HOST') ?: '127.0.0.1',
+    'db_port' => getenv('TMKCTL_DB_PORT') ?: '3306',
+    'db_name' => getenv('TMKCTL_DB_NAME') ?: '',
+    'db_user' => getenv('TMKCTL_DB_USER') ?: '',
+    'db_pass' => getenv('TMKCTL_DB_PASS') ?: '',
     'db_charset' => 'utf8mb4',
 
-    // Nested config keys, in case app/db.php expects this structure
     'database' => [
-        'host' => '127.0.0.1',
-        'port' => '3306',
-        'name' => 'tmkctl',
-        'user' => 'tmkctl',
-        'pass' => 'tmkctl_dev_password',
+        'host' => getenv('TMKCTL_DB_HOST') ?: '127.0.0.1',
+        'port' => getenv('TMKCTL_DB_PORT') ?: '3306',
+        'name' => getenv('TMKCTL_DB_NAME') ?: '',
+        'user' => getenv('TMKCTL_DB_USER') ?: '',
+        'pass' => getenv('TMKCTL_DB_PASS') ?: '',
         'charset' => 'utf8mb4',
     ],
 
     'app_name' => 'tmkctl',
-    'course_name' => 'Teorie masové kultury',
-    'timezone' => 'Europe/Prague',
+    'course_name' => getenv('TMKCTL_COURSE_NAME') ?: 'Teorie masové kultury',
+    'timezone' => getenv('TMKCTL_TIMEZONE') ?: 'Europe/Prague',
+    'base_path' => getenv('TMKCTL_BASE_PATH') ?: '',
 
-    // Development login password: tmkctl
-    'app_password_hash' => password_hash('tmkctl', PASSWORD_DEFAULT),
-    'password_hash' => password_hash('tmkctl', PASSWORD_DEFAULT),
+    'install_enabled' => false,
+
+    'app_password_hash' => getenv('TMKCTL_PASSWORD_HASH') ?: '',
+    'password_hash' => getenv('TMKCTL_PASSWORD_HASH') ?: '',
 ];
+
+$localPath = __DIR__ . '/config.local.php';
+if (is_file($localPath)) {
+    $local = require $localPath;
+    if (!is_array($local)) {
+        throw new RuntimeException('app/config.local.php must return a configuration array.');
+    }
+    return array_replace_recursive($defaults, $local);
+}
+
+return $defaults;

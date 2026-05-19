@@ -18,25 +18,22 @@ function db(): PDO
     }
 
     if (!extension_loaded('pdo_mysql')) {
-        throw new RuntimeException('PHP extension pdo_mysql is not enabled. Install/enable the PHP MySQL PDO driver, then restart the PHP server.');
+        throw new RuntimeException('PHP extension pdo_mysql is not enabled. Install or enable the PHP MySQL PDO driver, then restart the PHP server.');
     }
 
-    $db = database_config(app_config());
-    $dsn = database_dsn($db);
+    $cfg = database_config(app_config());
+    $dsn = database_dsn($cfg);
 
     try {
-        $pdo = new PDO($dsn, $db['user'], $db['pass'], [
+        $pdo = new PDO($dsn, $cfg['user'], $cfg['pass'], [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES => false,
         ]);
     } catch (PDOException $e) {
-        throw new RuntimeException(sprintf(
-            'Database connection failed. DSN=%s. Original error: %s',
-            $dsn,
-            $e->getMessage()
-        ));
+        throw new RuntimeException('Database connection failed. DSN=' . $dsn . '. Original error: ' . $e->getMessage());
     }
+
     return $pdo;
 }
 
@@ -44,7 +41,6 @@ function database_config(array $config): array
 {
     $nested = $config['database'] ?? [];
     $legacy = $config['db'] ?? [];
-
     $host = first_config_value($config['db_host'] ?? null, $nested['host'] ?? null, $legacy['host'] ?? null, '127.0.0.1');
     $socket = first_config_value($config['db_unix_socket'] ?? null, $nested['unix_socket'] ?? null, $legacy['unix_socket'] ?? null, null);
     if (!$socket && $host === 'localhost') {
@@ -72,24 +68,12 @@ function first_config_value(mixed ...$values): mixed
     return null;
 }
 
-function database_dsn(array $db): string
+function database_dsn(array $cfg): string
 {
-    if (!empty($db['unix_socket'])) {
-        return sprintf(
-            'mysql:unix_socket=%s;dbname=%s;charset=%s',
-            $db['unix_socket'],
-            $db['name'],
-            $db['charset']
-        );
+    if (!empty($cfg['unix_socket'])) {
+        return sprintf('mysql:unix_socket=%s;dbname=%s;charset=%s', $cfg['unix_socket'], $cfg['name'], $cfg['charset']);
     }
-
-    return sprintf(
-        'mysql:host=%s;port=%s;dbname=%s;charset=%s',
-        $db['host'],
-        $db['port'],
-        $db['name'],
-        $db['charset']
-    );
+    return sprintf('mysql:host=%s;port=%s;dbname=%s;charset=%s', $cfg['host'], $cfg['port'], $cfg['name'], $cfg['charset']);
 }
 
 function install_schema(PDO $pdo): void

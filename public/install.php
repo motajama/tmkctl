@@ -9,7 +9,7 @@ try {
     install_schema(db());
     $message = 'Databázové tabulky jsou připravené. Skript je bezpečné spustit opakovaně.';
 } catch (Throwable $e) {
-    $error = $e->getMessage();
+    $error = public_error_message($e);
 }
 ?>
 <!doctype html>
@@ -21,15 +21,11 @@ try {
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body class="login-screen">
-    <main class="login-box panel">
-        <div class="panel-title">tmkctl install</div>
-        <?php if ($message): ?>
-            <div class="notice"><?= h($message) ?></div>
-        <?php endif; ?>
-        <?php if ($error): ?>
-            <div class="alert"><?= h($error) ?></div>
-        <?php endif; ?>
-        <p>Po instalaci nastavte skutečný hash hesla v <code>app/config.php</code> nebo v proměnné <code>TMKCTL_PASSWORD_HASH</code>.</p>
+    <main class="window login-box">
+        <div class="panel-title">TMKCTL INSTALL</div>
+        <?php if ($message): ?><div class="message success"><?= h($message) ?></div><?php endif; ?>
+        <?php if ($error): ?><div class="message error"><?= h($error) ?></div><?php endif; ?>
+        <p>Po instalaci nastavte heslo v <code>app/config.php</code> nebo přes <code>TMKCTL_PASSWORD_HASH</code>.</p>
         <p><a href="login.php">Přejít na přihlášení</a></p>
     </main>
 </body>

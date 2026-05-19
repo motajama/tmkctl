@@ -49,92 +49,90 @@ sql/        database schema
 tools/      future offline tools
 ```
 
-## MVP status
+## Current MVP
 
-This repository contains the first PHP/MySQL MVP:
+The current MVP is a plain PHP 8+/PDO/MySQL application with:
 
-- shared-password login with PHP sessions
-- repeatable installer for MySQL/MariaDB tables
+- shared-password login using PHP sessions
+- CSRF protection for POST actions
+- repeatable `install.php` table creation
 - read-only question display from `data/questions.reviewed.json`
-- student add/import workflow
-- oral exam stack with allowed state transitions
-- active-student and manual-question modes
-- examiner notes with autosave and TXT/Markdown export
-- disabled AI chat placeholder for a later phase
+- manual student entry and CSV import
+- exam stack workflow
+- notes with autosave, manual save, TXT export, and Markdown export
 
-The MVP intentionally does not include AI, Hugging Face, PDF/PPTX parsing, Node.js, React, Tailwind, Composer dependencies, or a Python server.
+AI chat, Hugging Face integration, PDF/PPTX parsing, and the offline question generator are not implemented yet.
 
-## Local setup
+## Local Setup
 
 Requirements:
 
 - PHP 8+
 - MySQL or MariaDB
-- PDO MySQL extension enabled
+- PHP PDO MySQL extension, usually `php8.2-mysql` on Debian/Ubuntu
 
-On Debian/Ubuntu with PHP 8.2, the local package is usually:
+Create the local database and user:
 
-```sh
-sudo apt install php8.2-mysql
+```sql
+CREATE DATABASE tmkctl CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'tmkctl'@'localhost' IDENTIFIED BY 'tmkctl_dev_password';
+GRANT ALL PRIVILEGES ON tmkctl.* TO 'tmkctl'@'localhost';
+FLUSH PRIVILEGES;
 ```
 
-Create a database and user, then configure the app. The committed `app/config.php` uses environment variables and placeholder defaults only. For local development you can either edit `app/config.php` or export variables:
+Copy or edit config:
 
 ```sh
-export TMKCTL_DB_HOST=127.0.0.1
-export TMKCTL_DB_PORT=3306
-export TMKCTL_DB_NAME=tmkctl
-export TMKCTL_DB_USER=tmkctl
-export TMKCTL_DB_PASS='your-db-password'
-export TMKCTL_PASSWORD_HASH="$(php -r 'echo password_hash("change-me", PASSWORD_DEFAULT);')"
+cp app/config.example.php app/config.php
 ```
 
-Start the built-in PHP server from the repository root:
+For local testing, `app/config.php` should contain:
+
+```php
+'db_host' => '127.0.0.1',
+'db_port' => '3306',
+'db_name' => 'tmkctl',
+'db_user' => 'tmkctl',
+'db_pass' => 'tmkctl_dev_password',
+'db_charset' => 'utf8mb4',
+```
+
+The default development login password in the committed config is:
+
+```text
+tmkctl
+```
+
+Generate a real shared password hash before deployment:
 
 ```sh
-php -S 127.0.0.1:8000 -t public
+php -r "echo password_hash('your-password', PASSWORD_DEFAULT), PHP_EOL;"
+```
+
+Run the installer:
+
+```sh
+php -S localhost:8000 -t public
 ```
 
 Open:
 
-- `http://127.0.0.1:8000/install.php` to create/update tables
-- `http://127.0.0.1:8000/login.php` to sign in
-
-The placeholder development password in `app/config.php` is `change-me`. Replace it before using the app anywhere real.
-
-## Student CSV import
-
-CSV files must use this header:
-
-```csv
-name,uco,email,study_type
+```text
+http://localhost:8000/install.php
 ```
 
-Recognized `study_type` values are normalized as:
+Then sign in at:
 
-- `jednoobor`, `jednooborové`, `jednooborovy`, `1obor`, `single` -> `single`
-- `dvouobor`, `dvouoborové`, `dvouoborovy`, `2obor`, `double` -> `double`
-- empty or unknown values -> `unknown`
-
-See `data/students.sample.csv`.
-
-## Active24-style deployment
-
-Upload the repository so that the hosting web root points to `public/`. If the host cannot point the domain directly at `public/`, place the contents of `public/` in the web-accessible directory and keep `app/` and `data/` outside public access when possible.
-
-Set MySQL credentials and a real password hash in `app/config.php`, or use hosting environment variables if available:
-
-- `TMKCTL_DB_HOST`
-- `TMKCTL_DB_PORT`
-- `TMKCTL_DB_NAME`
-- `TMKCTL_DB_USER`
-- `TMKCTL_DB_PASS`
-- `TMKCTL_PASSWORD_HASH`
-
-Run `public/install.php` after upload. It only creates missing tables and is safe to run repeatedly.
-
-Do not deploy with the placeholder password hash. Generate a real hash with:
-
-```sh
-php -r "echo password_hash('your-shared-password', PASSWORD_DEFAULT), PHP_EOL;"
+```text
+http://localhost:8000/login.php
 ```
+
+## CSV Import
+
+CSV must include the `name` column. Optional columns are:
+
+- `uco`
+- `email`
+- `study_type`
+
+Empty rows are skipped. Students with the same UČO are updated rather than duplicated. If UČO is missing, the importer tries to avoid duplicates by matching normalized name and email.

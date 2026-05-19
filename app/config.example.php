@@ -1,9 +1,8 @@
 <?php
 
 return [
-    // Prefer 127.0.0.1 for local TCP connections. Using localhost may make
-    // some PHP/MySQL installations try a Unix socket and fail with:
-    // SQLSTATE[HY000] [2002] No such file or directory
+    // Use 127.0.0.1 for local TCP connections. On some systems, "localhost"
+    // makes PHP/MySQL try a Unix socket and fail with SQLSTATE[HY000] [2002].
     'db_host' => '127.0.0.1',
     'db_port' => '3306',
     'db_name' => 'tmkctl',
@@ -24,6 +23,7 @@ return [
     'course_name' => 'Teorie masové kultury',
     'timezone' => 'Europe/Prague',
     'base_path' => '',
+
     // Generate with:
     // php -r "echo password_hash('your-shared-password', PASSWORD_DEFAULT), PHP_EOL;"
     'app_password_hash' => '$2y$10$replace-this-with-a-real-password-hash',

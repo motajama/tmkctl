@@ -2,76 +2,64 @@
 
 **tmkctl** is a lightweight PHP/MySQL oral exam dashboard for the course *Teorie masové kultury*.
 
-It is designed for shared PHP hosting, especially Active24-style hosting.
+It targets shared PHP/MySQL hosting, including Active24-style environments.
 
-## Goals
+## MVP Scope
 
-- fast oral exam workflow
-- stable PHP/MySQL dashboard
-- student stack management
-- question display from reviewed JSON
-- examiner notes
+Implemented:
+
+- shared-password login with PHP sessions
+- CSRF protection for POST actions
+- MySQL/MariaDB schema installer
+- student entry and CSV import
+- exam stack management
+- read-only question display from `data/questions.reviewed.json`
+- examiner notes with autosave
 - TXT/Markdown export
-- retro academic workstation UI
+- disabled AI chat placeholder
 
-## Non-goals for MVP
-
-The first version does not implement:
+Not implemented yet:
 
 - AI chat
 - Hugging Face integration
-- PDF/PPTX analysis
-- automatic question generation
-- embeddings
-- local LLM tools
+- PDF/PPTX parsing
+- offline question generation
+- embeddings or vector database
 
-These will be added later as a separate offline preparation pipeline.
-
-## Architecture
-
-The project is split into two layers:
-
-1. PHP web dashboard  
-   Runs on shared hosting.
-
-2. Offline AI preparation tools  
-   To be added later. They will generate `data/questions.reviewed.json`.
-
-## Directory structure
+## Directory Structure
 
 ```text
-app/        PHP application code
+app/        PHP application code and configuration loader
 data/       reviewed question JSON and sample student data
-docs/       project notes and specifications
-public/     web root
-public/api/ PHP endpoints
-sql/        database schema
+docs/       project notes and deployment documentation
+public/     web root for the PHP app
+public/api/ PHP JSON/download endpoints
+sql/        database schema and database notes
 tools/      future offline tools
 ```
 
-## Current MVP
+## Configuration Strategy
 
-The current MVP is a plain PHP 8+/PDO/MySQL application with:
+Committed:
 
-- shared-password login using PHP sessions
-- CSRF protection for POST actions
-- repeatable `install.php` table creation
-- read-only question display from `data/questions.reviewed.json`
-- manual student entry and CSV import
-- exam stack workflow
-- notes with autosave, manual save, TXT export, and Markdown export
+- `app/config.php` - safe loader with defaults and environment variable support
+- `app/config.example.php` - template documenting all required keys
 
-AI chat, Hugging Face integration, PDF/PPTX parsing, and the offline question generator are not implemented yet.
+Not committed:
 
-## Local Setup
+- `app/config.local.php` - local or production credentials and password hash
+
+`app/config.php` automatically loads `app/config.local.php` when it exists. Never commit `app/config.local.php`.
+
+## Local Development Quickstart
 
 Requirements:
 
 - PHP 8+
 - MySQL or MariaDB
-- PHP PDO MySQL extension, usually `php8.2-mysql` on Debian/Ubuntu
+- PHP PDO MySQL extension, for example `php8.2-mysql` on Debian/Ubuntu
 
-Create the local database and user:
+Create a database:
 
 ```sql
 CREATE DATABASE tmkctl CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -80,13 +68,13 @@ GRANT ALL PRIVILEGES ON tmkctl.* TO 'tmkctl'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
-Copy or edit config:
+Create local config:
 
 ```sh
-cp app/config.example.php app/config.php
+cp app/config.example.php app/config.local.php
 ```
 
-For local testing, `app/config.php` should contain:
+For the local database above, use:
 
 ```php
 'db_host' => '127.0.0.1',
@@ -95,44 +83,134 @@ For local testing, `app/config.php` should contain:
 'db_user' => 'tmkctl',
 'db_pass' => 'tmkctl_dev_password',
 'db_charset' => 'utf8mb4',
+'install_enabled' => true,
 ```
 
-The default development login password in the committed config is:
+The example config uses development login password:
 
 ```text
 tmkctl
 ```
 
-Generate a real shared password hash before deployment:
-
-```sh
-php -r "echo password_hash('your-password', PASSWORD_DEFAULT), PHP_EOL;"
-```
-
-Run the installer:
+Start PHP:
 
 ```sh
 php -S localhost:8000 -t public
 ```
 
-Open:
+Run installer:
 
 ```text
 http://localhost:8000/install.php
 ```
 
-Then sign in at:
+Then log in:
 
 ```text
 http://localhost:8000/login.php
 ```
 
+After installation, set this in `app/config.local.php`:
+
+```php
+'install_enabled' => false,
+```
+
+## Deployment Overview
+
+Preferred deployment:
+
+- configure the hosting web root to `public/`
+- keep `app/`, `data/`, `docs/`, `sql/`, and `tools/` outside public web access
+
+If shared hosting requires uploading everything into one public directory, keep the included `.htaccess` files. They deny direct access to non-public folders.
+
+Production steps:
+
+1. Create a MySQL database and user in the hosting control panel.
+2. Copy `app/config.example.php` to `app/config.local.php`.
+3. Fill production DB credentials in `app/config.local.php`.
+4. Generate a real password hash:
+
+   ```sh
+   php -r "echo password_hash('your-shared-password', PASSWORD_DEFAULT), PHP_EOL;"
+   ```
+
+5. Set `install_enabled => true`.
+6. Upload files.
+7. Open `public/install.php` through the browser.
+8. Set `install_enabled => false`.
+9. Log in and import students.
+
+Detailed instructions are in [docs/deployment-active24.md](docs/deployment-active24.md).
+
+## Database Schema
+
+The installer and schema file create:
+
+- `students`
+- `exam_stack`
+- `exam_notes`
+- `app_settings`
+
+Schema export:
+
+```text
+sql/schema.sql
+```
+
+Questions are not inserted into the database in the MVP. They are loaded from:
+
+```text
+data/questions.reviewed.json
+```
+
 ## CSV Import
 
-CSV must include the `name` column. Optional columns are:
+CSV must include:
 
-- `uco`
-- `email`
-- `study_type`
+```csv
+name
+```
 
-Empty rows are skipped. Students with the same UČO are updated rather than duplicated. If UČO is missing, the importer tries to avoid duplicates by matching normalized name and email.
+Optional columns:
+
+```csv
+uco,email,study_type
+```
+
+Recognized `study_type` values:
+
+- `jednoobor`, `jednooborové`, `jednooborovy`, `1obor`, `single` -> `single`
+- `dvouobor`, `dvouoborové`, `dvouoborovy`, `2obor`, `double` -> `double`
+- empty or unknown values -> `unknown`
+
+Sample file:
+
+```text
+data/students.sample.csv
+```
+
+## Security Notes
+
+- Do not commit `app/config.local.php`.
+- Do not deploy with the example password.
+- Disable `install.php` after setup with `install_enabled => false`.
+- Back up `app/config.local.php` privately.
+- Back up the MySQL database before exams or deployments.
+- Back up `data/questions.reviewed.json`; the web app treats it as read-only.
+
+## Manual Backup
+
+Back up:
+
+- MySQL database dump
+- `data/questions.reviewed.json`
+- `app/config.local.php` privately
+- exported notes, if needed as separate exam records
+
+Example:
+
+```sh
+mysqldump -h HOST -u USER -p DATABASE_NAME > tmkctl-backup.sql
+```

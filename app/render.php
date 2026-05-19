@@ -5,6 +5,12 @@ function h(?string $value): string
     return htmlspecialchars((string)$value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
 
+function app_url(string $path = ''): string
+{
+    $base = rtrim(app_config()['base_path'] ?? '', '/');
+    return $base . '/' . ltrim($path, '/');
+}
+
 function json_response(array $payload, int $status = 200): void
 {
     http_response_code($status);
@@ -37,7 +43,7 @@ function public_error_message(Throwable $e): string
                 }
             }
         } catch (Throwable) {
-            // Keep error rendering best-effort.
+            // Keep public error formatting best-effort.
         }
     }
     return $message;

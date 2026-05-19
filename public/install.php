@@ -5,11 +5,16 @@ require_once __DIR__ . '/../app/render.php';
 
 $message = '';
 $error = '';
-try {
-    install_schema(db());
-    $message = 'Databázové tabulky jsou připravené. Skript je bezpečné spustit opakovaně.';
-} catch (Throwable $e) {
-    $error = public_error_message($e);
+$config = app_config();
+if (empty($config['install_enabled'])) {
+    $error = 'Instalátor je vypnutý. Pro spuštění nastavte v app/config.local.php hodnotu install_enabled => true. Po instalaci ji vraťte na false.';
+} else {
+    try {
+        install_schema(db());
+        $message = 'Databázové tabulky jsou připravené. Skript je bezpečné spustit opakovaně.';
+    } catch (Throwable $e) {
+        $error = function_exists('public_error_message') ? public_error_message($e) : $e->getMessage();
+    }
 }
 ?>
 <!doctype html>
@@ -21,11 +26,15 @@ try {
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body class="login-screen">
-    <main class="window login-box">
-        <div class="panel-title">TMKCTL INSTALL</div>
-        <?php if ($message): ?><div class="message success"><?= h($message) ?></div><?php endif; ?>
-        <?php if ($error): ?><div class="message error"><?= h($error) ?></div><?php endif; ?>
-        <p>Po instalaci nastavte heslo v <code>app/config.php</code> nebo přes <code>TMKCTL_PASSWORD_HASH</code>.</p>
+    <main class="login-box panel">
+        <div class="panel-title">tmkctl install</div>
+        <?php if ($message): ?>
+            <div class="notice"><?= h($message) ?></div>
+        <?php endif; ?>
+        <?php if ($error): ?>
+            <div class="alert"><?= h($error) ?></div>
+        <?php endif; ?>
+        <p>Po instalaci nastavte <code>install_enabled =&gt; false</code> v <code>app/config.local.php</code>.</p>
         <p><a href="login.php">Přejít na přihlášení</a></p>
     </main>
 </body>

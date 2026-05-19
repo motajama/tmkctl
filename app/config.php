@@ -24,6 +24,11 @@ $defaults = [
 
     'install_enabled' => false,
 
+    'is_import_study_code_map' => [
+        'MSZU01' => 'single',
+        'MSZU02' => 'double',
+    ],
+
     'app_password_hash' => getenv('TMKCTL_PASSWORD_HASH') ?: '',
     'password_hash' => getenv('TMKCTL_PASSWORD_HASH') ?: '',
 ];

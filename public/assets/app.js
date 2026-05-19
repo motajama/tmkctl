@@ -9,7 +9,8 @@
     mode: "follow",
     manualQuestionId: null,
     currentNoteKey: "",
-    noteDirty: false
+    noteDirty: false,
+    isImportStudents: []
   };
 
   const $ = (id) => document.getElementById(id);
@@ -26,6 +27,11 @@
     if (studyType === "single") return "1OBOR";
     if (studyType === "double") return "2OBOR";
     return "?";
+  };
+  const studyLabel = (studyType) => {
+    if (studyType === "single") return "jednoobor";
+    if (studyType === "double") return "dvouobor";
+    return "neznámé";
   };
 
   function escapeHtml(value) {
@@ -56,6 +62,98 @@
   function postForm(url, data) {
     data.append("csrf_token", state.csrfToken);
     return api(url, { method: "POST", body: data });
+  }
+
+  function selectedIsTermId() {
+    const checked = document.querySelector("input[name='is_term_id']:checked");
+    return checked ? checked.value : "";
+  }
+
+  async function postIsImport(action, extra) {
+    const data = new FormData();
+    data.append("action", action);
+    data.append("raw_text", $("is-import-text").value);
+    Object.entries(extra || {}).forEach(([key, value]) => {
+      data.append(key, value);
+    });
+    return postForm("api/students_is_import.php", data);
+  }
+
+  function renderIsTerms(terms) {
+    const box = $("is-term-list");
+    const previewButton = $("is-preview-students");
+    const importSelected = $("is-import-selected");
+    const importAll = $("is-import-all");
+    state.isImportStudents = [];
+    $("is-preview").innerHTML = "";
+    importSelected.disabled = true;
+    importAll.disabled = true;
+
+    if (!terms.length) {
+      box.innerHTML = '<div class="manual-warning">Nenalezen žádný termín Teorie masové komunikace / TMK.</div>';
+      previewButton.disabled = true;
+      return;
+    }
+
+    box.innerHTML = terms.map((term, index) => `
+      <label class="is-term-option">
+        <input type="radio" name="is_term_id" value="${escapeHtml(term.term_id)}"${index === 0 ? " checked" : ""}>
+        <span>${escapeHtml(term.date_raw)} — ${escapeHtml(term.title)}${term.student_count_declared !== null ? ` — ${escapeHtml(term.student_count_declared)} přihlášených` : ""}</span>
+      </label>
+    `).join("");
+    previewButton.disabled = false;
+  }
+
+  function renderIsPreview(students, term) {
+    const box = $("is-preview");
+    state.isImportStudents = students || [];
+    $("is-import-selected").disabled = !state.isImportStudents.some((student) => student.can_import);
+    $("is-import-all").disabled = !state.isImportStudents.some((student) => student.can_import);
+
+    if (!state.isImportStudents.length) {
+      box.innerHTML = '<div class="manual-warning">Ve vybraném termínu nebyly nalezeny žádné řádky studujících.</div>';
+      return;
+    }
+
+    box.innerHTML = `
+      <div class="is-preview-title">${escapeHtml(term.date_raw)} — ${escapeHtml(term.title)}</div>
+      <div class="is-preview-scroll">
+        <table class="is-preview-table">
+          <thead>
+            <tr>
+              <th>import</th>
+              <th>čas</th>
+              <th>jméno</th>
+              <th>UČO</th>
+              <th>kód</th>
+              <th>typ</th>
+              <th>sem</th>
+              <th>poznámka</th>
+              <th>stav</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${state.isImportStudents.map((student) => `
+              <tr>
+                <td><input type="checkbox" class="is-import-check" value="${escapeHtml(student.row_index)}"${student.can_import ? " checked" : " disabled"}></td>
+                <td>${escapeHtml(student.time_range)}</td>
+                <td>${escapeHtml(student.name)}</td>
+                <td>${escapeHtml(student.uco || "")}</td>
+                <td>${escapeHtml(student.study_code || "")}</td>
+                <td><b class="study-badge">${escapeHtml(studyBadge(student.study_type))}</b>${escapeHtml(studyLabel(student.study_type))}</td>
+                <td>${escapeHtml(student.semester || "")}</td>
+                <td title="${escapeHtml(student.import_note || "")}">${escapeHtml(student.extra || student.import_note || "")}</td>
+                <td>${escapeHtml(student.status_label || "")}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  function selectedIsRows() {
+    return Array.from(document.querySelectorAll(".is-import-check:checked")).map((input) => Number(input.value));
   }
 
   function renderStudents() {
@@ -389,6 +487,87 @@
         showMessage(error.message, "error");
       }
     });
+
+    const isDetectTerms = $("is-detect-terms");
+    if (isDetectTerms) {
+      isDetectTerms.addEventListener("click", async () => {
+        try {
+          const payload = await postIsImport("detect_terms");
+          renderIsTerms(payload.terms || []);
+          showMessage(payload.message, payload.terms && payload.terms.length ? "success" : "error");
+        } catch (error) {
+          showMessage(error.message, "error");
+        }
+      });
+    }
+
+    const isPreviewStudents = $("is-preview-students");
+    if (isPreviewStudents) {
+      isPreviewStudents.addEventListener("click", async () => {
+        try {
+          const termId = selectedIsTermId();
+          const payload = await postIsImport("preview", { term_id: termId });
+          renderIsPreview(payload.students || [], payload.term || {});
+          const warningText = payload.warnings && payload.warnings.length ? " Varování: " + payload.warnings.join(" ") : "";
+          showMessage((payload.message || "Náhled připraven.") + warningText, warningText ? "error" : "success");
+        } catch (error) {
+          showMessage(error.message, "error");
+        }
+      });
+    }
+
+    async function importIsStudents(rows) {
+      const termId = selectedIsTermId();
+      const payload = await postIsImport("import", {
+        term_id: termId,
+        selected_rows: JSON.stringify(rows)
+      });
+      state.students = payload.students || state.students;
+      state.stack = payload.stack || state.stack;
+      if (Object.prototype.hasOwnProperty.call(payload, "activeStudentId")) {
+        state.activeStudentId = payload.activeStudentId;
+      }
+      renderAll();
+      const warningText = payload.warnings && payload.warnings.length ? " Varování: " + payload.warnings.join(" ") : "";
+      showMessage((payload.message || "Import dokončen.") + warningText, warningText ? "error" : "success");
+    }
+
+    const isImportSelected = $("is-import-selected");
+    if (isImportSelected) {
+      isImportSelected.addEventListener("click", async () => {
+        try {
+          await importIsStudents(selectedIsRows());
+        } catch (error) {
+          showMessage(error.message, "error");
+        }
+      });
+    }
+
+    const isImportAll = $("is-import-all");
+    if (isImportAll) {
+      isImportAll.addEventListener("click", async () => {
+        try {
+          const rows = state.isImportStudents.filter((student) => student.can_import).map((student) => Number(student.row_index));
+          await importIsStudents(rows);
+        } catch (error) {
+          showMessage(error.message, "error");
+        }
+      });
+    }
+
+    const isImportClear = $("is-import-clear");
+    if (isImportClear) {
+      isImportClear.addEventListener("click", () => {
+        $("is-import-text").value = "";
+        $("is-term-list").innerHTML = "";
+        $("is-preview").innerHTML = "";
+        $("is-preview-students").disabled = true;
+        $("is-import-selected").disabled = true;
+        $("is-import-all").disabled = true;
+        state.isImportStudents = [];
+        showMessage("");
+      });
+    }
 
     document.querySelectorAll("input[name='question_mode']").forEach((input) => {
       input.addEventListener("change", () => {

@@ -1,0 +1,137 @@
+:root {
+  --ui-black: #000;
+  --ui-white: #fff;
+  --ui-gray: #c0c0c0;
+  --ui-light: #f8f8f8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding-bottom: 38px;
+  color: var(--ui-black);
+  background: repeating-linear-gradient(90deg, var(--ui-white) 0 2px, var(--ui-black) 2px 3px);
+  font-family: ui-monospace, "Courier New", monospace;
+  font-size: 15px;
+}
+
+button, input, select, textarea, a {
+  font: inherit;
+  color: var(--ui-black);
+}
+
+button, input, select, textarea {
+  border: 2px solid var(--ui-black);
+  border-radius: 0;
+  background: var(--ui-white);
+  padding: 4px 6px;
+}
+
+button, a {
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+button:hover, button:focus, a:hover, a:focus, input:focus, select:focus, textarea:focus {
+  outline: 2px solid var(--ui-black);
+  outline-offset: 1px;
+}
+
+button:hover, button:focus, a:hover, a:focus {
+  color: var(--ui-white);
+  background: var(--ui-black);
+}
+
+button:disabled, input:disabled, select:disabled, textarea:disabled {
+  opacity: .75;
+  color: var(--ui-black);
+  background: var(--ui-gray);
+}
+
+a { text-decoration: none; }
+label { display: block; margin: 8px 0 3px; font-weight: bold; text-transform: uppercase; }
+textarea { width: 100%; resize: vertical; min-height: 260px; }
+
+.workstation {
+  min-height: calc(100vh - 38px);
+  display: grid;
+  grid-template-columns: minmax(280px, 28%) minmax(380px, 1fr) minmax(310px, 29%);
+  grid-template-rows: minmax(0, 1fr) 100px;
+  gap: 10px;
+  padding: 10px;
+}
+
+.window {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--ui-white);
+  border: 2px solid var(--ui-black);
+  box-shadow: 2px 2px 0 var(--ui-black);
+}
+
+.panel-title {
+  padding: 4px 8px;
+  color: var(--ui-white);
+  background: var(--ui-black);
+  font-weight: bold;
+}
+
+.compact-form, .listbox, .stack-board, .question-panel, .note-context, .messages, .message, .status-line, .disabled-ai {
+  margin: 8px;
+}
+
+.compact-form { display: grid; gap: 5px; }
+.listbox, .question-panel, .note-context, .disabled-ai { border: 2px solid var(--ui-black); padding: 6px; background: var(--ui-white); }
+.listbox, .stack-board, .question-panel { overflow: auto; }
+.question-panel { flex: 1 1 auto; }
+.stack-board { flex: 1 1 auto; display: grid; gap: 8px; }
+h2, h3 { margin: 8px; padding-bottom: 3px; border-bottom: 2px solid var(--ui-black); text-transform: uppercase; }
+.stack-column { border: 2px solid var(--ui-black); }
+.stack-column h3 { margin: 0; padding: 4px; background: var(--ui-white); }
+.student-row, .stack-card { padding: 4px; border-bottom: 1px solid var(--ui-black); }
+.student-row { display: grid; grid-template-columns: 1fr auto; gap: 4px; }
+.student-main, .stack-name { border: 0; background: transparent; text-align: left; text-transform: none; padding: 0; }
+.active { color: var(--ui-white); background: var(--ui-black); }
+.active * { color: inherit; }
+.active button, .active select { color: var(--ui-black); background: var(--ui-white); }
+.button-row, .window-menu, .question-toolbar { display: flex; flex-wrap: wrap; gap: 4px; }
+.window-menu { margin-top: auto; padding: 5px; border-top: 2px solid var(--ui-black); }
+.question-toolbar select { min-width: 180px; flex: 1; }
+.stack-question, .mode-line { margin: 4px 0; padding: 3px; border: 1px solid currentColor; }
+.mode-line { color: var(--ui-white); background: var(--ui-black); }
+.message { padding: 6px; border: 2px solid var(--ui-black); background: var(--ui-white); font-weight: bold; }
+.hidden { display: none; }
+.ai-panel { grid-column: 1 / 4; }
+.disabled-ai { flex: 1; display: flex; align-items: center; }
+.global-command-bar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--ui-white);
+  border-top: 2px solid var(--ui-black);
+}
+.global-command-bar a, .global-command-bar button {
+  min-height: 32px;
+  padding: 4px 10px;
+  border: 0;
+  border-right: 2px solid var(--ui-black);
+  background: var(--ui-white);
+}
+.bar-right { margin-left: auto; padding: 0 10px; font-weight: bold; }
+.login-screen { min-height: 100vh; display: grid; place-items: center; }
+.login-box { width: min(430px, calc(100vw - 24px)); }
+.login-box form, .login-box p { margin: 8px; }
+.setup-error { grid-column: 1 / 4; max-width: 760px; width: 100%; margin: 40px auto; }
+
+@media (max-width: 1100px) {
+  .workstation { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .ai-panel, .setup-error { grid-column: auto; }
+}

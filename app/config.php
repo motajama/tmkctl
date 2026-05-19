@@ -1,19 +1,19 @@
 <?php
 
-return [
+$defaults = [
     'db_host' => getenv('TMKCTL_DB_HOST') ?: '127.0.0.1',
     'db_port' => getenv('TMKCTL_DB_PORT') ?: '3306',
-    'db_name' => getenv('TMKCTL_DB_NAME') ?: 'tmkctl',
-    'db_user' => getenv('TMKCTL_DB_USER') ?: 'tmkctl',
-    'db_pass' => getenv('TMKCTL_DB_PASS') ?: 'tmkctl_dev_password',
+    'db_name' => getenv('TMKCTL_DB_NAME') ?: '',
+    'db_user' => getenv('TMKCTL_DB_USER') ?: '',
+    'db_pass' => getenv('TMKCTL_DB_PASS') ?: '',
     'db_charset' => 'utf8mb4',
 
     'database' => [
         'host' => getenv('TMKCTL_DB_HOST') ?: '127.0.0.1',
         'port' => getenv('TMKCTL_DB_PORT') ?: '3306',
-        'name' => getenv('TMKCTL_DB_NAME') ?: 'tmkctl',
-        'user' => getenv('TMKCTL_DB_USER') ?: 'tmkctl',
-        'pass' => getenv('TMKCTL_DB_PASS') ?: 'tmkctl_dev_password',
+        'name' => getenv('TMKCTL_DB_NAME') ?: '',
+        'user' => getenv('TMKCTL_DB_USER') ?: '',
+        'pass' => getenv('TMKCTL_DB_PASS') ?: '',
         'charset' => 'utf8mb4',
     ],
 
@@ -22,7 +22,19 @@ return [
     'timezone' => getenv('TMKCTL_TIMEZONE') ?: 'Europe/Prague',
     'base_path' => getenv('TMKCTL_BASE_PATH') ?: '',
 
-    // Development login password: tmkctl. Replace before deployment.
-    'app_password_hash' => getenv('TMKCTL_PASSWORD_HASH') ?: password_hash('tmkctl', PASSWORD_DEFAULT),
-    'password_hash' => getenv('TMKCTL_PASSWORD_HASH') ?: password_hash('tmkctl', PASSWORD_DEFAULT),
+    'install_enabled' => false,
+
+    'app_password_hash' => getenv('TMKCTL_PASSWORD_HASH') ?: '',
+    'password_hash' => getenv('TMKCTL_PASSWORD_HASH') ?: '',
 ];
+
+$localPath = __DIR__ . '/config.local.php';
+if (is_file($localPath)) {
+    $local = require $localPath;
+    if (!is_array($local)) {
+        throw new RuntimeException('app/config.local.php must return a configuration array.');
+    }
+    return array_replace_recursive($defaults, $local);
+}
+
+return $defaults;

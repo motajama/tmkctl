@@ -26,11 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body class="login-screen">
-    <main class="login-box panel">
-        <div class="panel-title">tmkctl login</div>
-        <?php if ($error): ?>
-            <div class="alert"><?= h($error) ?></div>
-        <?php endif; ?>
+    <main class="window login-box">
+        <div class="panel-title">TMKCTL LOGIN</div>
+        <?php if ($error): ?><div class="message error"><?= h($error) ?></div><?php endif; ?>
         <form method="post">
             <label for="password">Sdílené heslo</label>
             <input id="password" name="password" type="password" autofocus required>

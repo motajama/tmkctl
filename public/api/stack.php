@@ -18,19 +18,19 @@ try {
 
     $action = (string)($_POST['action'] ?? '');
     if ($action === 'add') {
-        add_to_stack($pdo, (int)$_POST['student_id']);
+        add_to_stack($pdo, (int)($_POST['student_id'] ?? 0));
         $message = 'Studující byl přidán do fronty.';
     } elseif ($action === 'move') {
-        move_stack_item($pdo, (int)$_POST['stack_id'], (string)$_POST['state']);
+        move_stack_item($pdo, (int)($_POST['stack_id'] ?? 0), (string)($_POST['state'] ?? ''));
         $message = 'Stav fronty byl změněn.';
     } elseif ($action === 'assign') {
-        assign_question($pdo, (int)$_POST['stack_id'], trim((string)$_POST['question_id']) ?: null);
+        assign_question($pdo, (int)($_POST['stack_id'] ?? 0), $_POST['question_id'] ?? null);
         $message = 'Otázka byla přiřazena.';
     } elseif ($action === 'random_assign') {
-        assign_question($pdo, (int)$_POST['stack_id'], random_question_id());
+        assign_question($pdo, (int)($_POST['stack_id'] ?? 0), random_question_id());
         $message = 'Otázka byla vylosována.';
     } elseif ($action === 'active') {
-        set_active_student($pdo, (int)$_POST['student_id']);
+        set_active_student($pdo, (int)($_POST['student_id'] ?? 0));
         $message = 'Aktivní studující byl nastaven.';
     } else {
         throw new InvalidArgumentException('Neplatná akce.');

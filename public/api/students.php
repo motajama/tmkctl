@@ -7,12 +7,12 @@ require_once __DIR__ . '/../../app/students.php';
 require_auth();
 
 try {
+    $pdo = db();
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        json_response(['ok' => true, 'students' => list_students(db())]);
+        json_response(['ok' => true, 'students' => list_students($pdo)]);
     }
     require_post();
     verify_csrf();
-    $pdo = db();
     $result = add_student($pdo, $_POST);
     json_response([
         'ok' => true,

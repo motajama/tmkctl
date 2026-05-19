@@ -5,14 +5,8 @@ function normalize_study_type(?string $value): string
     $raw = trim((string)$value);
     $normalized = function_exists('mb_strtolower') ? mb_strtolower($raw, 'UTF-8') : strtolower($raw);
     $normalized = strtr($normalized, [
-        'é' => 'e',
-        'ě' => 'e',
-        'ý' => 'y',
-        'á' => 'a',
-        'í' => 'i',
-        'ó' => 'o',
-        'ú' => 'u',
-        'ů' => 'u',
+        'é' => 'e', 'ě' => 'e', 'ý' => 'y', 'á' => 'a', 'í' => 'i',
+        'ó' => 'o', 'ú' => 'u', 'ů' => 'u',
     ]);
     if (in_array($normalized, ['jednoobor', 'jednooborove', 'jednooborovy', '1obor', 'single'], true)) {
         return 'single';
@@ -35,11 +29,11 @@ function study_type_label(?string $value): string
 function list_students(PDO $pdo): array
 {
     $stmt = $pdo->query('SELECT id, name, uco, email, study_type, created_at, updated_at FROM students ORDER BY name ASC, id ASC');
-    $students = $stmt->fetchAll();
-    foreach ($students as &$student) {
-        $student['study_type_label'] = study_type_label($student['study_type'] ?? 'unknown');
+    $rows = $stmt->fetchAll();
+    foreach ($rows as &$row) {
+        $row['study_type_label'] = study_type_label($row['study_type'] ?? 'unknown');
     }
-    return $students;
+    return $rows;
 }
 
 function validate_student_data(array $data): array
@@ -103,17 +97,13 @@ function add_student(PDO $pdo, array $data): array
         return ['id' => $existingId, 'created' => false];
     }
 
-    $stmt = $pdo->prepare('
-        INSERT INTO students (name, uco, email, study_type)
-        VALUES (:name, :uco, :email, :study_type)
-    ');
+    $stmt = $pdo->prepare('INSERT INTO students (name, uco, email, study_type) VALUES (:name, :uco, :email, :study_type)');
     $stmt->execute([
         ':name' => $student['name'],
         ':uco' => $student['uco'],
         ':email' => $student['email'],
         ':study_type' => $student['study_type'],
     ]);
-
     return ['id' => (int)$pdo->lastInsertId(), 'created' => true];
 }
 
@@ -141,11 +131,11 @@ function import_students_csv(PDO $pdo, string $path): array
         fclose($handle);
         throw new InvalidArgumentException('CSV soubor je prázdný.');
     }
-
     $header = array_map(static function ($value): string {
         return trim(preg_replace('/^\xEF\xBB\xBF/', '', (string)$value));
     }, $header);
-    if (array_search('name', $header, true) === false) {
+    $nameIndex = array_search('name', $header, true);
+    if ($nameIndex === false) {
         fclose($handle);
         throw new InvalidArgumentException('CSV musí obsahovat sloupec name.');
     }

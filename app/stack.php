@@ -50,7 +50,7 @@ function get_stack_item(PDO $pdo, int $stackId): ?array
 function move_stack_item(PDO $pdo, int $stackId, string $nextState): void
 {
     if (!in_array($nextState, STACK_STATES, true)) {
-        throw new InvalidArgumentException('Neznámý stav.');
+        throw new InvalidArgumentException('Neznámý stav fronty.');
     }
     $item = get_stack_item($pdo, $stackId);
     if (!$item) {
@@ -59,8 +59,8 @@ function move_stack_item(PDO $pdo, int $stackId, string $nextState): void
     if (!in_array($nextState, STACK_MOVES[$item['state']] ?? [], true)) {
         throw new InvalidArgumentException('Tento přesun není povolen.');
     }
-    $update = $pdo->prepare('UPDATE exam_stack SET state = :state WHERE id = :id');
-    $update->execute([':state' => $nextState, ':id' => $stackId]);
+    $stmt = $pdo->prepare('UPDATE exam_stack SET state = :state WHERE id = :id');
+    $stmt->execute([':state' => $nextState, ':id' => $stackId]);
 }
 
 function assign_question(PDO $pdo, int $stackId, ?string $questionId): void

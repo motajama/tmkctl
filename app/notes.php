@@ -10,8 +10,7 @@ function get_note(PDO $pdo, int $studentId, string $questionId): array
     }
     $stmt = $pdo->prepare('SELECT * FROM exam_notes WHERE student_id = :student_id AND question_id = :question_id');
     $stmt->execute([':student_id' => $studentId, ':question_id' => $questionId]);
-    $note = $stmt->fetch();
-    return $note ?: [
+    return $stmt->fetch() ?: [
         'student_id' => $studentId,
         'question_id' => $questionId,
         'note_text' => '',
@@ -51,8 +50,8 @@ function export_note_text(PDO $pdo, int $studentId, string $questionId, string $
         throw new InvalidArgumentException('Chybí studující nebo otázka.');
     }
     $note = get_note($pdo, $studentId, $questionId);
-
     $config = app_config();
+
     $fields = [
         'Kurz' => $config['course_name'],
         'Datum' => date('Y-m-d H:i:s'),

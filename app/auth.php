@@ -65,7 +65,7 @@ function verify_csrf(): void
 {
     start_app_session();
     $token = $_POST['csrf_token'] ?? $_SERVER['HTTP_X_CSRF_TOKEN'] ?? '';
-    if (!hash_equals($_SESSION['csrf_token'] ?? '', $token)) {
+    if (!is_string($token) || !hash_equals($_SESSION['csrf_token'] ?? '', $token)) {
         json_response(['ok' => false, 'error' => 'Neplatný bezpečnostní token. Obnovte stránku.'], 419);
     }
 }

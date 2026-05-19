@@ -22,6 +22,29 @@ function json_response(array $payload, int $status = 200): void
 function require_post(): void
 {
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-        json_response(['ok' => false, 'error' => 'POST required'], 405);
+        json_response(['ok' => false, 'error' => 'Je vyžadována metoda POST.'], 405);
     }
+}
+
+function public_error_message(Throwable $e): string
+{
+    $message = $e->getMessage();
+    if (function_exists('app_config')) {
+        try {
+            $config = app_config();
+            $secrets = [
+                $config['db_pass'] ?? null,
+                $config['database']['pass'] ?? null,
+                $config['db']['password'] ?? null,
+            ];
+            foreach ($secrets as $secret) {
+                if (is_string($secret) && $secret !== '') {
+                    $message = str_replace($secret, '[redacted]', $message);
+                }
+            }
+        } catch (Throwable) {
+            // Keep public error formatting best-effort.
+        }
+    }
+    return $message;
 }

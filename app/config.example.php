@@ -24,8 +24,13 @@ return [
     'course_name' => 'Teorie masové kultury',
     'timezone' => 'Europe/Prague',
     'base_path' => '',
+
+    // Enable only while running public/install.php. Set to false after setup.
+    'install_enabled' => true,
+
     // Generate with:
     // php -r "echo password_hash('your-shared-password', PASSWORD_DEFAULT), PHP_EOL;"
-    'app_password_hash' => '$2y$10$replace-this-with-a-real-password-hash',
-    'password_hash' => '$2y$10$replace-this-with-a-real-password-hash',
+    // Development example password: tmkctl
+    'app_password_hash' => password_hash('tmkctl', PASSWORD_DEFAULT),
+    'password_hash' => password_hash('tmkctl', PASSWORD_DEFAULT),
 ];

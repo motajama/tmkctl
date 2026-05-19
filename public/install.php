@@ -5,11 +5,16 @@ require_once __DIR__ . '/../app/render.php';
 
 $message = '';
 $error = '';
-try {
-    install_schema(db());
-    $message = 'Databázové tabulky jsou připravené. Skript je bezpečné spustit opakovaně.';
-} catch (Throwable $e) {
-    $error = $e->getMessage();
+$config = app_config();
+if (empty($config['install_enabled'])) {
+    $error = 'Instalátor je vypnutý. Pro spuštění nastavte v app/config.local.php hodnotu install_enabled => true. Po instalaci ji vraťte na false.';
+} else {
+    try {
+        install_schema(db());
+        $message = 'Databázové tabulky jsou připravené. Skript je bezpečné spustit opakovaně.';
+    } catch (Throwable $e) {
+        $error = function_exists('public_error_message') ? public_error_message($e) : $e->getMessage();
+    }
 }
 ?>
 <!doctype html>
@@ -29,7 +34,7 @@ try {
         <?php if ($error): ?>
             <div class="alert"><?= h($error) ?></div>
         <?php endif; ?>
-        <p>Po instalaci nastavte skutečný hash hesla v <code>app/config.php</code> nebo v proměnné <code>TMKCTL_PASSWORD_HASH</code>.</p>
+        <p>Po instalaci nastavte <code>install_enabled =&gt; false</code> v <code>app/config.local.php</code>.</p>
         <p><a href="login.php">Přejít na přihlášení</a></p>
     </main>
 </body>

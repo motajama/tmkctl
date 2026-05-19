@@ -2,139 +2,215 @@
 
 **tmkctl** is a lightweight PHP/MySQL oral exam dashboard for the course *Teorie masové kultury*.
 
-It is designed for shared PHP hosting, especially Active24-style hosting.
+It targets shared PHP/MySQL hosting, including Active24-style environments.
 
-## Goals
+## MVP Scope
 
-- fast oral exam workflow
-- stable PHP/MySQL dashboard
-- student stack management
-- question display from reviewed JSON
-- examiner notes
+Implemented:
+
+- shared-password login with PHP sessions
+- CSRF protection for POST actions
+- MySQL/MariaDB schema installer
+- student entry and CSV import
+- exam stack management
+- read-only question display from `data/questions.reviewed.json`
+- examiner notes with autosave
 - TXT/Markdown export
-- retro academic workstation UI
+- disabled AI chat placeholder
 
-## Non-goals for MVP
-
-The first version does not implement:
+Not implemented yet:
 
 - AI chat
 - Hugging Face integration
-- PDF/PPTX analysis
-- automatic question generation
-- embeddings
-- local LLM tools
+- PDF/PPTX parsing
+- offline question generation
+- embeddings or vector database
 
-These will be added later as a separate offline preparation pipeline.
-
-## Architecture
-
-The project is split into two layers:
-
-1. PHP web dashboard  
-   Runs on shared hosting.
-
-2. Offline AI preparation tools  
-   To be added later. They will generate `data/questions.reviewed.json`.
-
-## Directory structure
+## Directory Structure
 
 ```text
-app/        PHP application code
+app/        PHP application code and configuration loader
 data/       reviewed question JSON and sample student data
-docs/       project notes and specifications
-public/     web root
-public/api/ PHP endpoints
-sql/        database schema
+docs/       project notes and deployment documentation
+public/     web root for the PHP app
+public/api/ PHP JSON/download endpoints
+sql/        database schema and database notes
 tools/      future offline tools
 ```
 
-## MVP status
+## Configuration Strategy
 
-This repository contains the first PHP/MySQL MVP:
+Committed:
 
-- shared-password login with PHP sessions
-- repeatable installer for MySQL/MariaDB tables
-- read-only question display from `data/questions.reviewed.json`
-- student add/import workflow
-- oral exam stack with allowed state transitions
-- active-student and manual-question modes
-- examiner notes with autosave and TXT/Markdown export
-- disabled AI chat placeholder for a later phase
+- `app/config.php` - safe loader with defaults and environment variable support
+- `app/config.example.php` - template documenting all required keys
 
-The MVP intentionally does not include AI, Hugging Face, PDF/PPTX parsing, Node.js, React, Tailwind, Composer dependencies, or a Python server.
+Not committed:
 
-## Local setup
+- `app/config.local.php` - local or production credentials and password hash
+
+`app/config.php` automatically loads `app/config.local.php` when it exists. Never commit `app/config.local.php`.
+
+## Local Development Quickstart
 
 Requirements:
 
 - PHP 8+
 - MySQL or MariaDB
-- PDO MySQL extension enabled
+- PHP PDO MySQL extension, for example `php8.2-mysql` on Debian/Ubuntu
 
-On Debian/Ubuntu with PHP 8.2, the local package is usually:
+Create a database:
 
-```sh
-sudo apt install php8.2-mysql
+```sql
+CREATE DATABASE tmkctl CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'tmkctl'@'localhost' IDENTIFIED BY 'tmkctl_dev_password';
+GRANT ALL PRIVILEGES ON tmkctl.* TO 'tmkctl'@'localhost';
+FLUSH PRIVILEGES;
 ```
 
-Create a database and user, then configure the app. The committed `app/config.php` uses environment variables and placeholder defaults only. For local development you can either edit `app/config.php` or export variables:
+Create local config:
 
 ```sh
-export TMKCTL_DB_HOST=127.0.0.1
-export TMKCTL_DB_PORT=3306
-export TMKCTL_DB_NAME=tmkctl
-export TMKCTL_DB_USER=tmkctl
-export TMKCTL_DB_PASS='your-db-password'
-export TMKCTL_PASSWORD_HASH="$(php -r 'echo password_hash("change-me", PASSWORD_DEFAULT);')"
+cp app/config.example.php app/config.local.php
 ```
 
-Start the built-in PHP server from the repository root:
+For the local database above, use:
+
+```php
+'db_host' => '127.0.0.1',
+'db_port' => '3306',
+'db_name' => 'tmkctl',
+'db_user' => 'tmkctl',
+'db_pass' => 'tmkctl_dev_password',
+'db_charset' => 'utf8mb4',
+'install_enabled' => true,
+```
+
+The example config uses development login password:
+
+```text
+tmkctl
+```
+
+Start PHP:
 
 ```sh
-php -S 127.0.0.1:8000 -t public
+php -S localhost:8000 -t public
 ```
 
-Open:
+Run installer:
 
-- `http://127.0.0.1:8000/install.php` to create/update tables
-- `http://127.0.0.1:8000/login.php` to sign in
+```text
+http://localhost:8000/install.php
+```
 
-The placeholder development password in `app/config.php` is `change-me`. Replace it before using the app anywhere real.
+Then log in:
 
-## Student CSV import
+```text
+http://localhost:8000/login.php
+```
 
-CSV files must use this header:
+After installation, set this in `app/config.local.php`:
+
+```php
+'install_enabled' => false,
+```
+
+## Deployment Overview
+
+Preferred deployment:
+
+- configure the hosting web root to `public/`
+- keep `app/`, `data/`, `docs/`, `sql/`, and `tools/` outside public web access
+
+If shared hosting requires uploading everything into one public directory, keep the included `.htaccess` files. They deny direct access to non-public folders.
+
+Production steps:
+
+1. Create a MySQL database and user in the hosting control panel.
+2. Copy `app/config.example.php` to `app/config.local.php`.
+3. Fill production DB credentials in `app/config.local.php`.
+4. Generate a real password hash:
+
+   ```sh
+   php -r "echo password_hash('your-shared-password', PASSWORD_DEFAULT), PHP_EOL;"
+   ```
+
+5. Set `install_enabled => true`.
+6. Upload files.
+7. Open `public/install.php` through the browser.
+8. Set `install_enabled => false`.
+9. Log in and import students.
+
+Detailed instructions are in [docs/deployment-active24.md](docs/deployment-active24.md).
+
+## Database Schema
+
+The installer and schema file create:
+
+- `students`
+- `exam_stack`
+- `exam_notes`
+- `app_settings`
+
+Schema export:
+
+```text
+sql/schema.sql
+```
+
+Questions are not inserted into the database in the MVP. They are loaded from:
+
+```text
+data/questions.reviewed.json
+```
+
+## CSV Import
+
+CSV must include:
 
 ```csv
-name,uco,email,study_type
+name
 ```
 
-Recognized `study_type` values are normalized as:
+Optional columns:
+
+```csv
+uco,email,study_type
+```
+
+Recognized `study_type` values:
 
 - `jednoobor`, `jednooborové`, `jednooborovy`, `1obor`, `single` -> `single`
 - `dvouobor`, `dvouoborové`, `dvouoborovy`, `2obor`, `double` -> `double`
 - empty or unknown values -> `unknown`
 
-See `data/students.sample.csv`.
+Sample file:
 
-## Active24-style deployment
+```text
+data/students.sample.csv
+```
 
-Upload the repository so that the hosting web root points to `public/`. If the host cannot point the domain directly at `public/`, place the contents of `public/` in the web-accessible directory and keep `app/` and `data/` outside public access when possible.
+## Security Notes
 
-Set MySQL credentials and a real password hash in `app/config.php`, or use hosting environment variables if available:
+- Do not commit `app/config.local.php`.
+- Do not deploy with the example password.
+- Disable `install.php` after setup with `install_enabled => false`.
+- Back up `app/config.local.php` privately.
+- Back up the MySQL database before exams or deployments.
+- Back up `data/questions.reviewed.json`; the web app treats it as read-only.
 
-- `TMKCTL_DB_HOST`
-- `TMKCTL_DB_PORT`
-- `TMKCTL_DB_NAME`
-- `TMKCTL_DB_USER`
-- `TMKCTL_DB_PASS`
-- `TMKCTL_PASSWORD_HASH`
+## Manual Backup
 
-Run `public/install.php` after upload. It only creates missing tables and is safe to run repeatedly.
+Back up:
 
-Do not deploy with the placeholder password hash. Generate a real hash with:
+- MySQL database dump
+- `data/questions.reviewed.json`
+- `app/config.local.php` privately
+- exported notes, if needed as separate exam records
+
+Example:
 
 ```sh
-php -r "echo password_hash('your-shared-password', PASSWORD_DEFAULT), PHP_EOL;"
+mysqldump -h HOST -u USER -p DATABASE_NAME > tmkctl-backup.sql
 ```

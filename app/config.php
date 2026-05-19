@@ -1,7 +1,6 @@
 <?php
 
-return [
-    // Flat config keys
+$defaultConfig = [
     'db_host' => '127.0.0.1',
     'db_port' => '3306',
     'db_name' => 'tmkctl',
@@ -9,7 +8,6 @@ return [
     'db_pass' => 'tmkctl_dev_password',
     'db_charset' => 'utf8mb4',
 
-    // Nested config keys, in case app/db.php expects this structure
     'database' => [
         'host' => '127.0.0.1',
         'port' => '3306',
@@ -23,7 +21,23 @@ return [
     'course_name' => 'Teorie masové kultury',
     'timezone' => 'Europe/Prague',
 
-    // Development login password: tmkctl
+    'install_enabled' => true,
+
+    // Development fallback password: tmkctl
     'app_password_hash' => password_hash('tmkctl', PASSWORD_DEFAULT),
     'password_hash' => password_hash('tmkctl', PASSWORD_DEFAULT),
 ];
+
+$localConfigPath = __DIR__ . '/config.local.php';
+
+if (is_file($localConfigPath)) {
+    $localConfig = require $localConfigPath;
+
+    if (!is_array($localConfig)) {
+        throw new RuntimeException('app/config.local.php must return an array.');
+    }
+
+    $defaultConfig = array_replace_recursive($defaultConfig, $localConfig);
+}
+
+return $defaultConfig;

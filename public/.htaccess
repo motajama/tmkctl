@@ -1,0 +1,12 @@
+Options -Indexes
+AddDefaultCharset UTF-8
+
+<FilesMatch "(^\.|config|composer\.(json|lock)|package(-lock)?\.json|README|\.env|\.sql|\.md)$">
+    Require all denied
+    Deny from all
+</FilesMatch>
+
+<FilesMatch "\.(bak|backup|dist|ini|log|old|orig|save|sql|swp|tmp|yml|yaml)$">
+    Require all denied
+    Deny from all
+</FilesMatch>

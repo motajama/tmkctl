@@ -10,19 +10,19 @@ require_auth();
 
 $config = app_config();
 $setupError = '';
-$questions = [];
+$questionLoad = ['questions' => [], 'error' => ''];
 $students = [];
 $stack = [];
 $activeStudentId = null;
 
 try {
     $pdo = db();
-    $questions = load_questions();
+    $questionLoad = try_load_questions();
     $students = list_students($pdo);
     $stack = list_stack($pdo);
     $activeStudentId = get_active_student_id($pdo);
 } catch (Throwable $e) {
-    $setupError = $e->getMessage();
+    $setupError = public_error_message($e);
 }
 ?>
 <!doctype html>
@@ -67,6 +67,7 @@ php -S 127.0.0.1:8000 -t public</pre>
                 </div>
             </form>
             <div class="split-title">SEZNAM</div>
+            <div id="messages" class="messages"></div>
             <div id="students-list" class="listbox"></div>
             <div class="split-title">FRONTA</div>
             <div id="stack-board" class="stack-board"></div>
@@ -79,6 +80,9 @@ php -S 127.0.0.1:8000 -t public</pre>
 
         <section id="question-window" class="panel window center-panel">
             <div class="panel-title">OTÁZKA</div>
+            <?php if ($questionLoad['error']): ?>
+                <div class="manual-warning"><?= h($questionLoad['error']) ?></div>
+            <?php endif; ?>
             <div id="manual-warning" class="manual-warning hidden">!! RUČNÍ REŽIM – tato otázka není přiřazena aktivnímu studujícímu.</div>
             <article id="question-panel" class="question-panel"></article>
             <footer class="window-menu question-toolbar">
@@ -140,7 +144,8 @@ php -S 127.0.0.1:8000 -t public</pre>
         <script>
             window.TMKCTL = <?= json_encode([
                 'csrfToken' => csrf_token(),
-                'questions' => $questions,
+                'questions' => $questionLoad['questions'],
+                'questionsError' => $questionLoad['error'],
                 'students' => $students,
                 'stack' => $stack,
                 'activeStudentId' => $activeStudentId,

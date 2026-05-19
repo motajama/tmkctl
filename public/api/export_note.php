@@ -1,7 +1,7 @@
 <?php
 
-require_once __DIR__ . '/../../app/auth.php';
 require_once __DIR__ . '/../../app/render.php';
+require_once __DIR__ . '/../../app/auth.php';
 require_once __DIR__ . '/../../app/questions.php';
 require_once __DIR__ . '/../../app/students.php';
 require_once __DIR__ . '/../../app/notes.php';
@@ -20,5 +20,5 @@ try {
 } catch (Throwable $e) {
     http_response_code(400);
     header('Content-Type: text/plain; charset=utf-8');
-    echo $e->getMessage();
+    echo public_error_message($e);
 }

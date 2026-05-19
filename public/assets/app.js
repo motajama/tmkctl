@@ -2,6 +2,7 @@
   const state = {
     csrfToken: window.TMKCTL.csrfToken,
     questions: window.TMKCTL.questions || [],
+    questionsError: window.TMKCTL.questionsError || "",
     students: window.TMKCTL.students || [],
     stack: window.TMKCTL.stack || [],
     activeStudentId: window.TMKCTL.activeStudentId || null,
@@ -34,6 +35,12 @@
       .replaceAll(">", "&gt;")
       .replaceAll('"', "&quot;")
       .replaceAll("'", "&#039;");
+  }
+
+  function showMessage(message, type) {
+    const box = $("messages");
+    if (!box) return;
+    box.innerHTML = message ? `<div class="${type === "error" ? "alert" : "notice"}">${escapeHtml(message)}</div>` : "";
   }
 
   async function api(url, options) {
@@ -155,8 +162,15 @@
     $("back-to-active").disabled = state.mode !== "manual";
     $("manual-question-select").disabled = state.mode !== "manual";
 
+    if (state.questionsError) {
+      panel.innerHTML = `<div class="mode-line">${state.mode === "manual" ? "ZOBRAZENÍ: RUČNÍ VÝBĚR" : "ZOBRAZENÍ: AKTIVNÍ STUDUJÍCÍ"}</div><p class="empty">${escapeHtml(state.questionsError)}</p>`;
+      loadNote();
+      return;
+    }
+
     if (!question) {
-      panel.innerHTML = `<div class="mode-line">${state.mode === "manual" ? "ZOBRAZENÍ: RUČNÍ VÝBĚR" : "ZOBRAZENÍ: AKTIVNÍ STUDUJÍCÍ"}</div><p class="empty">Aktivní studující nemá přiřazenou otázku.</p>`;
+      const questionId = selectedQuestionId();
+      panel.innerHTML = `<div class="mode-line">${state.mode === "manual" ? "ZOBRAZENÍ: RUČNÍ VÝBĚR" : "ZOBRAZENÍ: AKTIVNÍ STUDUJÍCÍ"}</div><p class="empty">${questionId ? "Přiřazená otázka nebyla nalezena v JSON." : "Aktivní studující nemá přiřazenou otázku."}</p>`;
       loadNote();
       return;
     }
@@ -202,7 +216,7 @@
     const question = questionById(selectedQuestionId());
     $("note-context").textContent = student && question
       ? `${student.name} · ${student.uco || "bez UČO"} · ${question.short_title || question.title}`
-      : "Vyberte aktivního studujícího a otázku.";
+      : (!student ? "Chybí aktivní studující." : "Chybí vybraná nebo přiřazená otázka.");
     const globalActive = $("global-active-student");
     if (globalActive) {
       globalActive.textContent = student ? `AKTIVNÍ: ${student.name}` : "";
@@ -215,7 +229,7 @@
     const questionId = selectedQuestionId();
     const key = `${studentId || ""}:${questionId || ""}`;
     state.currentNoteKey = key;
-    if (!studentId || !questionId) {
+    if (!studentId || !questionById(questionId)) {
       $("note-text").value = "";
       $("suggested-grade").value = "";
       $("note-text").disabled = true;
@@ -239,16 +253,19 @@
   async function saveNote(manual) {
     const studentId = state.activeStudentId;
     const questionId = selectedQuestionId();
-    if (!studentId || !questionId) return;
+    if (!studentById(studentId) || !questionById(questionId)) {
+      setStatus("Nelze uložit: chybí aktivní studující nebo otázka.");
+      return;
+    }
     const data = new FormData();
     data.append("student_id", studentId);
     data.append("question_id", questionId);
     data.append("note_text", $("note-text").value);
     data.append("suggested_grade", $("suggested-grade").value);
     try {
-      await postForm("api/notes.php", data);
+      const payload = await postForm("api/notes.php", data);
       state.noteDirty = false;
-      setStatus((manual ? "Uloženo" : "Autosave") + " " + new Date().toLocaleTimeString("cs-CZ"));
+      setStatus((payload.message || "Poznámka byla uložena.") + (manual ? "" : " (autosave)"));
     } catch (error) {
       setStatus(error.message);
     }
@@ -276,6 +293,7 @@
     data.append("action", "active");
     data.append("student_id", studentId);
     const payload = await postForm("api/stack.php", data);
+    showMessage(payload.message);
     state.activeStudentId = payload.activeStudentId;
     state.stack = payload.stack;
     renderAll();
@@ -285,8 +303,11 @@
     const data = new FormData();
     data.append("action", "add");
     data.append("student_id", studentId);
-    await postForm("api/stack.php", data);
-    await refreshStack();
+    const payload = await postForm("api/stack.php", data);
+    showMessage(payload.message);
+    state.stack = payload.stack;
+    state.activeStudentId = payload.activeStudentId;
+    renderAll();
   }
 
   async function moveStack(stackId, nextState) {
@@ -294,8 +315,11 @@
     data.append("action", "move");
     data.append("stack_id", stackId);
     data.append("state", nextState);
-    await postForm("api/stack.php", data);
-    await refreshStack();
+    const payload = await postForm("api/stack.php", data);
+    showMessage(payload.message);
+    state.stack = payload.stack;
+    state.activeStudentId = payload.activeStudentId;
+    renderAll();
   }
 
   async function assignQuestion(stackId, questionId) {
@@ -303,16 +327,22 @@
     data.append("action", "assign");
     data.append("stack_id", stackId);
     data.append("question_id", questionId);
-    await postForm("api/stack.php", data);
-    await refreshStack();
+    const payload = await postForm("api/stack.php", data);
+    showMessage(payload.message);
+    state.stack = payload.stack;
+    state.activeStudentId = payload.activeStudentId;
+    renderAll();
   }
 
   async function randomQuestion(stackId) {
     const data = new FormData();
     data.append("action", "random_assign");
     data.append("stack_id", stackId);
-    await postForm("api/stack.php", data);
-    await refreshStack();
+    const payload = await postForm("api/stack.php", data);
+    showMessage(payload.message);
+    state.stack = payload.stack;
+    state.activeStudentId = payload.activeStudentId;
+    renderAll();
   }
 
   function renderAll() {
@@ -325,7 +355,10 @@
   function download(format) {
     const studentId = state.activeStudentId;
     const questionId = selectedQuestionId();
-    if (!studentId || !questionId) return;
+    if (!studentById(studentId) || !questionById(questionId)) {
+      setStatus("Nelze exportovat: chybí aktivní studující nebo otázka.");
+      return;
+    }
     window.location.href = `api/export_note.php?student_id=${encodeURIComponent(studentId)}&question_id=${encodeURIComponent(questionId)}&format=${format}`;
   }
 
@@ -336,9 +369,10 @@
         const payload = await postForm("api/students.php", new FormData(event.target));
         state.students = payload.students;
         event.target.reset();
+        showMessage(payload.message);
         renderStudents();
       } catch (error) {
-        alert(error.message);
+        showMessage(error.message, "error");
       }
     });
 
@@ -348,10 +382,11 @@
         const payload = await postForm("api/students_import.php", new FormData(event.target));
         state.students = payload.students;
         event.target.reset();
+        const extra = payload.result && payload.result.errors && payload.result.errors.length ? " " + payload.result.errors.join(" ") : "";
+        showMessage((payload.message || `Importováno: ${payload.imported}`) + extra, extra ? "error" : "success");
         renderStudents();
-        alert(`Importováno: ${payload.imported}`);
       } catch (error) {
-        alert(error.message);
+        showMessage(error.message, "error");
       }
     });
 

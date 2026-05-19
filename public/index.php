@@ -66,6 +66,20 @@ php -S 127.0.0.1:8000 -t public</pre>
                     <span id="csv-file-name" class="file-name">no file selected</span>
                 </div>
             </form>
+            <section class="is-import-panel">
+                <div class="split-title">IMPORT Z IS MU</div>
+                <p>V IS MU otevři stránku termínů SZZ, stiskni Ctrl+A, potom Ctrl+C, a vlož celý obsah sem. tmkctl najde pouze termíny Teorie masové komunikace / TMK.</p>
+                <textarea id="is-import-text" rows="5" placeholder="Vlož celý text z IS MU"></textarea>
+                <div class="button-row tight">
+                    <button id="is-detect-terms" type="button">NAJÍT TERMÍNY</button>
+                    <button id="is-preview-students" type="button" disabled>NÁHLED STUDUJÍCÍCH</button>
+                    <button id="is-import-selected" type="button" disabled>IMPORTOVAT VYBRANÉ</button>
+                    <button id="is-import-all" type="button" disabled>IMPORTOVAT VŠE</button>
+                    <button id="is-import-clear" type="button">VYČISTIT</button>
+                </div>
+                <div id="is-term-list" class="is-term-list"></div>
+                <div id="is-preview" class="is-preview"></div>
+            </section>
             <div class="split-title">SEZNAM</div>
             <div id="messages" class="messages"></div>
             <div id="students-list" class="listbox"></div>

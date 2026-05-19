@@ -191,6 +191,25 @@ Sample file:
 data/students.sample.csv
 ```
 
+## Import z IS MU
+
+For SZZ pages in IS MU, open the exam terms page, press `Ctrl+A`, then `Ctrl+C`, and paste the whole page text into **Import z IS MU**.
+
+The importer detects exam-term blocks and offers only terms related to **Teorie masové komunikace / TMK**. Thesis defense terms and unrelated SZZ blocks are ignored even when they contain MSZU students. Choose the TMK date/day, preview students, then import selected rows or all importable rows.
+
+Study codes are mapped as:
+
+- `MSZU01` -> `single` / `jednoobor`
+- `MSZU02` -> `double` / `dvouobor`
+
+The preview shows duplicates before import. Rows with an existing UČO are skipped by default. Questions are still loaded from `data/questions.reviewed.json`; the IS import only adds students to the waiting stack.
+
+Parser sample:
+
+```text
+data/is-mu-paste.sample.txt
+```
+
 ## Security Notes
 
 - Do not commit `app/config.local.php`.

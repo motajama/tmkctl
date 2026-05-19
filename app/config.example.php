@@ -28,6 +28,12 @@ return [
     // Enable only while running public/install.php. Set to false after setup.
     'install_enabled' => true,
 
+    // IS MU paste import study-code mapping.
+    'is_import_study_code_map' => [
+        'MSZU01' => 'single',
+        'MSZU02' => 'double',
+    ],
+
     // Generate with:
     // php -r "echo password_hash('your-shared-password', PASSWORD_DEFAULT), PHP_EOL;"
     // Development example password: tmkctl

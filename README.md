@@ -84,6 +84,7 @@ For the local database above, use:
 'db_pass' => 'tmkctl_dev_password',
 'db_charset' => 'utf8mb4',
 'install_enabled' => true,
+'debug' => true,
 ```
 
 The example config uses development login password:
@@ -110,11 +111,14 @@ Then log in:
 http://localhost:8000/login.php
 ```
 
-After installation, set this in `app/config.local.php`:
+After successful installation, `install.php` attempts to set this automatically in `app/config.local.php`:
 
 ```php
 'install_enabled' => false,
+'debug' => false,
 ```
+
+If that automatic hardening fails because the file is missing or not writable, set both values manually. For local development, re-enable them manually when you need to rerun the installer.
 
 ## Deployment Overview
 
@@ -139,7 +143,7 @@ Production steps:
 5. Set `install_enabled => true`.
 6. Upload files.
 7. Open `public/install.php` through the browser.
-8. Set `install_enabled => false`.
+8. Confirm the installer reports that `install_enabled` and `debug` were disabled automatically. If it cannot update `app/config.local.php`, set both values to `false` manually.
 9. Log in and import students.
 
 Detailed instructions are in [docs/deployment-active24.md](docs/deployment-active24.md).
@@ -249,7 +253,7 @@ Před resetem vždy nejdřív udělej export. Reset neslouží jako záloha a ne
 
 - Do not commit `app/config.local.php`.
 - Do not deploy with the example password.
-- Disable `install.php` after setup with `install_enabled => false`.
+- After setup, keep `install_enabled => false` and `debug => false`. The installer attempts to set both automatically.
 - Back up `app/config.local.php` privately.
 - Back up the MySQL database before exams or deployments.
 - Back up `data/questions.reviewed.json`; the web app treats it as read-only.

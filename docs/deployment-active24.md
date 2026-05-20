@@ -51,13 +51,17 @@ Set installer access for setup:
 
 ```php
 'install_enabled' => true,
+'debug' => true,
 ```
 
-After installation, change it to:
+After successful installation, `install.php` attempts to change these values automatically to:
 
 ```php
 'install_enabled' => false,
+'debug' => false,
 ```
+
+If this automatic update fails because `app/config.local.php` is missing or not writable, set both values manually. Keep `debug` disabled on production.
 
 Never commit or publish `app/config.local.php`.
 
@@ -81,9 +85,9 @@ Open:
 https://your-domain.example/install.php
 ```
 
-You should see that database tables are prepared.
+You should see that database tables are prepared and that the installer/debug mode were disabled automatically.
 
-If `install_enabled` is false, the installer will refuse to run. Temporarily enable it in `app/config.local.php`, run the installer, then disable it again.
+If `install_enabled` is false, the installer will refuse to run. For local development or a deliberate reinstall, temporarily enable it in `app/config.local.php`, run the installer, then let the installer disable it again. If automatic hardening fails, set `install_enabled => false` and `debug => false` manually.
 
 The installer creates prefixed tables by default:
 
@@ -122,13 +126,14 @@ Test:
 
 ## 6. Protect Installer After Setup
 
-Set:
+Confirm these values are set:
 
 ```php
 'install_enabled' => false,
+'debug' => false,
 ```
 
-in `app/config.local.php`.
+in `app/config.local.php`. The installer normally sets them automatically after a successful run.
 
 You may also remove or rename `public/install.php` on production after setup, but the config toggle is the expected MVP protection.
 

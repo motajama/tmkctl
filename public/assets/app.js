@@ -41,7 +41,7 @@
   };
 
   function escapeHtml(value) {
-    return String(value || "")
+    return String(value ?? "")
       .replaceAll("&", "&amp;")
       .replaceAll("<", "&lt;")
       .replaceAll(">", "&gt;")
@@ -75,7 +75,9 @@
     const contentType = response.headers.get("content-type") || "";
     const payload = contentType.includes("application/json") ? await response.json() : { ok: response.ok };
     if (!response.ok || payload.ok === false) {
-      throw new Error(payload.error || "Požadavek selhal.");
+      const error = new Error(payload.error || payload.message || "Požadavek selhal.");
+      error.payload = payload;
+      throw error;
     }
     return payload;
   }
@@ -581,6 +583,46 @@
     if (message) setGlobalStatus(message);
   }
 
+  function setQuestionPackStatusMessage(message, type) {
+    const status = $("question-pack-result");
+    if (status) status.textContent = message || "";
+    if (message) setGlobalStatus(message, type);
+  }
+
+  function renderQuestionPackStatus(status) {
+    const box = $("question-pack-status");
+    if (!box || !status) return;
+    const errors = status.errors || [];
+    const warnings = status.warnings || [];
+    const backups = status.backups || [];
+    box.innerHTML = `
+      <div class="question-pack-grid">
+        <div>PATH</div><div>${escapeHtml(status.path || "data/questions.reviewed.json")}</div>
+        <div>OTÁZEK</div><div>${escapeHtml(status.question_count)}</div>
+        <div>REVIEWED</div><div>${escapeHtml(status.reviewed_count)}</div>
+        <div>GENERATED</div><div>${escapeHtml(status.generated_count)}</div>
+        <div>NEEDS_REVIEW</div><div>${escapeHtml(status.needs_review_count)}</div>
+        <div>BEZ SOURCE_REFS</div><div>${escapeHtml(status.without_source_refs_count)}</div>
+        <div>POSLEDNÍ ÚPRAVA</div><div>${escapeHtml(status.last_modified || "neznámé")}</div>
+        <div>JSON</div><div>${status.valid_json ? "OK" : "CHYBA"}</div>
+        <div>SCHÉMA</div><div>${status.schema_valid ? "OK" : "CHYBA"}</div>
+      </div>
+      <div class="split-title">CHYBY</div>
+      ${errors.length ? `<ul class="validation-list error">${errors.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : '<div class="empty-row">žádné</div>'}
+      <div class="split-title">VAROVÁNÍ</div>
+      ${warnings.length ? `<ul class="validation-list">${warnings.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : '<div class="empty-row">žádné</div>'}
+      <div class="split-title">POSLEDNÍ ZÁLOHY</div>
+      ${backups.length ? `<ul class="backup-list">${backups.map((backup) => `<li>${escapeHtml(backup.name)} · ${escapeHtml(backup.modified)} · ${escapeHtml(backup.size)} B</li>`).join("")}</ul>` : '<div class="empty-row">žádné</div>'}
+    `;
+  }
+
+  async function loadQuestionPackStatus() {
+    const payload = await api("api/questions_status.php");
+    renderQuestionPackStatus(payload.status);
+    setQuestionPackStatusMessage("Validace otázkového balíku dokončena.", payload.status && payload.status.schema_valid ? "success" : "error");
+    return payload.status;
+  }
+
   function focusRelative(offset) {
     const visible = state.students.filter((student) => stackItemByStudentId(student.id).state === "waiting");
     const candidates = visible.length ? visible : state.students;
@@ -609,7 +651,7 @@
     if (!command) return;
     writeConsole(":" + command);
     if (command === "help") {
-      writeConsole("příkazy: :help :add :import :reset :export :logout :focus next :focus prev :active :question active :question manual");
+      writeConsole("příkazy: :help :add :import :reset :export :questions :logout :focus next :focus prev :active :question active :question manual");
     } else if (command === "add") {
       openModal("add");
     } else if (command === "import") {
@@ -618,6 +660,9 @@
       openModal("reset");
     } else if (command === "export") {
       openModal("export");
+    } else if (command === "questions") {
+      openModal("questions");
+      loadQuestionPackStatus().catch((error) => setQuestionPackStatusMessage(error.message, "error"));
     } else if (command === "logout") {
       window.location.href = "logout.php";
     } else if (command === "focus next") {
@@ -877,6 +922,10 @@
     $("global-import").addEventListener("click", () => openModal("import"));
     $("global-reset").addEventListener("click", () => openModal("reset"));
     $("global-export-all").addEventListener("click", () => openModal("export"));
+    $("global-questions").addEventListener("click", () => {
+      openModal("questions");
+      loadQuestionPackStatus().catch((error) => setQuestionPackStatusMessage(error.message, "error"));
+    });
     $("global-help").addEventListener("click", () => openModal("help"));
     $("global-console").addEventListener("click", () => {
       openModal("console");
@@ -910,6 +959,43 @@
         setExportStatus(error.message);
       }
     });
+    $("validate-question-pack").addEventListener("click", () => {
+      loadQuestionPackStatus().catch((error) => setQuestionPackStatusMessage(error.message, "error"));
+    });
+    $("question-pack-upload-form").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      try {
+        const payload = await postForm("api/questions_upload.php", new FormData(event.target));
+        renderQuestionPackStatus(payload.status);
+        if (Array.isArray(payload.questions)) {
+          state.questions = payload.questions;
+          state.questionsError = "";
+          state.manualQuestionId = state.questions[0] ? state.questions[0].id : null;
+          renderQuestionSelect();
+          renderAll();
+        }
+        event.target.reset();
+        const fileName = $("questions-json-file-name");
+        if (fileName) fileName.textContent = "no file selected";
+        const warningCount = payload.validation && payload.validation.warnings ? payload.validation.warnings.length : 0;
+        setQuestionPackStatusMessage((payload.message || "Balík otázek byl nahrán.") + (warningCount ? ` Varování: ${warningCount}.` : ""), "success");
+      } catch (error) {
+        const validation = error.payload && error.payload.validation;
+        if (validation) {
+          renderQuestionPackStatus({
+            ...(validation.stats || {}),
+            errors: validation.errors || [],
+            warnings: validation.warnings || [],
+            valid_json: validation.valid_json,
+            schema_valid: validation.schema_valid,
+            path: "data/questions.reviewed.json",
+            last_modified: "",
+            backups: []
+          });
+        }
+        setQuestionPackStatusMessage(error.message, "error");
+      }
+    });
     $("console-form").addEventListener("submit", (event) => {
       event.preventDefault();
       const input = $("console-input");
@@ -933,6 +1019,26 @@
       }
       $("import-form").addEventListener("reset", () => {
         window.setTimeout(() => { fileName.textContent = "no file selected"; }, 0);
+      });
+    }
+
+    const questionsFileInput = $("questions-json-file");
+    const questionsFileName = $("questions-json-file-name");
+    if (questionsFileInput && questionsFileName) {
+      questionsFileInput.addEventListener("change", () => {
+        questionsFileName.textContent = questionsFileInput.files.length ? questionsFileInput.files[0].name : "no file selected";
+      });
+      const questionsFileButton = document.querySelector("label[for='questions-json-file']");
+      if (questionsFileButton) {
+        questionsFileButton.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            questionsFileInput.click();
+          }
+        });
+      }
+      $("question-pack-upload-form").addEventListener("reset", () => {
+        window.setTimeout(() => { questionsFileName.textContent = "no file selected"; }, 0);
       });
     }
 

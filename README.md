@@ -249,6 +249,34 @@ Reset termínu je dostupný jen přes POST s CSRF tokenem a vyžaduje přesné p
 
 Před resetem vždy nejdřív udělej export. Reset neslouží jako záloha a nemaže otázky.
 
+## Správa otázek
+
+Otázky žijí v:
+
+```text
+data/questions.reviewed.json
+```
+
+Spodní příkaz **OTÁZKY** otevře okno pro kontrolu a nahrání nového ručně zkontrolovaného JSON souboru. Stejné okno otevře konzolový příkaz `:questions`.
+
+Validace kontroluje jen strukturu souboru:
+
+- platný JSON a kořenové pole
+- povinné `id`, `title`, pole osnovy a metadat
+- duplicity `id`
+- povolené `review_status`: `reviewed`, `generated`, `needs_review`
+- varování pro prázdné `source_refs` a položky, které nejsou `reviewed`
+
+Validace nekontroluje odbornou správnost. Nahrávej jen soubor, který byl ručně zkontrolovaný. Před nahrazením se původní soubor automaticky zálohuje do:
+
+```text
+data/backups/questions.reviewed.YYYYMMDD-HHMMSS.json
+```
+
+Obnova ze zálohy je v této fázi ruční: zkopíruj vybranou zálohu zpět jako `data/questions.reviewed.json` a zkontroluj ji v okně **OTÁZKY**.
+
+Později přibude AI generátor, který může připravit `generated` JSON. Tato fáze pouze spravuje finální reviewed soubor a negeneruje otázky.
+
 ## Security Notes
 
 - Do not commit `app/config.local.php`.

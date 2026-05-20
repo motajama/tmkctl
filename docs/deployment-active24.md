@@ -123,6 +123,7 @@ Test:
 - assign a student-selected question
 - write and save a note
 - export TXT and Markdown
+- open OTÁZKY and validate `data/questions.reviewed.json`
 
 ## 6. Protect Installer After Setup
 
@@ -143,6 +144,7 @@ Back up privately:
 
 - MySQL database dump from the hosting panel or `mysqldump`
 - `data/questions.reviewed.json`
+- `data/backups/` if question packs were replaced through the app
 - `app/config.local.php`
 - exported TXT/Markdown notes if used as external records
 
@@ -153,3 +155,21 @@ mysqldump -h HOST -u USER -p DATABASE_NAME > tmkctl-backup.sql
 ```
 
 Do not store production database dumps or `config.local.php` in git.
+
+## 8. Question Pack Management
+
+The dashboard loads exam questions from:
+
+```text
+data/questions.reviewed.json
+```
+
+Use the bottom **OTÁZKY** command, or console command `:questions`, to inspect and validate the current question pack. Upload only a manually reviewed replacement JSON. The validator checks JSON structure and required fields, but it does not verify scholarly accuracy.
+
+Before replacing the file, the app creates a backup in:
+
+```text
+data/backups/
+```
+
+If a backup must be restored, copy the chosen backup manually back to `data/questions.reviewed.json`, then validate it in **OTÁZKY**.

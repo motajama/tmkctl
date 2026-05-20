@@ -6,6 +6,7 @@
     students: window.TMKCTL.students || [],
     stack: window.TMKCTL.stack || [],
     activeStudentId: window.TMKCTL.activeStudentId || null,
+    cursorStudentId: window.TMKCTL.activeStudentId || null,
     currentExamLabel: window.TMKCTL.currentExamLabel || "",
     mode: "follow",
     manualQuestionId: null,
@@ -19,9 +20,9 @@
   const studentById = (id) => state.students.find((s) => Number(s.id) === Number(id)) || null;
   const stackByStudentId = (id) => state.stack.find((item) => Number(item.student_id) === Number(id)) || null;
   const stackStates = [
-    ["waiting", "ČEKÁ"],
+    ["waiting", "FRONTA"],
     ["preparing", "POTÍTKO"],
-    ["examining", "ZKOUŠEN/A"],
+    ["examining", "ZKOUŠENÍ"],
     ["done", "HOTOVO"]
   ];
   const studyBadge = (studyType) => {
@@ -68,6 +69,36 @@
   function selectedIsTermId() {
     const checked = document.querySelector("input[name='is_term_id']:checked");
     return checked ? checked.value : "";
+  }
+
+  function openModal(name) {
+    const layer = $("modal-layer");
+    if (!layer) return;
+    layer.classList.remove("hidden");
+    document.querySelectorAll(".modal-window").forEach((modal) => modal.classList.add("hidden"));
+    const modal = $(`modal-${name}`);
+    if (!modal) return;
+    modal.classList.remove("hidden");
+    const focusTarget = modal.querySelector("input, textarea, select, button, a[href]");
+    if (focusTarget) focusTarget.focus();
+  }
+
+  function closeModal() {
+    const layer = $("modal-layer");
+    if (layer) layer.classList.add("hidden");
+    document.querySelectorAll(".modal-window").forEach((modal) => modal.classList.add("hidden"));
+  }
+
+  function examinedStudentIds() {
+    return new Set(state.stack.filter((item) => item.state === "examining").map((item) => Number(item.student_id)));
+  }
+
+  function currentStudentId() {
+    return state.cursorStudentId || state.activeStudentId || null;
+  }
+
+  function currentStackItem() {
+    return stackByStudentId(currentStudentId());
   }
 
   async function postIsImport(action, extra) {
@@ -160,15 +191,18 @@
   function renderStudents() {
     const box = $("students-list");
     box.innerHTML = "";
+    const examined = examinedStudentIds();
     state.students.forEach((student) => {
+      const isCurrent = Number(student.id) === Number(currentStudentId());
+      const isExamined = examined.has(Number(student.id));
       const row = document.createElement("div");
-      row.className = "student-row" + (Number(student.id) === Number(state.activeStudentId) ? " active" : "");
+      row.className = "student-row" + (isCurrent ? " current" : "") + (isExamined ? " examined" : "");
       row.innerHTML = `
         <button type="button" class="student-main">
-          <strong>${escapeHtml(student.name)}</strong>
+          <strong><span class="cursor-marker">${isCurrent ? ">" : ""}</span>${isExamined ? "[ZK] " : ""}${escapeHtml(student.name)}</strong>
           <span><b class="study-badge">${escapeHtml(studyBadge(student.study_type))}</b>${escapeHtml(student.uco || "bez UČO")}</span>
         </button>
-        <button type="button" class="mini-button">STACK</button>
+        <button type="button" class="mini-button">FRONTA</button>
       `;
       row.querySelector(".student-main").addEventListener("click", () => setActiveStudent(student.id));
       row.querySelector(".mini-button").addEventListener("click", () => addToStack(student.id));
@@ -186,11 +220,13 @@
       column.innerHTML = `<h3>${escapeHtml(label)} (${items.length})</h3>`;
       items.forEach((item) => {
         const card = document.createElement("div");
-        card.className = "stack-card" + (Number(item.student_id) === Number(state.activeStudentId) ? " active" : "");
+        const isCurrent = Number(item.student_id) === Number(currentStudentId());
+        const isExamined = item.state === "examining";
+        card.className = "stack-card" + (isCurrent ? " current" : "") + (isExamined ? " examined" : "");
         const assigned = questionById(item.question_id);
         card.innerHTML = `
           <div class="stack-row-main">
-            <button type="button" class="stack-name">${Number(item.student_id) === Number(state.activeStudentId) ? "▶ " : ""}${escapeHtml(item.name)}</button>
+            <button type="button" class="stack-name"><span class="cursor-marker">${isCurrent ? ">" : ""}</span>${isExamined ? "[ZK] " : ""}${escapeHtml(item.name)}</button>
             <div class="stack-meta"><b class="study-badge">${escapeHtml(studyBadge(item.study_type))}</b>${escapeHtml(item.uco || "bez UČO")}</div>
           </div>
           <div class="stack-question">
@@ -209,7 +245,7 @@
           <div class="button-row tight">
             ${moveButtons(item)}
             <button type="button" data-action="choose">otázka</button>
-            <button type="button" data-action="active">aktivní</button>
+            <button type="button" data-action="active">kurzor</button>
           </div>
         `;
         card.querySelector(".stack-name").addEventListener("click", () => setActiveStudent(item.student_id));
@@ -229,10 +265,10 @@
 
   function moveButtons(item) {
     const allowed = {
-      waiting: [["preparing", "potítko"]],
-      preparing: [["examining", "zkoušet"], ["waiting", "zpět"]],
+      waiting: [["preparing", "potítko"], ["examining", "zkoušení"], ["done", "hotovo"]],
+      preparing: [["examining", "zkoušení"], ["done", "hotovo"], ["waiting", "fronta"]],
       examining: [["done", "hotovo"], ["preparing", "zpět"]],
-      done: [["examining", "vrátit"]]
+      done: [["examining", "zkoušení"]]
     };
     return (allowed[item.state] || []).map(([next, label]) => `<button type="button" data-move="${next}">${label}</button>`).join("");
   }
@@ -241,7 +277,7 @@
     if (state.mode === "manual") {
       return state.manualQuestionId || (state.questions[0] && state.questions[0].id) || null;
     }
-    const stackItem = stackByStudentId(state.activeStudentId);
+    const stackItem = stackByStudentId(currentStudentId());
     return stackItem ? stackItem.question_id : null;
   }
 
@@ -258,6 +294,8 @@
     const question = questionById(selectedQuestionId());
     const panel = $("question-panel");
     $("manual-warning").classList.toggle("hidden", state.mode !== "manual");
+    $("question-mode-follow").classList.toggle("selected", state.mode === "follow");
+    $("question-mode-manual").classList.toggle("selected", state.mode === "manual");
     $("back-to-active").disabled = state.mode !== "manual";
     $("manual-question-select").disabled = state.mode !== "manual";
 
@@ -311,14 +349,20 @@
   }
 
   function renderNotesContext() {
-    const student = studentById(state.activeStudentId);
+    const student = studentById(currentStudentId());
     const question = questionById(selectedQuestionId());
+    const modeLabel = $("note-mode-label");
     $("note-context").textContent = student && question
       ? `${student.name} · ${student.uco || "bez UČO"} · ${question.short_title || question.title}`
-      : (!student ? "Chybí aktivní studující." : "Chybí vybraná nebo přiřazená otázka.");
+      : (!student ? "Vyber studujícího pro psaní poznámek." : `${student.name} · ${student.uco || "bez UČO"} · obecná poznámka`);
+    if (modeLabel) {
+      modeLabel.textContent = !student
+        ? "ŽÁDNÝ STUDUJÍCÍ"
+        : (question ? "POZNÁMKA K OTÁZCE" : "OBECNÁ POZNÁMKA KE STUDUJÍCÍMU");
+    }
     const globalActive = $("global-active-student");
     if (globalActive) {
-      globalActive.textContent = student ? `AKTIVNÍ: ${student.name}` : "";
+      globalActive.textContent = student ? `KURZOR: ${student.name}` : "";
     }
     renderExamLabel();
   }
@@ -332,11 +376,11 @@
 
   async function loadNote() {
     renderNotesContext();
-    const studentId = state.activeStudentId;
+    const studentId = currentStudentId();
     const questionId = selectedQuestionId();
     const key = `${studentId || ""}:${questionId || ""}`;
     state.currentNoteKey = key;
-    if (!studentId || !questionById(questionId)) {
+    if (!studentId) {
       $("note-text").value = "";
       $("suggested-grade").value = "";
       $("note-text").disabled = true;
@@ -346,7 +390,7 @@
     $("note-text").disabled = false;
     $("suggested-grade").disabled = false;
     try {
-      const payload = await api(`api/notes.php?student_id=${encodeURIComponent(studentId)}&question_id=${encodeURIComponent(questionId)}`);
+      const payload = await api(`api/notes.php?student_id=${encodeURIComponent(studentId)}&question_id=${encodeURIComponent(questionId || "")}`);
       if (state.currentNoteKey !== key) return;
       $("note-text").value = payload.note.note_text || "";
       $("suggested-grade").value = payload.note.suggested_grade || "";
@@ -358,15 +402,15 @@
   }
 
   async function saveNote(manual) {
-    const studentId = state.activeStudentId;
+    const studentId = currentStudentId();
     const questionId = selectedQuestionId();
-    if (!studentById(studentId) || !questionById(questionId)) {
-      setStatus("Nelze uložit: chybí aktivní studující nebo otázka.");
+    if (!studentById(studentId)) {
+      setStatus("Nelze uložit: chybí studující.");
       return;
     }
     const data = new FormData();
     data.append("student_id", studentId);
-    data.append("question_id", questionId);
+    data.append("question_id", questionId || "");
     data.append("note_text", $("note-text").value);
     data.append("suggested_grade", $("suggested-grade").value);
     try {
@@ -392,6 +436,9 @@
     const payload = await api("api/stack.php");
     state.stack = payload.stack;
     state.activeStudentId = payload.activeStudentId;
+    if (!state.cursorStudentId && state.activeStudentId) {
+      state.cursorStudentId = state.activeStudentId;
+    }
     renderAll();
   }
 
@@ -402,6 +449,7 @@
     const payload = await postForm("api/stack.php", data);
     showMessage(payload.message);
     state.activeStudentId = payload.activeStudentId;
+    state.cursorStudentId = payload.activeStudentId;
     state.stack = payload.stack;
     renderAll();
   }
@@ -414,6 +462,7 @@
     showMessage(payload.message);
     state.stack = payload.stack;
     state.activeStudentId = payload.activeStudentId;
+    state.cursorStudentId = studentId;
     renderAll();
   }
 
@@ -461,19 +510,78 @@
   }
 
   function download(format) {
-    const studentId = state.activeStudentId;
+    const studentId = currentStudentId();
     const questionId = selectedQuestionId();
-    if (!studentById(studentId) || !questionById(questionId)) {
-      setStatus("Nelze exportovat: chybí aktivní studující nebo otázka.");
+    if (!studentById(studentId)) {
+      setStatus("Nelze exportovat: chybí studující.");
       return;
     }
-    window.location.href = `api/export_note.php?student_id=${encodeURIComponent(studentId)}&question_id=${encodeURIComponent(questionId)}&format=${format}`;
+    window.location.href = `api/export_note.php?student_id=${encodeURIComponent(studentId)}&question_id=${encodeURIComponent(questionId || "")}&format=${format}`;
   }
 
   function setOperationsStatus(message) {
     const status = $("operations-status");
     if (status) {
       status.textContent = message || "";
+    }
+  }
+
+  function setExportStatus(message) {
+    const status = $("export-status");
+    if (status) status.textContent = message || "";
+  }
+
+  function focusRelative(offset) {
+    if (!state.students.length) {
+      writeConsole("není koho vybrat");
+      return;
+    }
+    const current = currentStudentId();
+    let index = state.students.findIndex((student) => Number(student.id) === Number(current));
+    if (index < 0) index = 0;
+    index = Math.max(0, Math.min(state.students.length - 1, index + offset));
+    setActiveStudent(state.students[index].id).catch((error) => writeConsole(error.message));
+  }
+
+  function writeConsole(message) {
+    const log = $("console-log");
+    if (!log) return;
+    const line = document.createElement("div");
+    line.textContent = message;
+    log.appendChild(line);
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function runConsoleCommand(raw) {
+    const command = raw.trim().replace(/^:/, "");
+    if (!command) return;
+    writeConsole(":" + command);
+    if (command === "help") {
+      writeConsole("příkazy: :help :import :reset :export :logout :focus next :focus prev :active :question active :question manual");
+    } else if (command === "import") {
+      openModal("import");
+    } else if (command === "reset") {
+      openModal("reset");
+    } else if (command === "export") {
+      openModal("export");
+    } else if (command === "logout") {
+      window.location.href = "logout.php";
+    } else if (command === "focus next") {
+      focusRelative(1);
+    } else if (command === "focus prev") {
+      focusRelative(-1);
+    } else if (command === "active") {
+      const studentId = currentStudentId();
+      if (studentId) setActiveStudent(studentId).catch((error) => writeConsole(error.message));
+      else writeConsole("není vybraný studující");
+    } else if (command === "question active") {
+      state.mode = "follow";
+      renderQuestion();
+    } else if (command === "question manual") {
+      state.mode = "manual";
+      renderQuestion();
+    } else {
+      writeConsole("zatím nepodporováno");
     }
   }
 
@@ -496,6 +604,10 @@
       try {
         const payload = await postForm("api/students_import.php", new FormData(event.target));
         state.students = payload.students;
+        state.stack = payload.stack || state.stack;
+        if (Object.prototype.hasOwnProperty.call(payload, "activeStudentId")) {
+          state.activeStudentId = payload.activeStudentId;
+        }
         event.target.reset();
         const extra = payload.result && payload.result.errors && payload.result.errors.length ? " " + payload.result.errors.join(" ") : "";
         showMessage((payload.message || `Importováno: ${payload.imported}`) + extra, extra ? "error" : "success");
@@ -535,6 +647,7 @@
           state.students = [];
           state.stack = [];
           state.activeStudentId = null;
+          state.cursorStudentId = null;
           state.currentExamLabel = payload.currentExamLabel || "";
           event.target.reset();
           $("current-exam-label").value = state.currentExamLabel;
@@ -589,6 +702,9 @@
       if (Object.prototype.hasOwnProperty.call(payload, "activeStudentId")) {
         state.activeStudentId = payload.activeStudentId;
       }
+      if (!state.cursorStudentId && state.activeStudentId) {
+        state.cursorStudentId = state.activeStudentId;
+      }
       renderAll();
       const warningText = payload.warnings && payload.warnings.length ? " Varování: " + payload.warnings.join(" ") : "";
       showMessage((payload.message || "Import dokončen.") + warningText, warningText ? "error" : "success");
@@ -631,21 +747,39 @@
       });
     }
 
-    document.querySelectorAll("input[name='question_mode']").forEach((input) => {
-      input.addEventListener("change", () => {
-        state.mode = input.value;
-        renderQuestion();
-      });
+    $("question-mode-follow").addEventListener("click", () => {
+      state.mode = "follow";
+      renderQuestion();
+    });
+    $("question-mode-manual").addEventListener("click", () => {
+      state.mode = "manual";
+      renderQuestion();
     });
 
     $("manual-question-select").addEventListener("change", (event) => {
       state.manualQuestionId = event.target.value;
       renderQuestion();
     });
+    $("draw-current-question").addEventListener("click", () => {
+      const item = currentStackItem();
+      if (!item) {
+        showMessage("Studující není ve frontě.", "error");
+        return;
+      }
+      randomQuestion(item.id);
+    });
+    $("assign-current-question").addEventListener("click", () => {
+      const item = currentStackItem();
+      const questionId = $("manual-question-select").value || selectedQuestionId();
+      if (!item || !questionId) {
+        showMessage("Nelze přiřadit: chybí studující ve frontě nebo otázka.", "error");
+        return;
+      }
+      assignQuestion(item.id, questionId);
+    });
 
     $("back-to-active").addEventListener("click", () => {
       state.mode = "follow";
-      document.querySelector("input[name='question_mode'][value='follow']").checked = true;
       renderQuestion();
     });
 
@@ -653,19 +787,58 @@
     $("suggested-grade").addEventListener("input", () => { state.noteDirty = true; });
     $("save-note").addEventListener("click", () => saveNote(true));
     $("copy-note").addEventListener("click", async () => {
-      await navigator.clipboard.writeText($("note-text").value);
-      setStatus("Zkopírováno");
+      try {
+        await navigator.clipboard.writeText($("note-text").value);
+        setStatus("Zkopírováno");
+      } catch (error) {
+        setStatus("Clipboard není dostupný.");
+      }
     });
     $("download-txt").addEventListener("click", () => download("txt"));
     $("download-md").addEventListener("click", () => download("md"));
-    const globalSave = $("global-save");
-    if (globalSave) {
-      globalSave.addEventListener("click", () => saveNote(true));
-    }
-    const globalExport = $("global-export");
-    if (globalExport) {
-      globalExport.addEventListener("click", () => download("txt"));
-    }
+    $("global-import").addEventListener("click", () => openModal("import"));
+    $("open-import-inline").addEventListener("click", () => openModal("import"));
+    $("global-reset").addEventListener("click", () => openModal("reset"));
+    $("global-export-all").addEventListener("click", () => openModal("export"));
+    $("global-help").addEventListener("click", () => openModal("help"));
+    $("global-console").addEventListener("click", () => {
+      openModal("console");
+      writeConsole("zadej :help");
+    });
+    document.querySelectorAll("[data-close-modal]").forEach((button) => {
+      button.addEventListener("click", closeModal);
+    });
+    $("modal-layer").addEventListener("click", (event) => {
+      if (event.target === $("modal-layer")) closeModal();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeModal();
+    });
+    $("copy-all-notes").addEventListener("click", async () => {
+      try {
+        const response = await fetch("api/export_all_notes.php?format=md");
+        const text = await response.text();
+        if (!response.ok) throw new Error(text || "Export selhal.");
+        if (navigator.clipboard) {
+          await navigator.clipboard.writeText(text);
+          $("clipboard-fallback").classList.add("hidden");
+          setExportStatus("Všechny poznámky zkopírovány.");
+        } else {
+          $("clipboard-fallback").classList.remove("hidden");
+          $("clipboard-fallback").value = text;
+          $("clipboard-fallback").select();
+          setExportStatus("Clipboard není dostupný. Označený text zkopíruj ručně.");
+        }
+      } catch (error) {
+        setExportStatus(error.message);
+      }
+    });
+    $("console-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const input = $("console-input");
+      runConsoleCommand(input.value);
+      input.value = "";
+    });
     const fileInput = $("csv-file");
     const fileName = $("csv-file-name");
     if (fileInput && fileName) {

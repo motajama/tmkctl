@@ -184,17 +184,17 @@ label {
 }
 
 .left-panel > form,
+.left-panel > .panel-controls,
 .left-panel > .split-title,
 .left-panel > .listbox,
 .left-panel > .stack-board,
-.left-panel > .operations-panel,
+.center-panel > .panel-controls,
 .center-panel > .manual-warning,
 .center-panel > .question-panel,
 .right-panel > .note-context,
+.right-panel > .panel-controls,
 .right-panel > label,
 .right-panel > textarea,
-.right-panel > input,
-.right-panel > .status-line,
 .ai-panel > .disabled-ai,
 .setup-error > :not(.panel-title) {
   margin-left: 8px;
@@ -211,6 +211,17 @@ label {
 .compact-form input,
 .compact-form select {
   width: 100%;
+}
+
+.panel-controls {
+  flex: 0 0 auto;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.session-form {
+  grid-template-columns: minmax(0, 1fr) max-content;
+  align-items: center;
 }
 
 .file-control {
@@ -284,18 +295,6 @@ label {
 
 .is-import-panel .button-row {
   margin: 6px;
-}
-
-.operations-panel {
-  flex: 0 0 auto;
-  margin-bottom: 8px;
-  border: 2px solid var(--ui-black);
-  background: var(--ui-white);
-}
-
-.operations-panel .split-title {
-  margin: 0;
-  border-width: 0 0 2px;
 }
 
 .operations-form {
@@ -436,22 +435,39 @@ label {
   border-bottom: 1px solid var(--ui-black);
 }
 
-.student-row.active,
-.stack-card.active {
+.student-row.examined,
+.stack-card.examined {
   color: var(--ui-white);
   background: var(--ui-black);
 }
 
-.student-row.active *,
-.stack-card.active *,
-.student-row.active button,
-.stack-card.active button {
+.student-row.examined *,
+.stack-card.examined *,
+.student-row.examined button,
+.stack-card.examined button {
   color: var(--ui-white);
 }
 
-.student-row.active button,
-.stack-card.active .stack-name {
+.student-row.examined button,
+.stack-card.examined .stack-name {
   background: var(--ui-black);
+}
+
+.student-row.current,
+.stack-card.current {
+  outline: 2px dotted var(--ui-black);
+  outline-offset: -4px;
+}
+
+.student-row.current.examined,
+.stack-card.current.examined {
+  outline-color: var(--ui-white);
+}
+
+.cursor-marker {
+  display: inline-block;
+  width: 1.2em;
+  font-weight: bold;
 }
 
 .student-main,
@@ -583,22 +599,22 @@ label {
   font-size: 12px;
 }
 
-.stack-card.active button,
-.stack-card.active select {
+.stack-card.examined button,
+.stack-card.examined select {
   color: var(--ui-black);
   background: var(--ui-white);
   border-color: var(--ui-white);
 }
 
-.stack-card.active .stack-name {
+.stack-card.examined .stack-name {
   color: var(--ui-white);
   background: var(--ui-black);
 }
 
-.stack-card.active button:hover,
-.stack-card.active button:focus,
-.stack-card.active button:active,
-.stack-card.active select:focus {
+.stack-card.examined button:hover,
+.stack-card.examined button:focus,
+.stack-card.examined button:active,
+.stack-card.examined select:focus {
   color: var(--ui-black);
   background: var(--ui-white);
   outline: 2px solid var(--ui-white);
@@ -702,41 +718,14 @@ label {
 
 .question-toolbar {
   display: grid;
-  grid-template-columns: max-content max-content minmax(180px, 1fr) max-content;
+  grid-template-columns: max-content max-content minmax(180px, 1fr) max-content max-content max-content;
   gap: 4px;
   align-items: center;
 }
 
-.question-toolbar label {
-  display: inline-flex;
-  align-items: center;
-  min-height: 24px;
-  padding: 1px 6px;
-  border: 2px solid var(--ui-black);
-  color: var(--ui-black);
-  background: var(--ui-white);
-  margin: 0;
-  font-weight: bold;
-  white-space: nowrap;
-}
-
-.question-toolbar label:has(input:checked) {
+.mode-button.selected {
   color: var(--ui-white);
   background: var(--ui-black);
-}
-
-.question-toolbar input[type="radio"] {
-  position: relative;
-  top: 2px;
-  width: 16px;
-  min-height: 16px;
-  margin-right: 4px;
-  accent-color: var(--ui-black);
-}
-
-.question-toolbar input[type="radio"]:focus {
-  outline: 2px solid var(--ui-black);
-  outline-offset: 1px;
 }
 
 .note-context {
@@ -753,9 +742,13 @@ label {
   background: var(--ui-white);
 }
 
-.right-panel input {
-  width: calc(100% - 16px);
-  margin-bottom: 8px;
+.notes-toolbar {
+  display: grid;
+  gap: 5px;
+}
+
+.notes-toolbar input {
+  width: 100%;
 }
 
 .status-line {
@@ -854,6 +847,94 @@ label {
   color: var(--ui-black);
   background: var(--ui-white);
   font-weight: bold;
+}
+
+.modal-layer {
+  position: fixed;
+  inset: 0 0 36px;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.modal-window {
+  width: min(920px, calc(100vw - 24px));
+  max-height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  color: var(--ui-black);
+  background: var(--ui-white);
+  border: 4px solid var(--ui-black);
+  box-shadow: 6px 6px 0 var(--ui-black);
+}
+
+.modal-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 6px;
+  color: var(--ui-white);
+  background: var(--ui-black);
+  border-bottom: 3px solid var(--ui-black);
+  font-weight: bold;
+}
+
+.modal-close {
+  min-height: 24px;
+  padding: 0 5px;
+  color: var(--ui-black);
+  background: var(--ui-white);
+  border-color: var(--ui-white);
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: var(--ui-white);
+  background: var(--ui-black);
+  outline: 2px solid var(--ui-white);
+}
+
+.modal-body {
+  min-height: 0;
+  padding: 8px;
+  overflow: auto;
+}
+
+.export-actions {
+  margin-bottom: 8px;
+}
+
+.help-text p {
+  margin: 0 0 8px;
+}
+
+.console-window {
+  width: min(760px, calc(100vw - 24px));
+}
+
+.console-log {
+  min-height: 220px;
+  max-height: 45vh;
+  overflow: auto;
+  padding: 6px;
+  border: 2px solid var(--ui-black);
+  background: var(--ui-white);
+  white-space: pre-wrap;
+}
+
+.console-form {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 6px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.console-form label {
+  margin: 0;
 }
 
 .global-command-bar button {

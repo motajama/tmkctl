@@ -146,7 +146,7 @@ try {
                     $imported++;
                 }
                 add_to_stack($pdo, (int)$result['id']);
-                set_setting($pdo, 'student_import_note:' . (int)$result['id'], $student['import_note'] ?? null);
+                set_app_setting('student_import_note:' . (int)$result['id'], $student['import_note'] ?? null, $pdo);
             }
             $pdo->commit();
         } catch (Throwable $e) {

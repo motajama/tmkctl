@@ -4,8 +4,10 @@ require_once __DIR__ . '/settings.php';
 
 const STACK_STATES = ['waiting', 'preparing', 'examining', 'done'];
 const STACK_MOVES = [
-    'waiting' => ['preparing'],
-    'preparing' => ['examining', 'waiting'],
+    // Exam-day operation sometimes skips preparation, so FRONTA can move directly
+    // to every terminal work state while still rejecting unknown backend states.
+    'waiting' => ['preparing', 'examining', 'done'],
+    'preparing' => ['examining', 'done', 'waiting'],
     'examining' => ['done', 'preparing'],
     'done' => ['examining'],
 ];

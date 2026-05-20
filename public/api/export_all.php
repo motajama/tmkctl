@@ -5,6 +5,7 @@ require_once __DIR__ . '/../../app/auth.php';
 require_once __DIR__ . '/../../app/questions.php';
 require_once __DIR__ . '/../../app/students.php';
 require_once __DIR__ . '/../../app/stack.php';
+require_once __DIR__ . '/../../app/notes.php';
 require_once __DIR__ . '/../../app/exam_exports.php';
 
 require_auth();
@@ -28,6 +29,7 @@ try {
             throw new RuntimeException('Nelze otevřít ZIP export.');
         }
         $zip->addFromString('notes.md', build_all_notes_markdown($pdo));
+        $zip->addFromString('notes.txt', build_all_notes_text($pdo));
         $zip->addFromString('students.csv', build_students_csv($pdo));
         $zip->addFromString('exam_state.json', $json . "\n");
         $zip->close();

@@ -27,7 +27,7 @@ function export_students_rows(PDO $pdo): array
                en.note_text AS note, en.suggested_grade, en.updated_at AS note_updated_at
         FROM students s
         LEFT JOIN exam_stack es ON es.student_id = s.id
-        LEFT JOIN exam_notes en ON en.student_id = s.id AND en.question_id = es.question_id
+        LEFT JOIN exam_notes en ON en.student_id = s.id AND en.question_id = COALESCE(es.question_id, "__general__")
         ORDER BY COALESCE(NULLIF(FIELD(es.state, "examining", "done", "preparing", "waiting"), 0), 5), s.name ASC, s.id ASC
     ');
     $questions = [];
@@ -68,7 +68,10 @@ function export_notes_rows(PDO $pdo): array
     $rows = $stmt->fetchAll();
     foreach ($rows as &$row) {
         $questionId = (string)($row['question_id'] ?? '');
-        $row['question_title'] = $questions[$questionId]['title'] ?? $questionId;
+        $isGeneral = defined('GENERAL_NOTE_QUESTION_ID') && $questionId === GENERAL_NOTE_QUESTION_ID;
+        $row['question_title'] = $isGeneral ? 'Obecná poznámka ke studujícímu' : ($questions[$questionId]['title'] ?? $questionId);
+        $row['question_id_export'] = $isGeneral ? '' : $questionId;
+        $row['note_mode'] = $isGeneral ? 'general' : 'question';
         $row['study_type_label'] = study_type_label($row['study_type'] ?? 'unknown');
         $row['stack_status_label'] = stack_state_label($row['stack_status'] ?? '');
     }
@@ -112,13 +115,41 @@ function build_all_notes_markdown(PDO $pdo): string
         $out .= '| E-mail | ' . markdown_inline((string)($row['email'] ?? '')) . ' |' . "\n";
         $out .= '| Typ studia | ' . markdown_inline((string)$row['study_type_label']) . ' |' . "\n";
         $out .= '| Stav | ' . markdown_inline((string)$row['stack_status_label']) . ' |' . "\n";
+        $out .= '| Režim poznámky | ' . markdown_inline($row['note_mode'] === 'general' ? 'Obecná poznámka ke studujícímu' : 'Poznámka k otázce') . ' |' . "\n";
         $out .= '| Otázka | ' . markdown_inline((string)$row['question_title']) . ' |' . "\n";
-        $out .= '| ID otázky | ' . markdown_inline((string)$row['question_id']) . ' |' . "\n";
+        $out .= '| ID otázky | ' . markdown_inline((string)$row['question_id_export']) . ' |' . "\n";
         $out .= '| Navržené hodnocení | ' . markdown_inline((string)($row['suggested_grade'] ?? '')) . ' |' . "\n";
         $out .= '| Poslední úprava | ' . markdown_inline((string)($row['updated_at'] ?? '')) . ' |' . "\n\n";
         $out .= "### Poznámka\n\n" . markdown_fence((string)($row['note_text'] ?? '')) . "\n\n";
     }
 
+    return $out;
+}
+
+function build_all_notes_text(PDO $pdo): string
+{
+    $label = (string)get_app_setting('current_exam_label', '', $pdo);
+    $rows = export_notes_rows($pdo);
+    $out = "Zápisy ze zkoušení\n";
+    $out .= "Exportováno: " . date('Y-m-d H:i:s') . "\n";
+    $out .= "Termín: " . $label . "\n\n";
+    if (!$rows) {
+        return $out . "Žádné poznámky.\n";
+    }
+    foreach ($rows as $row) {
+        $out .= str_repeat('=', 72) . "\n";
+        $out .= "Studující: " . ($row['name'] ?? '') . "\n";
+        $out .= "UČO: " . ($row['uco'] ?? '') . "\n";
+        $out .= "E-mail: " . ($row['email'] ?? '') . "\n";
+        $out .= "Typ studia: " . ($row['study_type_label'] ?? '') . "\n";
+        $out .= "Stav: " . ($row['stack_status_label'] ?? '') . "\n";
+        $out .= "Režim poznámky: " . (($row['note_mode'] ?? '') === 'general' ? 'Obecná poznámka ke studujícímu' : 'Poznámka k otázce') . "\n";
+        $out .= "Otázka: " . ($row['question_title'] ?? '') . "\n";
+        $out .= "ID otázky: " . ($row['question_id_export'] ?? '') . "\n";
+        $out .= "Navržené hodnocení: " . ($row['suggested_grade'] ?? '') . "\n";
+        $out .= "Poslední úprava: " . ($row['updated_at'] ?? '') . "\n\n";
+        $out .= "Poznámka:\n" . rtrim((string)($row['note_text'] ?? '')) . "\n\n";
+    }
     return $out;
 }
 

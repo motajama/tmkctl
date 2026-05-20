@@ -14,7 +14,7 @@ try {
     $questionId = (string)($_GET['question_id'] ?? '');
     $body = export_note_text(db(), $studentId, $questionId, $format);
     $extension = $format === 'md' ? 'md' : 'txt';
-    $safeQuestion = preg_replace('/[^A-Za-z0-9_-]/', '', $questionId);
+    $safeQuestion = preg_replace('/[^A-Za-z0-9_-]/', '', $questionId) ?: 'general';
     header('Content-Type: text/plain; charset=utf-8');
     header('Content-Disposition: attachment; filename="tmkctl-note-' . $studentId . '-' . $safeQuestion . '.' . $extension . '"');
     echo $body;

@@ -212,7 +212,7 @@ data/is-mu-paste.sample.txt
 
 ## Provoz zkouškového dne
 
-V panelu **PROVOZ** nastav název aktuálního termínu, například `TMK - 10. 6. 2026`, a ulož ho tlačítkem **ULOŽIT NÁZEV TERMÍNU**. Název se ukládá do `app_settings` pod klíčem `current_exam_label` a zobrazuje se ve spodním stavovém řádku.
+V horní části panelu **STUDUJÍCÍ** nastav název aktuálního termínu, například `TMK - 10. 6. 2026`, a ulož ho tlačítkem **ULOŽIT TERMÍN**. Název se ukládá do `app_settings` pod klíčem `current_exam_label` a zobrazuje se ve spodním stavovém řádku.
 
 Doporučený postup pro jeden termín:
 
@@ -220,14 +220,15 @@ Doporučený postup pro jeden termín:
 2. Importuj studující z CSV nebo z IS MU.
 3. Proveď zkoušení běžným stack workflow.
 4. Průběžně ukládej poznámky.
-5. Po skončení použij **EXPORT POZNÁMEK**, **EXPORT STUDUJÍCÍCH** nebo **EXPORT VŠE**.
-6. Před dalším termínem použij **RESET TERMÍNU**.
+5. Po skončení použij spodní příkaz **EXPORTUJ VŠE**.
+6. Před dalším termínem použij spodní příkaz **RESET**.
 
 Exporty:
 
-- **EXPORT POZNÁMEK** stáhne Markdown soubor se všemi poznámkami.
-- **EXPORT STUDUJÍCÍCH** stáhne CSV se studujícími, stavem stacku, otázkou a poznámkou k přiřazené otázce.
-- **EXPORT VŠE** stáhne ZIP s `notes.md`, `students.csv` a `exam_state.json`, pokud je dostupné PHP rozšíření `ZipArchive`. Bez něj stáhne JSON export.
+- **MARKDOWN FILE** stáhne Markdown soubor se všemi poznámkami.
+- **TXT FILE** stáhne prostý text se všemi poznámkami.
+- **JSON/ZIP** stáhne ZIP s `notes.md`, `notes.txt`, `students.csv` a `exam_state.json`, pokud je dostupné PHP rozšíření `ZipArchive`. Bez něj stáhne JSON export.
+- **KOPÍROVAT VŠE** zkopíruje všechny poznámky do schránky, pokud ji prohlížeč zpřístupní.
 
 Reset termínu je dostupný jen přes POST s CSRF tokenem a vyžaduje přesné potvrzení `RESET`. Smaže studující, stack a poznámky aktuálního běhu a resetuje aktivního studujícího. Otázky v `data/questions.reviewed.json`, konfigurace aplikace a databázové schéma zůstávají zachované. Název termínu zůstává zachovaný, pokud nezaškrtneš **Smazat i název termínu**.
 

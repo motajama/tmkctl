@@ -50,13 +50,6 @@ php -S 127.0.0.1:8000 -t public</pre>
         <?php else: ?>
         <section id="students-window" class="panel window left-panel">
             <div class="panel-title">STUDUJÍCÍ</div>
-            <section class="panel-controls">
-                <form id="session-label-form" class="compact-form session-form">
-                    <input type="hidden" name="csrf_token" value="<?= h(csrf_token()) ?>">
-                    <input id="current-exam-label" name="current_exam_label" value="<?= h($currentExamLabel) ?>" placeholder="TMK - 10. 6. 2026" aria-label="Název aktuálního termínu">
-                    <button type="submit">ULOŽIT TERMÍN</button>
-                </form>
-            </section>
             <section class="status-accordion status-examining">
                 <button id="toggle-examining" class="accordion-title" type="button" aria-expanded="false">ZKOUŠENÝ / ZKOUŠENÁ <span id="examining-count">(0)</span></button>
                 <div id="examining-list" class="accordion-body hidden"></div>
@@ -66,7 +59,6 @@ php -S 127.0.0.1:8000 -t public</pre>
                 <div id="preparing-list" class="accordion-body hidden"></div>
             </section>
             <div class="split-title">FRONTA</div>
-            <div id="messages" class="messages"></div>
             <div id="students-list" class="listbox"></div>
             <section class="status-accordion status-done">
                 <button id="toggle-done" class="accordion-title" type="button" aria-expanded="false">HOTOVO <span id="done-count">(0)</span></button>
@@ -205,9 +197,10 @@ php -S 127.0.0.1:8000 -t public</pre>
             <div class="modal-body help-text">
                 <p><b>Přidání/import:</b> spodní PŘIDAT otevře ruční přidání. IMPORT nahraje CSV nebo text z IS MU po Ctrl+A/Ctrl+C. Detekce bere pouze termíny Teorie masové komunikace / TMK. Noví studující jdou do fronty.</p>
                 <p><b>Fronta:</b> hlavní seznam je FRONTA. ZKOUŠENÝ/ZKOUŠENÁ a NA POTÍTKU jsou nahoře v rozbalovacích panelech. HOTOVO je dole jako sekundární sekce.</p>
-                <p><b>Otázky:</b> studující si otázku vybírá sám. [●] ukazuje otázku podle studujícího. [□] je ruční výběr. Tlačítko PŘIŘADIT uloží vybranou otázku vybranému studujícímu.</p>
+                <p><b>Otázky:</b> studující si otázku vybírá sám. [●] ukazuje otázku podle studujícího. [□] je ruční výběr. Tlačítko PŘIŘADIT uloží vybranou otázku vybranému studujícímu. U studujících na potítku a u zkoušených lze otázku upravit přímo v jejich řádku.</p>
                 <p><b>Poznámky:</b> bez otázky se ukládá obecná poznámka ke studujícímu. S otázkou se ukládá poznámka k otázce. Pravé TXT/MD exporty jsou jen pro aktuální poznámku.</p>
                 <p><b>Kurzor vs. stav:</b> znak &gt; značí vybraný řádek. [ZK] je zkoušený/á, [P] je na potítku, [OK] je hotovo.</p>
+                <p><b>Stavový řádek:</b> běžné zprávy a uložení termínu jsou dole v liště. TERMÍN vpravo ukládá aktuální název zkouškového dne.</p>
                 <p><b>Export/reset:</b> EXPORTUJ VŠE stáhne všechny poznámky a stav. Před RESET vždy exportuj. Reset nemaže otázky.</p>
                 <p><b>Konzole:</b> použij :help, :add, :import, :reset, :export, :logout, :focus next, :focus prev, :active, :question active, :question manual.</p>
             </div>
@@ -238,10 +231,16 @@ php -S 127.0.0.1:8000 -t public</pre>
             <?php endif; ?>
             <a href="logout.php">LOGOUT</a>
         </nav>
+        <div id="global-status-message" class="global-status-message" role="status" aria-live="polite"></div>
         <div class="global-status">
             <?php if (!$setupError): ?>
                 <span id="global-active-student"></span>
-                <span id="global-exam-label"><?= $currentExamLabel !== '' ? 'TERMÍN: ' . h($currentExamLabel) : '' ?></span>
+                <form id="session-label-form" class="session-bar-form">
+                    <input type="hidden" name="csrf_token" value="<?= h(csrf_token()) ?>">
+                    <label for="current-exam-label">TERMÍN</label>
+                    <input id="current-exam-label" name="current_exam_label" value="<?= h($currentExamLabel) ?>" placeholder="TMK - 10. 6. 2026">
+                    <button type="submit">ULOŽIT TERMÍN</button>
+                </form>
             <?php endif; ?>
             <span><?= h($config['app_name']) ?></span>
             <time id="global-time" datetime="<?= h(date('c')) ?>"><?= h(date('H:i')) ?></time>

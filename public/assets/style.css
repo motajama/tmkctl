@@ -524,6 +524,36 @@ label {
   justify-content: flex-start;
 }
 
+.inline-question-edit {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid currentColor;
+}
+
+.inline-question-edit span {
+  font-size: 12px;
+  font-weight: bold;
+  overflow-wrap: anywhere;
+}
+
+.inline-question-edit select,
+.inline-question-edit button,
+.student-row.state-examining .inline-question-edit select,
+.student-row.state-examining .inline-question-edit button {
+  color: var(--ui-black);
+  background: var(--ui-white);
+  border-color: var(--ui-black);
+}
+
+.student-row.state-examining .inline-question-edit button:hover,
+.student-row.state-examining .inline-question-edit button:focus {
+  color: var(--ui-white);
+  background: var(--ui-black);
+  outline: 2px solid var(--ui-white);
+}
+
 .empty-row {
   padding: 5px;
   font-weight: bold;
@@ -893,6 +923,23 @@ label {
   gap: 0;
 }
 
+.global-status-message {
+  flex: 1 1 auto;
+  min-width: 120px;
+  padding: 0 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.global-status-message.error::before {
+  content: "!! ";
+}
+
+.global-status-message.success::before {
+  content: "> ";
+}
+
 .global-command-bar a,
 .global-command-bar button {
   display: flex;
@@ -1002,10 +1049,33 @@ label {
 .global-status {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   min-height: 32px;
   padding: 0 10px;
   border-left: 2px solid var(--ui-black);
+  white-space: nowrap;
+}
+
+.session-bar-form {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.session-bar-form label {
+  margin: 0;
+  font-size: 12px;
+}
+
+.session-bar-form input {
+  width: min(220px, 22vw);
+  min-height: 24px;
+  padding: 1px 5px;
+}
+
+.session-bar-form button {
+  min-height: 24px;
+  padding: 1px 6px;
   white-space: nowrap;
 }
 

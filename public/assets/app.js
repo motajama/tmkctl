@@ -50,9 +50,24 @@
   }
 
   function showMessage(message, type) {
-    const box = $("messages");
+    setGlobalStatus(message, type);
+  }
+
+  function setGlobalStatus(message, type) {
+    const box = $("global-status-message");
     if (!box) return;
-    box.innerHTML = message ? `<div class="${type === "error" ? "alert" : "notice"}">${escapeHtml(message)}</div>` : "";
+    box.textContent = message || "";
+    box.classList.toggle("error", type === "error");
+    box.classList.toggle("success", type !== "error" && Boolean(message));
+    if (message) {
+      window.clearTimeout(setGlobalStatus.timer);
+      setGlobalStatus.timer = window.setTimeout(() => {
+        if (box.textContent === message) {
+          box.textContent = "";
+          box.classList.remove("error", "success");
+        }
+      }, 6000);
+    }
   }
 
   async function api(url, options) {
@@ -215,13 +230,36 @@
         ${moveButtons(item)}
         <button type="button" data-action="active">AKTIVNÍ</button>
       </div>
+      ${renderInlineQuestionAssign(item)}
     `;
     row.querySelector(".student-main").addEventListener("click", () => setActiveStudent(student.id));
     row.querySelectorAll("[data-move]").forEach((button) => {
       button.addEventListener("click", () => moveStudentItem(student.id, button.dataset.move));
     });
     row.querySelector("[data-action='active']").addEventListener("click", () => setActiveStudent(student.id));
+    const inlineAssign = row.querySelector("[data-action='assign-inline']");
+    if (inlineAssign) {
+      inlineAssign.addEventListener("click", () => {
+        const select = row.querySelector(".inline-question-select");
+        assignQuestion(item.id, select ? select.value : "");
+      });
+    }
     return row;
+  }
+
+  function renderInlineQuestionAssign(item) {
+    if (!["preparing", "examining"].includes(item.state) || !item.id) return "";
+    const hasQuestion = Boolean(item.question_id);
+    return `
+      <div class="inline-question-edit">
+        <span>${escapeHtml(questionLabel(item.question_id))}</span>
+        <select class="inline-question-select" aria-label="Otázka pro studujícího">
+          <option value="">bez otázky</option>
+          ${state.questions.map((q) => `<option value="${escapeHtml(q.id)}"${q.id === item.question_id ? " selected" : ""}>${escapeHtml(q.id)} · ${escapeHtml(q.short_title || q.title)}</option>`).join("")}
+        </select>
+        <button type="button" data-action="assign-inline">${hasQuestion ? "UPRAVIT OTÁZKU" : "PŘIŘADIT"}</button>
+      </div>
+    `;
   }
 
   function renderStudents() {
@@ -428,6 +466,7 @@
 
   function setStatus(message) {
     $("save-status").textContent = message;
+    if (message) setGlobalStatus(message);
   }
 
   async function refreshStudents() {
@@ -492,6 +531,9 @@
     showMessage(payload.message);
     state.stack = payload.stack;
     state.activeStudentId = payload.activeStudentId;
+    if (["preparing", "examining"].includes(nextState)) {
+      state.accordions[nextState] = true;
+    }
     renderAll();
   }
 
@@ -530,11 +572,13 @@
     if (status) {
       status.textContent = message || "";
     }
+    if (message) setGlobalStatus(message);
   }
 
   function setExportStatus(message) {
     const status = $("export-status");
     if (status) status.textContent = message || "";
+    if (message) setGlobalStatus(message);
   }
 
   function focusRelative(offset) {
@@ -621,7 +665,7 @@
         event.target.reset();
         showMessage(payload.message);
         const addStatus = $("add-status");
-        if (addStatus) addStatus.textContent = payload.message || "Studující byl přidán.";
+        if (addStatus) addStatus.textContent = "";
         renderAll();
       } catch (error) {
         showMessage(error.message, "error");
@@ -657,9 +701,9 @@
           state.currentExamLabel = payload.currentExamLabel || "";
           $("current-exam-label").value = state.currentExamLabel;
           renderExamLabel();
-          setOperationsStatus(payload.message || "Název termínu byl uložen.");
+          setGlobalStatus(payload.message || "Název termínu byl uložen.");
         } catch (error) {
-          setOperationsStatus(error.message);
+          setGlobalStatus(error.message, "error");
         }
       });
     }

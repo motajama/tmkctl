@@ -6,6 +6,7 @@
     students: window.TMKCTL.students || [],
     stack: window.TMKCTL.stack || [],
     activeStudentId: window.TMKCTL.activeStudentId || null,
+    currentExamLabel: window.TMKCTL.currentExamLabel || "",
     mode: "follow",
     manualQuestionId: null,
     currentNoteKey: "",
@@ -319,6 +320,14 @@
     if (globalActive) {
       globalActive.textContent = student ? `AKTIVNÍ: ${student.name}` : "";
     }
+    renderExamLabel();
+  }
+
+  function renderExamLabel() {
+    const label = $("global-exam-label");
+    if (label) {
+      label.textContent = state.currentExamLabel ? `TERMÍN: ${state.currentExamLabel}` : "";
+    }
   }
 
   async function loadNote() {
@@ -448,6 +457,7 @@
     renderStack();
     renderQuestion();
     renderNotesContext();
+    renderExamLabel();
   }
 
   function download(format) {
@@ -458,6 +468,13 @@
       return;
     }
     window.location.href = `api/export_note.php?student_id=${encodeURIComponent(studentId)}&question_id=${encodeURIComponent(questionId)}&format=${format}`;
+  }
+
+  function setOperationsStatus(message) {
+    const status = $("operations-status");
+    if (status) {
+      status.textContent = message || "";
+    }
   }
 
   function initEvents() {
@@ -487,6 +504,51 @@
         showMessage(error.message, "error");
       }
     });
+
+    const sessionLabelForm = $("session-label-form");
+    if (sessionLabelForm) {
+      sessionLabelForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        try {
+          const payload = await postForm("api/session_label.php", new FormData(event.target));
+          state.currentExamLabel = payload.currentExamLabel || "";
+          $("current-exam-label").value = state.currentExamLabel;
+          renderExamLabel();
+          setOperationsStatus(payload.message || "Název termínu byl uložen.");
+        } catch (error) {
+          setOperationsStatus(error.message);
+        }
+      });
+    }
+
+    const resetExamForm = $("reset-exam-form");
+    if (resetExamForm) {
+      resetExamForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const data = new FormData(event.target);
+        if ((data.get("confirmation") || "") !== "RESET") {
+          setOperationsStatus("Pro reset napiš přesně RESET.");
+          return;
+        }
+        try {
+          const payload = await postForm("api/reset_exam.php", data);
+          state.students = [];
+          state.stack = [];
+          state.activeStudentId = null;
+          state.currentExamLabel = payload.currentExamLabel || "";
+          event.target.reset();
+          $("current-exam-label").value = state.currentExamLabel;
+          $("note-text").value = "";
+          $("suggested-grade").value = "";
+          state.noteDirty = false;
+          renderAll();
+          setOperationsStatus(payload.message || "Termín byl resetován.");
+          showMessage(payload.message || "Termín byl resetován.", "success");
+        } catch (error) {
+          setOperationsStatus(error.message);
+        }
+      });
+    }
 
     const isDetectTerms = $("is-detect-terms");
     if (isDetectTerms) {

@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/settings.php';
+
 const STACK_STATES = ['waiting', 'preparing', 'examining', 'done'];
 const STACK_MOVES = [
     'waiting' => ['preparing'],
@@ -79,48 +81,30 @@ function assign_question(PDO $pdo, int $stackId, ?string $questionId): void
     $stmt->execute([':question_id' => $questionId, ':id' => $stackId]);
 }
 
-function set_setting(PDO $pdo, string $key, ?string $value): void
-{
-    $stmt = $pdo->prepare('
-        INSERT INTO app_settings (setting_key, setting_value)
-        VALUES (:k, :v)
-        ON DUPLICATE KEY UPDATE setting_value = VALUES(setting_value)
-    ');
-    $stmt->execute([':k' => $key, ':v' => $value]);
-}
-
-function get_setting(PDO $pdo, string $key): ?string
-{
-    $stmt = $pdo->prepare('SELECT setting_value FROM app_settings WHERE setting_key = :k');
-    $stmt->execute([':k' => $key]);
-    $value = $stmt->fetchColumn();
-    return $value === false ? null : (string)$value;
-}
-
 function set_active_student(PDO $pdo, int $studentId): void
 {
     if (!get_student($pdo, $studentId)) {
         throw new InvalidArgumentException('Studující neexistuje.');
     }
-    set_setting($pdo, 'active_student_id', (string)$studentId);
+    set_app_setting('active_student_id', (string)$studentId, $pdo);
 }
 
 function get_active_student_id(PDO $pdo): ?int
 {
     cleanup_active_student($pdo);
-    $value = get_setting($pdo, 'active_student_id');
+    $value = get_app_setting('active_student_id', null, $pdo);
     return $value !== null && ctype_digit($value) ? (int)$value : null;
 }
 
 function cleanup_active_student(PDO $pdo): void
 {
-    $value = get_setting($pdo, 'active_student_id');
+    $value = get_app_setting('active_student_id', null, $pdo);
     if ($value === null || !ctype_digit($value)) {
         return;
     }
     $stmt = $pdo->prepare('SELECT id FROM students WHERE id = :id');
     $stmt->execute([':id' => (int)$value]);
     if (!$stmt->fetchColumn()) {
-        set_setting($pdo, 'active_student_id', null);
+        set_app_setting('active_student_id', null, $pdo);
     }
 }

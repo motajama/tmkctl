@@ -73,6 +73,7 @@ button {
 
 button,
 .file-button,
+.button-link,
 .global-command-bar a {
   color: var(--ui-black);
   background: var(--ui-white);
@@ -85,6 +86,9 @@ button:active,
 .file-button:hover,
 .file-button:focus,
 .file-button:active,
+.button-link:hover,
+.button-link:focus,
+.button-link:active,
 .global-command-bar a:hover,
 .global-command-bar a:focus {
   color: var(--ui-white);
@@ -183,6 +187,7 @@ label {
 .left-panel > .split-title,
 .left-panel > .listbox,
 .left-panel > .stack-board,
+.left-panel > .operations-panel,
 .center-panel > .manual-warning,
 .center-panel > .question-panel,
 .right-panel > .note-context,
@@ -279,6 +284,60 @@ label {
 
 .is-import-panel .button-row {
   margin: 6px;
+}
+
+.operations-panel {
+  flex: 0 0 auto;
+  margin-bottom: 8px;
+  border: 2px solid var(--ui-black);
+  background: var(--ui-white);
+}
+
+.operations-panel .split-title {
+  margin: 0;
+  border-width: 0 0 2px;
+}
+
+.operations-form {
+  margin: 6px;
+}
+
+.operations-buttons {
+  margin: 6px;
+}
+
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  padding: 1px 4px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.reset-warning {
+  padding: 5px;
+  border: 2px solid var(--ui-black);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.inline-check {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 5px;
+  align-items: center;
+  margin: 0;
+  font-size: 12px;
+  text-transform: none;
+}
+
+.inline-check input {
+  min-height: 16px;
+  width: 16px;
+  margin: 0;
+  accent-color: var(--ui-black);
 }
 
 .is-term-list,

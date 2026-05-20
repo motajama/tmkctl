@@ -5,6 +5,7 @@ require_once __DIR__ . '/../app/render.php';
 require_once __DIR__ . '/../app/questions.php';
 require_once __DIR__ . '/../app/students.php';
 require_once __DIR__ . '/../app/stack.php';
+require_once __DIR__ . '/../app/settings.php';
 
 require_auth();
 
@@ -14,6 +15,7 @@ $questionLoad = ['questions' => [], 'error' => ''];
 $students = [];
 $stack = [];
 $activeStudentId = null;
+$currentExamLabel = '';
 
 try {
     $pdo = db();
@@ -21,6 +23,7 @@ try {
     $students = list_students($pdo);
     $stack = list_stack($pdo);
     $activeStudentId = get_active_student_id($pdo);
+    $currentExamLabel = (string)get_app_setting('current_exam_label', '', $pdo);
 } catch (Throwable $e) {
     $setupError = public_error_message($e);
 }
@@ -85,6 +88,27 @@ php -S 127.0.0.1:8000 -t public</pre>
             <div id="students-list" class="listbox"></div>
             <div class="split-title">FRONTA</div>
             <div id="stack-board" class="stack-board"></div>
+            <section id="operations-panel" class="operations-panel">
+                <div class="split-title">PROVOZ</div>
+                <form id="session-label-form" class="compact-form operations-form">
+                    <input type="hidden" name="csrf_token" value="<?= h(csrf_token()) ?>">
+                    <input id="current-exam-label" name="current_exam_label" value="<?= h($currentExamLabel) ?>" placeholder="TMK – 10. 6. 2026" aria-label="Název aktuálního termínu">
+                    <button type="submit">ULOŽIT NÁZEV TERMÍNU</button>
+                </form>
+                <div class="button-row tight operations-buttons">
+                    <a class="button-link" href="api/export_all_notes.php">EXPORT POZNÁMEK</a>
+                    <a class="button-link" href="api/export_students.php">EXPORT STUDUJÍCÍCH</a>
+                    <a class="button-link" href="api/export_all.php">EXPORT VŠE</a>
+                </div>
+                <form id="reset-exam-form" class="compact-form operations-form">
+                    <input type="hidden" name="csrf_token" value="<?= h(csrf_token()) ?>">
+                    <div class="reset-warning">Reset smaže studující, stack a poznámky aktuálního běhu. Otázky zůstanou zachovány. Pro potvrzení napiš RESET.</div>
+                    <input name="confirmation" placeholder="RESET" autocomplete="off" aria-label="Potvrzení resetu">
+                    <label class="inline-check"><input type="checkbox" name="clear_label" value="1"> Smazat i název termínu</label>
+                    <button type="submit">RESET TERMÍNU</button>
+                </form>
+                <div id="operations-status" class="status-line"></div>
+            </section>
             <footer class="window-menu">
                 <button type="submit" form="student-form">PŘIDAT</button>
                 <button type="submit" form="import-form">IMPORT</button>
@@ -148,6 +172,7 @@ php -S 127.0.0.1:8000 -t public</pre>
         <div class="global-status">
             <?php if (!$setupError): ?>
                 <span id="global-active-student"></span>
+                <span id="global-exam-label"><?= $currentExamLabel !== '' ? 'TERMÍN: ' . h($currentExamLabel) : '' ?></span>
             <?php endif; ?>
             <span><?= h($config['app_name']) ?></span>
             <time id="global-time" datetime="<?= h(date('c')) ?>"><?= h(date('H:i')) ?></time>
@@ -163,6 +188,7 @@ php -S 127.0.0.1:8000 -t public</pre>
                 'students' => $students,
                 'stack' => $stack,
                 'activeStudentId' => $activeStudentId,
+                'currentExamLabel' => $currentExamLabel,
             ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) ?>;
         </script>
         <script src="assets/app.js"></script>

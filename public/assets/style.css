@@ -73,6 +73,7 @@ button {
 
 button,
 .file-button,
+.button-link,
 .global-command-bar a {
   color: var(--ui-black);
   background: var(--ui-white);
@@ -85,6 +86,9 @@ button:active,
 .file-button:hover,
 .file-button:focus,
 .file-button:active,
+.button-link:hover,
+.button-link:focus,
+.button-link:active,
 .global-command-bar a:hover,
 .global-command-bar a:focus {
   color: var(--ui-white);
@@ -180,16 +184,17 @@ label {
 }
 
 .left-panel > form,
+.left-panel > .panel-controls,
 .left-panel > .split-title,
 .left-panel > .listbox,
-.left-panel > .stack-board,
+.left-panel > .status-accordion,
+.center-panel > .panel-controls,
 .center-panel > .manual-warning,
 .center-panel > .question-panel,
 .right-panel > .note-context,
+.right-panel > .panel-controls,
 .right-panel > label,
 .right-panel > textarea,
-.right-panel > input,
-.right-panel > .status-line,
 .ai-panel > .disabled-ai,
 .setup-error > :not(.panel-title) {
   margin-left: 8px;
@@ -206,6 +211,17 @@ label {
 .compact-form input,
 .compact-form select {
   width: 100%;
+}
+
+.panel-controls {
+  flex: 0 0 auto;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.session-form {
+  grid-template-columns: minmax(0, 1fr) max-content;
+  align-items: center;
 }
 
 .file-control {
@@ -279,6 +295,48 @@ label {
 
 .is-import-panel .button-row {
   margin: 6px;
+}
+
+.operations-form {
+  margin: 6px;
+}
+
+.operations-buttons {
+  margin: 6px;
+}
+
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  padding: 1px 4px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.reset-warning {
+  padding: 5px;
+  border: 2px solid var(--ui-black);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.inline-check {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 5px;
+  align-items: center;
+  margin: 0;
+  font-size: 12px;
+  text-transform: none;
+}
+
+.inline-check input {
+  min-height: 16px;
+  width: 16px;
+  margin: 0;
+  accent-color: var(--ui-black);
 }
 
 .is-term-list,
@@ -364,35 +422,61 @@ label {
 
 .listbox {
   min-height: 82px;
-  max-height: 190px;
+  max-height: 320px;
   overflow: auto;
   margin-bottom: 8px;
 }
 
 .student-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr);
   gap: 4px;
   padding: 3px;
   border-bottom: 1px solid var(--ui-black);
 }
 
-.student-row.active,
-.stack-card.active {
+.student-row.state-examining,
+.stack-card.examined {
   color: var(--ui-white);
   background: var(--ui-black);
 }
 
-.student-row.active *,
-.stack-card.active *,
-.student-row.active button,
-.stack-card.active button {
+.student-row.state-examining *,
+.stack-card.examined *,
+.student-row.state-examining button,
+.stack-card.examined button {
   color: var(--ui-white);
 }
 
-.student-row.active button,
-.stack-card.active .stack-name {
+.student-row.state-examining button,
+.stack-card.examined .stack-name {
   background: var(--ui-black);
+}
+
+.student-row.state-preparing {
+  background: #ffd6d6;
+}
+
+.student-row.state-done {
+  background:
+    repeating-linear-gradient(45deg, var(--ui-white) 0 4px, var(--ui-gray) 4px 5px);
+}
+
+.student-row.current,
+.stack-card.current {
+  outline: 2px dotted var(--ui-black);
+  outline-offset: -4px;
+}
+
+.student-row.current.state-examining,
+.stack-card.current.examined {
+  outline-color: var(--ui-white);
+}
+
+.cursor-marker {
+  display: inline-block;
+  width: 1.2em;
+  font-weight: bold;
 }
 
 .student-main,
@@ -436,14 +520,93 @@ label {
   white-space: nowrap;
 }
 
-.stack-board {
-  flex: 1 1 auto;
+.student-actions {
+  justify-content: flex-start;
+}
+
+.inline-question-edit {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 7px;
-  min-height: 160px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid currentColor;
+}
+
+.inline-question-edit span {
+  font-size: 12px;
+  font-weight: bold;
+  overflow-wrap: anywhere;
+}
+
+.inline-question-edit select,
+.inline-question-edit button,
+.student-row.state-examining .inline-question-edit select,
+.student-row.state-examining .inline-question-edit button {
+  color: var(--ui-black);
+  background: var(--ui-white);
+  border-color: var(--ui-black);
+}
+
+.student-row.state-examining .inline-question-edit button:hover,
+.student-row.state-examining .inline-question-edit button:focus {
+  color: var(--ui-white);
+  background: var(--ui-black);
+  outline: 2px solid var(--ui-white);
+}
+
+.empty-row {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.status-accordion {
+  margin-bottom: 8px;
+  border: 2px solid var(--ui-black);
+  background: var(--ui-white);
+}
+
+.accordion-title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 0;
+  border-bottom: 2px solid var(--ui-black);
+  text-align: left;
+}
+
+.status-examining .accordion-title {
+  color: #fff;
+  background: #b00000;
+}
+
+.status-preparing .accordion-title {
+  color: #000;
+  background: #ffd6d6;
+}
+
+.status-done .accordion-title {
+  color: var(--ui-black);
+  background: var(--ui-white);
+}
+
+.status-examining .accordion-title:hover,
+.status-examining .accordion-title:focus {
+  color: #fff;
+  background: #700000;
+}
+
+.status-preparing .accordion-title:hover,
+.status-preparing .accordion-title:focus,
+.status-done .accordion-title:hover,
+.status-done .accordion-title:focus {
+  color: var(--ui-white);
+  background: var(--ui-black);
+}
+
+.accordion-body {
+  max-height: 220px;
   overflow: auto;
-  padding-bottom: 8px;
 }
 
 .stack-column {
@@ -524,22 +687,22 @@ label {
   font-size: 12px;
 }
 
-.stack-card.active button,
-.stack-card.active select {
+.stack-card.examined button,
+.stack-card.examined select {
   color: var(--ui-black);
   background: var(--ui-white);
   border-color: var(--ui-white);
 }
 
-.stack-card.active .stack-name {
+.stack-card.examined .stack-name {
   color: var(--ui-white);
   background: var(--ui-black);
 }
 
-.stack-card.active button:hover,
-.stack-card.active button:focus,
-.stack-card.active button:active,
-.stack-card.active select:focus {
+.stack-card.examined button:hover,
+.stack-card.examined button:focus,
+.stack-card.examined button:active,
+.stack-card.examined select:focus {
   color: var(--ui-black);
   background: var(--ui-white);
   outline: 2px solid var(--ui-white);
@@ -648,36 +811,9 @@ label {
   align-items: center;
 }
 
-.question-toolbar label {
-  display: inline-flex;
-  align-items: center;
-  min-height: 24px;
-  padding: 1px 6px;
-  border: 2px solid var(--ui-black);
-  color: var(--ui-black);
-  background: var(--ui-white);
-  margin: 0;
-  font-weight: bold;
-  white-space: nowrap;
-}
-
-.question-toolbar label:has(input:checked) {
+.mode-button.selected {
   color: var(--ui-white);
   background: var(--ui-black);
-}
-
-.question-toolbar input[type="radio"] {
-  position: relative;
-  top: 2px;
-  width: 16px;
-  min-height: 16px;
-  margin-right: 4px;
-  accent-color: var(--ui-black);
-}
-
-.question-toolbar input[type="radio"]:focus {
-  outline: 2px solid var(--ui-black);
-  outline-offset: 1px;
 }
 
 .note-context {
@@ -694,9 +830,13 @@ label {
   background: var(--ui-white);
 }
 
-.right-panel input {
-  width: calc(100% - 16px);
-  margin-bottom: 8px;
+.notes-toolbar {
+  display: grid;
+  gap: 5px;
+}
+
+.notes-toolbar input {
+  width: 100%;
 }
 
 .status-line {
@@ -783,6 +923,23 @@ label {
   gap: 0;
 }
 
+.global-status-message {
+  flex: 1 1 auto;
+  min-width: 120px;
+  padding: 0 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.global-status-message.error::before {
+  content: "!! ";
+}
+
+.global-status-message.success::before {
+  content: "> ";
+}
+
 .global-command-bar a,
 .global-command-bar button {
   display: flex;
@@ -797,6 +954,94 @@ label {
   font-weight: bold;
 }
 
+.modal-layer {
+  position: fixed;
+  inset: 0 0 36px;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.modal-window {
+  width: min(920px, calc(100vw - 24px));
+  max-height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  color: var(--ui-black);
+  background: var(--ui-white);
+  border: 4px solid var(--ui-black);
+  box-shadow: 6px 6px 0 var(--ui-black);
+}
+
+.modal-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 6px;
+  color: var(--ui-white);
+  background: var(--ui-black);
+  border-bottom: 3px solid var(--ui-black);
+  font-weight: bold;
+}
+
+.modal-close {
+  min-height: 24px;
+  padding: 0 5px;
+  color: var(--ui-black);
+  background: var(--ui-white);
+  border-color: var(--ui-white);
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: var(--ui-white);
+  background: var(--ui-black);
+  outline: 2px solid var(--ui-white);
+}
+
+.modal-body {
+  min-height: 0;
+  padding: 8px;
+  overflow: auto;
+}
+
+.export-actions {
+  margin-bottom: 8px;
+}
+
+.help-text p {
+  margin: 0 0 8px;
+}
+
+.console-window {
+  width: min(760px, calc(100vw - 24px));
+}
+
+.console-log {
+  min-height: 220px;
+  max-height: 45vh;
+  overflow: auto;
+  padding: 6px;
+  border: 2px solid var(--ui-black);
+  background: var(--ui-white);
+  white-space: pre-wrap;
+}
+
+.console-form {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 6px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.console-form label {
+  margin: 0;
+}
+
 .global-command-bar button {
   border-radius: 0;
 }
@@ -804,10 +1049,33 @@ label {
 .global-status {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   min-height: 32px;
   padding: 0 10px;
   border-left: 2px solid var(--ui-black);
+  white-space: nowrap;
+}
+
+.session-bar-form {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.session-bar-form label {
+  margin: 0;
+  font-size: 12px;
+}
+
+.session-bar-form input {
+  width: min(220px, 22vw);
+  min-height: 24px;
+  padding: 1px 5px;
+}
+
+.session-bar-form button {
+  min-height: 24px;
+  padding: 1px 6px;
   white-space: nowrap;
 }
 

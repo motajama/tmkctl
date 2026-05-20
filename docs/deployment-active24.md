@@ -99,7 +99,7 @@ Test:
 - add one student manually
 - import a small CSV
 - add a student to the stack
-- assign or draw a question
+- assign a student-selected question
 - write and save a note
 - export TXT and Markdown
 

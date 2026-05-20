@@ -210,6 +210,30 @@ Parser sample:
 data/is-mu-paste.sample.txt
 ```
 
+## Provoz zkouškového dne
+
+V horní části panelu **STUDUJÍCÍ** nastav název aktuálního termínu, například `TMK - 10. 6. 2026`, a ulož ho tlačítkem **ULOŽIT TERMÍN**. Název se ukládá do `app_settings` pod klíčem `current_exam_label` a zobrazuje se ve spodním stavovém řádku.
+
+Doporučený postup pro jeden termín:
+
+1. Nastav název termínu.
+2. Importuj studující z CSV nebo z IS MU.
+3. Proveď zkoušení přes frontu, potítko, zkoušení a hotovo.
+4. Průběžně ukládej poznámky.
+5. Po skončení použij spodní příkaz **EXPORTUJ VŠE**.
+6. Před dalším termínem použij spodní příkaz **RESET**.
+
+Exporty:
+
+- **MARKDOWN FILE** stáhne Markdown soubor se všemi poznámkami.
+- **TXT FILE** stáhne prostý text se všemi poznámkami.
+- **JSON/ZIP** stáhne ZIP s `notes.md`, `notes.txt`, `students.csv` a `exam_state.json`, pokud je dostupné PHP rozšíření `ZipArchive`. Bez něj stáhne JSON export.
+- **KOPÍROVAT VŠE** zkopíruje všechny poznámky do schránky, pokud ji prohlížeč zpřístupní.
+
+Reset termínu je dostupný jen přes POST s CSRF tokenem a vyžaduje přesné potvrzení `RESET`. Smaže studující, stack a poznámky aktuálního běhu a resetuje aktivního studujícího. Otázky v `data/questions.reviewed.json`, konfigurace aplikace a databázové schéma zůstávají zachované. Název termínu zůstává zachovaný, pokud nezaškrtneš **Smazat i název termínu**.
+
+Před resetem vždy nejdřív udělej export. Reset neslouží jako záloha a nemaže otázky.
+
 ## Security Notes
 
 - Do not commit `app/config.local.php`.

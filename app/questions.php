@@ -61,10 +61,3 @@ function find_question(?string $questionId): ?array
     $map = question_map();
     return $map[$questionId] ?? null;
 }
-
-function random_question_id(): string
-{
-    $questions = load_questions();
-    $question = $questions[random_int(0, count($questions) - 1)];
-    return (string)$question['id'];
-}

@@ -26,9 +26,6 @@ try {
     } elseif ($action === 'assign') {
         assign_question($pdo, (int)($_POST['stack_id'] ?? 0), $_POST['question_id'] ?? null);
         $message = 'Otázka byla přiřazena.';
-    } elseif ($action === 'random_assign') {
-        assign_question($pdo, (int)($_POST['stack_id'] ?? 0), random_question_id());
-        $message = 'Otázka byla vylosována.';
     } elseif ($action === 'active') {
         set_active_student($pdo, (int)($_POST['student_id'] ?? 0));
         $message = 'Aktivní studující byl nastaven.';

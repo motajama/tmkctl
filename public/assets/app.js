@@ -6,23 +6,29 @@
     students: window.TMKCTL.students || [],
     stack: window.TMKCTL.stack || [],
     activeStudentId: window.TMKCTL.activeStudentId || null,
+    cursorStudentId: window.TMKCTL.activeStudentId || null,
+    currentExamLabel: window.TMKCTL.currentExamLabel || "",
     mode: "follow",
     manualQuestionId: null,
     currentNoteKey: "",
     noteDirty: false,
-    isImportStudents: []
+    isImportStudents: [],
+    accordions: {
+      examining: true,
+      preparing: true,
+      done: false
+    },
+    accordionCounts: {
+      examining: -1,
+      preparing: -1,
+      done: -1
+    }
   };
 
   const $ = (id) => document.getElementById(id);
   const questionById = (id) => state.questions.find((q) => q.id === id) || null;
   const studentById = (id) => state.students.find((s) => Number(s.id) === Number(id)) || null;
   const stackByStudentId = (id) => state.stack.find((item) => Number(item.student_id) === Number(id)) || null;
-  const stackStates = [
-    ["waiting", "ČEKÁ"],
-    ["preparing", "POTÍTKO"],
-    ["examining", "ZKOUŠEN/A"],
-    ["done", "HOTOVO"]
-  ];
   const studyBadge = (studyType) => {
     if (studyType === "single") return "1OBOR";
     if (studyType === "double") return "2OBOR";
@@ -44,9 +50,24 @@
   }
 
   function showMessage(message, type) {
-    const box = $("messages");
+    setGlobalStatus(message, type);
+  }
+
+  function setGlobalStatus(message, type) {
+    const box = $("global-status-message");
     if (!box) return;
-    box.innerHTML = message ? `<div class="${type === "error" ? "alert" : "notice"}">${escapeHtml(message)}</div>` : "";
+    box.textContent = message || "";
+    box.classList.toggle("error", type === "error");
+    box.classList.toggle("success", type !== "error" && Boolean(message));
+    if (message) {
+      window.clearTimeout(setGlobalStatus.timer);
+      setGlobalStatus.timer = window.setTimeout(() => {
+        if (box.textContent === message) {
+          box.textContent = "";
+          box.classList.remove("error", "success");
+        }
+      }, 6000);
+    }
   }
 
   async function api(url, options) {
@@ -67,6 +88,40 @@
   function selectedIsTermId() {
     const checked = document.querySelector("input[name='is_term_id']:checked");
     return checked ? checked.value : "";
+  }
+
+  function openModal(name) {
+    const layer = $("modal-layer");
+    if (!layer) return;
+    layer.classList.remove("hidden");
+    document.querySelectorAll(".modal-window").forEach((modal) => modal.classList.add("hidden"));
+    const modal = $(`modal-${name}`);
+    if (!modal) return;
+    modal.classList.remove("hidden");
+    const focusTarget = modal.querySelector("input, textarea, select, button, a[href]");
+    if (focusTarget) focusTarget.focus();
+  }
+
+  function closeModal() {
+    const layer = $("modal-layer");
+    if (layer) layer.classList.add("hidden");
+    document.querySelectorAll(".modal-window").forEach((modal) => modal.classList.add("hidden"));
+  }
+
+  function stackItemByStudentId(studentId) {
+    return stackByStudentId(studentId) || {
+      student_id: studentId,
+      state: "waiting",
+      question_id: ""
+    };
+  }
+
+  function currentStudentId() {
+    return state.cursorStudentId || state.activeStudentId || null;
+  }
+
+  function currentStackItem() {
+    return stackByStudentId(currentStudentId());
   }
 
   async function postIsImport(action, extra) {
@@ -156,82 +211,107 @@
     return Array.from(document.querySelectorAll(".is-import-check:checked")).map((input) => Number(input.value));
   }
 
+  function questionLabel(questionId) {
+    const question = questionById(questionId);
+    return question ? (question.short_title || question.title) : "bez otázky";
+  }
+
+  function renderQueueRow(student, item) {
+    const isCurrent = Number(student.id) === Number(currentStudentId());
+    const marker = item.state === "examining" ? "[ZK] " : (item.state === "preparing" ? "[P] " : (item.state === "done" ? "[OK] " : ""));
+    const row = document.createElement("div");
+    row.className = "student-row" + (isCurrent ? " current" : "") + (item.state ? ` state-${item.state}` : "");
+    row.innerHTML = `
+      <button type="button" class="student-main">
+        <strong><span class="cursor-marker">${isCurrent ? ">" : ""}</span>${marker}${escapeHtml(student.name)}</strong>
+        <span><b class="study-badge">${escapeHtml(studyBadge(student.study_type))}</b>${escapeHtml(student.uco || "bez UČO")} · ${escapeHtml(questionLabel(item.question_id))}</span>
+      </button>
+      <div class="student-actions button-row tight">
+        ${moveButtons(item)}
+        <button type="button" data-action="active">AKTIVNÍ</button>
+      </div>
+      ${renderInlineQuestionAssign(item)}
+    `;
+    row.querySelector(".student-main").addEventListener("click", () => setActiveStudent(student.id));
+    row.querySelectorAll("[data-move]").forEach((button) => {
+      button.addEventListener("click", () => moveStudentItem(student.id, button.dataset.move));
+    });
+    row.querySelector("[data-action='active']").addEventListener("click", () => setActiveStudent(student.id));
+    const inlineAssign = row.querySelector("[data-action='assign-inline']");
+    if (inlineAssign) {
+      inlineAssign.addEventListener("click", () => {
+        const select = row.querySelector(".inline-question-select");
+        assignQuestion(item.id, select ? select.value : "");
+      });
+    }
+    return row;
+  }
+
+  function renderInlineQuestionAssign(item) {
+    if (!["preparing", "examining"].includes(item.state) || !item.id) return "";
+    const hasQuestion = Boolean(item.question_id);
+    return `
+      <div class="inline-question-edit">
+        <span>${escapeHtml(questionLabel(item.question_id))}</span>
+        <select class="inline-question-select" aria-label="Otázka pro studujícího">
+          <option value="">bez otázky</option>
+          ${state.questions.map((q) => `<option value="${escapeHtml(q.id)}"${q.id === item.question_id ? " selected" : ""}>${escapeHtml(q.id)} · ${escapeHtml(q.short_title || q.title)}</option>`).join("")}
+        </select>
+        <button type="button" data-action="assign-inline">${hasQuestion ? "UPRAVIT OTÁZKU" : "PŘIŘADIT"}</button>
+      </div>
+    `;
+  }
+
   function renderStudents() {
     const box = $("students-list");
     box.innerHTML = "";
-    state.students.forEach((student) => {
-      const row = document.createElement("div");
-      row.className = "student-row" + (Number(student.id) === Number(state.activeStudentId) ? " active" : "");
-      row.innerHTML = `
-        <button type="button" class="student-main">
-          <strong>${escapeHtml(student.name)}</strong>
-          <span><b class="study-badge">${escapeHtml(studyBadge(student.study_type))}</b>${escapeHtml(student.uco || "bez UČO")}</span>
-        </button>
-        <button type="button" class="mini-button">STACK</button>
-      `;
-      row.querySelector(".student-main").addEventListener("click", () => setActiveStudent(student.id));
-      row.querySelector(".mini-button").addEventListener("click", () => addToStack(student.id));
-      box.appendChild(row);
-    });
+    const waiting = state.students.filter((student) => stackItemByStudentId(student.id).state === "waiting");
+    if (!waiting.length) {
+      box.innerHTML = '<div class="empty-row">Fronta je prázdná.</div>';
+      return;
+    }
+    waiting.forEach((student) => box.appendChild(renderQueueRow(student, stackItemByStudentId(student.id))));
   }
 
   function renderStack() {
-    const board = $("stack-board");
-    board.innerHTML = "";
-    stackStates.forEach(([stackState, label]) => {
-      const items = state.stack.filter((item) => item.state === stackState);
-      const column = document.createElement("div");
-      column.className = "stack-column";
-      column.innerHTML = `<h3>${escapeHtml(label)} (${items.length})</h3>`;
-      items.forEach((item) => {
-        const card = document.createElement("div");
-        card.className = "stack-card" + (Number(item.student_id) === Number(state.activeStudentId) ? " active" : "");
-        const assigned = questionById(item.question_id);
-        card.innerHTML = `
-          <div class="stack-row-main">
-            <button type="button" class="stack-name">${Number(item.student_id) === Number(state.activeStudentId) ? "▶ " : ""}${escapeHtml(item.name)}</button>
-            <div class="stack-meta"><b class="study-badge">${escapeHtml(studyBadge(item.study_type))}</b>${escapeHtml(item.uco || "bez UČO")}</div>
-          </div>
-          <div class="stack-question">
-            <span>${escapeHtml(assigned ? `${assigned.short_title || assigned.title} (${item.question_id})` : "bez otázky")}</span>
-          </div>
-          <div class="question-assign">
-            <button type="button" data-action="random">losovat</button>
-            <label>
-              <span>vybrat</span>
-              <select class="assign-select" aria-label="Vybrat otázku pro ${escapeHtml(item.name)}">
-                <option value="">bez otázky</option>
-                ${state.questions.map((q) => `<option value="${escapeHtml(q.id)}"${q.id === item.question_id ? " selected" : ""}>${escapeHtml(q.id)} · ${escapeHtml(q.short_title || q.title)}</option>`).join("")}
-              </select>
-            </label>
-          </div>
-          <div class="button-row tight">
-            ${moveButtons(item)}
-            <button type="button" data-action="choose">otázka</button>
-            <button type="button" data-action="active">aktivní</button>
-          </div>
-        `;
-        card.querySelector(".stack-name").addEventListener("click", () => setActiveStudent(item.student_id));
-        const assignSelect = card.querySelector(".assign-select");
-        assignSelect.addEventListener("change", (event) => assignQuestion(item.id, event.target.value));
-        card.querySelectorAll("[data-move]").forEach((button) => {
-          button.addEventListener("click", () => moveStack(item.id, button.dataset.move));
-        });
-        card.querySelector("[data-action='random']").addEventListener("click", () => randomQuestion(item.id));
-        card.querySelector("[data-action='choose']").addEventListener("click", () => assignSelect.focus());
-        card.querySelector("[data-action='active']").addEventListener("click", () => setActiveStudent(item.student_id));
-        column.appendChild(card);
-      });
-      board.appendChild(column);
+    renderStatusSection("examining");
+    renderStatusSection("preparing");
+    renderStatusSection("done");
+  }
+
+  function renderStatusSection(stackState) {
+    const items = state.stack.filter((item) => item.state === stackState);
+    const count = $(`${stackState}-count`);
+    const body = $(`${stackState}-list`);
+    const toggle = $(`toggle-${stackState}`);
+    if (!body || !toggle) return;
+    if (count) count.textContent = `(${items.length})`;
+    const previousCount = state.accordionCounts[stackState] ?? -1;
+    if (!items.length && (stackState === "examining" || stackState === "preparing")) {
+      state.accordions[stackState] = false;
+    } else if (items.length && previousCount === 0 && (stackState === "examining" || stackState === "preparing")) {
+      state.accordions[stackState] = true;
+    }
+    state.accordionCounts[stackState] = items.length;
+    toggle.setAttribute("aria-expanded", state.accordions[stackState] ? "true" : "false");
+    body.classList.toggle("hidden", !state.accordions[stackState]);
+    body.innerHTML = "";
+    if (!items.length) {
+      body.innerHTML = '<div class="empty-row">nikdo</div>';
+      return;
+    }
+    items.forEach((item) => {
+      const student = studentById(item.student_id);
+      if (student) body.appendChild(renderQueueRow(student, item));
     });
   }
 
   function moveButtons(item) {
     const allowed = {
-      waiting: [["preparing", "potítko"]],
-      preparing: [["examining", "zkoušet"], ["waiting", "zpět"]],
-      examining: [["done", "hotovo"], ["preparing", "zpět"]],
-      done: [["examining", "vrátit"]]
+      waiting: [["preparing", "POTÍTKO"], ["examining", "ZKOUŠET"], ["done", "HOTOVO"]],
+      preparing: [["waiting", "ZPĚT"], ["examining", "ZKOUŠET"], ["done", "HOTOVO"]],
+      examining: [["preparing", "ZPĚT"], ["done", "HOTOVO"]],
+      done: [["examining", "ZKOUŠET"]]
     };
     return (allowed[item.state] || []).map(([next, label]) => `<button type="button" data-move="${next}">${label}</button>`).join("");
   }
@@ -240,7 +320,7 @@
     if (state.mode === "manual") {
       return state.manualQuestionId || (state.questions[0] && state.questions[0].id) || null;
     }
-    const stackItem = stackByStudentId(state.activeStudentId);
+    const stackItem = stackByStudentId(currentStudentId());
     return stackItem ? stackItem.question_id : null;
   }
 
@@ -257,7 +337,8 @@
     const question = questionById(selectedQuestionId());
     const panel = $("question-panel");
     $("manual-warning").classList.toggle("hidden", state.mode !== "manual");
-    $("back-to-active").disabled = state.mode !== "manual";
+    $("question-mode-follow").classList.toggle("selected", state.mode === "follow");
+    $("question-mode-manual").classList.toggle("selected", state.mode === "manual");
     $("manual-question-select").disabled = state.mode !== "manual";
 
     if (state.questionsError) {
@@ -310,24 +391,38 @@
   }
 
   function renderNotesContext() {
-    const student = studentById(state.activeStudentId);
+    const student = studentById(currentStudentId());
     const question = questionById(selectedQuestionId());
+    const modeLabel = $("note-mode-label");
     $("note-context").textContent = student && question
       ? `${student.name} · ${student.uco || "bez UČO"} · ${question.short_title || question.title}`
-      : (!student ? "Chybí aktivní studující." : "Chybí vybraná nebo přiřazená otázka.");
+      : (!student ? "Vyber studujícího pro psaní poznámek." : `${student.name} · ${student.uco || "bez UČO"} · obecná poznámka`);
+    if (modeLabel) {
+      modeLabel.textContent = !student
+        ? "ŽÁDNÝ STUDUJÍCÍ"
+        : (question ? "POZNÁMKA K OTÁZCE" : "OBECNÁ POZNÁMKA KE STUDUJÍCÍMU");
+    }
     const globalActive = $("global-active-student");
     if (globalActive) {
-      globalActive.textContent = student ? `AKTIVNÍ: ${student.name}` : "";
+      globalActive.textContent = student ? `KURZOR: ${student.name}` : "";
+    }
+    renderExamLabel();
+  }
+
+  function renderExamLabel() {
+    const label = $("global-exam-label");
+    if (label) {
+      label.textContent = state.currentExamLabel ? `TERMÍN: ${state.currentExamLabel}` : "";
     }
   }
 
   async function loadNote() {
     renderNotesContext();
-    const studentId = state.activeStudentId;
+    const studentId = currentStudentId();
     const questionId = selectedQuestionId();
     const key = `${studentId || ""}:${questionId || ""}`;
     state.currentNoteKey = key;
-    if (!studentId || !questionById(questionId)) {
+    if (!studentId) {
       $("note-text").value = "";
       $("suggested-grade").value = "";
       $("note-text").disabled = true;
@@ -337,7 +432,7 @@
     $("note-text").disabled = false;
     $("suggested-grade").disabled = false;
     try {
-      const payload = await api(`api/notes.php?student_id=${encodeURIComponent(studentId)}&question_id=${encodeURIComponent(questionId)}`);
+      const payload = await api(`api/notes.php?student_id=${encodeURIComponent(studentId)}&question_id=${encodeURIComponent(questionId || "")}`);
       if (state.currentNoteKey !== key) return;
       $("note-text").value = payload.note.note_text || "";
       $("suggested-grade").value = payload.note.suggested_grade || "";
@@ -349,15 +444,15 @@
   }
 
   async function saveNote(manual) {
-    const studentId = state.activeStudentId;
+    const studentId = currentStudentId();
     const questionId = selectedQuestionId();
-    if (!studentById(studentId) || !questionById(questionId)) {
-      setStatus("Nelze uložit: chybí aktivní studující nebo otázka.");
+    if (!studentById(studentId)) {
+      setStatus("Nelze uložit: chybí studující.");
       return;
     }
     const data = new FormData();
     data.append("student_id", studentId);
-    data.append("question_id", questionId);
+    data.append("question_id", questionId || "");
     data.append("note_text", $("note-text").value);
     data.append("suggested_grade", $("suggested-grade").value);
     try {
@@ -371,6 +466,7 @@
 
   function setStatus(message) {
     $("save-status").textContent = message;
+    if (message) setGlobalStatus(message);
   }
 
   async function refreshStudents() {
@@ -383,6 +479,9 @@
     const payload = await api("api/stack.php");
     state.stack = payload.stack;
     state.activeStudentId = payload.activeStudentId;
+    if (!state.cursorStudentId && state.activeStudentId) {
+      state.cursorStudentId = state.activeStudentId;
+    }
     renderAll();
   }
 
@@ -393,6 +492,7 @@
     const payload = await postForm("api/stack.php", data);
     showMessage(payload.message);
     state.activeStudentId = payload.activeStudentId;
+    state.cursorStudentId = payload.activeStudentId;
     state.stack = payload.stack;
     renderAll();
   }
@@ -405,7 +505,21 @@
     showMessage(payload.message);
     state.stack = payload.stack;
     state.activeStudentId = payload.activeStudentId;
+    state.cursorStudentId = studentId;
     renderAll();
+  }
+
+  async function moveStudentItem(studentId, nextState) {
+    let item = stackByStudentId(studentId);
+    if (!item || !item.id) {
+      await addToStack(studentId);
+      item = stackByStudentId(studentId);
+    }
+    if (!item || !item.id) {
+      showMessage("Studujícího se nepodařilo přidat do fronty.", "error");
+      return;
+    }
+    await moveStack(item.id, nextState);
   }
 
   async function moveStack(stackId, nextState) {
@@ -417,6 +531,9 @@
     showMessage(payload.message);
     state.stack = payload.stack;
     state.activeStudentId = payload.activeStudentId;
+    if (["preparing", "examining"].includes(nextState)) {
+      state.accordions[nextState] = true;
+    }
     renderAll();
   }
 
@@ -432,45 +549,128 @@
     renderAll();
   }
 
-  async function randomQuestion(stackId) {
-    const data = new FormData();
-    data.append("action", "random_assign");
-    data.append("stack_id", stackId);
-    const payload = await postForm("api/stack.php", data);
-    showMessage(payload.message);
-    state.stack = payload.stack;
-    state.activeStudentId = payload.activeStudentId;
-    renderAll();
-  }
-
   function renderAll() {
     renderStudents();
     renderStack();
     renderQuestion();
     renderNotesContext();
+    renderExamLabel();
   }
 
   function download(format) {
-    const studentId = state.activeStudentId;
+    const studentId = currentStudentId();
     const questionId = selectedQuestionId();
-    if (!studentById(studentId) || !questionById(questionId)) {
-      setStatus("Nelze exportovat: chybí aktivní studující nebo otázka.");
+    if (!studentById(studentId)) {
+      setStatus("Nelze exportovat: chybí studující.");
       return;
     }
-    window.location.href = `api/export_note.php?student_id=${encodeURIComponent(studentId)}&question_id=${encodeURIComponent(questionId)}&format=${format}`;
+    window.location.href = `api/export_note.php?student_id=${encodeURIComponent(studentId)}&question_id=${encodeURIComponent(questionId || "")}&format=${format}`;
+  }
+
+  function setOperationsStatus(message) {
+    const status = $("operations-status");
+    if (status) {
+      status.textContent = message || "";
+    }
+    if (message) setGlobalStatus(message);
+  }
+
+  function setExportStatus(message) {
+    const status = $("export-status");
+    if (status) status.textContent = message || "";
+    if (message) setGlobalStatus(message);
+  }
+
+  function focusRelative(offset) {
+    const visible = state.students.filter((student) => stackItemByStudentId(student.id).state === "waiting");
+    const candidates = visible.length ? visible : state.students;
+    if (!candidates.length) {
+      writeConsole("není koho vybrat");
+      return;
+    }
+    const current = currentStudentId();
+    let index = candidates.findIndex((student) => Number(student.id) === Number(current));
+    if (index < 0) index = 0;
+    index = Math.max(0, Math.min(candidates.length - 1, index + offset));
+    setActiveStudent(candidates[index].id).catch((error) => writeConsole(error.message));
+  }
+
+  function writeConsole(message) {
+    const log = $("console-log");
+    if (!log) return;
+    const line = document.createElement("div");
+    line.textContent = message;
+    log.appendChild(line);
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function runConsoleCommand(raw) {
+    const command = raw.trim().replace(/^:/, "");
+    if (!command) return;
+    writeConsole(":" + command);
+    if (command === "help") {
+      writeConsole("příkazy: :help :add :import :reset :export :logout :focus next :focus prev :active :question active :question manual");
+    } else if (command === "add") {
+      openModal("add");
+    } else if (command === "import") {
+      openModal("import");
+    } else if (command === "reset") {
+      openModal("reset");
+    } else if (command === "export") {
+      openModal("export");
+    } else if (command === "logout") {
+      window.location.href = "logout.php";
+    } else if (command === "focus next") {
+      focusRelative(1);
+    } else if (command === "focus prev") {
+      focusRelative(-1);
+    } else if (command === "active") {
+      const studentId = currentStudentId();
+      if (studentId) setActiveStudent(studentId).catch((error) => writeConsole(error.message));
+      else writeConsole("není vybraný studující");
+    } else if (command === "question active") {
+      state.mode = "follow";
+      renderQuestion();
+    } else if (command === "question manual") {
+      state.mode = "manual";
+      renderQuestion();
+    } else {
+      writeConsole("zatím nepodporováno");
+    }
   }
 
   function initEvents() {
     $("student-form").addEventListener("submit", async (event) => {
       event.preventDefault();
       try {
-        const payload = await postForm("api/students.php", new FormData(event.target));
+        const formData = new FormData(event.target);
+        const noteText = String(formData.get("note_text") || "").trim();
+        const payload = await postForm("api/students.php", formData);
         state.students = payload.students;
+        state.stack = payload.stack || state.stack;
+        if (Object.prototype.hasOwnProperty.call(payload, "activeStudentId")) {
+          state.activeStudentId = payload.activeStudentId;
+        }
+        if (payload.result && payload.result.id) {
+          state.cursorStudentId = payload.result.id;
+          if (noteText) {
+            const noteData = new FormData();
+            noteData.append("student_id", payload.result.id);
+            noteData.append("question_id", "");
+            noteData.append("note_text", noteText);
+            noteData.append("suggested_grade", "");
+            await postForm("api/notes.php", noteData);
+          }
+        }
         event.target.reset();
         showMessage(payload.message);
-        renderStudents();
+        const addStatus = $("add-status");
+        if (addStatus) addStatus.textContent = "";
+        renderAll();
       } catch (error) {
         showMessage(error.message, "error");
+        const addStatus = $("add-status");
+        if (addStatus) addStatus.textContent = error.message;
       }
     });
 
@@ -479,13 +679,74 @@
       try {
         const payload = await postForm("api/students_import.php", new FormData(event.target));
         state.students = payload.students;
+        state.stack = payload.stack || state.stack;
+        if (Object.prototype.hasOwnProperty.call(payload, "activeStudentId")) {
+          state.activeStudentId = payload.activeStudentId;
+        }
         event.target.reset();
         const extra = payload.result && payload.result.errors && payload.result.errors.length ? " " + payload.result.errors.join(" ") : "";
         showMessage((payload.message || `Importováno: ${payload.imported}`) + extra, extra ? "error" : "success");
-        renderStudents();
+        renderAll();
       } catch (error) {
         showMessage(error.message, "error");
       }
+    });
+
+    const sessionLabelForm = $("session-label-form");
+    if (sessionLabelForm) {
+      sessionLabelForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        try {
+          const payload = await postForm("api/session_label.php", new FormData(event.target));
+          state.currentExamLabel = payload.currentExamLabel || "";
+          $("current-exam-label").value = state.currentExamLabel;
+          renderExamLabel();
+          setGlobalStatus(payload.message || "Název termínu byl uložen.");
+        } catch (error) {
+          setGlobalStatus(error.message, "error");
+        }
+      });
+    }
+
+    const resetExamForm = $("reset-exam-form");
+    if (resetExamForm) {
+      resetExamForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const data = new FormData(event.target);
+        if ((data.get("confirmation") || "") !== "RESET") {
+          setOperationsStatus("Pro reset napiš přesně RESET.");
+          return;
+        }
+        try {
+          const payload = await postForm("api/reset_exam.php", data);
+          state.students = [];
+          state.stack = [];
+          state.activeStudentId = null;
+          state.cursorStudentId = null;
+          state.currentExamLabel = payload.currentExamLabel || "";
+          event.target.reset();
+          $("current-exam-label").value = state.currentExamLabel;
+          $("note-text").value = "";
+          $("suggested-grade").value = "";
+          state.noteDirty = false;
+          renderAll();
+          setOperationsStatus(payload.message || "Termín byl resetován.");
+          showMessage(payload.message || "Termín byl resetován.", "success");
+        } catch (error) {
+          setOperationsStatus(error.message);
+        }
+      });
+    }
+
+    ["examining", "preparing", "done"].forEach((stackState) => {
+      const toggle = $(`toggle-${stackState}`);
+      const body = $(`${stackState}-list`);
+      if (!toggle || !body) return;
+      toggle.addEventListener("click", () => {
+        state.accordions[stackState] = !state.accordions[stackState];
+        toggle.setAttribute("aria-expanded", state.accordions[stackState] ? "true" : "false");
+        body.classList.toggle("hidden", !state.accordions[stackState]);
+      });
     });
 
     const isDetectTerms = $("is-detect-terms");
@@ -526,6 +787,9 @@
       state.stack = payload.stack || state.stack;
       if (Object.prototype.hasOwnProperty.call(payload, "activeStudentId")) {
         state.activeStudentId = payload.activeStudentId;
+      }
+      if (!state.cursorStudentId && state.activeStudentId) {
+        state.cursorStudentId = state.activeStudentId;
       }
       renderAll();
       const warningText = payload.warnings && payload.warnings.length ? " Varování: " + payload.warnings.join(" ") : "";
@@ -569,41 +833,89 @@
       });
     }
 
-    document.querySelectorAll("input[name='question_mode']").forEach((input) => {
-      input.addEventListener("change", () => {
-        state.mode = input.value;
-        renderQuestion();
-      });
+    $("question-mode-follow").addEventListener("click", () => {
+      state.mode = "follow";
+      renderQuestion();
+    });
+    $("question-mode-manual").addEventListener("click", () => {
+      state.mode = "manual";
+      renderQuestion();
     });
 
     $("manual-question-select").addEventListener("change", (event) => {
       state.manualQuestionId = event.target.value;
       renderQuestion();
     });
-
-    $("back-to-active").addEventListener("click", () => {
-      state.mode = "follow";
-      document.querySelector("input[name='question_mode'][value='follow']").checked = true;
-      renderQuestion();
+    $("assign-current-question").addEventListener("click", async () => {
+      let item = currentStackItem();
+      const questionId = $("manual-question-select").value || selectedQuestionId();
+      if (!item) {
+        await addToStack(currentStudentId());
+        item = currentStackItem();
+      }
+      if (!item || !questionId) {
+        showMessage("Nelze přiřadit: chybí studující ve frontě nebo otázka.", "error");
+        return;
+      }
+      assignQuestion(item.id, questionId);
     });
 
     $("note-text").addEventListener("input", () => { state.noteDirty = true; });
     $("suggested-grade").addEventListener("input", () => { state.noteDirty = true; });
     $("save-note").addEventListener("click", () => saveNote(true));
     $("copy-note").addEventListener("click", async () => {
-      await navigator.clipboard.writeText($("note-text").value);
-      setStatus("Zkopírováno");
+      try {
+        await navigator.clipboard.writeText($("note-text").value);
+        setStatus("Zkopírováno");
+      } catch (error) {
+        setStatus("Clipboard není dostupný.");
+      }
     });
     $("download-txt").addEventListener("click", () => download("txt"));
     $("download-md").addEventListener("click", () => download("md"));
-    const globalSave = $("global-save");
-    if (globalSave) {
-      globalSave.addEventListener("click", () => saveNote(true));
-    }
-    const globalExport = $("global-export");
-    if (globalExport) {
-      globalExport.addEventListener("click", () => download("txt"));
-    }
+    $("global-add").addEventListener("click", () => openModal("add"));
+    $("global-import").addEventListener("click", () => openModal("import"));
+    $("global-reset").addEventListener("click", () => openModal("reset"));
+    $("global-export-all").addEventListener("click", () => openModal("export"));
+    $("global-help").addEventListener("click", () => openModal("help"));
+    $("global-console").addEventListener("click", () => {
+      openModal("console");
+      writeConsole("zadej :help");
+    });
+    document.querySelectorAll("[data-close-modal]").forEach((button) => {
+      button.addEventListener("click", closeModal);
+    });
+    $("modal-layer").addEventListener("click", (event) => {
+      if (event.target === $("modal-layer")) closeModal();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeModal();
+    });
+    $("copy-all-notes").addEventListener("click", async () => {
+      try {
+        const response = await fetch("api/export_all_notes.php?format=md");
+        const text = await response.text();
+        if (!response.ok) throw new Error(text || "Export selhal.");
+        if (navigator.clipboard) {
+          await navigator.clipboard.writeText(text);
+          $("clipboard-fallback").classList.add("hidden");
+          setExportStatus("Všechny poznámky zkopírovány.");
+        } else {
+          $("clipboard-fallback").classList.remove("hidden");
+          $("clipboard-fallback").value = text;
+          $("clipboard-fallback").select();
+          setExportStatus("Clipboard není dostupný. Označený text zkopíruj ručně.");
+        }
+      } catch (error) {
+        setExportStatus(error.message);
+      }
+    });
+    $("console-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const input = $("console-input");
+      runConsoleCommand(input.value);
+      input.value = "";
+    });
     const fileInput = $("csv-file");
     const fileName = $("csv-file-name");
     if (fileInput && fileName) {

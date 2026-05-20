@@ -1,11 +1,25 @@
 <?php
 
+const GENERAL_NOTE_QUESTION_ID = '__general__';
+
+function normalize_note_question_id(?string $questionId): string
+{
+    $questionId = trim((string)$questionId);
+    return $questionId === '' ? GENERAL_NOTE_QUESTION_ID : $questionId;
+}
+
+function is_general_note_question_id(?string $questionId): bool
+{
+    return normalize_note_question_id($questionId) === GENERAL_NOTE_QUESTION_ID;
+}
+
 function get_note(PDO $pdo, int $studentId, string $questionId): array
 {
+    $questionId = normalize_note_question_id($questionId);
     if (!get_student($pdo, $studentId)) {
         throw new InvalidArgumentException('Studující neexistuje.');
     }
-    if (!find_question($questionId)) {
+    if (!is_general_note_question_id($questionId) && !find_question($questionId)) {
         throw new InvalidArgumentException('Otázka neexistuje.');
     }
     $stmt = $pdo->prepare('SELECT * FROM exam_notes WHERE student_id = :student_id AND question_id = :question_id');
@@ -20,10 +34,11 @@ function get_note(PDO $pdo, int $studentId, string $questionId): array
 
 function save_note(PDO $pdo, int $studentId, string $questionId, string $noteText, string $suggestedGrade): void
 {
+    $questionId = normalize_note_question_id($questionId);
     if (!get_student($pdo, $studentId)) {
         throw new InvalidArgumentException('Studující neexistuje.');
     }
-    if (!find_question($questionId)) {
+    if (!is_general_note_question_id($questionId) && !find_question($questionId)) {
         throw new InvalidArgumentException('Otázka neexistuje.');
     }
     $suggestedGrade = function_exists('mb_substr') ? mb_substr(trim($suggestedGrade), 0, 64) : substr(trim($suggestedGrade), 0, 64);
@@ -44,9 +59,10 @@ function save_note(PDO $pdo, int $studentId, string $questionId, string $noteTex
 
 function export_note_text(PDO $pdo, int $studentId, string $questionId, string $format): string
 {
+    $questionId = normalize_note_question_id($questionId);
     $student = get_student($pdo, $studentId);
-    $question = find_question($questionId);
-    if (!$student || !$question) {
+    $question = is_general_note_question_id($questionId) ? null : find_question($questionId);
+    if (!$student || (!is_general_note_question_id($questionId) && !$question)) {
         throw new InvalidArgumentException('Chybí studující nebo otázka.');
     }
     $note = get_note($pdo, $studentId, $questionId);
@@ -59,7 +75,8 @@ function export_note_text(PDO $pdo, int $studentId, string $questionId, string $
         'UČO' => $student['uco'] ?: '',
         'E-mail' => $student['email'] ?: '',
         'Typ studia' => study_type_label($student['study_type'] ?? 'unknown'),
-        'Otázka' => $question['title'],
+        'Režim poznámky' => is_general_note_question_id($questionId) ? 'Obecná poznámka ke studujícímu' : 'Poznámka k otázce',
+        'Otázka' => $question['title'] ?? '',
         'Navržené hodnocení' => $note['suggested_grade'] ?? '',
     ];
     $notes = (string)($note['note_text'] ?? '');

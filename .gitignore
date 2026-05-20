@@ -21,6 +21,26 @@ __pycache__/
 .venv/
 venv/
 
+# Offline question generator outputs
+data/generated/corpus.jsonl
+data/generated/questions.generated.json
+data/generated/questions.generation-report.md
+data/generated/*.raw.txt
+materials/pdf/*
+materials/pptx/*
+materials/docx/*
+materials/md/*
+!materials/pdf/.gitkeep
+!materials/pptx/.gitkeep
+!materials/docx/.gitkeep
+!materials/md/.gitkeep
+
 # Temporary exports
 exports/
 tmp/
+
+# Teaching/source materials are local and should not be committed
+materials/*
+!materials/.gitkeep
+!materials/*/
+!materials/*/.gitkeep

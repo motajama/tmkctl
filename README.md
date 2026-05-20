@@ -22,8 +22,6 @@ Not implemented yet:
 
 - AI chat
 - Hugging Face integration
-- PDF/PPTX parsing
-- offline question generation
 - embeddings or vector database
 
 ## Directory Structure
@@ -276,6 +274,16 @@ data/backups/questions.reviewed.YYYYMMDD-HHMMSS.json
 Obnova ze zálohy je v této fázi ruční: zkopíruj vybranou zálohu zpět jako `data/questions.reviewed.json` a zkontroluj ji v okně **OTÁZKY**.
 
 Později přibude AI generátor, který může připravit `generated` JSON. Tato fáze pouze spravuje finální reviewed soubor a negeneruje otázky.
+
+## Offline Question Generator
+
+Optional local Python tools can prepare draft question packs from seed questions and local teaching materials:
+
+```text
+docs/offline-question-generator.md
+```
+
+The PHP web dashboard does not require Python and does not call AI. Generated files must be reviewed by a human before they become `data/questions.reviewed.json` and are uploaded through **OTÁZKY**.
 
 ## Security Notes
 

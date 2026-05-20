@@ -15,13 +15,15 @@ const STACK_MOVES = [
 function list_stack(PDO $pdo): array
 {
     cleanup_active_student($pdo);
-    $stmt = $pdo->query('
+    $examStack = db_table('exam_stack');
+    $students = db_table('students');
+    $stmt = $pdo->query("
         SELECT es.id, es.student_id, es.state, es.question_id, es.position, es.updated_at,
                s.name, s.uco, s.email, s.study_type
-        FROM exam_stack es
-        JOIN students s ON s.id = es.student_id
-        ORDER BY FIELD(es.state, "waiting", "preparing", "examining", "done"), es.position ASC, es.updated_at ASC
-    ');
+        FROM {$examStack} es
+        JOIN {$students} s ON s.id = es.student_id
+        ORDER BY FIELD(es.state, 'waiting', 'preparing', 'examining', 'done'), es.position ASC, es.updated_at ASC
+    ");
     $items = $stmt->fetchAll();
     foreach ($items as &$item) {
         $item['study_type_label'] = study_type_label($item['study_type'] ?? 'unknown');
@@ -34,18 +36,20 @@ function add_to_stack(PDO $pdo, int $studentId): void
     if (!get_student($pdo, $studentId)) {
         throw new InvalidArgumentException('Studující neexistuje.');
     }
-    $position = (int)$pdo->query('SELECT COALESCE(MAX(position), 0) + 1 FROM exam_stack')->fetchColumn();
-    $stmt = $pdo->prepare('
-        INSERT INTO exam_stack (student_id, state, position)
-        VALUES (:student_id, "waiting", :position)
+    $examStack = db_table('exam_stack');
+    $position = (int)$pdo->query("SELECT COALESCE(MAX(position), 0) + 1 FROM {$examStack}")->fetchColumn();
+    $stmt = $pdo->prepare("
+        INSERT INTO {$examStack} (student_id, state, position)
+        VALUES (:student_id, 'waiting', :position)
         ON DUPLICATE KEY UPDATE updated_at = CURRENT_TIMESTAMP
-    ');
+    ");
     $stmt->execute([':student_id' => $studentId, ':position' => $position]);
 }
 
 function get_stack_item(PDO $pdo, int $stackId): ?array
 {
-    $stmt = $pdo->prepare('SELECT * FROM exam_stack WHERE id = :id');
+    $examStack = db_table('exam_stack');
+    $stmt = $pdo->prepare("SELECT * FROM {$examStack} WHERE id = :id");
     $stmt->execute([':id' => $stackId]);
     $item = $stmt->fetch();
     return $item ?: null;
@@ -63,7 +67,8 @@ function move_stack_item(PDO $pdo, int $stackId, string $nextState): void
     if (!in_array($nextState, STACK_MOVES[$item['state']] ?? [], true)) {
         throw new InvalidArgumentException('Tento přesun není povolen.');
     }
-    $stmt = $pdo->prepare('UPDATE exam_stack SET state = :state WHERE id = :id');
+    $examStack = db_table('exam_stack');
+    $stmt = $pdo->prepare("UPDATE {$examStack} SET state = :state WHERE id = :id");
     $stmt->execute([':state' => $nextState, ':id' => $stackId]);
 }
 
@@ -79,7 +84,8 @@ function assign_question(PDO $pdo, int $stackId, ?string $questionId): void
     if (!get_stack_item($pdo, $stackId)) {
         throw new InvalidArgumentException('Položka fronty neexistuje.');
     }
-    $stmt = $pdo->prepare('UPDATE exam_stack SET question_id = :question_id WHERE id = :id');
+    $examStack = db_table('exam_stack');
+    $stmt = $pdo->prepare("UPDATE {$examStack} SET question_id = :question_id WHERE id = :id");
     $stmt->execute([':question_id' => $questionId, ':id' => $stackId]);
 }
 
@@ -104,7 +110,8 @@ function cleanup_active_student(PDO $pdo): void
     if ($value === null || !ctype_digit($value)) {
         return;
     }
-    $stmt = $pdo->prepare('SELECT id FROM students WHERE id = :id');
+    $students = db_table('students');
+    $stmt = $pdo->prepare("SELECT id FROM {$students} WHERE id = :id");
     $stmt->execute([':id' => (int)$value]);
     if (!$stmt->fetchColumn()) {
         set_app_setting('active_student_id', null, $pdo);

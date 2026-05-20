@@ -16,11 +16,14 @@ try {
 
     $pdo = db();
     $clearLabel = (string)($_POST['clear_label'] ?? '') === '1';
+    $examNotes = db_table('exam_notes');
+    $examStack = db_table('exam_stack');
+    $students = db_table('students');
     $pdo->beginTransaction();
     try {
-        $pdo->exec('DELETE FROM exam_notes');
-        $pdo->exec('DELETE FROM exam_stack');
-        $pdo->exec('DELETE FROM students');
+        $pdo->exec("DELETE FROM {$examNotes}");
+        $pdo->exec("DELETE FROM {$examStack}");
+        $pdo->exec("DELETE FROM {$students}");
         set_app_setting('active_student_id', null, $pdo);
         if ($clearLabel) {
             set_app_setting('current_exam_label', '', $pdo);

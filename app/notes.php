@@ -1,16 +1,14 @@
 <?php
 
-const GENERAL_NOTE_QUESTION_ID = '__general__';
-
-function normalize_note_question_id(?string $questionId): string
+function normalize_note_question_id(?string $questionId): ?string
 {
     $questionId = trim((string)$questionId);
-    return $questionId === '' ? GENERAL_NOTE_QUESTION_ID : $questionId;
+    return $questionId === '' ? null : $questionId;
 }
 
 function is_general_note_question_id(?string $questionId): bool
 {
-    return normalize_note_question_id($questionId) === GENERAL_NOTE_QUESTION_ID;
+    return normalize_note_question_id($questionId) === null;
 }
 
 function get_note(PDO $pdo, int $studentId, string $questionId): array
@@ -22,8 +20,14 @@ function get_note(PDO $pdo, int $studentId, string $questionId): array
     if (!is_general_note_question_id($questionId) && !find_question($questionId)) {
         throw new InvalidArgumentException('Otázka neexistuje.');
     }
-    $stmt = $pdo->prepare('SELECT * FROM exam_notes WHERE student_id = :student_id AND question_id = :question_id');
-    $stmt->execute([':student_id' => $studentId, ':question_id' => $questionId]);
+    $examNotes = db_table('exam_notes');
+    if ($questionId === null) {
+        $stmt = $pdo->prepare("SELECT * FROM {$examNotes} WHERE student_id = :student_id AND question_id IS NULL");
+        $stmt->execute([':student_id' => $studentId]);
+    } else {
+        $stmt = $pdo->prepare("SELECT * FROM {$examNotes} WHERE student_id = :student_id AND question_id = :question_id");
+        $stmt->execute([':student_id' => $studentId, ':question_id' => $questionId]);
+    }
     return $stmt->fetch() ?: [
         'student_id' => $studentId,
         'question_id' => $questionId,
@@ -42,13 +46,28 @@ function save_note(PDO $pdo, int $studentId, string $questionId, string $noteTex
         throw new InvalidArgumentException('Otázka neexistuje.');
     }
     $suggestedGrade = function_exists('mb_substr') ? mb_substr(trim($suggestedGrade), 0, 64) : substr(trim($suggestedGrade), 0, 64);
-    $stmt = $pdo->prepare('
-        INSERT INTO exam_notes (student_id, question_id, note_text, suggested_grade)
+    $examNotes = db_table('exam_notes');
+    if ($questionId === null) {
+        $stmt = $pdo->prepare("SELECT id FROM {$examNotes} WHERE student_id = :student_id AND question_id IS NULL");
+        $stmt->execute([':student_id' => $studentId]);
+        $noteId = $stmt->fetchColumn();
+        if ($noteId !== false) {
+            $stmt = $pdo->prepare("UPDATE {$examNotes} SET note_text = :note_text, suggested_grade = :suggested_grade WHERE id = :id");
+            $stmt->execute([
+                ':id' => (int)$noteId,
+                ':note_text' => $noteText,
+                ':suggested_grade' => $suggestedGrade,
+            ]);
+            return;
+        }
+    }
+    $stmt = $pdo->prepare("
+        INSERT INTO {$examNotes} (student_id, question_id, note_text, suggested_grade)
         VALUES (:student_id, :question_id, :note_text, :suggested_grade)
         ON DUPLICATE KEY UPDATE
             note_text = VALUES(note_text),
             suggested_grade = VALUES(suggested_grade)
-    ');
+    ");
     $stmt->execute([
         ':student_id' => $studentId,
         ':question_id' => $questionId,

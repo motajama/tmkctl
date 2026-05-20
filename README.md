@@ -148,10 +148,12 @@ Detailed instructions are in [docs/deployment-active24.md](docs/deployment-activ
 
 The installer and schema file create:
 
-- `students`
-- `exam_stack`
-- `exam_notes`
-- `app_settings`
+- `tmkctl_app_settings`
+- `tmkctl_students`
+- `tmkctl_exam_stack`
+- `tmkctl_exam_notes`
+
+The default table prefix is `tmkctl_`. It can be changed with the `table_prefix` config key before installation.
 
 Schema export:
 
@@ -163,6 +165,15 @@ Questions are not inserted into the database in the MVP. They are loaded from:
 
 ```text
 data/questions.reviewed.json
+```
+
+If you previously ran an older installer, remove old unprefixed tables manually before reinstalling:
+
+```sql
+DROP TABLE IF EXISTS exam_notes;
+DROP TABLE IF EXISTS exam_stack;
+DROP TABLE IF EXISTS students;
+DROP TABLE IF EXISTS app_settings;
 ```
 
 ## CSV Import
@@ -212,7 +223,7 @@ data/is-mu-paste.sample.txt
 
 ## Provoz zkouškového dne
 
-V horní části panelu **STUDUJÍCÍ** nastav název aktuálního termínu, například `TMK - 10. 6. 2026`, a ulož ho tlačítkem **ULOŽIT TERMÍN**. Název se ukládá do `app_settings` pod klíčem `current_exam_label` a zobrazuje se ve spodním stavovém řádku.
+Ve spodním stavovém řádku nastav název aktuálního termínu, například `TMK - 10. 6. 2026`, a ulož ho tlačítkem **ULOŽIT TERMÍN**. Název se ukládá do `tmkctl_app_settings` pod klíčem `current_exam_label` a zobrazuje se ve spodním stavovém řádku.
 
 Doporučený postup pro jeden termín:
 

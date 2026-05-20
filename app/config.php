@@ -7,6 +7,7 @@ $defaults = [
     'db_user' => getenv('TMKCTL_DB_USER') ?: '',
     'db_pass' => getenv('TMKCTL_DB_PASS') ?: '',
     'db_charset' => 'utf8mb4',
+    'table_prefix' => getenv('TMKCTL_TABLE_PREFIX') ?: 'tmkctl_',
 
     'database' => [
         'host' => getenv('TMKCTL_DB_HOST') ?: '127.0.0.1',

@@ -36,6 +36,7 @@ Fill in the production database credentials:
 'db_user' => 'DATABASE_USER',
 'db_pass' => 'DATABASE_PASSWORD',
 'db_charset' => 'utf8mb4',
+'table_prefix' => 'tmkctl_',
 ```
 
 Generate a real shared login password hash:
@@ -83,6 +84,22 @@ https://your-domain.example/install.php
 You should see that database tables are prepared.
 
 If `install_enabled` is false, the installer will refuse to run. Temporarily enable it in `app/config.local.php`, run the installer, then disable it again.
+
+The installer creates prefixed tables by default:
+
+- `tmkctl_app_settings`
+- `tmkctl_students`
+- `tmkctl_exam_stack`
+- `tmkctl_exam_notes`
+
+If you previously ran an older installer, remove old unprefixed tables manually before reinstalling:
+
+```sql
+DROP TABLE IF EXISTS exam_notes;
+DROP TABLE IF EXISTS exam_stack;
+DROP TABLE IF EXISTS students;
+DROP TABLE IF EXISTS app_settings;
+```
 
 ## 5. Log In and Test
 

@@ -14,14 +14,15 @@ const IS_IMPORT_MAX_BYTES = 512000;
 
 function is_import_preview_status(PDO $pdo, array $student): array
 {
+    $students = db_table('students');
     if (($student['uco'] ?? '') !== '') {
-        $stmt = $pdo->prepare('SELECT id FROM students WHERE uco = :uco LIMIT 1');
+        $stmt = $pdo->prepare("SELECT id FROM {$students} WHERE uco = :uco LIMIT 1");
         $stmt->execute([':uco' => $student['uco']]);
         if ($stmt->fetchColumn() !== false) {
             return ['status' => 'duplicate_uco', 'label' => 'duplicita podle UČO', 'can_import' => false];
         }
     } else {
-        $stmt = $pdo->prepare('SELECT id FROM students WHERE LOWER(TRIM(name)) = LOWER(TRIM(:name)) LIMIT 1');
+        $stmt = $pdo->prepare("SELECT id FROM {$students} WHERE LOWER(TRIM(name)) = LOWER(TRIM(:name)) LIMIT 1");
         $stmt->execute([':name' => $student['name']]);
         if ($stmt->fetchColumn() !== false) {
             return ['status' => 'possible_duplicate', 'label' => 'možná duplicita', 'can_import' => false];

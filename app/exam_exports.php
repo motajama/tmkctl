@@ -21,15 +21,20 @@ function export_timestamp(): string
 
 function export_students_rows(PDO $pdo): array
 {
-    $stmt = $pdo->query('
+    $students = db_table('students');
+    $examStack = db_table('exam_stack');
+    $examNotes = db_table('exam_notes');
+    $stmt = $pdo->query("
         SELECT s.id, s.name, s.uco, s.email, s.study_type, s.created_at,
                es.state AS stack_status, es.question_id,
                en.note_text AS note, en.suggested_grade, en.updated_at AS note_updated_at
-        FROM students s
-        LEFT JOIN exam_stack es ON es.student_id = s.id
-        LEFT JOIN exam_notes en ON en.student_id = s.id AND en.question_id = COALESCE(es.question_id, "__general__")
-        ORDER BY COALESCE(NULLIF(FIELD(es.state, "examining", "done", "preparing", "waiting"), 0), 5), s.name ASC, s.id ASC
-    ');
+        FROM {$students} s
+        LEFT JOIN {$examStack} es ON es.student_id = s.id
+        LEFT JOIN {$examNotes} en ON en.student_id = s.id AND (
+            en.question_id = es.question_id OR (es.question_id IS NULL AND en.question_id IS NULL)
+        )
+        ORDER BY COALESCE(NULLIF(FIELD(es.state, 'examining', 'done', 'preparing', 'waiting'), 0), 5), s.name ASC, s.id ASC
+    ");
     $questions = [];
     try {
         $questions = question_map();
@@ -49,15 +54,18 @@ function export_students_rows(PDO $pdo): array
 
 function export_notes_rows(PDO $pdo): array
 {
-    $stmt = $pdo->query('
+    $students = db_table('students');
+    $examStack = db_table('exam_stack');
+    $examNotes = db_table('exam_notes');
+    $stmt = $pdo->query("
         SELECT en.student_id, en.question_id, en.note_text, en.suggested_grade, en.updated_at,
                s.name, s.uco, s.email, s.study_type,
                es.state AS stack_status
-        FROM exam_notes en
-        JOIN students s ON s.id = en.student_id
-        LEFT JOIN exam_stack es ON es.student_id = en.student_id
-        ORDER BY COALESCE(NULLIF(FIELD(es.state, "examining", "done", "preparing", "waiting"), 0), 5), s.name ASC, en.updated_at DESC
-    ');
+        FROM {$examNotes} en
+        JOIN {$students} s ON s.id = en.student_id
+        LEFT JOIN {$examStack} es ON es.student_id = en.student_id
+        ORDER BY COALESCE(NULLIF(FIELD(es.state, 'examining', 'done', 'preparing', 'waiting'), 0), 5), s.name ASC, en.updated_at DESC
+    ");
     $questions = [];
     try {
         $questions = question_map();
@@ -67,8 +75,8 @@ function export_notes_rows(PDO $pdo): array
 
     $rows = $stmt->fetchAll();
     foreach ($rows as &$row) {
-        $questionId = (string)($row['question_id'] ?? '');
-        $isGeneral = defined('GENERAL_NOTE_QUESTION_ID') && $questionId === GENERAL_NOTE_QUESTION_ID;
+        $questionId = $row['question_id'] === null ? '' : (string)$row['question_id'];
+        $isGeneral = $questionId === '';
         $row['question_title'] = $isGeneral ? 'Obecná poznámka ke studujícímu' : ($questions[$questionId]['title'] ?? $questionId);
         $row['question_id_export'] = $isGeneral ? '' : $questionId;
         $row['note_mode'] = $isGeneral ? 'general' : 'question';

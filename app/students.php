@@ -28,7 +28,8 @@ function study_type_label(?string $value): string
 
 function list_students(PDO $pdo): array
 {
-    $stmt = $pdo->query('SELECT id, name, uco, email, study_type, created_at, updated_at FROM students ORDER BY name ASC, id ASC');
+    $students = db_table('students');
+    $stmt = $pdo->query("SELECT id, name, uco, email, study_type, created_at, updated_at FROM {$students} ORDER BY name ASC, id ASC");
     $rows = $stmt->fetchAll();
     foreach ($rows as &$row) {
         $row['study_type_label'] = study_type_label($row['study_type'] ?? 'unknown');
@@ -58,7 +59,8 @@ function validate_student_data(array $data): array
 function find_existing_student(PDO $pdo, ?string $uco, string $name, ?string $email): ?int
 {
     if ($uco !== null) {
-        $stmt = $pdo->prepare('SELECT id FROM students WHERE uco = :uco');
+        $students = db_table('students');
+        $stmt = $pdo->prepare("SELECT id FROM {$students} WHERE uco = :uco");
         $stmt->execute([':uco' => $uco]);
         $id = $stmt->fetchColumn();
         if ($id !== false) {
@@ -66,7 +68,8 @@ function find_existing_student(PDO $pdo, ?string $uco, string $name, ?string $em
         }
     }
     if ($email !== null) {
-        $stmt = $pdo->prepare('SELECT id FROM students WHERE LOWER(TRIM(name)) = LOWER(TRIM(:name)) AND LOWER(TRIM(email)) = LOWER(TRIM(:email)) LIMIT 1');
+        $students = db_table('students');
+        $stmt = $pdo->prepare("SELECT id FROM {$students} WHERE LOWER(TRIM(name)) = LOWER(TRIM(:name)) AND LOWER(TRIM(email)) = LOWER(TRIM(:email)) LIMIT 1");
         $stmt->execute([':name' => $name, ':email' => $email]);
         $id = $stmt->fetchColumn();
         if ($id !== false) {
@@ -82,11 +85,12 @@ function add_student(PDO $pdo, array $data): array
     $existingId = find_existing_student($pdo, $student['uco'], $student['name'], $student['email']);
 
     if ($existingId !== null) {
-        $stmt = $pdo->prepare('
-            UPDATE students
+        $studentsTable = db_table('students');
+        $stmt = $pdo->prepare("
+            UPDATE {$studentsTable}
             SET name = :name, uco = :uco, email = :email, study_type = :study_type
             WHERE id = :id
-        ');
+        ");
         $stmt->execute([
             ':id' => $existingId,
             ':name' => $student['name'],
@@ -97,7 +101,8 @@ function add_student(PDO $pdo, array $data): array
         return ['id' => $existingId, 'created' => false];
     }
 
-    $stmt = $pdo->prepare('INSERT INTO students (name, uco, email, study_type) VALUES (:name, :uco, :email, :study_type)');
+    $studentsTable = db_table('students');
+    $stmt = $pdo->prepare("INSERT INTO {$studentsTable} (name, uco, email, study_type) VALUES (:name, :uco, :email, :study_type)");
     $stmt->execute([
         ':name' => $student['name'],
         ':uco' => $student['uco'],
@@ -109,7 +114,8 @@ function add_student(PDO $pdo, array $data): array
 
 function get_student(PDO $pdo, int $studentId): ?array
 {
-    $stmt = $pdo->prepare('SELECT id, name, uco, email, study_type FROM students WHERE id = :id');
+    $students = db_table('students');
+    $stmt = $pdo->prepare("SELECT id, name, uco, email, study_type FROM {$students} WHERE id = :id");
     $stmt->execute([':id' => $studentId]);
     $student = $stmt->fetch();
     if (!$student) {

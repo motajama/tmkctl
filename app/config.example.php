@@ -10,6 +10,7 @@ return [
     'db_user' => 'tmkctl',
     'db_pass' => 'change-me',
     'db_charset' => 'utf8mb4',
+    'table_prefix' => 'tmkctl_',
 
     'database' => [
         'host' => '127.0.0.1',

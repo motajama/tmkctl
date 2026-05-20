@@ -28,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="login-screen">
     <main class="window login-box">
         <div class="panel-title">TMKCTL LOGIN</div>
+        <img class="login-cover" src="assets/ascii-art-text.png" alt="tmkctl">
         <?php if ($error): ?><div class="message error"><?= h($error) ?></div><?php endif; ?>
         <form method="post">
             <label for="password">Sdílené heslo</label>

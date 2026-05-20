@@ -19,9 +19,7 @@ body {
   margin: 0;
   padding-bottom: 38px;
   color: var(--ui-black);
-  background:
-    repeating-linear-gradient(90deg, var(--ui-white) 0 2px, var(--ui-black) 2px 3px),
-    repeating-linear-gradient(0deg, transparent 0 6px, rgba(0, 0, 0, 0.18) 6px 7px);
+  background: var(--ui-white) url("background.png") repeat;
   font-family: ui-monospace, "Courier New", Courier, monospace;
   font-size: 15px;
   line-height: 1.25;
@@ -1104,6 +1102,15 @@ label {
 
 .login-box {
   width: min(420px, calc(100vw - 24px));
+}
+
+.login-cover {
+  display: block;
+  width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+  border-bottom: var(--border);
+  background: var(--ui-white);
 }
 
 .login-box form {

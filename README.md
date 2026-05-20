@@ -84,6 +84,7 @@ For the local database above, use:
 'db_pass' => 'tmkctl_dev_password',
 'db_charset' => 'utf8mb4',
 'install_enabled' => true,
+'debug' => true,
 ```
 
 The example config uses development login password:
@@ -110,11 +111,14 @@ Then log in:
 http://localhost:8000/login.php
 ```
 
-After installation, set this in `app/config.local.php`:
+After successful installation, `install.php` attempts to set this automatically in `app/config.local.php`:
 
 ```php
 'install_enabled' => false,
+'debug' => false,
 ```
+
+If that automatic hardening fails because the file is missing or not writable, set both values manually. For local development, re-enable them manually when you need to rerun the installer.
 
 ## Deployment Overview
 
@@ -139,7 +143,7 @@ Production steps:
 5. Set `install_enabled => true`.
 6. Upload files.
 7. Open `public/install.php` through the browser.
-8. Set `install_enabled => false`.
+8. Confirm the installer reports that `install_enabled` and `debug` were disabled automatically. If it cannot update `app/config.local.php`, set both values to `false` manually.
 9. Log in and import students.
 
 Detailed instructions are in [docs/deployment-active24.md](docs/deployment-active24.md).
@@ -148,10 +152,12 @@ Detailed instructions are in [docs/deployment-active24.md](docs/deployment-activ
 
 The installer and schema file create:
 
-- `students`
-- `exam_stack`
-- `exam_notes`
-- `app_settings`
+- `tmkctl_app_settings`
+- `tmkctl_students`
+- `tmkctl_exam_stack`
+- `tmkctl_exam_notes`
+
+The default table prefix is `tmkctl_`. It can be changed with the `table_prefix` config key before installation.
 
 Schema export:
 
@@ -163,6 +169,15 @@ Questions are not inserted into the database in the MVP. They are loaded from:
 
 ```text
 data/questions.reviewed.json
+```
+
+If you previously ran an older installer, remove old unprefixed tables manually before reinstalling:
+
+```sql
+DROP TABLE IF EXISTS exam_notes;
+DROP TABLE IF EXISTS exam_stack;
+DROP TABLE IF EXISTS students;
+DROP TABLE IF EXISTS app_settings;
 ```
 
 ## CSV Import
@@ -212,7 +227,7 @@ data/is-mu-paste.sample.txt
 
 ## Provoz zkouškového dne
 
-V horní části panelu **STUDUJÍCÍ** nastav název aktuálního termínu, například `TMK - 10. 6. 2026`, a ulož ho tlačítkem **ULOŽIT TERMÍN**. Název se ukládá do `app_settings` pod klíčem `current_exam_label` a zobrazuje se ve spodním stavovém řádku.
+Ve spodním stavovém řádku nastav název aktuálního termínu, například `TMK - 10. 6. 2026`, a ulož ho tlačítkem **ULOŽIT TERMÍN**. Název se ukládá do `tmkctl_app_settings` pod klíčem `current_exam_label` a zobrazuje se ve spodním stavovém řádku.
 
 Doporučený postup pro jeden termín:
 
@@ -238,7 +253,7 @@ Před resetem vždy nejdřív udělej export. Reset neslouží jako záloha a ne
 
 - Do not commit `app/config.local.php`.
 - Do not deploy with the example password.
-- Disable `install.php` after setup with `install_enabled => false`.
+- After setup, keep `install_enabled => false` and `debug => false`. The installer attempts to set both automatically.
 - Back up `app/config.local.php` privately.
 - Back up the MySQL database before exams or deployments.
 - Back up `data/questions.reviewed.json`; the web app treats it as read-only.

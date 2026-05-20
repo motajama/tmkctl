@@ -202,7 +202,32 @@ php -S 127.0.0.1:8000 -t public</pre>
                 <p><b>Kurzor vs. stav:</b> znak &gt; značí vybraný řádek. [ZK] je zkoušený/á, [P] je na potítku, [OK] je hotovo.</p>
                 <p><b>Stavový řádek:</b> běžné zprávy a uložení termínu jsou dole v liště. TERMÍN vpravo ukládá aktuální název zkouškového dne.</p>
                 <p><b>Export/reset:</b> EXPORTUJ VŠE stáhne všechny poznámky a stav. Před RESET vždy exportuj. Reset nemaže otázky.</p>
-                <p><b>Konzole:</b> použij :help, :add, :import, :reset, :export, :logout, :focus next, :focus prev, :active, :question active, :question manual.</p>
+                <p><b>Otázkový balík:</b> OTÁZKY otevře kontrolu a nahrání ručně zkontrolovaného <code>questions.reviewed.json</code>. Validace kontroluje strukturu, ne odbornou správnost.</p>
+                <p><b>Konzole:</b> použij :help, :add, :import, :reset, :export, :questions, :logout, :focus next, :focus prev, :active, :question active, :question manual.</p>
+            </div>
+        </section>
+
+        <section id="modal-questions" class="modal-window hidden" role="dialog" aria-modal="true" aria-labelledby="modal-questions-title">
+            <div class="modal-title"><span id="modal-questions-title">OTÁZKY</span><button class="modal-close" type="button" data-close-modal>[X]</button></div>
+            <div class="modal-body">
+                <div class="reset-warning">Otázky se používají při zkoušení. Nahrávej pouze ručně zkontrolovaný questions.reviewed.json.</div>
+                <div id="question-pack-status" class="question-pack-status"></div>
+                <div class="button-row tight">
+                    <button id="validate-question-pack" type="button">VALIDOVAT</button>
+                </div>
+                <form id="question-pack-upload-form" class="compact-form">
+                    <input type="hidden" name="csrf_token" value="<?= h(csrf_token()) ?>">
+                    <div class="file-control">
+                        <input id="questions-json-file" class="file-native" type="file" name="questions_json" accept=".json,application/json" required>
+                        <label class="file-button" for="questions-json-file" tabindex="0">VYBRAT JSON</label>
+                        <span id="questions-json-file-name" class="file-name">no file selected</span>
+                    </div>
+                    <div class="button-row tight">
+                        <button type="submit">NAHRÁT NOVÝ BALÍK</button>
+                        <button type="button" data-close-modal>ZAVŘÍT</button>
+                    </div>
+                </form>
+                <div id="question-pack-result" class="status-line"></div>
             </div>
         </section>
 
@@ -226,6 +251,7 @@ php -S 127.0.0.1:8000 -t public</pre>
                 <button id="global-import" type="button">IMPORT</button>
                 <button id="global-reset" type="button">RESET</button>
                 <button id="global-export-all" type="button">EXPORTUJ VŠE</button>
+                <button id="global-questions" type="button">OTÁZKY</button>
                 <button id="global-help" type="button">NÁPOVĚDA</button>
                 <button id="global-console" type="button">KONZOLE</button>
             <?php endif; ?>

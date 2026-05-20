@@ -218,7 +218,7 @@ Doporučený postup pro jeden termín:
 
 1. Nastav název termínu.
 2. Importuj studující z CSV nebo z IS MU.
-3. Proveď zkoušení běžným stack workflow.
+3. Proveď zkoušení přes frontu, potítko, zkoušení a hotovo.
 4. Průběžně ukládej poznámky.
 5. Po skončení použij spodní příkaz **EXPORTUJ VŠE**.
 6. Před dalším termínem použij spodní příkaz **RESET**.

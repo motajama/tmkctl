@@ -56,36 +56,31 @@ php -S 127.0.0.1:8000 -t public</pre>
                     <input id="current-exam-label" name="current_exam_label" value="<?= h($currentExamLabel) ?>" placeholder="TMK - 10. 6. 2026" aria-label="Název aktuálního termínu">
                     <button type="submit">ULOŽIT TERMÍN</button>
                 </form>
-                <button id="open-import-inline" type="button">IMPORT</button>
             </section>
-            <form id="student-form" class="compact-form">
-                <input type="hidden" name="csrf_token" value="<?= h(csrf_token()) ?>">
-                <input name="name" placeholder="Jméno" required>
-                <input name="uco" placeholder="UČO">
-                <input name="email" placeholder="E-mail">
-                <select name="study_type">
-                    <option value="unknown">neznámé</option>
-                    <option value="single">jednoobor</option>
-                    <option value="double">dvouobor</option>
-                </select>
-                <button type="submit">PŘIDAT DO SEZNAMU</button>
-            </form>
-            <div class="split-title">SEZNAM</div>
+            <section class="status-accordion status-examining">
+                <button id="toggle-examining" class="accordion-title" type="button" aria-expanded="false">ZKOUŠENÝ / ZKOUŠENÁ <span id="examining-count">(0)</span></button>
+                <div id="examining-list" class="accordion-body hidden"></div>
+            </section>
+            <section class="status-accordion status-preparing">
+                <button id="toggle-preparing" class="accordion-title" type="button" aria-expanded="false">NA POTÍTKU <span id="preparing-count">(0)</span></button>
+                <div id="preparing-list" class="accordion-body hidden"></div>
+            </section>
+            <div class="split-title">FRONTA</div>
             <div id="messages" class="messages"></div>
             <div id="students-list" class="listbox"></div>
-            <div class="split-title">FRONTA</div>
-            <div id="stack-board" class="stack-board"></div>
+            <section class="status-accordion status-done">
+                <button id="toggle-done" class="accordion-title" type="button" aria-expanded="false">HOTOVO <span id="done-count">(0)</span></button>
+                <div id="done-list" class="accordion-body hidden"></div>
+            </section>
         </section>
 
         <section id="question-window" class="panel window center-panel">
             <div class="panel-title">OTÁZKA</div>
             <section class="question-toolbar panel-controls">
-                <button id="question-mode-follow" class="mode-button selected" type="button" title="Člověk: zobrazit otázku podle studujícího">[ČLOVĚK]</button>
-                <button id="question-mode-manual" class="mode-button" type="button" title="Ruka: ruční výběr otázky">[RUKA]</button>
+                <button id="question-mode-follow" class="mode-button selected" type="button" title="Otázka podle studujícího">[●]</button>
+                <button id="question-mode-manual" class="mode-button" type="button" title="Ruční výběr otázky">[□]</button>
                 <select id="manual-question-select"></select>
-                <button id="draw-current-question" type="button">LOSOVAT</button>
                 <button id="assign-current-question" type="button">PŘIŘADIT</button>
-                <button id="back-to-active" type="button">PODLE STUDUJÍCÍHO</button>
             </section>
             <?php if ($questionLoad['error']): ?>
                 <div class="manual-warning"><?= h($questionLoad['error']) ?></div>
@@ -121,6 +116,29 @@ php -S 127.0.0.1:8000 -t public</pre>
 
     <?php if (!$setupError): ?>
     <div id="modal-layer" class="modal-layer hidden" aria-live="polite">
+        <section id="modal-add" class="modal-window hidden" role="dialog" aria-modal="true" aria-labelledby="modal-add-title">
+            <div class="modal-title"><span id="modal-add-title">PŘIDAT STUDUJÍCÍHO</span><button class="modal-close" type="button" data-close-modal>[X]</button></div>
+            <div class="modal-body">
+                <form id="student-form" class="compact-form">
+                    <input type="hidden" name="csrf_token" value="<?= h(csrf_token()) ?>">
+                    <input name="name" placeholder="Jméno" required>
+                    <input name="uco" placeholder="UČO">
+                    <input name="email" placeholder="E-mail">
+                    <select name="study_type">
+                        <option value="unknown">neznámé</option>
+                        <option value="single">jednoobor</option>
+                        <option value="double">dvouobor</option>
+                    </select>
+                    <textarea name="note_text" rows="4" placeholder="Volitelná poznámka"></textarea>
+                    <div class="button-row tight">
+                        <button type="submit">PŘIDAT</button>
+                        <button type="button" data-close-modal>ZAVŘÍT</button>
+                    </div>
+                </form>
+                <div id="add-status" class="status-line"></div>
+            </div>
+        </section>
+
         <section id="modal-import" class="modal-window hidden" role="dialog" aria-modal="true" aria-labelledby="modal-import-title">
             <div class="modal-title"><span id="modal-import-title">IMPORT</span><button class="modal-close" type="button" data-close-modal>[X]</button></div>
             <div class="modal-body">
@@ -185,13 +203,13 @@ php -S 127.0.0.1:8000 -t public</pre>
         <section id="modal-help" class="modal-window hidden" role="dialog" aria-modal="true" aria-labelledby="modal-help-title">
             <div class="modal-title"><span id="modal-help-title">NÁPOVĚDA</span><button class="modal-close" type="button" data-close-modal>[X]</button></div>
             <div class="modal-body help-text">
-                <p><b>Import:</b> otevři IMPORT, nahraj CSV nebo vlož text z IS MU po Ctrl+A/Ctrl+C. Detekce bere pouze termíny Teorie masové komunikace / TMK. Importovaní jdou do FRONTY.</p>
-                <p><b>Fronta:</b> FRONTA čeká, POTÍTKO se připravuje, ZKOUŠENÍ právě běží, HOTOVO je uzavřeno. Tlačítka v kartě přesouvají jen povolené stavy.</p>
-                <p><b>Otázky:</b> [ČLOVĚK] ukazuje otázku podle vybraného studujícího. [RUKA] je ruční výběr a nezapisuje otázku ke studujícímu. Losovat/vybrat otázku lze ve frontě.</p>
+                <p><b>Přidání/import:</b> spodní PŘIDAT otevře ruční přidání. IMPORT nahraje CSV nebo text z IS MU po Ctrl+A/Ctrl+C. Detekce bere pouze termíny Teorie masové komunikace / TMK. Noví studující jdou do fronty.</p>
+                <p><b>Fronta:</b> hlavní seznam je FRONTA. ZKOUŠENÝ/ZKOUŠENÁ a NA POTÍTKU jsou nahoře v rozbalovacích panelech. HOTOVO je dole jako sekundární sekce.</p>
+                <p><b>Otázky:</b> studující si otázku vybírá sám. [●] ukazuje otázku podle studujícího. [□] je ruční výběr. Tlačítko PŘIŘADIT uloží vybranou otázku vybranému studujícímu.</p>
                 <p><b>Poznámky:</b> bez otázky se ukládá obecná poznámka ke studujícímu. S otázkou se ukládá poznámka k otázce. Pravé TXT/MD exporty jsou jen pro aktuální poznámku.</p>
-                <p><b>Kurzor vs. zkoušení:</b> znak &gt; značí vybraný řádek. [ZK] a inverze značí studujícího ve stavu ZKOUŠENÍ.</p>
+                <p><b>Kurzor vs. stav:</b> znak &gt; značí vybraný řádek. [ZK] je zkoušený/á, [P] je na potítku, [OK] je hotovo.</p>
                 <p><b>Export/reset:</b> EXPORTUJ VŠE stáhne všechny poznámky a stav. Před RESET vždy exportuj. Reset nemaže otázky.</p>
-                <p><b>Konzole:</b> použij :help, :import, :reset, :export, :logout, :focus next, :focus prev, :active, :question active, :question manual.</p>
+                <p><b>Konzole:</b> použij :help, :add, :import, :reset, :export, :logout, :focus next, :focus prev, :active, :question active, :question manual.</p>
             </div>
         </section>
 
@@ -211,6 +229,7 @@ php -S 127.0.0.1:8000 -t public</pre>
     <footer class="global-command-bar">
         <nav class="global-actions" aria-label="Globální příkazy">
             <?php if (!$setupError): ?>
+                <button id="global-add" type="button">PŘIDAT</button>
                 <button id="global-import" type="button">IMPORT</button>
                 <button id="global-reset" type="button">RESET</button>
                 <button id="global-export-all" type="button">EXPORTUJ VŠE</button>

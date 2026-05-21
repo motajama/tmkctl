@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/settings.php';
+require_once __DIR__ . '/workspaces.php';
 
 const STACK_LABELS = [
     'examining' => 'zkoušen/a',
@@ -17,6 +18,11 @@ function stack_state_label(?string $state): string
 function export_timestamp(): string
 {
     return date('Y-m-d-His');
+}
+
+function export_basename(PDO $pdo, int $workspaceId, string $kind): string
+{
+    return 'tmkctl-' . $kind . '-' . exam_filename_label($pdo, $workspaceId) . '-' . export_timestamp();
 }
 
 function export_students_rows(PDO $pdo, int $workspaceId): array
@@ -106,7 +112,7 @@ function markdown_fence(string $value): string
 
 function build_all_notes_markdown(PDO $pdo, int $workspaceId): string
 {
-    $label = (string)get_app_setting('current_exam_label', '', $workspaceId, $pdo);
+    $label = exam_display_label($pdo, $workspaceId);
     $rows = export_notes_rows($pdo, $workspaceId);
 
     $out = "# Zápisy ze zkoušení\n\n";
@@ -140,7 +146,7 @@ function build_all_notes_markdown(PDO $pdo, int $workspaceId): string
 
 function build_all_notes_text(PDO $pdo, int $workspaceId): string
 {
-    $label = (string)get_app_setting('current_exam_label', '', $workspaceId, $pdo);
+    $label = exam_display_label($pdo, $workspaceId);
     $rows = export_notes_rows($pdo, $workspaceId);
     $out = "Zápisy ze zkoušení\n";
     $out .= "Exportováno: " . date('Y-m-d H:i:s') . "\n";
@@ -209,7 +215,7 @@ function build_exam_state(PDO $pdo, int $workspaceId): array
 
     return [
         'exported_at' => date('c'),
-        'current_exam_label' => (string)get_app_setting('current_exam_label', '', $workspaceId, $pdo),
+        'current_exam_label' => exam_display_label($pdo, $workspaceId),
         'students' => export_students_rows($pdo, $workspaceId),
         'stack' => list_stack($pdo, $workspaceId),
         'notes' => export_notes_rows($pdo, $workspaceId),

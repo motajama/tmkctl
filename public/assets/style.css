@@ -1203,31 +1203,14 @@ label {
   white-space: nowrap;
 }
 
-.session-bar-form {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.session-bar-form label {
-  margin: 0;
-  font-size: 12px;
-}
-
-.session-bar-form input {
-  width: min(220px, 22vw);
-  min-height: 24px;
-  padding: 1px 5px;
-}
-
-.session-bar-form button {
-  min-height: 24px;
-  padding: 1px 6px;
-  white-space: nowrap;
-}
-
 #global-active-student {
   max-width: 34vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#global-workspace-label {
+  max-width: 28vw;
   overflow: hidden;
   text-overflow: ellipsis;
 }

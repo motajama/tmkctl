@@ -37,7 +37,7 @@ try {
         $zip->close();
 
         header('Content-Type: application/zip');
-        header('Content-Disposition: attachment; filename="tmkctl-export-' . export_timestamp() . '.zip"');
+        header('Content-Disposition: attachment; filename="' . export_basename($pdo, $workspaceId, 'export') . '.zip"');
         header('Content-Length: ' . filesize($zipPath));
         readfile($zipPath);
         @unlink($zipPath);
@@ -45,7 +45,7 @@ try {
     }
 
     header('Content-Type: application/json; charset=utf-8');
-    header('Content-Disposition: attachment; filename="tmkctl-export-' . export_timestamp() . '.json"');
+    header('Content-Disposition: attachment; filename="' . export_basename($pdo, $workspaceId, 'export') . '.json"');
     echo $json . "\n";
 } catch (Throwable $e) {
     http_response_code(400);

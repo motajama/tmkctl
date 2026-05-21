@@ -8,6 +8,8 @@
     activeStudentId: window.TMKCTL.activeStudentId || null,
     cursorStudentId: window.TMKCTL.activeStudentId || null,
     currentExamLabel: window.TMKCTL.currentExamLabel || "",
+    workspaceLabel: window.TMKCTL.workspaceLabel || "",
+    examDisplayLabel: window.TMKCTL.examDisplayLabel || window.TMKCTL.currentExamLabel || window.TMKCTL.workspaceLabel || "",
     mode: "follow",
     manualQuestionId: null,
     currentNoteKey: "",
@@ -419,7 +421,12 @@
   function renderExamLabel() {
     const label = $("global-exam-label");
     if (label) {
-      label.textContent = state.currentExamLabel ? `TERMÍN: ${state.currentExamLabel}` : "";
+      label.textContent = state.examDisplayLabel ? `TERMÍN: ${state.examDisplayLabel}` : "";
+    }
+    const workspaceLabel = $("global-workspace-label");
+    if (workspaceLabel) {
+      workspaceLabel.textContent = state.workspaceLabel || state.examDisplayLabel || "tmkctl";
+      workspaceLabel.title = workspaceLabel.textContent;
     }
   }
 
@@ -798,22 +805,6 @@
       }
     });
 
-    const sessionLabelForm = $("session-label-form");
-    if (sessionLabelForm) {
-      sessionLabelForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        try {
-          const payload = await postForm("api/session_label.php", new FormData(event.target));
-          state.currentExamLabel = payload.currentExamLabel || "";
-          $("current-exam-label").value = state.currentExamLabel;
-          renderExamLabel();
-          setGlobalStatus(payload.message || "Název termínu byl uložen.");
-        } catch (error) {
-          setGlobalStatus(error.message, "error");
-        }
-      });
-    }
-
     const resetExamForm = $("reset-exam-form");
     if (resetExamForm) {
       resetExamForm.addEventListener("submit", async (event) => {
@@ -830,8 +821,8 @@
           state.activeStudentId = null;
           state.cursorStudentId = null;
           state.currentExamLabel = payload.currentExamLabel || "";
+          state.examDisplayLabel = payload.examDisplayLabel || state.currentExamLabel || state.workspaceLabel || "";
           event.target.reset();
-          $("current-exam-label").value = state.currentExamLabel;
           $("note-text").value = "";
           $("suggested-grade").value = "";
           state.noteDirty = false;

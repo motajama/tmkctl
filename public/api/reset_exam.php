@@ -46,6 +46,7 @@ try {
             ? 'Termín byl resetován včetně názvu.'
             : 'Termín byl resetován. Název termínu zůstal zachován.',
         'currentExamLabel' => (string)get_app_setting('current_exam_label', '', $workspaceId, $pdo),
+        'examDisplayLabel' => exam_display_label($pdo, $workspaceId),
     ]);
 } catch (Throwable $e) {
     json_response(['ok' => false, 'error' => public_error_message($e)], 400);

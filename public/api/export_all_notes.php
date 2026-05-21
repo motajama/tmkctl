@@ -18,7 +18,7 @@ try {
     $body = $format === 'txt' ? build_all_notes_text($pdo, $workspaceId) : build_all_notes_markdown($pdo, $workspaceId);
     $extension = $format === 'txt' ? 'txt' : 'md';
     header('Content-Type: text/plain; charset=utf-8');
-    header('Content-Disposition: attachment; filename="tmkctl-notes-' . export_timestamp() . '.' . $extension . '"');
+    header('Content-Disposition: attachment; filename="' . export_basename($pdo, $workspaceId, 'notes') . '.' . $extension . '"');
     echo $body;
 } catch (Throwable $e) {
     http_response_code(400);

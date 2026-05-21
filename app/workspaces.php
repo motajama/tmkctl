@@ -200,6 +200,54 @@ function current_workspace_label(PDO $pdo): string
     return $workspace ? (string)$workspace['label'] : '';
 }
 
+function is_placeholder_exam_label(?string $label): bool
+{
+    $label = trim((string)$label);
+    if ($label === '') {
+        return true;
+    }
+    $normalized = function_exists('mb_strtolower') ? mb_strtolower($label, 'UTF-8') : strtolower($label);
+    $normalized = strtr($normalized, [
+        'á' => 'a', 'č' => 'c', 'ď' => 'd', 'é' => 'e', 'ě' => 'e',
+        'í' => 'i', 'ň' => 'n', 'ó' => 'o', 'ř' => 'r', 'š' => 's',
+        'ť' => 't', 'ú' => 'u', 'ů' => 'u', 'ý' => 'y', 'ž' => 'z',
+    ]);
+    $normalized = trim(preg_replace('/\s+/', ' ', $normalized) ?? $normalized);
+    if ($normalized === '' || str_contains($normalized, 'placeholder')) {
+        return true;
+    }
+    return in_array($normalized, [
+        'current exam label',
+        'datum terminu',
+        'nazev terminu',
+        'termin',
+    ], true) || str_starts_with($normalized, 'termin...');
+}
+
+function workspace_display_label(PDO $pdo, int $workspaceId): string
+{
+    $workspace = get_workspace($pdo, $workspaceId);
+    $workspaceLabel = trim((string)($workspace['label'] ?? ''));
+    if ($workspaceLabel !== '') {
+        return $workspaceLabel;
+    }
+    $saved = (string)get_app_setting('current_exam_label', '', $workspaceId, $pdo);
+    return !is_placeholder_exam_label($saved) ? trim($saved) : 'tmkctl';
+}
+
+function exam_display_label(PDO $pdo, int $workspaceId): string
+{
+    return workspace_display_label($pdo, $workspaceId);
+}
+
+function exam_filename_label(PDO $pdo, int $workspaceId): string
+{
+    $label = exam_display_label($pdo, $workspaceId);
+    $safe = preg_replace('/[^A-Za-z0-9_-]+/', '-', $label) ?? '';
+    $safe = trim($safe, '-_');
+    return $safe !== '' ? $safe : 'tmkctl';
+}
+
 function debug_stage_note(): string
 {
     $path = dirname(__DIR__) . '/data/debug-stage.txt';

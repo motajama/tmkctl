@@ -19,6 +19,7 @@ $activeStudentId = null;
 $currentExamLabel = '';
 $workspaceId = null;
 $workspaceLabel = '';
+$examDisplayLabel = '';
 $debugStageNote = '';
 
 try {
@@ -30,6 +31,7 @@ try {
     $activeStudentId = get_active_student_id($pdo, $workspaceId);
     $currentExamLabel = (string)get_app_setting('current_exam_label', '', $workspaceId, $pdo);
     $workspaceLabel = current_workspace_label($pdo);
+    $examDisplayLabel = exam_display_label($pdo, $workspaceId);
     if (!empty($config['debug'])) {
         $debugStageNote = debug_stage_note();
     }
@@ -293,15 +295,8 @@ php -S 127.0.0.1:8000 -t public</pre>
         <div class="global-status">
             <?php if (!$setupError): ?>
                 <span id="global-active-student"></span>
-                <span id="global-workspace-label">RELACE: <?= h($workspaceLabel) ?></span>
-                <form id="session-label-form" class="session-bar-form">
-                    <input type="hidden" name="csrf_token" value="<?= h(csrf_token()) ?>">
-                    <label for="current-exam-label">TERMÍN</label>
-                    <input id="current-exam-label" name="current_exam_label" value="<?= h($currentExamLabel) ?>" placeholder="TMK - 10. 6. 2026">
-                    <button type="submit">ULOŽIT TERMÍN</button>
-                </form>
+                <span id="global-workspace-label" title="<?= h($examDisplayLabel) ?>"><?= h($examDisplayLabel) ?></span>
             <?php endif; ?>
-            <span><?= h($config['app_name']) ?></span>
             <time id="global-time" datetime="<?= h(date('c')) ?>"><?= h(date('H:i')) ?></time>
         </div>
     </footer>
@@ -316,6 +311,7 @@ php -S 127.0.0.1:8000 -t public</pre>
                 'stack' => $stack,
                 'activeStudentId' => $activeStudentId,
                 'currentExamLabel' => $currentExamLabel,
+                'examDisplayLabel' => $examDisplayLabel,
                 'workspaceId' => $workspaceId,
                 'workspaceLabel' => $workspaceLabel,
                 'debug' => !empty($config['debug']),

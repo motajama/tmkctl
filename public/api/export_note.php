@@ -5,6 +5,7 @@ require_once __DIR__ . '/../../app/auth.php';
 require_once __DIR__ . '/../../app/questions.php';
 require_once __DIR__ . '/../../app/students.php';
 require_once __DIR__ . '/../../app/notes.php';
+require_once __DIR__ . '/../../app/exam_exports.php';
 require_once __DIR__ . '/../../app/workspaces.php';
 
 require_auth();
@@ -19,7 +20,7 @@ try {
     $extension = $format === 'md' ? 'md' : 'txt';
     $safeQuestion = preg_replace('/[^A-Za-z0-9_-]/', '', $questionId) ?: 'general';
     header('Content-Type: text/plain; charset=utf-8');
-    header('Content-Disposition: attachment; filename="tmkctl-note-' . $studentId . '-' . $safeQuestion . '.' . $extension . '"');
+    header('Content-Disposition: attachment; filename="' . export_basename($pdo, $workspaceId, 'note') . '-' . $studentId . '-' . $safeQuestion . '.' . $extension . '"');
     echo $body;
 } catch (Throwable $e) {
     http_response_code(400);

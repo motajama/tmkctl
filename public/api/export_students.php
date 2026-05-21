@@ -12,9 +12,9 @@ require_auth();
 
 try {
     header('Content-Type: text/csv; charset=utf-8');
-    header('Content-Disposition: attachment; filename="tmkctl-students-' . export_timestamp() . '.csv"');
     $pdo = db();
     $workspaceId = require_current_workspace($pdo);
+    header('Content-Disposition: attachment; filename="' . export_basename($pdo, $workspaceId, 'students') . '.csv"');
     echo build_students_csv($pdo, $workspaceId);
 } catch (Throwable $e) {
     http_response_code(400);

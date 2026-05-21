@@ -1,0 +1,340 @@
+[
+  {
+    "id": "nova-media-q27",
+    "title": "Technologické vlastnosti nových médií",
+    "short_title": "Technologické vlastnosti nových médií",
+    "outline": [
+      "Vymezit digitální média, digitální kódování a digitalizaci jako jádro technologické proměny médií.",
+      "Zasadit digitální média do historického rámce globální komunikační revoluce: internet, digitální fotoaparát, mobilní telefon.",
+      "U internetu uvést kořeny po druhé světové válce, vojenský a výzkumný kontext počítačových sítí, ARPA/ARPAnet a první e-mailový program.",
+      "U World Wide Webu vysvětlit princip propojených hypertextových dokumentů, nelineární strukturu odkazů, protokol HTTP a roli Tima Berners-Leeho.",
+      "U digitální fotografie uvést experimenty od 60. let, prototyp Steva Sassona ve firmě Kodak v roce 1975, komerční digitální fotoaparát Fuji v roce 1988 a ovládnutí trhu v polovině prvního desetiletí 21. století.",
+      "U mobilního telefonu uvést kořeny v automobilových telefonech 50. let, rozvoj od 80. let, boom na konci 20. století a nástup dotykových smartphonů od přelomu prvního a druhého desetiletí 21. století.",
+      "Doplnit upozornění, že seznam otázek výslovně požaduje Feldmanovy vlastnosti digitální informace a Manovichovy vlastnosti nových médií, ale dodaný ZIP jejich výklad neobsahuje."
+    ],
+    "key_terms": [
+      {
+        "term": "digitální média",
+        "definition": "Položka je v seznamu otázek spojena s digitálním kódováním a digitalizací. Dodaný ZIP ji nerozvádí teoreticky, ale ilustruje ji historickým vývojem internetu, digitálního fotoaparátu a mobilního telefonu.",
+        "authors": []
+      },
+      {
+        "term": "digitalizace",
+        "definition": "V seznamu otázek je uvedena jako základní součást technologických vlastností nových médií. V dodaném ZIPu je doložena hlavně přes dějinné příklady digitalizované komunikace a obrazu: internet, WWW, digitální fotoaparát a mobilní telefon.",
+        "authors": []
+      },
+      {
+        "term": "ARPAnet",
+        "definition": "Experimentální síť vytvořená v USA v roce 1969 agenturou ARPA; v materiálu je vyložena jako jeden z kořenů internetu a jako pokus vytvořit síť bez centrálního řídicího uzlu.",
+        "authors": [
+          "ARPA"
+        ]
+      },
+      {
+        "term": "e-mail",
+        "definition": "První e-mailový program je v materiálu zasazen do počátku 70. let a navazuje na raný vývoj počítačových sítí.",
+        "authors": []
+      },
+      {
+        "term": "World Wide Web",
+        "definition": "Soustava propojených hypertextových dokumentů fungující nelineárně, na bázi hypertextových odkazů; podle materiálu koncept prezentoval Tim Berners-Lee v roce 1989 a o dva roky později vytvořil první webovou stránku.",
+        "authors": [
+          "Tim Berners-Lee"
+        ]
+      },
+      {
+        "term": "HTTP",
+        "definition": "Hypertext Transfer Protocol; v materiálu je uveden jako protokol, pomocí něhož lze v rámci WWW získávat informace.",
+        "authors": []
+      },
+      {
+        "term": "digitální fotoaparát",
+        "definition": "Médium obrazového záznamu spojené s digitalizací fotografie; materiál uvádí kosmický program v 60. letech, prototyp Steva Sassona ve firmě Kodak z roku 1975, komerční fotoaparát Fuji z roku 1988 a tržní převahu digitálních fotoaparátů v polovině prvního desetiletí 21. století.",
+        "authors": [
+          "Steve Sasson"
+        ]
+      },
+      {
+        "term": "mobilní telefon",
+        "definition": "Komunikační technologie s kořeny v automobilových telefonech 50. let; podle materiálu se širší využití připravovalo od 80. let, boom nastal v závěru 20. století a od přelomu prvního a druhého desetiletí 21. století se šíří dotykové smartphony.",
+        "authors": []
+      },
+      {
+        "term": "smartphone",
+        "definition": "Dotykový mobilní telefon; v materiálu je uveden jako navazující fáze po tlačítkových mobilních telefonech od přelomu prvního a druhého desetiletí 21. století.",
+        "authors": []
+      },
+      {
+        "term": "Feldmanovy vlastnosti digitální informace",
+        "definition": "Seznam otázek výslovně požaduje Feldmana a jeho vlastnosti digitální informace. Dodaný ZIP však tento výklad neobsahuje, proto je nutné doplnit příslušný studijní zdroj před finální revizí.",
+        "authors": [
+          "Tony Feldman"
+        ]
+      },
+      {
+        "term": "Manovichovy vlastnosti nových médií",
+        "definition": "Seznam otázek výslovně požaduje Manoviche a jeho vlastnosti nových médií. Dodaný ZIP však jejich výklad neobsahuje; k dispozici je pouze informace ze seznamu literatury, že relevantní je text „What is New Media?“ z knihy The Language of New Media.",
+        "authors": [
+          "Lev Manovich"
+        ]
+      }
+    ],
+    "authors": [
+      {
+        "name": "ARPA",
+        "role": "institucionální aktér vývoje ARPAnetu; v materiálu je spojena s vytvořením experimentální sítě v USA v roce 1969."
+      },
+      {
+        "name": "Tim Berners-Lee",
+        "role": "autor konceptu World Wide Webu uvedeného v materiálu jako soustava hypertextově propojených dokumentů; koncept prezentoval v roce 1989 a první webovou stránku vytvořil o dva roky později."
+      },
+      {
+        "name": "Steve Sasson",
+        "role": "konstruktér prototypu přenosného digitálního fotoaparátu ve firmě Kodak v roce 1975."
+      },
+      {
+        "name": "Tony Feldman",
+        "role": "autor požadovaný seznamem otázek u vlastností digitální informace; v dodaném ZIPu chybí výklad jeho typologie."
+      },
+      {
+        "name": "Lev Manovich",
+        "role": "autor požadovaný seznamem otázek u vlastností nových médií; seznam literatury uvádí jeho text „What is New Media?“, ale dodaný ZIP neobsahuje výklad jeho pojmů."
+      }
+    ],
+    "examiner_focus": [
+      "Studující má propojit technologický výklad nových médií s historickým vývojem internetu, WWW, digitální fotografie a mobilní komunikace.",
+      "Má umět ukázat, že internet není jednorázový vynález, ale výsledek vývoje počítačových sítí, ARPAnetu, e-mailu, webu a protokolů.",
+      "Má rozlišit obecné pojmy z otázky – digitální média, digitální kódování, digitalizace – od konkrétních historických technologií v materiálu.",
+      "U Feldmana a Manoviche je nutné ověřit doplňující zdroj; v dodaném ZIPu nejsou jejich vlastnosti digitální informace / nových médií vysvětleny."
+    ],
+    "followup_questions": [
+      "Proč je pro internet důležitá síť bez centrálního řídicího uzlu?",
+      "Jak souvisí WWW s hypertextem?",
+      "V čem je digitální fotoaparát součástí širší digitalizace mediální komunikace?",
+      "Jak změnil mobilní telefon prostorovou dostupnost komunikace?",
+      "Kde v dodaných materiálech chybí opora pro Feldmana a Manoviche?"
+    ],
+    "common_mistakes": [
+      "Zaměnit internet a World Wide Web.",
+      "Představit internet jako výsledek jednoho vynálezu bez zmínky o ARPAnetu, e-mailu a WWW.",
+      "Uvést Feldmanovy nebo Manovichovy vlastnosti bez zdrojové opory z dodaného ZIPu.",
+      "Redukovat digitální média jen na současné sociální sítě, které v tomto ZIPu nejsou tematizovány."
+    ],
+    "source_refs": [
+      {
+        "file": "011b_glob_udcedln_udca1_komunika-_udcecn_udca1_revoluce.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–5",
+        "relevance": "core"
+      },
+      {
+        "file": "szz_tmk_jednoobor_hlavni_vedlejsi_verze_03_2025.pdf",
+        "source_type": "official_questions",
+        "pages_or_slides": "s. 4–5, otázka 27",
+        "relevance": "official_question"
+      }
+    ],
+    "review_status": "source_based_draft_incomplete_theory_sources"
+  },
+  {
+    "id": "nova-media-q28",
+    "title": "Textualita nových médií: hypertexty, kybertexty",
+    "short_title": "Hypertexty a kybertexty",
+    "outline": [
+      "Vyjít ze seznamu otázek: otázka požaduje virtualitu, kybertext, hypertext a teorii/historii hypertextu.",
+      "Z dodaného ZIPu lze zdrojově rozpracovat především hypertextový princip World Wide Webu.",
+      "Vysvětlit WWW jako nelineární soustavu propojených hypertextových dokumentů založenou na odkazech.",
+      "Uvést HTTP jako protokol související se získáváním informací v síti WWW.",
+      "Uvést Tima Berners-Leeho: koncept WWW prezentoval v roce 1989, první webovou stránku vytvořil o dva roky později.",
+      "Explicitně označit, že virtualita, kybertext a širší teorie hypertextu nejsou v dodaném ZIPu samostatně vysvětleny."
+    ],
+    "key_terms": [
+      {
+        "term": "hypertext",
+        "definition": "V dodaném ZIPu je hypertext vysvětlen přes WWW jako nelineární soustavu propojených dokumentů fungující na bázi hypertextových odkazů.",
+        "authors": []
+      },
+      {
+        "term": "hypertextový odkaz",
+        "definition": "V materiálu je popsán jako princip, na němž WWW překonává lineární uspořádání dokumentů a propojuje je do sítě.",
+        "authors": []
+      },
+      {
+        "term": "World Wide Web",
+        "definition": "Koncept celosvětové sítě propojených hypertextových dokumentů; v materiálu je datován do roku 1989 a spojován s Timem Berners-Leem.",
+        "authors": [
+          "Tim Berners-Lee"
+        ]
+      },
+      {
+        "term": "HTTP",
+        "definition": "Protokol Hypertext Transfer Protocol; v materiálu je uveden jako prostředek pro opatřování informací v rámci WWW.",
+        "authors": []
+      },
+      {
+        "term": "nelineární textualita",
+        "definition": "Materiál ji nepojmenovává jako samostatný teoretický pojem, ale popisuje ji tím, že WWW nefunguje lineárně, nýbrž na bázi hypertextových odkazů.",
+        "authors": []
+      },
+      {
+        "term": "virtualita",
+        "definition": "Termín je uveden v seznamu otázek, ale dodaný ZIP neposkytuje jeho výklad. Před finální revizí je nutné doplnit zdrojový materiál.",
+        "authors": []
+      },
+      {
+        "term": "virtuální",
+        "definition": "Termín je uveden v seznamu otázek, ale dodaný ZIP neposkytuje jeho výklad ani rozlišení od virtuality.",
+        "authors": []
+      },
+      {
+        "term": "kybertext",
+        "definition": "Termín je uveden v seznamu otázek, ale dodaný ZIP neposkytuje jeho výklad; není proto bezpečné doplňovat definici bez dalšího zdroje.",
+        "authors": []
+      },
+      {
+        "term": "teorie a historie hypertextu",
+        "definition": "Seznam otázek ji vyžaduje. Z dodaného ZIPu lze doložit pouze WWW, hypertextové dokumenty, odkazy, HTTP a Tima Berners-Leeho; starší či širší teorie hypertextu v ZIPu chybí.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Tim Berners-Lee",
+        "role": "v dodaném materiálu je uveden jako autor konceptu World Wide Webu, který prezentoval v roce 1989; WWW je popsán jako síť hypertextových dokumentů."
+      },
+      {
+        "name": "George P. Landow",
+        "role": "uveden pouze v seznamu literatury jako autor textu k hypertextu a kritické teorii; dodaný ZIP neobsahuje výklad jeho argumentace."
+      },
+      {
+        "name": "Pierre Lévy",
+        "role": "uveden pouze v seznamu literatury u tématu digitalizace/virtualizace informací; dodaný ZIP neobsahuje výklad jeho konceptů."
+      },
+      {
+        "name": "Jakub Macek",
+        "role": "uveden pouze v seznamu literatury textem „Artefakt/Text“; dodaný ZIP neobsahuje jeho výklad."
+      }
+    ],
+    "examiner_focus": [
+      "Studující má umět vysvětlit, proč je hypertext nelineární formou textuality.",
+      "Má propojit historický vznik WWW s obecnějším tématem hypertextu.",
+      "Má nezaměňovat WWW, internet a hypertext: WWW je služba/soustava dokumentů v rámci širšího internetu.",
+      "Má vědět, že virtualita a kybertext jsou podle seznamu otázek povinné, ale v tomto ZIPu pro ně není zdrojová opora."
+    ],
+    "followup_questions": [
+      "Co znamená, že WWW nefunguje lineárně?",
+      "Jaký je rozdíl mezi internetem a World Wide Webem?",
+      "Proč je hypertext důležitý pro textualitu nových médií?",
+      "Co v dodaném ZIPu chybí k pojmům virtualita a kybertext?"
+    ],
+    "common_mistakes": [
+      "Ztotožnit internet s WWW.",
+      "Vyložit hypertext jen jako technický odkaz, bez vysvětlení nelineární struktury textu.",
+      "Doplnit definici kybertextu nebo virtuality bez opory v dodaných materiálech.",
+      "Opomenout, že seznam otázek vyžaduje širší teorii a historii hypertextu než jen WWW."
+    ],
+    "source_refs": [
+      {
+        "file": "011b_glob_udcedln_udca1_komunika-_udcecn_udca1_revoluce.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 2–3",
+        "relevance": "partial"
+      },
+      {
+        "file": "szz_tmk_jednoobor_hlavni_vedlejsi_verze_03_2025.pdf",
+        "source_type": "official_questions",
+        "pages_or_slides": "s. 5, otázka 28; s. 18, doplňková literatura pro jednoobor",
+        "relevance": "official_question"
+      }
+    ],
+    "review_status": "source_based_draft_incomplete_sources"
+  },
+  {
+    "id": "nova-media-q29",
+    "title": "Nová média, interaktivita a kultura konvergence",
+    "short_title": "Interaktivita a konvergence",
+    "outline": [
+      "Vycházet ze seznamu otázek: otázka požaduje typy definic interaktivity, vztah autor/text/čtenář, Henryho Jenkinse a kulturu konvergence, nová média a krizi legitimity producentů obsahů.",
+      "Dodaný ZIP neobsahuje samostatný výklad interaktivity, vztahu autor/text/čtenář, Jenkinse ani kultury konvergence.",
+      "Z dostupného ZIPu lze použít pouze obecný technologicko-historický kontext internetu a WWW: síť propojených hypertextových dokumentů, která umožňuje nelineární pohyb textem.",
+      "Otázku je proto nutné před finální revizí doplnit o zdroj k Jenkinsovi, interaktivitě a proměně role producentů a publik."
+    ],
+    "key_terms": [
+      {
+        "term": "interaktivita",
+        "definition": "Termín je uveden v seznamu otázek, ale dodaný ZIP neobsahuje typologii definic interaktivity ani její výklad. Nelze ji proto rozvést bez dalšího zdroje.",
+        "authors": []
+      },
+      {
+        "term": "vztah autor/text/čtenář",
+        "definition": "Téma je uvedeno v seznamu otázek; dodaný ZIP neobsahuje jeho výklad. Částečně lze navázat pouze na nelineární hypertextovou strukturu WWW.",
+        "authors": []
+      },
+      {
+        "term": "kultura konvergence",
+        "definition": "Téma je uvedeno v seznamu otázek ve spojení s Henrym Jenkinsem, ale dodaný ZIP neobsahuje výklad pojmu.",
+        "authors": [
+          "Henry Jenkins"
+        ]
+      },
+      {
+        "term": "krize legitimity producentů obsahů",
+        "definition": "Téma je uvedeno v seznamu otázek, ale dodaný ZIP neobsahuje jeho výklad. Nelze bezpečně doplnit bez dalšího zdrojového materiálu.",
+        "authors": []
+      },
+      {
+        "term": "nelineární pohyb textem",
+        "definition": "Dodaný ZIP jej dokládá nepřímo přes WWW jako soustavu hypertextových dokumentů založenou na odkazech; toto lze použít jako minimální zdrojový most k otázce autor/text/čtenář.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Henry Jenkins",
+        "role": "uveden přímo v seznamu otázek jako autor spojený s kulturou konvergence; dodaný ZIP však neobsahuje výklad jeho konceptu."
+      },
+      {
+        "name": "Rob Cover",
+        "role": "uveden v seznamu literatury textem o interaktivním publiku, interaktivních médiích, narativní kontrole a revizi dějin publika; dodaný ZIP neobsahuje jeho výklad."
+      },
+      {
+        "name": "Jaroslav Švelch",
+        "role": "uveden v seznamu literatury textem o počítačových hrách jako nových médiích; dodaný ZIP neobsahuje výklad jeho argumentace."
+      }
+    ],
+    "examiner_focus": [
+      "Tato otázka je podle dodaného ZIPu zdrojově nepokrytá a měla by být doplněna před použitím u zkoušky.",
+      "Studující by měl umět vyložit interaktivitu nejen technologicky, ale také ve vztahu k publiku, autorství a textu; tato rovina však v ZIPu chybí.",
+      "U Jenkinse a kultury konvergence je nutné doplnit zdroj, protože seznam otázek jej požaduje, ale dodané materiály ho nevysvětlují.",
+      "Jediná dostupná opora z ZIPu je technologicko-historický kontext WWW a hypertextu."
+    ],
+    "followup_questions": [
+      "Jaké typy interaktivity má otázka požadovat podle doplněných zdrojů?",
+      "Jak se v nových médiích mění vztah autor/text/čtenář?",
+      "Co přesně u Jenkinse znamená kultura konvergence?",
+      "Proč může digitalizace a síťová komunikace zpochybňovat legitimitu tradičních producentů obsahů?",
+      "Které části této otázky nejsou v dodaném ZIPu pokryty?"
+    ],
+    "common_mistakes": [
+      "Vyložit interaktivitu jen jako klikání na odkazy.",
+      "Předstírat výklad Jenkinse bez zdrojové opory v dodaném ZIPu.",
+      "Zaměnit hypertextovou nelinearitu za plný výklad kultury konvergence.",
+      "Opomenout vztah autor/text/čtenář, který je přímo v seznamu otázek."
+    ],
+    "source_refs": [
+      {
+        "file": "011b_glob_udcedln_udca1_komunika-_udcecn_udca1_revoluce.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 2–3",
+        "relevance": "minimal_context"
+      },
+      {
+        "file": "szz_tmk_jednoobor_hlavni_vedlejsi_verze_03_2025.pdf",
+        "source_type": "official_questions",
+        "pages_or_slides": "s. 5, otázka 29; s. 18, doplňková literatura pro jednoobor",
+        "relevance": "official_question"
+      }
+    ],
+    "review_status": "needs_source_material"
+  }
+]

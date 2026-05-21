@@ -1,0 +1,2 @@
+Aktuální fáze: testování sdílených workspace relací.
+Tato instance není finální produkční verze. Data ověřujte a před resetem vždy exportujte.

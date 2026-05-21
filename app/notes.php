@@ -11,10 +11,10 @@ function is_general_note_question_id(?string $questionId): bool
     return normalize_note_question_id($questionId) === null;
 }
 
-function get_note(PDO $pdo, int $studentId, string $questionId): array
+function get_note(PDO $pdo, int $workspaceId, int $studentId, string $questionId): array
 {
     $questionId = normalize_note_question_id($questionId);
-    if (!get_student($pdo, $studentId)) {
+    if (!get_student($pdo, $studentId, $workspaceId)) {
         throw new InvalidArgumentException('Studující neexistuje.');
     }
     if (!is_general_note_question_id($questionId) && !find_question($questionId)) {
@@ -22,11 +22,11 @@ function get_note(PDO $pdo, int $studentId, string $questionId): array
     }
     $examNotes = db_table('exam_notes');
     if ($questionId === null) {
-        $stmt = $pdo->prepare("SELECT * FROM {$examNotes} WHERE student_id = :student_id AND question_id IS NULL");
-        $stmt->execute([':student_id' => $studentId]);
+        $stmt = $pdo->prepare("SELECT * FROM {$examNotes} WHERE workspace_id = :workspace_id AND student_id = :student_id AND question_id IS NULL");
+        $stmt->execute([':workspace_id' => $workspaceId, ':student_id' => $studentId]);
     } else {
-        $stmt = $pdo->prepare("SELECT * FROM {$examNotes} WHERE student_id = :student_id AND question_id = :question_id");
-        $stmt->execute([':student_id' => $studentId, ':question_id' => $questionId]);
+        $stmt = $pdo->prepare("SELECT * FROM {$examNotes} WHERE workspace_id = :workspace_id AND student_id = :student_id AND question_id = :question_id");
+        $stmt->execute([':workspace_id' => $workspaceId, ':student_id' => $studentId, ':question_id' => $questionId]);
     }
     return $stmt->fetch() ?: [
         'student_id' => $studentId,
@@ -36,10 +36,10 @@ function get_note(PDO $pdo, int $studentId, string $questionId): array
     ];
 }
 
-function save_note(PDO $pdo, int $studentId, string $questionId, string $noteText, string $suggestedGrade): void
+function save_note(PDO $pdo, int $workspaceId, int $studentId, string $questionId, string $noteText, string $suggestedGrade): void
 {
     $questionId = normalize_note_question_id($questionId);
-    if (!get_student($pdo, $studentId)) {
+    if (!get_student($pdo, $studentId, $workspaceId)) {
         throw new InvalidArgumentException('Studující neexistuje.');
     }
     if (!is_general_note_question_id($questionId) && !find_question($questionId)) {
@@ -48,8 +48,8 @@ function save_note(PDO $pdo, int $studentId, string $questionId, string $noteTex
     $suggestedGrade = function_exists('mb_substr') ? mb_substr(trim($suggestedGrade), 0, 64) : substr(trim($suggestedGrade), 0, 64);
     $examNotes = db_table('exam_notes');
     if ($questionId === null) {
-        $stmt = $pdo->prepare("SELECT id FROM {$examNotes} WHERE student_id = :student_id AND question_id IS NULL");
-        $stmt->execute([':student_id' => $studentId]);
+        $stmt = $pdo->prepare("SELECT id FROM {$examNotes} WHERE workspace_id = :workspace_id AND student_id = :student_id AND question_id IS NULL");
+        $stmt->execute([':workspace_id' => $workspaceId, ':student_id' => $studentId]);
         $noteId = $stmt->fetchColumn();
         if ($noteId !== false) {
             $stmt = $pdo->prepare("UPDATE {$examNotes} SET note_text = :note_text, suggested_grade = :suggested_grade WHERE id = :id");
@@ -62,13 +62,14 @@ function save_note(PDO $pdo, int $studentId, string $questionId, string $noteTex
         }
     }
     $stmt = $pdo->prepare("
-        INSERT INTO {$examNotes} (student_id, question_id, note_text, suggested_grade)
-        VALUES (:student_id, :question_id, :note_text, :suggested_grade)
+        INSERT INTO {$examNotes} (workspace_id, student_id, question_id, note_text, suggested_grade)
+        VALUES (:workspace_id, :student_id, :question_id, :note_text, :suggested_grade)
         ON DUPLICATE KEY UPDATE
             note_text = VALUES(note_text),
             suggested_grade = VALUES(suggested_grade)
     ");
     $stmt->execute([
+        ':workspace_id' => $workspaceId,
         ':student_id' => $studentId,
         ':question_id' => $questionId,
         ':note_text' => $noteText,
@@ -76,15 +77,15 @@ function save_note(PDO $pdo, int $studentId, string $questionId, string $noteTex
     ]);
 }
 
-function export_note_text(PDO $pdo, int $studentId, string $questionId, string $format): string
+function export_note_text(PDO $pdo, int $workspaceId, int $studentId, string $questionId, string $format): string
 {
     $questionId = normalize_note_question_id($questionId);
-    $student = get_student($pdo, $studentId);
+    $student = get_student($pdo, $studentId, $workspaceId);
     $question = is_general_note_question_id($questionId) ? null : find_question($questionId);
     if (!$student || (!is_general_note_question_id($questionId) && !$question)) {
         throw new InvalidArgumentException('Chybí studující nebo otázka.');
     }
-    $note = get_note($pdo, $studentId, $questionId);
+    $note = get_note($pdo, $workspaceId, $studentId, $questionId);
     $config = app_config();
 
     $fields = [

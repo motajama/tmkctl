@@ -5,6 +5,7 @@ require_once __DIR__ . '/../../app/auth.php';
 require_once __DIR__ . '/../../app/students.php';
 require_once __DIR__ . '/../../app/questions.php';
 require_once __DIR__ . '/../../app/stack.php';
+require_once __DIR__ . '/../../app/workspaces.php';
 
 require_auth();
 require_post();
@@ -15,17 +16,25 @@ try {
         throw new InvalidArgumentException('CSV soubor chybí.');
     }
     $pdo = db();
-    $result = import_students_csv($pdo, $_FILES['csv']['tmp_name']);
-    foreach (list_students($pdo) as $student) {
-        add_to_stack($pdo, (int)$student['id']);
+    $workspaceId = require_current_workspace($pdo);
+    $pdo->beginTransaction();
+    try {
+        $result = import_students_csv($pdo, $workspaceId, $_FILES['csv']['tmp_name']);
+        foreach (list_students($pdo, $workspaceId) as $student) {
+            add_to_stack($pdo, $workspaceId, (int)$student['id']);
+        }
+        $pdo->commit();
+    } catch (Throwable $e) {
+        $pdo->rollBack();
+        throw $e;
     }
     json_response([
         'ok' => true,
         'message' => sprintf('CSV import: přidáno %d, aktualizováno %d, přeskočeno %d.', $result['imported'], $result['updated'], $result['skipped']),
         'result' => $result,
-        'students' => list_students($pdo),
-        'stack' => list_stack($pdo),
-        'activeStudentId' => get_active_student_id($pdo),
+        'students' => list_students($pdo, $workspaceId),
+        'stack' => list_stack($pdo, $workspaceId),
+        'activeStudentId' => get_active_student_id($pdo, $workspaceId),
     ]);
 } catch (Throwable $e) {
     json_response(['ok' => false, 'error' => public_error_message($e)], 400);

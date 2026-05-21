@@ -6,6 +6,7 @@ require_once __DIR__ . '/../app/questions.php';
 require_once __DIR__ . '/../app/students.php';
 require_once __DIR__ . '/../app/stack.php';
 require_once __DIR__ . '/../app/settings.php';
+require_once __DIR__ . '/../app/workspaces.php';
 
 require_auth();
 
@@ -16,14 +17,22 @@ $students = [];
 $stack = [];
 $activeStudentId = null;
 $currentExamLabel = '';
+$workspaceId = null;
+$workspaceLabel = '';
+$debugStageNote = '';
 
 try {
     $pdo = db();
+    $workspaceId = require_current_workspace($pdo);
     $questionLoad = try_load_questions();
-    $students = list_students($pdo);
-    $stack = list_stack($pdo);
-    $activeStudentId = get_active_student_id($pdo);
-    $currentExamLabel = (string)get_app_setting('current_exam_label', '', $pdo);
+    $students = list_students($pdo, $workspaceId);
+    $stack = list_stack($pdo, $workspaceId);
+    $activeStudentId = get_active_student_id($pdo, $workspaceId);
+    $currentExamLabel = (string)get_app_setting('current_exam_label', '', $workspaceId, $pdo);
+    $workspaceLabel = current_workspace_label($pdo);
+    if (!empty($config['debug'])) {
+        $debugStageNote = debug_stage_note();
+    }
 } catch (Throwable $e) {
     $setupError = public_error_message($e);
 }
@@ -69,8 +78,8 @@ php -S 127.0.0.1:8000 -t public</pre>
         <section id="question-window" class="panel window center-panel">
             <div class="panel-title">OTÁZKA</div>
             <section class="question-toolbar panel-controls">
-                <button id="question-mode-follow" class="mode-button selected" type="button" title="Otázka podle studujícího">[●]</button>
-                <button id="question-mode-manual" class="mode-button" type="button" title="Ruční výběr otázky">[□]</button>
+                <button id="question-mode-follow" class="mode-button selected" type="button" title="Otázka podle studujícího" aria-label="Otázka podle studujícího" aria-pressed="true"><img src="assets/student.png" alt="Otázka podle studujícího"></button>
+                <button id="question-mode-manual" class="mode-button" type="button" title="Ruční výběr otázky" aria-label="Ruční výběr otázky" aria-pressed="false"><img src="assets/teacher.png" alt="Ruční výběr otázky"></button>
                 <select id="manual-question-select"></select>
                 <button id="assign-current-question" type="button">PŘIŘADIT</button>
             </section>
@@ -99,14 +108,28 @@ php -S 127.0.0.1:8000 -t public</pre>
             <textarea id="note-text" rows="18"></textarea>
         </section>
 
-        <section id="ai-window" class="panel window ai-panel">
-            <div class="panel-title">AI CHAT</div>
-            <div class="disabled-ai">AI chat bude doplněn v další fázi.</div>
-        </section>
         <?php endif; ?>
     </main>
 
     <?php if (!$setupError): ?>
+    <?php if (!empty($config['debug'])): ?>
+    <div id="debug-modal-layer" class="modal-layer" aria-live="polite">
+        <section id="debug-modal" class="modal-window debug-window" role="dialog" aria-modal="true" aria-labelledby="debug-modal-title">
+            <div class="modal-title debug-title"><span id="debug-modal-title">DEBUG REŽIM — NEFINÁLNÍ VERZE</span></div>
+            <div class="modal-body debug-body">
+                <p><strong>Toto není finální produkční verze aplikace.</strong></p>
+                <p><strong>Debug režim je zapnutý.</strong></p>
+                <pre><?= h($debugStageNote) ?></pre>
+                <button id="debug-modal-close" type="button">ROZUMÍM</button>
+            </div>
+        </section>
+    </div>
+    <?php endif; ?>
+    <button id="ai-chat-toggle" class="ai-chat-toggle" type="button" aria-expanded="false" aria-controls="ai-chat-window">AI</button>
+    <section id="ai-chat-window" class="panel window ai-chat-window hidden" role="dialog" aria-modal="false" aria-labelledby="ai-chat-title">
+        <div class="panel-title ai-chat-title"><span id="ai-chat-title">AI CHAT</span><button id="ai-chat-close" class="modal-close" type="button">[X]</button></div>
+        <div class="disabled-ai">AI chat bude doplněn v další fázi.</div>
+    </section>
     <div id="modal-layer" class="modal-layer hidden" aria-live="polite">
         <section id="modal-add" class="modal-window hidden" role="dialog" aria-modal="true" aria-labelledby="modal-add-title">
             <div class="modal-title"><span id="modal-add-title">PŘIDAT STUDUJÍCÍHO</span><button class="modal-close" type="button" data-close-modal>[X]</button></div>
@@ -194,17 +217,7 @@ php -S 127.0.0.1:8000 -t public</pre>
 
         <section id="modal-help" class="modal-window hidden" role="dialog" aria-modal="true" aria-labelledby="modal-help-title">
             <div class="modal-title"><span id="modal-help-title">NÁPOVĚDA</span><button class="modal-close" type="button" data-close-modal>[X]</button></div>
-            <div class="modal-body help-text">
-                <p><b>Přidání/import:</b> spodní PŘIDAT otevře ruční přidání. IMPORT nahraje CSV nebo text z IS MU po Ctrl+A/Ctrl+C. Detekce bere pouze termíny Teorie masové komunikace / TMK. Noví studující jdou do fronty.</p>
-                <p><b>Fronta:</b> hlavní seznam je FRONTA. ZKOUŠENÝ/ZKOUŠENÁ a NA POTÍTKU jsou nahoře v rozbalovacích panelech. HOTOVO je dole jako sekundární sekce.</p>
-                <p><b>Otázky:</b> studující si otázku vybírá sám. [●] ukazuje otázku podle studujícího. [□] je ruční výběr. Tlačítko PŘIŘADIT uloží vybranou otázku vybranému studujícímu. U studujících na potítku a u zkoušených lze otázku upravit přímo v jejich řádku.</p>
-                <p><b>Poznámky:</b> bez otázky se ukládá obecná poznámka ke studujícímu. S otázkou se ukládá poznámka k otázce. Pravé TXT/MD exporty jsou jen pro aktuální poznámku.</p>
-                <p><b>Kurzor vs. stav:</b> znak &gt; značí vybraný řádek. [ZK] je zkoušený/á, [P] je na potítku, [OK] je hotovo.</p>
-                <p><b>Stavový řádek:</b> běžné zprávy a uložení termínu jsou dole v liště. TERMÍN vpravo ukládá aktuální název zkouškového dne.</p>
-                <p><b>Export/reset:</b> EXPORTUJ VŠE stáhne všechny poznámky a stav. Před RESET vždy exportuj. Reset nemaže otázky.</p>
-                <p><b>Otázkový balík:</b> OTÁZKY otevře kontrolu a nahrání ručně zkontrolovaného <code>questions.reviewed.json</code>. Validace kontroluje strukturu, ne odbornou správnost.</p>
-                <p><b>Konzole:</b> použij :help, :add, :import, :reset, :export, :questions, :logout, :focus next, :focus prev, :active, :question active, :question manual.</p>
-            </div>
+            <div id="help-content" class="modal-body help-text" data-help-src="assets/help.html">Nápověda se načítá.</div>
         </section>
 
         <section id="modal-questions" class="modal-window hidden" role="dialog" aria-modal="true" aria-labelledby="modal-questions-title">
@@ -227,6 +240,25 @@ php -S 127.0.0.1:8000 -t public</pre>
                         <button type="button" data-close-modal>ZAVŘÍT</button>
                     </div>
                 </form>
+                <div class="split-title">MERGE JSON</div>
+                <form id="question-pack-merge-form" class="compact-form">
+                    <input type="hidden" name="csrf_token" value="<?= h(csrf_token()) ?>">
+                    <div class="file-control">
+                        <input id="merge-questions-json-files" class="file-native" type="file" name="merge_questions_json[]" accept=".json,application/json" multiple required>
+                        <label class="file-button" for="merge-questions-json-files" tabindex="0">VYBRAT JSON</label>
+                        <span id="merge-questions-json-file-name" class="file-name">no file selected</span>
+                    </div>
+                    <label for="merge-conflict-strategy">Konflikty ID</label>
+                    <select id="merge-conflict-strategy" name="strategy">
+                        <option value="keep-existing">ponechat existující</option>
+                        <option value="replace-existing">nahradit nahranými</option>
+                    </select>
+                    <div class="button-row tight">
+                        <button type="submit" name="action" value="validate">VALIDOVAT MERGE</button>
+                        <button type="submit" name="action" value="merge">SLOUČIT / MERGE</button>
+                    </div>
+                </form>
+                <div id="question-merge-preview" class="question-merge-preview"></div>
                 <div id="question-pack-result" class="status-line"></div>
             </div>
         </section>
@@ -250,7 +282,7 @@ php -S 127.0.0.1:8000 -t public</pre>
                 <button id="global-add" type="button">PŘIDAT</button>
                 <button id="global-import" type="button">IMPORT</button>
                 <button id="global-reset" type="button">RESET</button>
-                <button id="global-export-all" type="button">EXPORTUJ VŠE</button>
+                <button id="global-export-all" type="button">EXPORT</button>
                 <button id="global-questions" type="button">OTÁZKY</button>
                 <button id="global-help" type="button">NÁPOVĚDA</button>
                 <button id="global-console" type="button">KONZOLE</button>
@@ -261,6 +293,7 @@ php -S 127.0.0.1:8000 -t public</pre>
         <div class="global-status">
             <?php if (!$setupError): ?>
                 <span id="global-active-student"></span>
+                <span id="global-workspace-label">RELACE: <?= h($workspaceLabel) ?></span>
                 <form id="session-label-form" class="session-bar-form">
                     <input type="hidden" name="csrf_token" value="<?= h(csrf_token()) ?>">
                     <label for="current-exam-label">TERMÍN</label>
@@ -283,6 +316,9 @@ php -S 127.0.0.1:8000 -t public</pre>
                 'stack' => $stack,
                 'activeStudentId' => $activeStudentId,
                 'currentExamLabel' => $currentExamLabel,
+                'workspaceId' => $workspaceId,
+                'workspaceLabel' => $workspaceLabel,
+                'debug' => !empty($config['debug']),
             ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) ?>;
         </script>
         <script src="assets/app.js"></script>

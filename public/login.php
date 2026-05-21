@@ -2,16 +2,19 @@
 
 require_once __DIR__ . '/../app/auth.php';
 require_once __DIR__ . '/../app/render.php';
+require_once __DIR__ . '/../app/workspaces.php';
 
 if (is_authenticated()) {
-    header('Location: index.php');
+    ensure_client_cookie_queued();
+    header('Location: workspaces.php');
     exit;
 }
 
 $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (login_with_password((string)($_POST['password'] ?? ''))) {
-        header('Location: index.php');
+        ensure_client_cookie_queued();
+        header('Location: workspaces.php');
         exit;
     }
     $error = 'Neplatné heslo.';

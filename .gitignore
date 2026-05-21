@@ -25,22 +25,28 @@ venv/
 data/generated/corpus.jsonl
 data/generated/questions.generated.json
 data/generated/questions.generation-report.md
+data/generated/questions.extracted.seed.json
+data/generated/question-seed-extraction-report.md
 data/generated/*.raw.txt
+materials/*
+!materials/.gitkeep
+!materials/pdf/
+!materials/pptx/
+!materials/docx/
+!materials/md/
+!materials/txt/
 materials/pdf/*
 materials/pptx/*
 materials/docx/*
 materials/md/*
+materials/txt/*
 !materials/pdf/.gitkeep
 !materials/pptx/.gitkeep
 !materials/docx/.gitkeep
 !materials/md/.gitkeep
+!materials/txt/.gitkeep
+!materials/txt/sample-tmk.txt
 
 # Temporary exports
 exports/
 tmp/
-
-# Teaching/source materials are local and should not be committed
-materials/*
-!materials/.gitkeep
-!materials/*/
-!materials/*/.gitkeep

@@ -1,6 +1,6 @@
 # Offline Question Generator
 
-This toolchain prepares draft question packs locally. It does not change the PHP dashboard and it does not call any cloud API.
+This local toolchain prepares draft question packs. It does not change the PHP dashboard and it does not call any cloud API.
 
 The reviewed production file remains:
 
@@ -24,31 +24,50 @@ data/questions.seed.json
 data/generated/
 
 tools/extract_materials.py
+tools/extract_question_seeds.py
 tools/prepare_question_pack.py
 tools/validate_question_pack.py
 tools/question_schema.py
 tools/llm_ollama.py
 ```
 
-Put teaching materials into the matching `materials/` subdirectory. The required extractor supports `.txt` and `.md` with only the Python standard library.
+Teaching materials may be placed directly into `materials/` or into any nested subdirectory. Extraction scans recursively by extension and does not move or modify source files.
 
-Optional extractors are best-effort:
+Supported extensions:
 
-- PDF: install `pymupdf`
-- DOCX: install `python-docx`
-- PPTX: install `python-pptx`
+- `.txt`
+- `.md`
+- `.pdf`
+- `.docx`
+- `.pptx`
 
-If an optional dependency is missing, extraction skips that file type with a warning.
+Required `.txt` and `.md` support uses only the Python standard library. Optional formats need local packages:
 
-## Question Seeds
+```sh
+python -m pip install pymupdf python-docx python-pptx
+```
 
-Edit:
+If your system does not provide `python`, use `python3`.
+
+## Extract Materials
+
+```sh
+python tools/extract_materials.py \
+  --materials-dir materials \
+  --output data/generated/corpus.jsonl
+```
+
+The output is chunked JSONL with source metadata, page numbers for PDFs, and slide numbers for PPTX where available.
+
+## Question Seeds From JSON
+
+You can maintain seeds manually in:
 
 ```text
 data/questions.seed.json
 ```
 
-Each seed is intentionally small:
+Seed format:
 
 ```json
 {
@@ -59,29 +78,78 @@ Each seed is intentionally small:
 }
 ```
 
-Seeds define what questions should exist. Materials provide evidence and wording for draft content.
+## Question Seeds From Human-Readable Files
+
+A question source file can be DOCX, TXT, Markdown, or PDF if PyMuPDF is installed. It should be a human-readable list of questions.
+
+The extractor recognizes numbered lists, Czech labels such as `Otázka 1:`, Markdown bullets, and headings. It is heuristic and the extracted seed file must be checked.
+
+```sh
+python tools/extract_question_seeds.py \
+  --input materials/questions.docx \
+  --output data/generated/questions.extracted.seed.json \
+  --language cs
+```
+
+`prepare_question_pack.py` can also use the source directly:
+
+```sh
+python tools/prepare_question_pack.py \
+  --no-llm \
+  --question-source materials/questions.docx \
+  --seed-output data/generated/questions.extracted.seed.json \
+  --language cs \
+  --detail 0.5 \
+  --corpus data/generated/corpus.jsonl \
+  --output data/generated/questions.generated.json
+```
+
+## Language And Detail
+
+Language:
+
+```sh
+--language cs
+--language en
+```
+
+JSON field names stay unchanged. Content is generated in the selected language where possible. In no-LLM mode, seed titles are not translated.
+
+Detail:
+
+```sh
+--detail 0.0
+--detail 0.5
+--detail 1.0
+```
+
+- `0.0` = brief
+- `0.5` = normal
+- `1.0` = detailed
+
+More detail must still remain source-based. It is not permission to invent unsupported claims.
 
 ## No-LLM Workflow
 
-This mode works without AI and without extra Python packages.
+From existing seed JSON:
 
 ```sh
-python tools/extract_materials.py
-python tools/prepare_question_pack.py --no-llm
+python tools/prepare_question_pack.py \
+  --no-llm \
+  --language cs \
+  --detail 0.5 \
+  --questions data/questions.seed.json \
+  --corpus data/generated/corpus.jsonl \
+  --output data/generated/questions.generated.json
+```
+
+Validate:
+
+```sh
 python tools/validate_question_pack.py data/generated/questions.generated.json
 ```
 
-If your system does not provide `python`, use `python3`.
-
-Outputs:
-
-```text
-data/generated/corpus.jsonl
-data/generated/questions.generated.json
-data/generated/questions.generation-report.md
-```
-
-The no-LLM output is skeletal but structurally valid. It uses keyword matching from seed titles and hints to attach `source_refs`.
+The no-LLM output is skeletal but structurally valid.
 
 ## Ollama Workflow
 
@@ -89,30 +157,62 @@ Ollama support is local-only and optional.
 
 Recommended models:
 
-- `qwen3:4b` for weaker machines
+- `qwen3:1.7b` for weak machines and quick tests
+- `qwen3:4b` for stronger laptops
 - `qwen3:8b` for stronger Apple Silicon or machines with more memory
 
-Start Ollama:
+## Lokální Ollama v /home
+
+Start Ollama outside the web app:
 
 ```sh
-ollama run qwen3:4b
+ollama-home-serve
 ```
 
-Generate with Ollama:
+Pull the small test model:
 
 ```sh
-python tools/extract_materials.py
-python tools/prepare_question_pack.py --ollama --model qwen3:4b
-python tools/validate_question_pack.py data/generated/questions.generated.json
+ollama-home pull qwen3:1.7b
 ```
 
-Use a different local endpoint if needed:
+Generate one Czech test question from a question-source file:
 
 ```sh
-python tools/prepare_question_pack.py --ollama --model qwen3:8b --ollama-url http://localhost:11434
+python tools/prepare_question_pack.py \
+  --ollama \
+  --model qwen3:1.7b \
+  --limit 1 \
+  --question-source materials/questions.docx \
+  --seed-output data/generated/questions.extracted.seed.json \
+  --language cs \
+  --detail 0.5 \
+  --corpus data/generated/corpus.jsonl \
+  --output data/generated/questions.generated.json
 ```
 
-If Ollama is unavailable, the script explains how to start it and falls back per question only when recoverable. Use `--debug` to see raw tracebacks during development.
+Ollama, English, detailed:
+
+```sh
+python tools/prepare_question_pack.py \
+  --ollama \
+  --model qwen3:1.7b \
+  --limit 1 \
+  --language en \
+  --detail 0.8 \
+  --questions data/questions.seed.json \
+  --corpus data/generated/corpus.jsonl \
+  --output data/generated/questions.generated.json
+```
+
+Useful controls:
+
+- `--limit 1` for weak machines
+- `--top-k 6` controls how many chunks are sent to the prompt
+- `--max-context-chars 12000` caps prompt context
+- `--timeout 300` gives slow local models enough time
+- `--temperature 0.1` keeps output conservative
+
+The web dashboard remains independent of Ollama.
 
 ## Review Workflow
 
@@ -133,6 +233,8 @@ Generated files are ignored by default:
 data/generated/corpus.jsonl
 data/generated/questions.generated.json
 data/generated/questions.generation-report.md
+data/generated/questions.extracted.seed.json
+data/generated/question-seed-extraction-report.md
 ```
 
-Do not commit local model files, full extracted corpora, copyrighted teaching materials, or large temporary outputs.
+Material directories are ignored by default except `.gitkeep` placeholders and the tiny artificial sample text. Do not commit local model files, full extracted corpora, copyrighted teaching materials, or large temporary outputs.

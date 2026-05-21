@@ -1,150 +1,3130 @@
 [
   {
-    "id": "q01",
-    "title": "Masová kultura a kulturní průmysl",
-    "short_title": "Kulturní průmysl",
+    "id": "dejiny-medii-q01",
+    "title": "Přenos a uchovávání slova a textu",
+    "short_title": "Slovo, text, pošta a knihtisk",
     "outline": [
-      "Vymezit pojem masová kultura.",
-      "Vysvětlit rozdíl mezi masovou, populární a vysokou kulturou.",
-      "Představit kritiku kulturního průmyslu.",
-      "Uvést příklad ze současné mediální kultury."
+      "Vyložit symbolickou komunikaci jako překonávání prostorové, časové a sociální izolace.",
+      "Popsat přechod od archaických a tradičních komunikačních systémů ke komunikaci masové podle typologie G. Bragy.",
+      "Vysvětlit význam písma a uvést příklady písemných systémů navazujících na fénické písmo.",
+      "Rozlišit analogické a analytické myšlení a ukázat, jak se mění způsoby vysvětlování světa.",
+      "Popsat zpravodajské mechanismy starověku a informační bázi vrcholného středověku.",
+      "Vysvětlit význam dopisu, korespondence, korespondenčních center a poštovních linek v raném novověku.",
+      "Popsat psané noviny, korespondenční sítě a předpoklady vzniku novin a časopisů.",
+      "Vyložit význam knihtisku a sociální důsledky knihtisku podle E. Eisensteinové."
     ],
     "key_terms": [
       {
-        "term": "masová kultura",
-        "definition": "Kultura produkovaná a šířená pro široké publikum prostřednictvím moderních médií.",
+        "term": "symbolická komunikace",
+        "definition": "Komunikace, která podle přednášky umožňuje slaďovat aktivity v přítomnosti, imaginovat realitu mimo bezprostřední zkušenost a využívat poznatky z minulosti pro plánování budoucnosti.",
         "authors": []
       },
       {
-        "term": "kulturní průmysl",
-        "definition": "Pojem označující standardizovanou produkci kultury v podmínkách moderní kapitalistické společnosti.",
-        "authors": ["Theodor W. Adorno", "Max Horkheimer"]
+        "term": "komunikační typologie G. Bragy",
+        "definition": "Typologie uvedená v materiálech: kapilární komunikace v archaické společnosti, systém organizované kultury v tradiční společnosti a masová komunikace v moderní společnosti.",
+        "authors": [
+          "G. Braga"
+        ]
+      },
+      {
+        "term": "kapilární komunikace",
+        "definition": "Typ komunikace spojovaný v přednášce s archaickou společností; stojí před organizovanými kulturními systémy a před masovou komunikací modernity.",
+        "authors": [
+          "G. Braga"
+        ]
+      },
+      {
+        "term": "písemné systémy vycházející z fénického písma",
+        "definition": "Materiály uvádějí větve spojené s řeckou alfabetou, starohebrejským a aramejským písmem, včetně latiny, azbuky, arabského, etiopského, indického či tibetského písma jako přímých či nepřímých návazností.",
+        "authors": []
+      },
+      {
+        "term": "analogické versus analytické myšlení",
+        "definition": "Rozlišení mezi teleologickým a kauzálním způsobem uvažování: analogické vysvětlení hledá podobnosti a účel, analytické vysvětlení skládá racionální kauzální řetězec.",
+        "authors": [
+          "Seneca",
+          "Zdeněk Smetánka"
+        ]
+      },
+      {
+        "term": "antika a masová komunikace",
+        "definition": "Materiály zdůrazňují, že antika neznala masovou komunikaci v pravém slova smyslu, protože postrádala technologie masové reprodukce písemných či obrazových sdělení umožňující časoprostorovou distanci adresátů.",
+        "authors": []
+      },
+      {
+        "term": "zpravodajské mechanismy starověku",
+        "definition": "Formy přenosu informací uvedené v materiálech: běžci, jízdní spojení, lodní spojení, poštovní holubi, vlajková signalizace, optická a akustická signalizace a pošta.",
+        "authors": []
+      },
+      {
+        "term": "dopis ve středověku",
+        "definition": "Dopis je v materiálech popsán jako nástroj jednorázového poselství, korespondence uvnitř stavů, politické propagandy i postupného rozšiřování komunikace napříč sociálními vrstvami.",
+        "authors": []
+      },
+      {
+        "term": "korespondenční systém",
+        "definition": "Rutinní a systematické korespondenční styky, které zapojovaly vzdělané, ekonomicky aktivní a politicky sebevědomé elity středověké společnosti.",
+        "authors": []
+      },
+      {
+        "term": "pošta a poštovní linky",
+        "definition": "Materiály uvádějí vznik pošty v Miláně okolo roku 1400, rozvoj v Benátkách, Francii, Burgundsku a Říši, thurn-taxisovskou poštu a v habsburském soustátí rod Paarů.",
+        "authors": [
+          "Thurn-Taxisové",
+          "Paarové"
+        ]
+      },
+      {
+        "term": "psané noviny",
+        "definition": "Přednáška rozlišuje soukromé psané noviny se zpravodajským obsahem a utilitaristickými cíli a ilegální psané noviny kombinující zpravodajský a publicistický obsah s náboženskými či politickými cíli.",
+        "authors": []
+      },
+      {
+        "term": "sociální důsledky knihtisku podle E. Eisensteinové",
+        "definition": "Přednáška uvádí multiplikační, standardizační, konzervační, racionalizační a individualizační efekt knihtisku.",
+        "authors": [
+          "E. Eisensteinová"
+        ]
       }
     ],
     "authors": [
       {
-        "name": "Theodor W. Adorno",
-        "role": "kritika kulturního průmyslu"
+        "name": "G. Braga",
+        "role": "autor typologie kapilární komunikace, systému organizované kultury a masové komunikace"
       },
       {
-        "name": "Max Horkheimer",
-        "role": "spoluautor konceptu kulturního průmyslu"
+        "name": "Seneca",
+        "role": "v materiálech použit pro ilustraci rozdílu mezi teleologickým a kauzálním způsobem uvažování"
+      },
+      {
+        "name": "Zdeněk Smetánka",
+        "role": "citován k analogii, magii podobnosti a kontaktní magii jako příkladům analogického uvažování"
+      },
+      {
+        "name": "Jan Arnolt z Dobroslavína",
+        "role": "uveden u pražských německy vydávaných novin jako příklad informačního zpoždění raně novověkého zpravodajství"
+      },
+      {
+        "name": "E. Eisensteinová",
+        "role": "sociální důsledky knihtisku: multiplikační, standardizační, konzervační, racionalizační a individualizační efekt"
+      },
+      {
+        "name": "Gutenberg",
+        "role": "materiály zmiňují první Gutenbergovy tisky, odpustkové formuláře a Türkenkalender auf das Jahr 1455"
       }
     ],
     "examiner_focus": [
-      "Studující má umět odlišit masovou kulturu od populární kultury.",
-      "Studující má vysvětlit, proč je kultura u Frankfurtské školy spojena s mocí, standardizací a reprodukcí společnosti."
+      "Studující má ukázat, že vývoj slova a textu není jen dějinami techniky, ale také změnou sociálních sítí, institucí a způsobů myšlení.",
+      "Má propojit písmo, korespondenci, poštu a knihtisk jako předpoklady vzniku periodické zpravodajské komunikace.",
+      "Má umět vyložit konkrétní důsledky knihtisku podle E. Eisensteinové, ne pouze říci, že knihtisk byl významný."
     ],
     "followup_questions": [
-      "Jaký je rozdíl mezi masovou a populární kulturou?",
-      "Lze pojem kulturního průmyslu použít na streamovací platformy?",
-      "Je kritika kulturního průmyslu stále aktuální?"
+      "Proč antika podle materiálů ještě neznala masovou komunikaci v pravém slova smyslu?",
+      "Jak pošta a korespondenční sítě připravily vznik novin?",
+      "Co znamená multiplikační a standardizační efekt knihtisku?",
+      "Jaký je rozdíl mezi analogickým a analytickým výkladem světa?"
     ],
     "common_mistakes": [
-      "Zaměnění masové kultury a populární kultury bez vysvětlení rozdílu.",
-      "Redukce Frankfurtské školy na prosté odmítání zábavy."
+      "Redukce otázky pouze na vynález knihtisku bez vysvětlení starších komunikačních mechanismů.",
+      "Zaměnění pošty, korespondence a novin jako totožných forem komunikace.",
+      "Opomenutí rozdílu mezi zpravodajskými mechanismy a masovou komunikací.",
+      "Vyjmenování efektů knihtisku bez jejich stručného vysvětlení."
+    ],
+    "source_refs": [
+      {
+        "file": "001_p_udcd6enos_a_uchov_udcedv_udcedn_udca1_slova_a_textu_i.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–14",
+        "relevance": "core"
+      },
+      {
+        "file": "002_p_udcd6enos_a_uchov_udcedv_udcedn_udca1_slova_a_textu_ii.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–16",
+        "relevance": "core"
+      }
+    ],
+    "review_status": "source_based_draft"
+  },
+  {
+    "id": "dejiny-medii-q02",
+    "title": "Telekomunikace",
+    "short_title": "Telekomunikace a agentury",
+    "outline": [
+      "Vysvětlit dopravu jako podmínku moderního informačního oběhu.",
+      "Popsat dopravní proměny dlouhého 19. století, zejména význam železnice a námořních průplavů.",
+      "Vyložit optickou telegrafii jako předstupeň moderních telekomunikací.",
+      "Popsat elektrickou telegrafii, podmořské kabely a proměnu časoprostorových struktur.",
+      "Vysvětlit vznik a funkci zpravodajských agentur.",
+      "Uvést první světové agentury a rozdělení světa mezi Havas, Reuters, WTB a AP.",
+      "Rozlišit typy agentur podle dosahu a podle vlastnictví."
+    ],
+    "key_terms": [
+      {
+        "term": "telekomunikace",
+        "definition": "Okruh v materiálech spojuje dopravu, telegrafii a proměnu časoprostorových struktur v modernitě.",
+        "authors": []
+      },
+      {
+        "term": "dopravní revoluce",
+        "definition": "Industrializace založená na páře zvýšila teritoriální mobilitu společnosti, rychlost, objem i cenu dopravy oproti předindustriálním zdrojům pohybu.",
+        "authors": []
+      },
+      {
+        "term": "železnice",
+        "definition": "V dlouhém 19. století je v materiálech označena za rozhodující typ dopravy; sjednocovala trhy i stát a rozbíjela tradiční sociální vazby.",
+        "authors": []
+      },
+      {
+        "term": "Suezský průplav",
+        "definition": "Otevřen roku 1869; zkrátil plavbu z Evropy do Indie a na Dálný východ a měl zásadní význam pro britské impérium.",
+        "authors": [
+          "Ferdinand de Lesseps"
+        ]
+      },
+      {
+        "term": "Panamský průplav",
+        "definition": "Materiály popisují francouzský pokus z let 1881–1889 pod vedením Ferdinanda de Lessepse a dokončení Američany v letech 1901–1914.",
+        "authors": [
+          "Ferdinand de Lesseps"
+        ]
+      },
+      {
+        "term": "optická telegrafie",
+        "definition": "Přednáška uvádí první francouzské linky z let 1793–1794 mezi Paříží a Lille, pozdější linky do Štrasburku, Milána a Mohuče a evropské rozšíření systému.",
+        "authors": []
+      },
+      {
+        "term": "elektrická telegrafie",
+        "definition": "Materiály zdůrazňují propojení Evropy pozemními linkami v polovině 50. let 19. století a význam podmořských i transkontinentálních kabelů.",
+        "authors": []
+      },
+      {
+        "term": "podmořské kabely",
+        "definition": "Přednáška uvádí překonání kanálu La Manche roku 1851, Irského moře roku 1853, první transatlantický kabel roku 1858 a trvalé spojení Evropy a Ameriky od roku 1866.",
+        "authors": []
+      },
+      {
+        "term": "zpravodajská agentura",
+        "definition": "Instituce sběru, zpracování a distribuce zpráv; materiály uvádějí světové, mezinárodní, národní, regionální a specializované agentury.",
+        "authors": []
+      },
+      {
+        "term": "zpravodajské rozdělení světa",
+        "definition": "Materiály uvádějí sféry Havasu, Reuters, WTB a AP: Havas pro Francii a románské jazyky, Reuters pro britskou koloniální říši a Dálný východ, WTB pro střední a východní Evropu a AP pro USA.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Ferdinand de Lesseps",
+        "role": "v materiálech spojen se Suezským průplavem a s neúspěšným francouzským pokusem o Panamský průplav"
+      },
+      {
+        "name": "Charles Louis Havas",
+        "role": "zakladatel Agence Havas, Francie, 1835"
+      },
+      {
+        "name": "Bernhard Wolff",
+        "role": "zakladatel Wolff's Telegrafisches Bureau, Německo, 1849"
+      },
+      {
+        "name": "Paul Julius Reuter",
+        "role": "zakladatel Reuter's, Velká Británie, 1851"
+      },
+      {
+        "name": "Associated Press",
+        "role": "americká agentura uvedená v materiálech jako založená roku 1848"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má spojit dopravní a informační revoluci: nejde jen o technické vynálezy, ale o změnu časoprostorového uspořádání moderní společnosti.",
+      "Má umět uvést konkrétní data a příklady: železniční tratě, průplavy, optické linky, transatlantický kabel, agentury.",
+      "Má vysvětlit, proč zpravodajské agentury souvisejí s telegrafií a globálním informačním trhem."
+    ],
+    "followup_questions": [
+      "Jak železnice měnila sociální a ekonomické struktury?",
+      "V čem se lišila optická a elektrická telegrafie?",
+      "Proč byly podmořské kabely důležité pro globální komunikaci?",
+      "Jak si Havas, Reuters a WTB rozdělily zpravodajský svět?"
+    ],
+    "common_mistakes": [
+      "Oddělení dopravní revoluce od telekomunikací, jako by šlo o nesouvisející témata.",
+      "Zaměnění telegrafie a zpravodajských agentur: agentury využívají infrastrukturu, ale nejsou s ní totožné.",
+      "Opomenutí mocenského a koloniálního rozměru průplavů, kabelů a agenturních sítí."
+    ],
+    "source_refs": [
+      {
+        "file": "003_telekomunikace.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–9",
+        "relevance": "core"
+      },
+      {
+        "file": "004_zpravodajsk_udcae_agentury.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–5",
+        "relevance": "core"
+      }
+    ],
+    "review_status": "source_based_draft"
+  },
+  {
+    "id": "dejiny-medii-q03",
+    "title": "Vývoj tištěných médií",
+    "short_title": "Tištěná média",
+    "outline": [
+      "Vyložit technologické a výrobní předpoklady tištěných médií: papír, sazbu, tisk a obrazovou reprodukci.",
+      "Popsat mimoevropské počátky papíru, transfer papírenství do Evropy a expanzi výroby papíru.",
+      "Vysvětlit strojovou výrobu papíru a nové suroviny pro papír v 19. století.",
+      "Popsat vývoj strojového tisku od celokovového knihtisku přes rychlolis po rotační tisk.",
+      "Vyložit automatickou sazbu: linotyp a monotyp.",
+      "Vysvětlit autotypii, offsetový tisk, fotosazbu a DTP jako technologické proměny tištěných médií.",
+      "Upozornit, že dodaný ZIP pokrývá hlavně technologii a výrobu; ekonomická základna, typy tiskovin, periodicita, obsah a náklady nejsou v dodaných materiálech samostatně rozpracovány."
+    ],
+    "key_terms": [
+      {
+        "term": "papír",
+        "definition": "Materiály uvádějí, že papír se poprvé objevil v Číně už ve 3. tisíciletí př. n. l. a do Evropy se dostal perským a arabským prostřednictvím.",
+        "authors": []
+      },
+      {
+        "term": "Fabriano",
+        "definition": "První italská papírna vznikla podle materiálů v letech 1268–1276 ve Fabrianu a inovovala výrobu použitím mechanického pěchovadla k drcení hadrů.",
+        "authors": []
+      },
+      {
+        "term": "strojová výroba papíru",
+        "definition": "Nicholas Louis Robert zavedl stroj umožňující strojové nabírání papírové hmoty; bratři Fourdrinierové zavedli výrobu v rolích.",
+        "authors": [
+          "Nicholas Louis Robert",
+          "Henry Fourdrinier",
+          "Sealy Fourdrinier"
+        ]
+      },
+      {
+        "term": "papír z dřevitého vlákna",
+        "definition": "Friedrich Gottlob Keller získal v polovině 40. let 19. století patent na výrobu papíru z dřevitého vlákna.",
+        "authors": [
+          "Friedrich Gottlob Keller"
+        ]
+      },
+      {
+        "term": "celulóza",
+        "definition": "Anselm Payen objevil roku 1838 celulózu, v materiálech popsanou jako hlavní součást rostlinné buněčné stěny a polysacharid.",
+        "authors": [
+          "Anselm Payen"
+        ]
+      },
+      {
+        "term": "buničina",
+        "definition": "Experimenty C. B. Tilghmana a C. F. Dahla vedly podle materiálů k průmyslové výrobě buničiny v poslední pětině 19. století.",
+        "authors": [
+          "C. B. Tilghman",
+          "C. F. Dahl"
+        ]
+      },
+      {
+        "term": "rychlolis",
+        "definition": "Andreas König a Andreas Friedrich Bauer přišli v letech 1810–1814 s rychlolisem; v 50. letech 19. století byl k dispozici dvojitý rychlolis.",
+        "authors": [
+          "Andreas König",
+          "Andreas Friedrich Bauer"
+        ]
+      },
+      {
+        "term": "rotační tisk",
+        "definition": "J. C. McDonald a John Calverley zkonstruovali rotační tiskařský stroj v letech 1862–1866; William Bullock sestavil rotačku v USA roku 1865.",
+        "authors": [
+          "J. C. McDonald",
+          "John Calverley",
+          "William Bullock"
+        ]
+      },
+      {
+        "term": "linotyp",
+        "definition": "Stroj Ottmara Mergenthalera z let 1885–1886: pomocí klávesnice se sázely negativní matrice a hotový řádek se odlil vcelku.",
+        "authors": [
+          "Ottmar Mergenthaler"
+        ]
+      },
+      {
+        "term": "monotyp",
+        "definition": "Stroj Tolberta Lanstona z roku 1887: děrovaná papírová páska řídila odlévání a sázení jednotlivých liter.",
+        "authors": [
+          "Tolbert Lanston"
+        ]
+      },
+      {
+        "term": "autotypie",
+        "definition": "Georg Meisenbach roku 1882 vyvinul autotypii, která umožnila přenos fotografie na stránky tištěných médií rozkladem tónového obrazu do sítě bodů.",
+        "authors": [
+          "Georg Meisenbach"
+        ]
+      },
+      {
+        "term": "offsetový tisk",
+        "definition": "Ira Washington Rubel a Kaspar Herrmann přišli na začátku 20. století s nepřímým tiskem z plochy přes přenosový válec s gumovým povrchem.",
+        "authors": [
+          "Ira Washington Rubel",
+          "Kaspar Herrmann"
+        ]
+      },
+      {
+        "term": "fotosazba",
+        "definition": "René A. Higonnet a Louis Moyroud ukázali roku 1946 princip fotosazby založený na promítání znaků z negativů na film.",
+        "authors": [
+          "René A. Higonnet",
+          "Louis Moyroud"
+        ]
+      },
+      {
+        "term": "DTP",
+        "definition": "Desktop publishing nastupuje od poloviny 80. let 20. století; materiály uvádějí společnost Aldus a program PageMaker z roku 1985.",
+        "authors": [
+          "Aldus"
+        ]
+      }
+    ],
+    "authors": [
+      {
+        "name": "Nicholas Louis Robert",
+        "role": "stroj pro strojové nabírání papírové hmoty na přelomu 18. a 19. století"
+      },
+      {
+        "name": "Henry a Sealy Fourdrinierové",
+        "role": "výroba papíru v rolích v první pětině 19. století"
+      },
+      {
+        "name": "Friedrich Gottlob Keller",
+        "role": "patent na výrobu papíru z dřevitého vlákna"
+      },
+      {
+        "name": "Anselm Payen",
+        "role": "objev celulózy roku 1838"
+      },
+      {
+        "name": "Charles Stanhope",
+        "role": "celokovový knihtisk a úprava pákového mechanismu okolo roku 1800"
+      },
+      {
+        "name": "Andreas König a Andreas Friedrich Bauer",
+        "role": "rychlolis v letech 1810–1814"
+      },
+      {
+        "name": "Ottmar Mergenthaler",
+        "role": "linotyp, automatická sazba řádků"
+      },
+      {
+        "name": "Tolbert Lanston",
+        "role": "monotyp, sazba řízená děrovanou páskou"
+      },
+      {
+        "name": "Georg Meisenbach",
+        "role": "autotypie umožňující tisk fotografického obrazu"
+      },
+      {
+        "name": "Ira Washington Rubel a Kaspar Herrmann",
+        "role": "offsetový tisk jako nepřímý tisk z plochy"
+      },
+      {
+        "name": "René A. Higonnet a Louis Moyroud",
+        "role": "princip fotosazby roku 1946"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má umět vysvětlit technologickou logiku levnější, rychlejší a obrazově bohatší tiskové produkce.",
+      "Má odlišit papírenství, tiskovou techniku, sazbu a reprodukci obrazu.",
+      "Má vědět, že dodaný materiál nepokrývá plně všechny položky oficiální otázky, zejména ekonomickou základnu, typy tiskovin, periodicitu, obsah a vývoj nákladů."
+    ],
+    "followup_questions": [
+      "Jak spolu souvisí levnější papír, rychlejší tisk a rozvoj tištěných médií?",
+      "Jaký je rozdíl mezi linotypem a monotypem?",
+      "Proč byla autotypie významná pro tištěná média?",
+      "Co mění offset, fotosazba a DTP na výrobě novin a časopisů?"
+    ],
+    "common_mistakes": [
+      "Zaměnění dějin tištěných médií za samotný vynález knihtisku.",
+      "Opomenutí papíru a sazby jako klíčových předpokladů masovější tiskové produkce.",
+      "Přeskakování 19. století a jeho výrobních inovací.",
+      "Tvrzení o typologii a ekonomice tištěných médií bez opory v dodaném ZIPu."
+    ],
+    "source_refs": [
+      {
+        "file": "005_ti_udcedt-_udcf8n_udced_m_udcaedia_i_technologie_v_udca2roba.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–12",
+        "relevance": "core"
+      }
+    ],
+    "review_status": "source_based_draft_incomplete_sources"
+  },
+  {
+    "id": "dejiny-medii-q04",
+    "title": "Přenos a uchovávání obrazového sdělení",
+    "short_title": "Obrazové sdělení",
+    "outline": [
+      "Vymezit raná obrazová média uvedená v seznamu otázek: dřevoryt, mědiryt, xylografie a litografie.",
+      "Popsat vznik a vývoj fotografie.",
+      "Popsat experimenty s pohyblivým obrazem a počátky filmu.",
+      "Doplnit výklad až po dodání zdrojových materiálů, protože v poslaném ZIPu k této otázce není samostatný podklad."
+    ],
+    "key_terms": [
+      {
+        "term": "raná obrazová média",
+        "definition": "Oficiální seznam pod tento bod řadí dřevoryt, mědiryt, xylografii a litografii; dodaný ZIP k nim neobsahuje samostatný výklad.",
+        "authors": []
+      },
+      {
+        "term": "dřevoryt",
+        "definition": "Pojem je uveden v oficiálním seznamu otázek; v dodaném ZIPu není výklad.",
+        "authors": []
+      },
+      {
+        "term": "mědiryt",
+        "definition": "Pojem je uveden v oficiálním seznamu otázek; v dodaném ZIPu není výklad.",
+        "authors": []
+      },
+      {
+        "term": "xylografie",
+        "definition": "Pojem je uveden v oficiálním seznamu otázek; v dodaném ZIPu není výklad.",
+        "authors": []
+      },
+      {
+        "term": "litografie",
+        "definition": "Pojem je uveden v oficiálním seznamu otázek; v dodaném ZIPu není výklad.",
+        "authors": []
+      },
+      {
+        "term": "fotografie",
+        "definition": "Oficiální seznam požaduje vznik a vývoj fotografie; dodaný ZIP obsahuje pouze návazný bod digitálního fotoaparátu v otázce globální komunikační revoluce, nikoli dějiny fotografie jako celku.",
+        "authors": []
+      },
+      {
+        "term": "pohyblivý obraz a počátky filmu",
+        "definition": "Oficiální seznam požaduje experimenty s pohyblivým obrazem a počátky filmu; v dodaném ZIPu není samostatný výklad.",
+        "authors": []
+      }
+    ],
+    "authors": [],
+    "examiner_focus": [
+      "Tato položka je v JSONu ponechána jako rozpracovaná podle oficiálního seznamu, protože poslaný ZIP neobsahuje samostatné materiály k raným obrazovým médiím, fotografii ani filmu.",
+      "Zkoušející by měl před použitím doplnit zdrojový výklad nebo dodat další materiály."
+    ],
+    "followup_questions": [
+      "Jak se liší jednotlivá raná obrazová média uvedená v seznamu otázek?",
+      "Jaké technické a sociální změny přinesla fotografie?",
+      "Jaké experimenty vedly k pohyblivému obrazu a filmu?"
+    ],
+    "common_mistakes": [
+      "Doplňování konkrétních dat a jmen bez opory v dodaných materiálech.",
+      "Zaměnění digitální fotografie z otázky globální komunikační revoluce za celý výklad dějin fotografie."
     ],
     "source_refs": [],
+    "review_status": "needs_source_material"
+  },
+  {
+    "id": "dejiny-medii-q05",
+    "title": "Vysílací média",
+    "short_title": "Rozhlas a televize",
+    "outline": [
+      "Vysvětlit rozdíl mezi bezdrátovým spojením a rozhlasem jako veřejnou komunikací a institucí.",
+      "Popsat technické předpoklady rozhlasu: přenos hlasu, audion, krystalky, střední, krátké a ultrakrátké vlny.",
+      "Vyložit vznik rozhlasových institucí v Evropě a ekonomické modely rozhlasu.",
+      "Rozlišit státní, soukromoprávní a veřejnoprávní model vysílání.",
+      "Popsat mezinárodní, koloniální a propagandistická rozhlasová vysílání.",
+      "Popsat programovou skladbu a specifičnost rozhlasového vysílání.",
+      "Vyložit dvě cesty k televizi: elektromechanickou a elektronickou.",
+      "Popsat klíčové technické prvky televize: rozklad obrazu, Nipkowův systém, katodový oscilograf, ikonoskop, barevnou televizi.",
+      "Popsat rozšíření televize, poválečné inovace, modely legislativního zakotvení a fenomén plného zásobení televizory."
+    ],
+    "key_terms": [
+      {
+        "term": "bezdrátové spojení versus rozhlas",
+        "definition": "Materiály zdůrazňují, že bezdrátové spojení pouze přenáší informace, zatímco rozhlas je veřejnou komunikací a institucí.",
+        "authors": []
+      },
+      {
+        "term": "audion",
+        "definition": "Elektronka se třemi elektrodami, kterou roku 1906 vynalezl Lee de Forest; první efektivní zesilovač elektrického signálu a součást rozhlasových a televizních přijímačů do vynálezu tranzistoru.",
+        "authors": [
+          "Lee de Forest"
+        ]
+      },
+      {
+        "term": "první rozhlasové vysílání",
+        "definition": "Materiály uvádějí vysílání z Brant Rocku v Massachusetts o Štědrém večeru 1906, připisované Reginaldu A. Fessendenovi.",
+        "authors": [
+          "Reginald A. Fessenden"
+        ]
+      },
+      {
+        "term": "krystalky",
+        "definition": "Přijímací zařízení založená na zjištění kolem roku 1907, že určité minerály dokáží snadno přijímat rádiové signály.",
+        "authors": []
+      },
+      {
+        "term": "krátké vlny",
+        "definition": "Od pozdních 20. let umožnily mezikontinentální dimenzi vysílání a posílily mezinárodní charakter rozhlasu.",
+        "authors": []
+      },
+      {
+        "term": "UKV",
+        "definition": "Ultrakrátké vlny se v USA objevují ojediněle na konci 20. let; frekvenční modulace umožnila ostřejší odlišení programů a vysílačů.",
+        "authors": []
+      },
+      {
+        "term": "ekonomická základna rozhlasu",
+        "definition": "Materiály rozlišují komerční financování prodejem přijímačů nebo reklamou a financování rozhlasu jako veřejného statku skrze daně či poplatky.",
+        "authors": []
+      },
+      {
+        "term": "státní model vysílání",
+        "definition": "Vysílatelé jsou závislí na státu personálně, programově, strukturálně i finančně; systém není plurální, ale je mluvčím vlády nebo vládnoucí strany.",
+        "authors": []
+      },
+      {
+        "term": "soukromoprávní model vysílání",
+        "definition": "Vysílatel má soukromoprávní odpovědnost, zákonodárce stanovuje rámec tržní organizace a pluralita je vytvářena množstvím vysílatelů.",
+        "authors": []
+      },
+      {
+        "term": "veřejnoprávní model vysílání",
+        "definition": "Vysílatelé jsou samostatné právní osoby, zákonodárce stanovuje veřejnou objednávku a zákonné rámce, rozhodování je autonomní a financování probíhá zejména daněmi či poplatky.",
+        "authors": []
+      },
+      {
+        "term": "specifičnost rozhlasového vysílání",
+        "definition": "Materiály uvádějí interpretativnost, prostorovost, dynamičnost, nepřetržitost a komornost poslechu.",
+        "authors": []
+      },
+      {
+        "term": "elektromechanická televize",
+        "definition": "Cesta k televizi založená na mechanickém rozkladu obrazu; klíčovým bodem je Nipkowův patent z roku 1884 a prototypy Herberta E. Ivese a Johna L. Bairda ve 20. letech.",
+        "authors": [
+          "Paul Gottlieb Nipkow",
+          "Herbert E. Ives",
+          "John L. Baird"
+        ]
+      },
+      {
+        "term": "elektronická televize",
+        "definition": "Cesta založená na elektronickém snímání a zobrazování; materiály uvádějí Campbell Swintonův koncept, Braunův katodový oscilograf, von Ardenneho zlepšení a Zvorykinův ikonoskop.",
+        "authors": [
+          "Alan Archibald Campbell Swinton",
+          "Ferdinand Braun",
+          "Manfred von Ardenne",
+          "Vladimir Zvorykin"
+        ]
+      },
+      {
+        "term": "ikonoskop",
+        "definition": "Snímací elektronka s akumulačním účinkem, kterou podle materiálů nabídl Vladimir Zvorykin a která odstranila problémy dosavadní kamerové techniky.",
+        "authors": [
+          "Vladimir Zvorykin"
+        ]
+      },
+      {
+        "term": "barevná televize",
+        "definition": "Materiály uvádějí patent principu barevné televize Janem Szczepanikem roku 1897, projekt z roku 1908 v Německu a experimenty Zvorykina s rozkladem bílého světla na modrou, zelenou a červenou.",
+        "authors": [
+          "Jan Szczepanik",
+          "Vladimir Zvorykin"
+        ]
+      },
+      {
+        "term": "plné zásobení televizory",
+        "definition": "Více než 95% vlastnictví televizních přijímačů v domácnostech; podle materiálů bylo v USA dosaženo počátkem 70. let, v SRN a Velké Británii v polovině 70. let.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Lee de Forest",
+        "role": "audion, elektronka se třemi elektrodami a efektivní zesilovač elektrického signálu"
+      },
+      {
+        "name": "Reginald A. Fessenden",
+        "role": "první rozhlasové vysílání z Brant Rocku v Massachusetts podle materiálů"
+      },
+      {
+        "name": "Alexander Bain",
+        "role": "rozklad obrazu do jednotlivých bodů v roce 1843"
+      },
+      {
+        "name": "Paul Gottlieb Nipkow",
+        "role": "patent elektromechanického rozkladu obrazu z roku 1884"
+      },
+      {
+        "name": "John L. Baird",
+        "role": "funkční prototyp elektromechanické televize a model barevné televize à la Nipkow"
+      },
+      {
+        "name": "Alan Archibald Campbell Swinton",
+        "role": "koncept televize na plně elektronické bázi z roku 1908"
+      },
+      {
+        "name": "Ferdinand Braun",
+        "role": "katodový oscilograf z roku 1897"
+      },
+      {
+        "name": "Manfred von Ardenne",
+        "role": "vylepšení Braunova katodového oscilografu v letech 1929–1930"
+      },
+      {
+        "name": "Vladimir Zvorykin",
+        "role": "ikonoskop a experimenty důležité pro elektronickou a barevnou televizi"
+      },
+      {
+        "name": "Philo T. Farnsworth",
+        "role": "citlivější řešení elektronického přenosu, při němž se obraz rozložený na segmenty přenášel simultánně"
+      },
+      {
+        "name": "Jan Szczepanik",
+        "role": "patent principu barevné televize roku 1897"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má odlišit technické dějiny vysílání od institucionálních, ekonomických a legislativních modelů vysílání.",
+      "Má umět vysvětlit, proč rozhlas a televize nevznikají jen technicky, ale také politickým rozhodnutím a institucionálním ukotvením.",
+      "Má umět porovnat státní, soukromoprávní a veřejnoprávní model vysílání.",
+      "Má rozlišit elektromechanickou a elektronickou cestu vývoje televize."
+    ],
+    "followup_questions": [
+      "Proč materiály říkají, že rozhlas je veřejná komunikace a instituce, ne jen bezdrátový přenos?",
+      "Jaký význam měl audion pro rozhlas?",
+      "Jak se liší státní, soukromoprávní a veřejnoprávní model vysílání?",
+      "Jaké jsou základní vlastnosti rozhlasového poslechu?",
+      "Jaký je rozdíl mezi Nipkowovou elektromechanickou televizí a elektronickou televizí?",
+      "Co znamená plné zásobení televizory?"
+    ],
+    "common_mistakes": [
+      "Redukce rozhlasu a televize na technické vynálezy bez ekonomických a institucionálních souvislostí.",
+      "Zaměnění bezdrátové telegrafie za rozhlasové vysílání.",
+      "Směšování státního a veřejnoprávního modelu.",
+      "Opomenutí politizace rozhlasu ve 30. letech a mezinárodního/propagandistického rozměru vysílání.",
+      "Neodlišení elektromechanické a elektronické televize."
+    ],
+    "source_refs": [
+      {
+        "file": "008_audi_udcedln_udca1_m_udcaedia_a_rozhlas.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–13",
+        "relevance": "core"
+      },
+      {
+        "file": "011a_televize.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–14",
+        "relevance": "core"
+      }
+    ],
+    "review_status": "source_based_draft"
+  },
+  {
+    "id": "dejiny-medii-q06",
+    "title": "Tvůrci médií",
+    "short_title": "Tvůrci médií",
+    "outline": [
+      "Vymezit tvůrce letákových novin, pamfletů a periodických tištěných médií novověku podle oficiálního seznamu: korespondenti, poštmistři, tiskaři a novinspisovatelé.",
+      "Propojit tento bod s materiály o korespondenčních systémech, psaných novinách, poště a knihtisku.",
+      "Vysvětlit, že dodaný ZIP obsahuje podklady ke korespondentům, komunikátorům, poštovním sítím a tiskařské technologii, ale neobsahuje samostatný výklad profesionalizace novináře v moderní éře.",
+      "Doplnit výklad o utváření profese novináře až po dodání odpovídajícího zdroje."
+    ],
+    "key_terms": [
+      {
+        "term": "korespondenti a komunikátoři",
+        "definition": "Materiály k počátkům novin uvádějí hustou síť korespondentů a komunikátorů, která zajišťovala pravidelnou a stálou informační výměnu v Evropě.",
+        "authors": []
+      },
+      {
+        "term": "korespondenční systém",
+        "definition": "Rutinní a systematické korespondenční styky zapojující vzdělané, ekonomicky aktivní a politicky sebevědomé elity.",
+        "authors": []
+      },
+      {
+        "term": "poštmistři",
+        "definition": "Oficiální seznam je uvádí mezi tvůrci/aktéry novověkých tištěných médií; dodaný ZIP je podpírá výkladem pošty a poštovních linek, ale neobsahuje samostatnou charakteristiku poštmistrů jako mediálních aktérů.",
+        "authors": []
+      },
+      {
+        "term": "tiskaři",
+        "definition": "Oficiální seznam je uvádí mezi aktéry novověkých tištěných médií; dodaný ZIP podrobně pokrývá technologii papíru, tisku, sazby a DTP, nikoli sociální roli tiskařů jako profese.",
+        "authors": []
+      },
+      {
+        "term": "novinspisovatelé",
+        "definition": "Pojem je uveden v oficiálním seznamu otázek; v dodaném ZIPu není samostatně rozpracován.",
+        "authors": []
+      },
+      {
+        "term": "profese novináře v moderní éře",
+        "definition": "Oficiální seznam požaduje výklad utváření profese novináře v moderní éře; v dodaném ZIPu k tomu není samostatný podklad.",
+        "authors": []
+      }
+    ],
+    "authors": [],
+    "examiner_focus": [
+      "Studující má podle dostupných materiálů propojit vznik mediálních tvůrců s korespondencí, poštou a tiskem, ale položka vyžaduje doplnění o profesionalizaci novináře.",
+      "Zkoušející by měl vědět, že tato otázka je v poslaném ZIPu pokryta jen částečně."
+    ],
+    "followup_questions": [
+      "Jakou roli hráli korespondenti a komunikátoři ve vzniku novin?",
+      "Proč jsou poštovní sítě důležité pro tvůrce raně novověkých médií?",
+      "Jak by bylo třeba doplnit výklad profesionalizace novináře?"
+    ],
+    "common_mistakes": [
+      "Nahrazení otázky o tvůrcích médií čistě technologickým výkladem knihtisku.",
+      "Tvrzení o moderní profesi novináře bez zdrojové opory v dodaném ZIPu.",
+      "Opomenutí korespondenčních sítí jako předpokladu raného zpravodajství."
+    ],
+    "source_refs": [
+      {
+        "file": "001_p_udcd6enos_a_uchov_udcedv_udcedn_udca1_slova_a_textu_i.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 12–14",
+        "relevance": "supporting"
+      },
+      {
+        "file": "002_p_udcd6enos_a_uchov_udcedv_udcedn_udca1_slova_a_textu_ii.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 6–16",
+        "relevance": "supporting"
+      },
+      {
+        "file": "005_ti_udcedt-_udcf8n_udced_m_udcaedia_i_technologie_v_udca2roba.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–12",
+        "relevance": "supporting"
+      }
+    ],
+    "review_status": "source_based_draft_incomplete_sources"
+  },
+  {
+    "id": "dejiny-medii-q07",
+    "title": "Regulace a kontrola médií",
+    "short_title": "Regulace a kontrola",
+    "outline": [
+      "Podle oficiálního seznamu vymezit obsahovou kontrolu: tradiční předběžná cenzura versus moderní následná cenzura.",
+      "Podle oficiálního seznamu uvést nástroje ekonomické a fiskální kontroly.",
+      "Podle oficiálního seznamu uvést profesní a distribuční kontrolu.",
+      "Vysvětlit zdrojově doložené modely legislativního zakotvení rozhlasu a televize: státní, soukromoprávní a veřejnoprávní model.",
+      "Upozornit, že obecný výklad cenzury, fiskální kontroly a profesní/distribuční kontroly není v dodaném ZIPu samostatně zpracován."
+    ],
+    "key_terms": [
+      {
+        "term": "předběžná cenzura",
+        "definition": "Pojem je uveden v oficiálním seznamu jako tradiční forma obsahové kontroly; v dodaném ZIPu není samostatně vyložen.",
+        "authors": []
+      },
+      {
+        "term": "následná cenzura",
+        "definition": "Pojem je uveden v oficiálním seznamu jako moderní forma obsahové kontroly; v dodaném ZIPu není samostatně vyložen.",
+        "authors": []
+      },
+      {
+        "term": "ekonomická a fiskální kontrola",
+        "definition": "Oficiální seznam uvádí ekonomické a fiskální nástroje kontroly; dodaný ZIP podrobněji pokrývá ekonomické modely rozhlasového a televizního vysílání, nikoli obecné fiskální nástroje kontroly médií.",
+        "authors": []
+      },
+      {
+        "term": "profesní a distribuční kontrola",
+        "definition": "Pojem je uveden v oficiálním seznamu; v dodaném ZIPu není samostatně rozpracován.",
+        "authors": []
+      },
+      {
+        "term": "státní model vysílání",
+        "definition": "Rozhlasoví či televizní vysílatelé jsou závislí na státu personálně, programově, strukturálně i finančně; systém nepřináší plurální názorovou různorodost.",
+        "authors": []
+      },
+      {
+        "term": "soukromoprávní model vysílání",
+        "definition": "Zákonodárce poskytuje tržní rámec, vysílatel má soukromoprávní odpovědnost a názorová různorodost je vytvářena množstvím vysílatelů.",
+        "authors": []
+      },
+      {
+        "term": "veřejnoprávní model vysílání",
+        "definition": "Vysílatelé jsou samostatné právní osoby, zákonodárce formuluje veřejnou objednávku a rámce, rozhodování je autonomní a kontrola má vyvažovat společenské a politické skupiny včetně menšin.",
+        "authors": []
+      }
+    ],
+    "authors": [],
+    "examiner_focus": [
+      "Tato otázka je v dodaném ZIPu pokryta zejména přes legislativní modely rozhlasu a televize, nikoli jako obecné dějiny cenzury a kontroly médií.",
+      "Studující má jasně odlišit státní, soukromoprávní a veřejnoprávní model vysílání.",
+      "Pro úplný zkouškový výklad je třeba doplnit zdroje k předběžné/následné cenzuře, ekonomické/fiskální kontrole a profesní/distribuční kontrole."
+    ],
+    "followup_questions": [
+      "Jak se liší státní a veřejnoprávní model vysílání?",
+      "Proč soukromoprávní model vytváří pluralitu jiným způsobem než veřejnoprávní model?",
+      "Které části oficiální otázky nejsou v dodaném ZIPu samostatně pokryty?"
+    ],
+    "common_mistakes": [
+      "Zaměnění veřejnoprávního modelu za státní model.",
+      "Doplňování dějin cenzury bez opory v dodaném ZIPu.",
+      "Redukce regulace pouze na právní předpisy, bez ekonomické a institucionální roviny."
+    ],
+    "source_refs": [
+      {
+        "file": "008_audi_udcedln_udca1_m_udcaedia_a_rozhlas.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 6–9",
+        "relevance": "supporting"
+      },
+      {
+        "file": "011a_televize.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 12–14",
+        "relevance": "supporting"
+      }
+    ],
+    "review_status": "source_based_draft_incomplete_sources"
+  },
+  {
+    "id": "dejiny-medii-q08",
+    "title": "Globální komunikační revoluce",
+    "short_title": "Internet, mobil, digitální fotoaparát",
+    "outline": [
+      "Vyložit globální komunikační revoluci přes digitalizaci komunikace, internet, digitální fotoaparát a mobilní telefon.",
+      "Popsat kořeny internetu v poválečném vývoji počítačů a počítačových sítí.",
+      "Vysvětlit ARPAnet jako experimentální síť vytvořenou roku 1969 agenturou ARPA.",
+      "Popsat vznik e-mailu na počátku 70. let podle materiálů.",
+      "Vysvětlit World Wide Web jako soustavu propojených hypertextových dokumentů a uvést rok 1989 a Tima Berners-Leeho.",
+      "Popsat digitální fotoaparát: kosmický program, prototyp Steva Sassona roku 1975, komerční Fuji roku 1988 a ovládnutí trhu v polovině prvního desetiletí.",
+      "Popsat mobilní telefon: kořeny v 50. letech, širší vývoj od 80. let, boom na konci 20. století a smartphony od přelomu prvního a druhého desetiletí 21. století."
+    ],
+    "key_terms": [
+      {
+        "term": "globální komunikační revoluce",
+        "definition": "V dodaném materiálu je vyložena přes internet, digitální fotoaparát a mobilní telefon jako technologie digitalizované komunikace.",
+        "authors": []
+      },
+      {
+        "term": "ARPAnet",
+        "definition": "Experimentální síť vytvořená roku 1969 v USA agenturou ARPA; materiály ji spojují se snahou vytvořit síť bez řídících uzlů, kterou by nebylo možné snadno vyřadit z provozu ve válce.",
+        "authors": [
+          "ARPA"
+        ]
+      },
+      {
+        "term": "e-mail",
+        "definition": "Materiály uvádějí, že první e-mailový program se objevil na počátku 70. let.",
+        "authors": []
+      },
+      {
+        "term": "World Wide Web",
+        "definition": "Soustava propojených hypertextových dokumentů fungující na bázi hypertextových odkazů; koncept prezentoval Tim Berners-Lee roku 1989.",
+        "authors": [
+          "Tim Berners-Lee"
+        ]
+      },
+      {
+        "term": "HTTP",
+        "definition": "Hypertext Transfer Protocol, v materiálech uvedený jako protokol pro opatřování informací v rámci webu.",
+        "authors": []
+      },
+      {
+        "term": "digitální fotoaparát",
+        "definition": "Materiály spojují první pokusy s digitální fotografií s kosmickým programem v 60. letech, prototyp Steva Sassona s firmou Kodak roku 1975 a první komerčně vyráběný digitální fotoaparát Fuji roku 1988.",
+        "authors": [
+          "Steve Sasson"
+        ]
+      },
+      {
+        "term": "mobilní telefon",
+        "definition": "Kořeny sahají podle materiálů do 50. let 20. století, širší využití se rozvíjelo od 80. let a boom nastal na konci 20. století.",
+        "authors": []
+      },
+      {
+        "term": "smartphone",
+        "definition": "Dotykové mobilní telefony, které se podle materiálů začaly šířit od přelomu prvního a druhého desetiletí 21. století.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "ARPA",
+        "role": "agentura, která roku 1969 vytvořila experimentální síť ARPAnet"
+      },
+      {
+        "name": "Tim Berners-Lee",
+        "role": "prezentoval koncept World Wide Web roku 1989 a o dvě léta později vytvořil první webovou stránku"
+      },
+      {
+        "name": "Steve Sasson",
+        "role": "zkonstruoval roku 1975 ve firmě Kodak prototyp přenosného digitálního fotoaparátu"
+      },
+      {
+        "name": "Kodak",
+        "role": "firma spojená v materiálech s prototypem digitálního fotoaparátu Steva Sassona"
+      },
+      {
+        "name": "Fuji",
+        "role": "značka prvního komerčně vyráběného digitálního fotoaparátu uvedeného na trh roku 1988 podle materiálů"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má ukázat, že globální komunikační revoluce není jedna technologie, ale souběh internetu, webu, digitální fotografie a mobilní komunikace.",
+      "Má umět rozlišit internet/ARPAnet a World Wide Web.",
+      "Má uvést základní chronologii: ARPAnet 1969, e-mail na počátku 70. let, WWW 1989, digitální fotoaparát 1975/1988, boom mobilů na konci 20. století a smartphony po roce 2010 podle materiálů."
+    ],
+    "followup_questions": [
+      "Jaký je rozdíl mezi internetem a World Wide Webem?",
+      "Proč materiály zdůrazňují síť bez řídících uzlů?",
+      "Jak souvisí digitální fotografie s kosmickým programem a pozdějším spotřebitelským trhem?",
+      "Jak se liší tlačítkový mobilní telefon a smartphone v rámci této otázky?"
+    ],
+    "common_mistakes": [
+      "Zaměnění internetu a webu.",
+      "Přeskočení ARPAnetu a vojensko-bezpečnostního kontextu sítí bez řídících uzlů.",
+      "Redukce globální komunikační revoluce pouze na internet bez digitální fotografie a mobilního telefonu.",
+      "Opomenutí základních dat uvedených v materiálech."
+    ],
+    "source_refs": [
+      {
+        "file": "011b_glob_udcedln_udca1_komunika-_udcecn_udca1_revoluce.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–5",
+        "relevance": "core"
+      }
+    ],
+    "review_status": "source_based_draft"
+  },
+  {
+    "id": "metodologie-q01",
+    "title": "Věda a vědecké poznání",
+    "short_title": "Vědecké poznání",
+    "outline": [
+      "Vymezit vědu jako systematizovaný soubor poznatků i jako proces generování poznání podle pravidel.",
+      "Odlišit vědecké poznání od každodenního poznání: systematičnost, metoda, organizované poznávání, práce s pochybností, abstraktní jazyk, transparentnost a intersubjektivita.",
+      "Vysvětlit základní cíle vědy: popis, vysvětlení/porozumění a předpověď.",
+      "Představit hlavní přístupy v teorii vědy: pozitivismus/empirismus, Popperův falzifikacionismus, Kuhnovo paradigma a vědecké revoluce, Lakatosův výzkumný program, Feyerabendův epistemologický anarchismus.",
+      "Popsat hlavní paradigmata sociálních věd: pozitivismus, interpretativismus a kritický realismus.",
+      "Vysvětlit mediální studia jako interdisciplinární vědeckou disciplínu a pojmenovat jejich hlavní výzkumné tradice a oblasti."
+    ],
+    "key_terms": [
+      {
+        "term": "věda",
+        "definition": "Soubor systematicky utříděných poznatků o určité tematické oblasti i proces generování těchto poznatků pomocí pevně stanovených pravidel. V materiálech je zdůrazněna systematičnost, metoda, veřejnost, ověřitelnost, kredibilita, konzistence, kumulativnost, intersubjektivita, transparentnost, sebereflexivita a etika.",
+        "authors": []
+      },
+      {
+        "term": "vědecké poznání",
+        "definition": "Poznání, které je reflektované, metodické, organizované, pracuje s pochybnostmi, hledá alternativy, užívá abstraktní jazyk a musí být veřejně kontrolovatelné. Na rozdíl od každodenních znalostí nespoléhá pouze na rutinu a nezpochybňované zkušenosti.",
+        "authors": [
+          "Jan Hendl"
+        ]
+      },
+      {
+        "term": "metoda vědy podle Peirce",
+        "definition": "Jedna ze čtyř cest od pochybování ke stavu trvalé víry. Vedle metody vytrvalosti, autority a metody a priori je metoda vědy založena na kontrole přesvědčení prostřednictvím zkušenosti, argumentace a veřejně ověřitelných postupů.",
+        "authors": [
+          "Charles S. Peirce"
+        ]
+      },
+      {
+        "term": "pozitivismus / empirismus",
+        "definition": "Pojetí, podle něhož legitimní poznání vychází ze smyslové zkušenosti, empirických faktů a objektivně kontrolovatelných procedur. Materiály zároveň upozorňují na limity naivního empirismu: pozorování není čistý přístup k realitě, je ovlivněno očekáváním, jazykem a teorií.",
+        "authors": [
+          "Auguste Comte"
+        ]
+      },
+      {
+        "term": "falzifikacionismus",
+        "definition": "Pojetí vědy, podle něhož teorie nikdy definitivně nedokazujeme jako pravdivé, ale testujeme je pokusy o vyvrácení. Vědecká teorie má být formulována tak, aby byla principiálně empiricky falzifikovatelná.",
+        "authors": [
+          "Karl Raimund Popper"
+        ]
+      },
+      {
+        "term": "falibilismus",
+        "definition": "Přesvědčení, že vědecké poznání je dočasné, zkusmé a otevřené revizi. I dobře podložené tvrzení může být v budoucnu nahrazeno odolnější teorií.",
+        "authors": [
+          "Karl Raimund Popper"
+        ]
+      },
+      {
+        "term": "paradigma",
+        "definition": "Celek předpokladů, poznatků a správných postupů, který poskytuje poznávací východisko pro určitou tradici vědeckého výzkumu. V normální vědě je paradigma rozvíjeno, hromadění anomálií může vést k vědecké revoluci.",
+        "authors": [
+          "Thomas S. Kuhn"
+        ]
+      },
+      {
+        "term": "vědecký výzkumný program",
+        "definition": "Lakatosovo pojetí vědy jako souboru teorií s tvrdým jádrem a ochranným pásmem pomocných hypotéz. Falzifikace nemusí ihned zrušit celou teorii, protože chyba může být v ochranném pásmu; progres spočívá v nahrazení degenerujícího programu progresivním.",
+        "authors": [
+          "Imre Lakatos"
+        ]
+      },
+      {
+        "term": "epistemologický anarchismus",
+        "definition": "Feyerabendovo odmítnutí univerzální závazné vědecké metody. Materiály jej shrnují principem „anything goes“ a zároveň uvádějí kritiku, že takové pojetí může vést k problému, jak vůbec srovnávat teorie a obhájit vývoj poznání.",
+        "authors": [
+          "Paul K. Feyerabend"
+        ]
+      },
+      {
+        "term": "pozitivismus v sociálních vědách",
+        "definition": "Paradigma, které chce sociální vědy budovat po vzoru věd přírodních: pracuje s empirickými daty, přímým pozorováním, čísly, objektivitou, hypotézami, generalizacemi a izolováním vztahů mezi sociálními fakty.",
+        "authors": [
+          "Auguste Comte"
+        ]
+      },
+      {
+        "term": "interpretativismus",
+        "definition": "Paradigma, které zdůrazňuje, že lidé a instituce se nemají zkoumat stejně jako přírodní objekty. Hlavní zájem není kauzální zákon, ale porozumění smyslům, které aktéři dávají svému jednání a sociálním světům.",
+        "authors": [
+          "Max Weber"
+        ]
+      },
+      {
+        "term": "kritický realismus",
+        "definition": "Paradigma, které se snaží skloubit pozitivismus a interpretativismus: sociální realita je podle něj externí a poznatelná, ale každodenní jednání je zároveň reprodukováno a transformováno v kontextu širších sociálních a kulturních formací.",
+        "authors": []
+      },
+      {
+        "term": "mediální studia jako vědecká disciplína",
+        "definition": "Interdisciplinární obor, který nezkoumá jen média jako technické prostředky, ale i mediální organizace, obsahy, publika, politicko-ekonomické podmínky, důsledky, účinky a efekty mediální komunikace.",
+        "authors": [
+          "Volek",
+          "Jirák",
+          "Köpplová"
+        ]
+      },
+      {
+        "term": "čtyři výzkumné tradice mediálních studií",
+        "definition": "Materiály rozlišují tradici kognitivně-empirickou, kriticko-spekulativní, kulturální a komunikačně-technologickou. První se zaměřuje na empirický výzkum účinků, druhá na kritiku médií a ideologie, třetí na text i recepční strategie a čtvrtá na média jako technologie proměňující společnost a komunikaci.",
+        "authors": [
+          "Adorno",
+          "Horkheimer",
+          "Harold Innis",
+          "Marshall McLuhan"
+        ]
+      }
+    ],
+    "authors": [
+      {
+        "name": "Charles S. Peirce",
+        "role": "V materiálech slouží k výkladu cest od pochybování ke stavu trvalé víry: metoda vytrvalosti, metoda autority, metoda a priori a metoda vědy."
+      },
+      {
+        "name": "Jan Hendl",
+        "role": "Materiály jej používají pro odlišení každodenních znalostí a vědeckého poznání: věda je systematizovaná, metodická, organizovaná, otevřená pochybnostem a používá abstraktní jazyk."
+      },
+      {
+        "name": "Auguste Comte",
+        "role": "Autor spojovaný s pozitivismem a zákonem tří stádií: teologické, metafyzické a pozitivní/vědecké stadium."
+      },
+      {
+        "name": "Karl Raimund Popper",
+        "role": "Falzifikacionismus, hypoteticko-deduktivní metoda a falibilismus; vědecké tvrzení je dočasné a musí zůstat otevřené vyvrácení."
+      },
+      {
+        "name": "Thomas S. Kuhn",
+        "role": "Paradigma, normální věda, anomálie a vědecká revoluce jako změna dominantního paradigmatu."
+      },
+      {
+        "name": "Imre Lakatos",
+        "role": "Vědecký výzkumný program, tvrdé jádro a ochranné pásmo; rozlišení progresivních a degenerujících programů."
+      },
+      {
+        "name": "Paul K. Feyerabend",
+        "role": "Epistemologický anarchismus a princip „anything goes“; kritika univerzální vědecké metody."
+      },
+      {
+        "name": "Max Weber",
+        "role": "V materiálech reprezentuje sociologii jako chápající/rozumějící vědu a interpretativní důraz na smysl jednání."
+      },
+      {
+        "name": "Ien Ang",
+        "role": "Příklad interpretativního paradigmatu v mediálním výzkumu: Watching Dallas a aktivní divácké strategie."
+      },
+      {
+        "name": "Harold Innis a Marshall McLuhan",
+        "role": "Torontská komunikační škola v komunikačně-technologické tradici mediálních studií: média jako technologie proměňující společenské systémy a komunikační chování."
+      }
+    ],
+    "examiner_focus": [
+      "Studující má vysvětlit, proč vědecké poznání není totéž co běžná zkušenost nebo názor.",
+      "Má umět ukázat, že empirická data nejsou „čistá fakta“ bez teorie, jazyka a pozorovacího rámce.",
+      "Má odlišit Popperovu falzifikaci, Kuhnovo paradigma, Lakatosův výzkumný program a Feyerabendovu kritiku metody.",
+      "Má umět popsat pozitivismus, interpretativismus a kritický realismus jako odlišné odpovědi na otázku povahy sociální reality a poznání.",
+      "Má propojit obecnou teorii vědy s mediálními studii jako interdisciplinárním oborem."
+    ],
+    "followup_questions": [
+      "Proč nestačí říct, že věda je založena na faktech?",
+      "Jaký je rozdíl mezi verifikací a falzifikací?",
+      "Co je paradigma a co se podle Kuhna děje při vědecké revoluci?",
+      "Jak by se lišil pozitivistický a interpretativní výzkum stejného mediálního problému?",
+      "Proč jsou mediální studia multiparadigmatická?"
+    ],
+    "common_mistakes": [
+      "Ztotožnění vědeckého poznání s jakýmkoliv přesvědčením podloženým čísly.",
+      "Naivní empirismus: představa, že pozorování samo o sobě stačí k pravdivému poznání.",
+      "Záměna Popperovy falzifikace za běžné ověřování hypotéz.",
+      "Redukce paradigmat sociálních věd jen na kvantitativní versus kvalitativní metody.",
+      "Opomenutí toho, že mediální studia nejsou jen studiem obsahů, ale také institucí, publik, technologií, ekonomiky, účinků a společenských podmínek médií."
+    ],
+    "source_refs": [
+      {
+        "file": "prednaska3.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–32",
+        "relevance": "core"
+      },
+      {
+        "file": "prednaska4.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–40",
+        "relevance": "core"
+      },
+      {
+        "file": "prednaska5.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–43",
+        "relevance": "core"
+      },
+      {
+        "file": "metodologie_prednaska1_uvod.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 3–10",
+        "relevance": "supporting"
+      },
+      {
+        "file": "szz_tmk_jednoobor_hlavni_vedlejsi_verze_03_2025.pdf",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "D. Metodologie mediálního výzkumu: otázky 38/35",
+        "relevance": "official_question_list"
+      }
+    ],
+    "review_status": "source_based_draft"
+  },
+  {
+    "id": "metodologie-q02",
+    "title": "Logika a design sociálně-vědného výzkumu",
+    "short_title": "Design výzkumu",
+    "outline": [
+      "Vymezit účel výzkumu: explorativní, deskriptivní a explanační výzkum; základní a aplikovaný výzkum.",
+      "Vysvětlit logiku výzkumu: indukce a dedukce, vztah mezi teorií, hypotézami a empirickými daty.",
+      "Popsat hlavní fáze empirického výzkumu od tématu a problému přes rešerši, cíl, výzkumné otázky/hypotézy, konceptualizaci, operacionalizaci a výběr metody až po interpretaci a limity.",
+      "Srovnat kvantitativní, kvalitativní a smíšený výzkum podle logiky, cíle, typu dat, výběru vzorku a způsobu práce s teorií.",
+      "Vyložit rozdíl mezi metodou, technikou sběru dat, výzkumným nástrojem a analýzou dat.",
+      "Popsat časovou dimenzi výzkumu: průřezové a longitudinální studie, retrospektivní a prospektivní přístupy, analýza trendů, kohortová a panelová studie."
+    ],
+    "key_terms": [
+      {
+        "term": "explorativní výzkum",
+        "definition": "Výzkum používaný tam, kde je existující poznání velmi omezené nebo neexistuje. Jeho hlavní otázky jsou typu „co se děje?“ a cílem je počáteční seznámení s tématem a rozvinutí teorie.",
+        "authors": []
+      },
+      {
+        "term": "deskriptivní výzkum",
+        "definition": "Výzkum pro situace, kdy poznání existuje, ale je nekompletní. Ptá se zejména „jak, kdo, kde, kdy?“ a usiluje o přesný popis, kategorizaci a klasifikaci jevů.",
+        "authors": []
+      },
+      {
+        "term": "explanační výzkum",
+        "definition": "Výzkum používaný u dobře rozpracovaných témat. Ptá se „proč?“ a usiluje o testování teorie nebo hypotézy a vysvětlení jevů a situací.",
+        "authors": []
+      },
+      {
+        "term": "základní výzkum",
+        "definition": "Výzkum orientovaný na poznání pro poznání, s nepřímým použitím a primárním publikem ve vědecké komunitě.",
+        "authors": []
+      },
+      {
+        "term": "aplikovaný výzkum",
+        "definition": "Výzkum s bezprostředním praktickým použitím jako podklad pro rozhodování, hodnocení sociálních dopadů nebo řešení problémů; materiály upozorňují i na riziko zneužití pro soukromé či politické cíle.",
+        "authors": []
+      },
+      {
+        "term": "indukce",
+        "definition": "Výzkumná logika od jednotlivého k všeobecnému. Z jednotlivých případů se vytváří obecnější závěr, teorie nebo konceptuální porozumění.",
+        "authors": []
+      },
+      {
+        "term": "dedukce",
+        "definition": "Výzkumná logika od všeobecného k jednotlivému. Z obecného tvrzení nebo teorie se odvozují konkrétní očekávání či hypotézy, které se dále testují.",
+        "authors": []
+      },
+      {
+        "term": "výzkumné téma a výzkumný problém",
+        "definition": "Téma označuje, co zkoumáme; výzkumný problém je užší vymezení konkrétního problému v rámci tématu. Materiály zdůrazňují akademickou i společenskou relevanci problému.",
+        "authors": []
+      },
+      {
+        "term": "výzkumná otázka",
+        "definition": "Otázka obsahující základní proměnné nebo koncepty, které chceme zkoumat. Materiály uvádějí tři základní typy: „co?“ pro popis, „proč?“ pro vysvětlení a „jak?“ pro intervenci.",
+        "authors": []
+      },
+      {
+        "term": "hypotéza",
+        "definition": "Předběžný předpoklad nebo domněnka ve formě tvrzení. Musí být podložená, zdůvodněná a empiricky testovatelná; používá se k testování teorií.",
+        "authors": []
+      },
+      {
+        "term": "konceptualizace",
+        "definition": "Specifikace toho, co přesně myslíme jednotlivými termíny nebo koncepty. V designu výzkumu předchází operacionalizaci.",
+        "authors": []
+      },
+      {
+        "term": "operacionalizace",
+        "definition": "Stanovení indikátorů, prostřednictvím kterých budeme koncepty měřit nebo empiricky zachycovat. Materiály uvádějí příklad operacionalizace bulvarizace přes délku textu, vizualizaci, hard/soft news, témata, negativitu, personalizaci, zdroje či sportovní zprávy.",
+        "authors": []
+      },
+      {
+        "term": "indikátor",
+        "definition": "Empirická reprezentace pojmu nebo konceptu; konkrétní ukazatel, přes který se abstraktní koncept převádí do výzkumně uchopitelné podoby.",
+        "authors": []
+      },
+      {
+        "term": "kvantitativní výzkum",
+        "definition": "Přístup spojovaný v materiálech spíše s dedukcí, deskriptivním/explanačním cílem, měřením, náhodným výběrem, reprezentativitou, atomistickým pohledem a redukcí komplexity na měřitelné proměnné.",
+        "authors": [
+          "Jan Hendl",
+          "Norman Blaikie"
+        ]
+      },
+      {
+        "term": "kvalitativní výzkum",
+        "definition": "Přístup spojovaný v materiálech spíše s indukcí, explorací, hledáním smyslu, porozuměním, cíleným výběrem, holistickým pohledem, pružností designu a kontextovou interpretací.",
+        "authors": [
+          "Jan Hendl",
+          "Norman Blaikie"
+        ]
+      },
+      {
+        "term": "smíšený výzkum",
+        "definition": "Kombinace kvantitativních a kvalitativních přístupů v přípravě výzkumu, jeho realizaci nebo analýze dat.",
+        "authors": []
+      },
+      {
+        "term": "triangulace",
+        "definition": "Získávání více perspektiv na tentýž fenomén kombinací metod, dat, výzkumníků, zkoumaných skupin, lokálních a časových okolností nebo teoretických perspektiv.",
+        "authors": []
+      },
+      {
+        "term": "průřezová studie",
+        "definition": "Výzkum zachycující stav v jednom časovém bodě nebo období. Umožňuje popsat vztahy a rozdíly v daném okamžiku, nikoli přímo sledovat změnu v čase.",
+        "authors": []
+      },
+      {
+        "term": "longitudinální studie",
+        "definition": "Výzkum sledující proměnu v čase. Materiály uvádějí retrospektivní a prospektivní studie, analýzu trendů, kohortovou a panelovou studii.",
+        "authors": []
+      },
+      {
+        "term": "analýza trendů",
+        "definition": "Longitudinální design sledující změny ve stejné populaci v různých časech, nikoli nutně u stejných jedinců.",
+        "authors": []
+      },
+      {
+        "term": "kohortová studie",
+        "definition": "Longitudinální design sledující určitou kohortu nebo skupinu definovanou společnou charakteristikou v čase.",
+        "authors": []
+      },
+      {
+        "term": "panelová studie",
+        "definition": "Longitudinální design, který sleduje stejné jednotky opakovaně v čase.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Jan Hendl",
+        "role": "V materiálech je uveden u srovnání kvantitativního a kvalitativního výzkumu; kvalitativní výzkum je spojován s indukcí, porozuměním, cíleným výběrem a holistickým přístupem."
+      },
+      {
+        "name": "Norman Blaikie",
+        "role": "V materiálech je uveden u srovnání kvantitativního a kvalitativního výzkumu; slouží jako opora pro rozlišení výzkumných strategií a logiky designu."
+      },
+      {
+        "name": "Westerstahl",
+        "role": "V materiálech je uveden u vztahu teorie a konceptu: koncept jako abstrakce reprezentující objekt, vlastnost nebo fenomén, teorie jako specifikace vztahů mezi koncepty."
+      },
+      {
+        "name": "Creswell",
+        "role": "V seznamu povinné literatury k metodologii je uveden Research Design: Qualitative, Quantitative, and Mixed Methods Approaches; vztahuje se k návrhu kvalitativního, kvantitativního a smíšeného výzkumu."
+      },
+      {
+        "name": "Bryman",
+        "role": "V seznamu povinné literatury je uveden Social Research Methods; vztahuje se k designu sociálně-vědného výzkumu a srovnání metod."
+      }
+    ],
+    "examiner_focus": [
+      "Studující má umět odlišit účel výzkumu od použité metody.",
+      "Má umět vysvětlit, proč musí výzkum začít jasným problémem, otázkou a konceptualizací.",
+      "Má znát posloupnost fází empirického výzkumu a umět ji aplikovat na konkrétní mediální téma.",
+      "Má odlišit kvantitativní, kvalitativní a smíšený výzkum nejen podle technik, ale podle logiky poznání a typu dat.",
+      "Má umět vysvětlit, co je operacionalizace, a ukázat ji na příkladu mediálního konceptu.",
+      "Má rozumět časové dimenzi výzkumu a rozdílu mezi průřezovým, trendovým, kohortovým a panelovým designem."
+    ],
+    "followup_questions": [
+      "Jaký je rozdíl mezi výzkumným tématem a výzkumným problémem?",
+      "Jak byste operacionalizoval/a důvěru ve veřejnoprávní média?",
+      "Kdy byste zvolil/a explorativní a kdy explanační výzkum?",
+      "Jak se liší induktivní a deduktivní logika výzkumu?",
+      "Co znamená triangulace a kdy je užitečná?",
+      "Jaký design by byl vhodný pro sledování změn důvěry mladých lidí ve zpravodajská média v čase?"
+    ],
+    "common_mistakes": [
+      "Záměna výzkumné otázky za dotazníkovou otázku.",
+      "Přeskočení konceptualizace a operacionalizace a přímý skok k dotazníku nebo rozhovorům.",
+      "Mechanické přiřazení kvantitativní = lepší a kvalitativní = méně vědecký.",
+      "Nezdůvodněná kombinace metod bez jasné triangulační nebo smíšené logiky.",
+      "Záměna průřezového výzkumu za výzkum změny v čase.",
+      "Tvrzení kauzality na základě designu, který kauzalitu neumožňuje spolehlivě prokázat."
+    ],
+    "source_refs": [
+      {
+        "file": "prednaska6.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–28",
+        "relevance": "core"
+      },
+      {
+        "file": "prednaska8.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–32",
+        "relevance": "core"
+      },
+      {
+        "file": "metodologie_prednaska1_uvod.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 8–10",
+        "relevance": "supporting"
+      },
+      {
+        "file": "szz_tmk_jednoobor_hlavni_vedlejsi_verze_03_2025.pdf",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "D. Metodologie mediálního výzkumu: otázky 39/36",
+        "relevance": "official_question_list"
+      }
+    ],
+    "review_status": "source_based_draft"
+  },
+  {
+    "id": "metodologie-q03",
+    "title": "Role teorie ve výzkumu, vztah teorie a empirie",
+    "short_title": "Teorie a empirie",
+    "outline": [
+      "Vymezit teorii jako specifikaci vztahů mezi koncepty a vysvětlení, proč tyto vztahy existují.",
+      "Rozlišit koncept, teorii, hypotézu, empirická data a výzkumnou otázku.",
+      "Vysvětlit roli teorie v kvantitativním a kvalitativním výzkumu: testování teorií versus tvorba teorií.",
+      "Představit přehled literatury jako součást výzkumu a odlišit jej od samostatné přehledové studie.",
+      "Vysvětlit základní typy přehledových studií a logiku systematického přehledu.",
+      "Zařadit etiku v mediálním výzkumu a etiku publikování do celého výzkumného procesu."
+    ],
+    "key_terms": [
+      {
+        "term": "teorie",
+        "definition": "Specifikuje vztahy mezi koncepty a vysvětluje, proč tyto vztahy existují. Může popisovat nebo vysvětlovat určitý výsek reality; výzkum teorie vytváří, testuje, reviduje, zpřesňuje nebo vyvrací.",
+        "authors": []
+      },
+      {
+        "term": "koncept",
+        "definition": "Abstrakce reprezentující určitý fenomén, objekt nebo jeho vlastnost. Materiály uvádějí příklady jako zpravodajská hodnota, rámec, stereotyp, motivace nebo objektivita.",
+        "authors": []
+      },
+      {
+        "term": "teorie malého dosahu",
+        "definition": "Teorie zaměřená na jednotlivé vztahy a události, případně empirické generalizace. Materiály jako příklad uvádějí teorii zpravodajských hodnot.",
+        "authors": [
+          "Galtung",
+          "Ruge"
+        ]
+      },
+      {
+        "term": "teorie středního dosahu",
+        "definition": "Teorie vztahující se k ohraničené oblasti sociálních věd, která je relativně snadno testovatelná, ale má širší platnost než jednotlivá empirická generalizace.",
+        "authors": []
+      },
+      {
+        "term": "role teorie v kvantitativním výzkumu",
+        "definition": "Teorie stojí zpravidla na začátku výzkumu; na jejím základě se formulují hypotézy, které se prostřednictvím dat testují.",
+        "authors": []
+      },
+      {
+        "term": "role teorie v kvalitativním výzkumu",
+        "definition": "Teorie stojí zpravidla na konci výzkumu; cílem je na základě porozumění datům teorii vytvářet nebo rozvíjet, nikoli pouze testovat předem stanovenou hypotézu.",
+        "authors": []
+      },
+      {
+        "term": "teoretická stať",
+        "definition": "Akademický text zaměřený na rozvoj teorie nebo konceptuálního rámce. Obvykle neobsahuje vlastní empirický výzkum, ale analyzuje, systematizuje nebo kriticky rozvíjí existující poznatky.",
+        "authors": []
+      },
+      {
+        "term": "rešerše literatury",
+        "definition": "Práce s odbornými zdroji, jejímž účelem je popsat stav poznání k výzkumnému tématu a problému, vyhnout se objevování objeveného, najít mezery v poznání a zasadit vlastní výzkum do odborné diskuse.",
+        "authors": []
+      },
+      {
+        "term": "přehled literatury",
+        "definition": "Součást odborného textu, která vyhledává, shrnuje a vztahuje k vlastnímu výzkumu relevantní teoretickou, empirickou a kontextuální literaturu.",
+        "authors": []
+      },
+      {
+        "term": "přehledová studie",
+        "definition": "Samostatný typ odborného textu, který systematicky nebo narativně shrnuje existující poznatky, teorie, koncepty, metody a empirická zjištění o určitém tématu.",
+        "authors": [
+          "Jesson",
+          "Matheson",
+          "Lacey"
+        ]
+      },
+      {
+        "term": "systematický přehled",
+        "definition": "Přehledová studie s jasně definovanou otázkou, transparentní strategií vyhledávání, kritérii zařazení/vyřazení studií, hodnocením kvality studií a syntézou výsledků pomocí vědecké metodologie.",
+        "authors": [
+          "Kahn et al."
+        ]
+      },
+      {
+        "term": "PRISMA",
+        "definition": "Standard pro systematické přehledy a meta-analýzy; materiály jej popisují jako 17položkový checklist a průvodní diagram. Slouží k transparentnímu reportování systematického přehledu.",
+        "authors": []
+      },
+      {
+        "term": "etika ve výzkumu",
+        "definition": "Týká se celého výzkumného procesu od definice problému přes design, sběr dat, interpretaci a publikaci až po fungování vědeckých institucí, financování a rozhodování o vědě.",
+        "authors": []
+      },
+      {
+        "term": "informovaný souhlas",
+        "definition": "Souhlas obsahující účel a cíl výzkumu, průběh, rizika, výhody nebo odměnu, dobrovolnost, právo odstoupit, právo vědět, jak byla data použita, kontakt na výzkumníka a informace o nakládání s osobními údaji.",
+        "authors": []
+      },
+      {
+        "term": "anonymizace",
+        "definition": "Úprava dat tak, aby neobsahovala údaje přímo ani nepřímo umožňující identifikovat jedince nebo organizaci.",
+        "authors": []
+      },
+      {
+        "term": "pseudonymizace",
+        "definition": "Zpracování osobních údajů tak, že jsou identifikační údaje uchovány odděleně od výzkumných dat.",
+        "authors": []
+      },
+      {
+        "term": "etika publikování",
+        "definition": "Požadavek opakovatelné a ověřitelné studie, reportování všech dat včetně nepohodlných, nezměňování ani nezkreslování dat, jednorázové publikování téhož zjištění, vyhýbání se plagiátorství a autoplagiátorství a transparentnost práce s AI.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Galtung a Ruge",
+        "role": "V materiálech jsou uvedeni jako příklad teorie malého dosahu: teorie zpravodajských hodnot."
+      },
+      {
+        "name": "Jesson, Matheson a Lacey",
+        "role": "V materiálech jsou uvedeni u přehledových studií a rozlišení tradičních a systematických technik práce s literaturou."
+      },
+      {
+        "name": "Mareš",
+        "role": "V materiálech je uveden u typologie přehledových studií; rozlišuje typy podle cílů, otázek, dat, práce s daty a obecného cíle studie."
+      },
+      {
+        "name": "Kahn et al.",
+        "role": "V materiálech jsou citováni u definice systematického přehledu jako výzkumného článku, který identifikuje relevantní studie, hodnotí jejich kvalitu a shrnuje výsledky vědeckou metodologií."
+      },
+      {
+        "name": "Booth, Colomb a Williams",
+        "role": "V materiálech slouží k výkladu vědeckého argumentu: claim, reason, evidence a práce s otázkami, námitkami a alternativami."
+      },
+      {
+        "name": "Tuskegee Study",
+        "role": "Není autor, ale klíčový etický milník v materiálech: příklad výzkumného poškození, absence informovaného souhlasu a zatajování léčby."
+      }
+    ],
+    "examiner_focus": [
+      "Studující má umět vysvětlit, že teorie není dekorace v úvodu práce, ale určuje koncepty, vztahy, hypotézy, design a interpretaci.",
+      "Má odlišit koncept, teorii, hypotézu, indikátor a empirická data.",
+      "Má vysvětlit rozdíl mezi rolí teorie v kvantitativním a kvalitativním výzkumu.",
+      "Má umět rozlišit běžný přehled literatury v empirické stati od samostatné přehledové studie.",
+      "Má znát základní logiku systematického přehledu a proč je důležitá transparentnost výběru literatury.",
+      "Má umět zasadit etiku do celého výzkumného procesu, nikoli ji zúžit jen na podpis souhlasu."
+    ],
+    "followup_questions": [
+      "Jaký je rozdíl mezi konceptem a teorií?",
+      "Proč je selektivní čtení literatury problém?",
+      "Kdy je vhodné udělat systematický přehled místo nového empirického výzkumu?",
+      "Jaký je rozdíl mezi informovaným souhlasem, anonymizací a pseudonymizací?",
+      "Proč je Tuskegee Study eticky důležitý příklad?",
+      "Jak se eticky reportují data, která nepotvrzují očekávání výzkumníka?"
+    ],
+    "common_mistakes": [
+      "Chápat teorii jen jako seznam autorů, nikoli jako rámec vztahů mezi koncepty.",
+      "Zaměňovat rešerši literatury za libovolné shrnutí několika textů.",
+      "Uvádět systematický přehled bez jasných kritérií výběru a vyřazení studií.",
+      "Předstírat, že etika se týká jen rozhovorů, a ne designu, interpretace a publikace.",
+      "Zapomenout, že použití AI musí být transparentně přiznáno a že odpovědnost za přesnost práce zůstává na autorovi/autorce.",
+      "Neodlišit anonymizaci od pseudonymizace."
+    ],
+    "source_refs": [
+      {
+        "file": "prednaska7.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–44",
+        "relevance": "core"
+      },
+      {
+        "file": "prednaska3.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 20–31",
+        "relevance": "core"
+      },
+      {
+        "file": "metodologie_prednaska1_uvod.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 8–10",
+        "relevance": "supporting"
+      },
+      {
+        "file": "szz_tmk_jednoobor_hlavni_vedlejsi_verze_03_2025.pdf",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "D. Metodologie mediálního výzkumu: otázky 40/37",
+        "relevance": "official_question_list"
+      }
+    ],
+    "review_status": "source_based_draft"
+  },
+  {
+    "id": "metodologie-q04",
+    "title": "Výběr výzkumného souboru, validita, reliabilita",
+    "short_title": "Výběr, validita, reliabilita",
+    "outline": [
+      "Vymezit základní soubor/populaci a výběrový soubor/vzorek.",
+      "Vysvětlit rozdíl mezi parametrem a statistikou a vztah selekce a generalizace.",
+      "Odlišit pravděpodobnostní a nepravděpodobnostní výběry.",
+      "Popsat typy náhodného výběru: prostý náhodný, systematický, stratifikovaný, vícestupňový a skupinkový/cluster.",
+      "Popsat typy nenáhodného výběru: kvótní, sněhová koule, teoretický výběr, typické případy, kritické případy, maximální variace, homogenní a účelový výběr.",
+      "Vysvětlit velikost vzorku, bod nasycení, výběrovou chybu a proč velikost vzorku sama nezajišťuje reprezentativitu.",
+      "Vyložit reliabilitu a validitu včetně jejich vztahu a základních typů validity."
+    ],
+    "key_terms": [
+      {
+        "term": "základní soubor / populace",
+        "definition": "Celek jednotek, o kterém chce výzkum vypovídat. Z něj se vybírá výběrový soubor a na něj se při generalizaci vztahují závěry.",
+        "authors": []
+      },
+      {
+        "term": "výběrový soubor / vzorek",
+        "definition": "Část populace, která je skutečně zkoumána. Jeho vlastnosti slouží k odhadu vlastností celé populace, pokud to design výběru dovoluje.",
+        "authors": []
+      },
+      {
+        "term": "parametr",
+        "definition": "Vlastnost celé populace, kterou obvykle neznáme.",
+        "authors": []
+      },
+      {
+        "term": "statistika",
+        "definition": "Hodnota vypočtená z výběrového souboru, která se používá k odhadu parametru populace.",
+        "authors": []
+      },
+      {
+        "term": "reprezentativita",
+        "definition": "Míra, do jaké vzorek a jeho vlastnosti věrně odrážejí populaci. Materiály zdůrazňují, že velikost vzorku sama o sobě reprezentativitu nezaručuje.",
+        "authors": []
+      },
+      {
+        "term": "pravděpodobnostní výběr",
+        "definition": "Výběr, ve kterém má každá jednotka základního souboru stejnou a nenulovou pravděpodobnost být vybrána. Umožňuje určit, jak se výběrový soubor liší od základního souboru, ale vyžaduje oporu výběru.",
+        "authors": []
+      },
+      {
+        "term": "prostý náhodný výběr",
+        "definition": "Každé jednotce základního souboru se přidělí číslo a jednotky se vybírají generováním náhodných čísel. Vyžaduje dobrou oporu výběru.",
+        "authors": []
+      },
+      {
+        "term": "systematický výběr",
+        "definition": "Do vzorku je zahrnuta každá N-tá jednotka ze seznamu; N se počítá jako velikost populace dělená velikostí vzorku a první jednotka se vybírá náhodně.",
+        "authors": []
+      },
+      {
+        "term": "stratifikovaný náhodný výběr",
+        "definition": "Populace se rozdělí do homogenních skupin podle kritéria, u kterého chceme ve vzorku dosáhnout přesné reprezentace, a z těchto skupin se vybírá náhodně.",
+        "authors": []
+      },
+      {
+        "term": "vícestupňový náhodný výběr",
+        "definition": "Výběr probíhá ve dvou nebo více krocích, často nejprve výběrem přirozených seskupení a následně výběrem jednotek uvnitř nich.",
+        "authors": []
+      },
+      {
+        "term": "skupinkový / cluster výběr",
+        "definition": "Varianta vícestupňového výběru, při níž se nejprve vybírají přirozená seskupení, o nichž předpokládáme, že jsou vzájemně zastupitelná.",
+        "authors": []
+      },
+      {
+        "term": "nenáhodný výběr",
+        "definition": "Výběr používaný často v kvalitativním výzkumu nebo tam, kde nemáme oporu výběru či neznáme populaci. Výzkumník vybírá jednotky vědomě a využívá logický úsudek; reprezentativita se zpravidla zanedbává, s výjimkou kvótního výběru.",
+        "authors": []
+      },
+      {
+        "term": "kvótní výběr",
+        "definition": "Nenáhodný výběr napodobující ve struktuře vzorku známé vlastnosti populace tak, aby byly podstatné skupiny zastoupeny ve stejných proporcích jako v populaci.",
+        "authors": []
+      },
+      {
+        "term": "technika sněhové koule",
+        "definition": "Výběr, při kterém původní participanti vedou výzkumníka k dalším členům cílové skupiny.",
+        "authors": []
+      },
+      {
+        "term": "teoretický výběr",
+        "definition": "Výběr založený na úsudku výzkumníka o tom, co by mělo být pozorováno; dán rozvíjející se teorií a potřebou doplnit relevantní případy.",
+        "authors": []
+      },
+      {
+        "term": "výběr typických případů",
+        "definition": "Výběr normálních nebo průměrných případů, přičemž typičnost je nutné vyargumentovat.",
+        "authors": []
+      },
+      {
+        "term": "výběr kritických případů",
+        "definition": "Výběr obzvláště důležitých případů, které umožní získat zásadní informace a logicky zobecnit i na jiné případy.",
+        "authors": []
+      },
+      {
+        "term": "maximální variace",
+        "definition": "Nenáhodný výběr usilující o co největší pestrost případů.",
+        "authors": []
+      },
+      {
+        "term": "homogenní výběr",
+        "definition": "Výběr, který zaostřuje, redukuje a zjednodušuje zkoumanou skupinu výběrem podobných případů.",
+        "authors": []
+      },
+      {
+        "term": "účelový / convenience sampling",
+        "definition": "Slabá forma vybírá ty, kteří jsou zrovna po ruce; silná forma využívá dostupnost strategicky a musí být zdůvodněna výzkumným cílem.",
+        "authors": []
+      },
+      {
+        "term": "bod nasycení",
+        "definition": "V kvalitativním výzkumu bod, kdy další sběr dat už nepřináší podstatně nové informace.",
+        "authors": []
+      },
+      {
+        "term": "výběrová chyba",
+        "definition": "Náhodná statistická odchylka mezi výsledky z výběrového souboru a skutečnými hodnotami v celé populaci, vznikající proto, že zkoumáme jen část populace.",
+        "authors": []
+      },
+      {
+        "term": "reliabilita",
+        "definition": "Stupeň konzistence měření vykonaného opakovaně za stejných podmínek. Materiály ji spojují se stabilitou, replikabilitou a přesností; nízká reliabilita vede k nízké validitě.",
+        "authors": []
+      },
+      {
+        "term": "validita",
+        "definition": "Platnost měření: měření je validní tehdy, když měří to, co jsme zamýšleli měřit. Materiály uvádějí interní, externí, zjevnou, souběžnou a prediktivní validitu.",
+        "authors": []
+      },
+      {
+        "term": "interní validita",
+        "definition": "Míra, v níž lze věřit, že zjištěný vztah nebo výsledek odpovídá zkoumanému mechanismu uvnitř výzkumného designu.",
+        "authors": []
+      },
+      {
+        "term": "externí validita",
+        "definition": "Míra, v níž lze závěry zobecnit mimo zkoumaný vzorek, prostředí nebo časové období.",
+        "authors": []
+      },
+      {
+        "term": "zjevná validita",
+        "definition": "Intuitivní odhad platnosti měřicího nástroje: zda se na první pohled zdá, že měří zamýšlený koncept.",
+        "authors": []
+      },
+      {
+        "term": "souběžná validita",
+        "definition": "Validita posuzovaná tak, že měření konceptu je provedeno dvěma nebo více různými postupy.",
+        "authors": []
+      },
+      {
+        "term": "prediktivní validita",
+        "definition": "Validita posuzovaná podle schopnosti měření předvídat budoucí nebo související jev.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Gallup",
+        "role": "V materiálech vystupuje v příkladu Literary Digest vs. Gallup jako ilustrace, že velikost vzorku sama nezaručuje reprezentativitu."
+      },
+      {
+        "name": "Literary Digest",
+        "role": "V materiálech slouží jako varovný příklad nereprezentativního výběru: velmi velký počet respondentů nemusí odstranit chybu výběru."
+      },
+      {
+        "name": "Babbie",
+        "role": "V seznamu povinné literatury je uveden The Practice of Social Research; vztahuje se k základním pojmům sociálního výzkumu, výběru souboru, validitě a reliabilitě."
+      },
+      {
+        "name": "Goodwin",
+        "role": "V seznamu povinné literatury je uveden Research in Psychology: Methods and Design; vztahuje se k metodám a designu výzkumu včetně kvality měření."
+      }
+    ],
+    "examiner_focus": [
+      "Studující má přesně odlišit populaci, vzorek, parametr a statistiku.",
+      "Má umět vysvětlit, kdy lze generalizovat a proč reprezentativita není totéž co velký vzorek.",
+      "Má znát rozdíl mezi pravděpodobnostním a nenáhodným výběrem a umět uvést příklady.",
+      "Má umět pro konkrétní výzkumný problém zvolit a obhájit techniku výběru.",
+      "Má vysvětlit výběrovou chybu a faktory ovlivňující její velikost.",
+      "Má odlišit reliabilitu a validitu a vysvětlit, proč reliabilní měření nemusí být validní."
+    ],
+    "followup_questions": [
+      "Co je opora výběru a proč ji potřebujeme u náhodného výběru?",
+      "Jaký je rozdíl mezi stratifikovaným a kvótním výběrem?",
+      "Kdy byste použil/a techniku sněhové koule?",
+      "Proč výběr dvou milionů respondentů nemusí být reprezentativní?",
+      "Co je bod nasycení v kvalitativním výzkumu?",
+      "Může být měření reliabilní a zároveň nevalidní?"
+    ],
+    "common_mistakes": [
+      "Záměna základního a výběrového souboru.",
+      "Představa, že reprezentativita se automaticky zajistí velkým počtem respondentů.",
+      "Záměna kvótního výběru za stratifikovaný náhodný výběr.",
+      "Používání convenience samplingu bez přiznání jeho limitů.",
+      "Tvrzení, že nenáhodný kvalitativní výběr má statisticky reprezentovat celou populaci.",
+      "Záměna reliability a validity nebo tvrzení, že vysoká reliabilita sama dokazuje validitu."
+    ],
+    "source_refs": [
+      {
+        "file": "prednaska9.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–38",
+        "relevance": "core"
+      },
+      {
+        "file": "prednaska13.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slide 12",
+        "relevance": "supporting",
+        "note": "Reliabilita a validita v obsahové analýze."
+      },
+      {
+        "file": "szz_tmk_jednoobor_hlavni_vedlejsi_verze_03_2025.pdf",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "D. Metodologie mediálního výzkumu: otázky 41/38",
+        "relevance": "official_question_list"
+      }
+    ],
+    "review_status": "source_based_draft"
+  },
+  {
+    "id": "metodologie-q05",
+    "title": "Kvantitativní výzkum",
+    "short_title": "Kvantitativní výzkum",
+    "outline": [
+      "Vymezit kvantitativní výzkum a jeho logiku: měření, proměnné, standardizace, práce s většími vzorky a obvykle deduktivní testování hypotéz.",
+      "Představit survey jako výběrové šetření a popsat formy administrace dotazníku.",
+      "Vysvětlit dotazník, typy otázek, formáty odpovědí, pilotáž a typické chyby při formulaci otázek.",
+      "Popsat minimální standardy informování o výzkumech veřejného mínění a chyby médií při interpretaci výzkumů.",
+      "Vyložit experiment: nezávislá a závislá proměnná, kontrola vnějších proměnných, kauzalita, mezisubjektový/vnitrosubjektový design, pretest/posttest, randomizace, kontrolní a experimentální skupina.",
+      "Popsat kvantitativní obsahovou analýzu: kódovací jednotky, kódovací klíč, datová matice, reliabilita a validita kódování."
+    ],
+    "key_terms": [
+      {
+        "term": "kvantitativní výzkum",
+        "definition": "Výzkumný přístup orientovaný na měření, proměnné, standardizované postupy, často větší vzorky a statistickou analýzu. Materiály jej spojují s dedukcí, deskriptivním/explanačním cílem, náhodným výběrem, reprezentativitou a redukcí komplexních dat na měřitelné znaky.",
+        "authors": [
+          "Jan Hendl",
+          "Norman Blaikie"
+        ]
+      },
+      {
+        "term": "survey / výběrové šetření",
+        "definition": "Průzkum nebo výběrové šetření, jehož hlavními rysy jsou způsob sběru dat a metoda analýzy. V mediálním výzkumu se používá zejména pro výzkum publika nebo reprezentantů mediálních institucí, například novinářů.",
+        "authors": []
+      },
+      {
+        "term": "dotazník",
+        "definition": "Vysoce strukturovaná technika získávání dat, v níž každý respondent odpovídá na stejný soubor otázek.",
+        "authors": []
+      },
+      {
+        "term": "SAQ",
+        "definition": "Self-Administered Questionnaire: dotazník vyplňovaný respondentem bez tazatele; může mít podobu poštovní, online, skupinově administrovanou nebo household drop-off.",
+        "authors": []
+      },
+      {
+        "term": "CAWI",
+        "definition": "Computer-Aided Web Interviewing: online forma dotazníkového šetření.",
+        "authors": []
+      },
+      {
+        "term": "PAPI",
+        "definition": "Pen-and-Pencil Interview: face-to-face dotazování s papírovým dotazníkem.",
+        "authors": []
+      },
+      {
+        "term": "CAPI",
+        "definition": "Computer-Assisted Personal Interview: osobní dotazování s využitím počítače.",
+        "authors": []
+      },
+      {
+        "term": "CATI",
+        "definition": "Computer-Assisted Telephone Interview: telefonické dotazování s využitím počítačové podpory.",
+        "authors": []
+      },
+      {
+        "term": "obsah otázek v survey",
+        "definition": "Materiály uvádějí otázky na chování, vlastnosti a charakteristiky, názory, postoje s kognitivní, afektivní a konativní složkou, hodnoty, víry a přesvědčení.",
+        "authors": []
+      },
+      {
+        "term": "uzavřená otázka",
+        "definition": "Otázka s předem stanovenými odpověďmi. Materiály uvádějí dichotomické, polytomické a bateriové otázky.",
+        "authors": []
+      },
+      {
+        "term": "Likertova škála",
+        "definition": "Formát odpovědi měřící míru souhlasu nebo nesouhlasu respondenta s určitým výrokem.",
+        "authors": []
+      },
+      {
+        "term": "sémantický diferenciál",
+        "definition": "Formát odpovědi mezi dvěma extrémy, které tvoří kontinuum hodnocení.",
+        "authors": []
+      },
+      {
+        "term": "pilotáž",
+        "definition": "Testování dotazníku nebo nového výzkumného nástroje před ostrým sběrem dat. Sleduje logiku toku, srozumitelnost, jednoznačnost, úplnost odpovědí, redundance, míru vynechaných odpovědí, pozornost respondentů a technické fungování.",
+        "authors": []
+      },
+      {
+        "term": "dvouhlavňová otázka",
+        "definition": "Chybná otázka, která se ptá na dvě věci najednou, takže odpověď není jednoznačně interpretovatelná.",
+        "authors": []
+      },
+      {
+        "term": "sugestivní otázka",
+        "definition": "Otázka, která navádí respondenta k určité odpovědi nebo jej ovlivňuje formulací či autoritou.",
+        "authors": []
+      },
+      {
+        "term": "haló efekt",
+        "definition": "Zkreslení vzniklé v důsledku řazení otázek; určitá otázka stimuluje určité odpovědi na otázky následující.",
+        "authors": []
+      },
+      {
+        "term": "AAPOR/WAPOR minimální standard",
+        "definition": "Minimální standard reportování výzkumů veřejného mínění: sponzor, realizátor, přesné znění otázek, definice populace, opora výběru, postup výběru, velikost vzorku, návratnost, nezahrnuté jednotky, přesnost výsledků, metoda, lokalita, čas a další parametry.",
+        "authors": [
+          "AAPOR",
+          "WAPOR"
+        ]
+      },
+      {
+        "term": "experiment",
+        "definition": "Výzkumný design zkoumající efekt nezávislé proměnné na závislou proměnnou za co největší kontroly vnějších proměnných. Výzkumník manipuluje nezávislou proměnnou a měří změnu závislé proměnné.",
+        "authors": []
+      },
+      {
+        "term": "nezávislá proměnná",
+        "definition": "Proměnná, s níž výzkumník v experimentu manipuluje; v materiálech je také označena jako faktor X.",
+        "authors": []
+      },
+      {
+        "term": "závislá proměnná",
+        "definition": "Proměnná, u níž se měří, zda se mění v reakci na manipulaci nezávislé proměnné; v materiálech označena jako Y.",
+        "authors": []
+      },
+      {
+        "term": "intervenující / vnější / třetí proměnná",
+        "definition": "Proměnná, která může ovlivnit vztah mezi nezávislou a závislou proměnnou a kterou se experiment snaží kontrolovat.",
+        "authors": []
+      },
+      {
+        "term": "kauzální překážky",
+        "definition": "Materiály uvádějí čtyři otázky: existuje věrohodný mechanismus propojující X a Y, lze vyloučit opačný směr vztahu, pozorujeme kovariaci mezi X a Y a vyloučili jsme další vlivy.",
+        "authors": []
+      },
+      {
+        "term": "Millova metoda shody a rozdílu",
+        "definition": "Metoda shody hledá společný faktor u více případů se stejným jevem; metoda rozdílu srovnává případy, z nichž jeden obsahuje zkoumaný jev a druhý ne. Materiály je používají k výkladu kauzální logiky experimentu.",
+        "authors": [
+          "Mill"
+        ]
+      },
+      {
+        "term": "mezisubjektový design",
+        "definition": "Between-subjects design: porovnává různé skupiny lidí vystavené různým experimentálním podmínkám. Vyžaduje co nejpodobnější skupiny lišící se hlavně podmínkou X.",
+        "authors": []
+      },
+      {
+        "term": "vnitrosubjektový design",
+        "definition": "Repeated-measures design: tentýž účastník je vystaven více podmínkám nebo měřením. Vyžaduje méně lidí, ale nese riziko progresivních a carryover efektů.",
+        "authors": []
+      },
+      {
+        "term": "bloková randomizace",
+        "definition": "Způsob vytváření skupin, kdy má každý účastník stejnou šanci být zařazen do určité skupiny; slouží k omezení rozdílů mezi skupinami.",
+        "authors": []
+      },
+      {
+        "term": "pretest a posttest",
+        "definition": "Měření před a po experimentální manipulaci. Pretest pomáhá určit výchozí úroveň, ale může účastníky upozornit na účel experimentu.",
+        "authors": []
+      },
+      {
+        "term": "kvaziexperiment",
+        "definition": "Design, v němž nelze uplatnit náhodné rozdělení. Nezávislá proměnná se manipuluje, ale nepřiděluje náhodně; důvodem mohou být pragmatické nebo etické překážky.",
+        "authors": []
+      },
+      {
+        "term": "ex post facto experiment",
+        "definition": "Design, který vůbec nemanipuluje s nezávislou proměnnou, ale pracuje se situací, která už nastala.",
+        "authors": []
+      },
+      {
+        "term": "interní validita experimentu",
+        "definition": "Míra jistoty, že zjištěný vztah mezi nezávislou a závislou proměnnou odpovídá skutečně zamýšlenému efektu. Dobře plánovaný experiment má vysokou interní validitu, ale ohrožují ji špatně vytvořené skupiny, absence kontroly, vliv pretestu a biasy.",
+        "authors": []
+      },
+      {
+        "term": "externí validita experimentu",
+        "definition": "Možnost zobecnit závěry experimentu na širší populaci, jiná prostředí a jiná období. Materiály upozorňují, že u experimentů bývá omezená.",
+        "authors": []
+      },
+      {
+        "term": "kvantitativní obsahová analýza",
+        "definition": "Systematické a replikovatelné zkoumání komunikačních symbolů, kterým byly podle validních pravidel měření přiřazeny číselné hodnoty, a analýza vztahů mezi nimi pomocí statistických metod.",
+        "authors": [
+          "Riffe",
+          "Lacy",
+          "Fico"
+        ]
+      },
+      {
+        "term": "obsahová analýza podle Berelsona",
+        "definition": "Výzkumná technika pro objektivní, systematický a kvantitativní popis manifestního obsahu komunikace.",
+        "authors": [
+          "B. Berelson"
+        ]
+      },
+      {
+        "term": "kódování",
+        "definition": "Dvojstupňový proces: segmentace obsahu na jednotlivé kódovací jednotky a jejich kódování podle pevně stanovených kritérií.",
+        "authors": []
+      },
+      {
+        "term": "kódovací klíč",
+        "definition": "Soubor pravidel určujících analytické jednotky, proměnné a hodnoty proměnných. Umožňuje systematické kódování obsahu.",
+        "authors": []
+      },
+      {
+        "term": "datová matice",
+        "definition": "Tabulková reprezentace kódovaných dat, kde řádky zpravidla reprezentují jednotky analýzy a sloupce proměnné.",
+        "authors": []
+      },
+      {
+        "term": "interkodérská reliabilita",
+        "definition": "Konzistence kódování mezi různými kodéry. Materiály doporučují jasné definice proměnných, instrukce, trénink kodérů a měření shody, např. Krippendorffovou alfou.",
+        "authors": []
+      },
+      {
+        "term": "Krippendorffova alfa",
+        "definition": "Indikátor interkodérské reliability, který materiály uvádějí jako lepší než pouhé procento shody; doporučená hodnota je více než 0,8.",
+        "authors": [
+          "Krippendorff"
+        ]
+      },
+      {
+        "term": "obtrusivní a neobtrusivní techniky",
+        "definition": "Obtrusivní techniky, jako rozhovory nebo dotazníky, mohou ovlivnit zkoumané subjekty samotným výzkumným kontaktem. Neobtrusivní techniky, jako obsahová analýza zaznamenané komunikace, kontakt nevyžadují.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "B. Berelson",
+        "role": "Definice obsahové analýzy jako objektivního, systematického a kvantitativního popisu manifestního obsahu komunikace."
+      },
+      {
+        "name": "Riffe, Lacy a Fico",
+        "role": "Definice kvantitativní obsahové analýzy jako systematického a replikovatelného zkoumání komunikačních symbolů s přiřazenými číselnými hodnotami."
+      },
+      {
+        "name": "Albert Bandura",
+        "role": "Materiály jej uvádějí u Bobo Doll Experiment jako klasický příklad experimentální logiky v sociálních vědách."
+      },
+      {
+        "name": "Mill",
+        "role": "Materiály používají Millovy metody shody a rozdílu k výkladu určování příčinných vztahů."
+      },
+      {
+        "name": "AAPOR a WAPOR",
+        "role": "Organizace uvedené u minimálního standardu pro prezentaci výzkumů veřejného mínění."
+      },
+      {
+        "name": "SIMAR",
+        "role": "V materiálech je uveden jako zdroj přehledu častých chyb médií při interpretaci výzkumu."
+      },
+      {
+        "name": "Neuendorf",
+        "role": "V seznamu povinné literatury je uvedena The Content Analysis Guidebook; vztahuje se k obsahové analýze."
+      }
+    ],
+    "examiner_focus": [
+      "Studující má znát nejen názvy survey, experiment a obsahová analýza, ale i jejich logiku, typická využití a limity.",
+      "Má umět rozpoznat špatně formulovanou dotazníkovou otázku a vysvětlit problém.",
+      "Má znát základní formy administrace survey a zkratky CAWI, PAPI, CAPI, CATI.",
+      "Má chápat experiment jako design pro testování kauzality, nikoli jen jako „výzkum v laboratoři“.",
+      "Má umět vysvětlit interní a externí validitu experimentu a typické experimentální biasy.",
+      "Má umět popsat, jak se dělá kvantitativní obsahová analýza: jednotka analýzy, proměnné, kódovací klíč, kódování, datová matice, reliabilita."
+    ],
+    "followup_questions": [
+      "Jaký je rozdíl mezi anketou a seriózním survey?",
+      "Co musí médium uvést, když informuje o výzkumu veřejného mínění?",
+      "Jak poznáte dvouhlavňovou nebo sugestivní otázku?",
+      "Jaký je rozdíl mezi mezisubjektovým a vnitrosubjektovým experimentálním designem?",
+      "Proč má experiment obvykle silnější interní než externí validitu?",
+      "Jak se v obsahové analýze měří interkodérská reliabilita?"
+    ],
+    "common_mistakes": [
+      "Záměna survey za jakékoliv online hlasování nebo anketu.",
+      "Neuvádění přesného znění otázky, metody sběru a výběru vzorku při interpretaci výsledků.",
+      "Formulace nejednoznačných, sugestivních nebo dvouhlavňových otázek.",
+      "Tvrzení kauzality ze survey bez experimentální nebo jiné kauzální opory.",
+      "Ignorování externí validity experimentu: výsledky na studentech v laboratoři nemusí automaticky platit pro širší populaci.",
+      "Redukce obsahové analýzy na volné čtení textů bez kódovacího klíče a kontroly reliability."
+    ],
+    "source_refs": [
+      {
+        "file": "prednaska8.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–14",
+        "relevance": "core"
+      },
+      {
+        "file": "metodologie_prednaska10_experiment.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–31",
+        "relevance": "core"
+      },
+      {
+        "file": "prednaska11.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–41",
+        "relevance": "core"
+      },
+      {
+        "file": "prednaska13.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–14",
+        "relevance": "core"
+      },
+      {
+        "file": "szz_tmk_jednoobor_hlavni_vedlejsi_verze_03_2025.pdf",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "D. Metodologie mediálního výzkumu: otázky 42/39",
+        "relevance": "official_question_list"
+      }
+    ],
+    "review_status": "source_based_draft"
+  },
+  {
+    "id": "metodologie-q06",
+    "title": "Kvalitativní výzkum",
+    "short_title": "Kvalitativní výzkum",
+    "outline": [
+      "Vymezit kvalitativní výzkum jako přístup zaměřený na porozumění smyslu, kontextu, zkušenosti a významům.",
+      "Popsat hlavní kvalitativní metody a techniky: polostrukturovaný a hloubkový rozhovor, focus group, orální historie/biografie, etnografie, pozorování a kvalitativní analýzy mediálního obsahu.",
+      "Vysvětlit rozdíly mezi standardizovaným, polostrukturovaným, hloubkovým a skupinovým rozhovorem.",
+      "Popsat plánování a vedení rozhovoru: interview guide, typy otázek, informovaný souhlas, rapport, poznámky a memo.",
+      "Vysvětlit analýzu kvalitativních dat: přepis, tematická analýza, induktivní a deduktivní kódování, práce s tématy a interpretace.",
+      "Vyložit kvalitativní obsahovou analýzu, diskurzivní analýzu/CDA, sémiotickou analýzu a etnografii včetně jejich silných a slabých stránek."
+    ],
+    "key_terms": [
+      {
+        "term": "kvalitativní výzkum",
+        "definition": "Přístup zaměřený na popis, porozumění, hledání smyslu, kontext a detailní zkoumání menších souborů. Materiály jej spojují s indukcí, explorativním cílem, měkkými metodami, cíleným výběrem, holistickým pohledem a pružností designu.",
+        "authors": [
+          "Jan Hendl",
+          "Norman Blaikie"
+        ]
+      },
+      {
+        "term": "standardizovaný rozhovor",
+        "definition": "Rozhovor, v němž je přesné znění a pořadí otázek předem stanoveno; patří spíše ke strukturovaným/kvantitativním technikám.",
+        "authors": []
+      },
+      {
+        "term": "polostrukturovaný rozhovor",
+        "definition": "Rozhovor s předem připravenými otázkami a osnovou, která se odvíjí od výzkumných otázek. Tazatel může během rozhovoru pružně určovat pořadí a znění otázek.",
+        "authors": []
+      },
+      {
+        "term": "hloubkový rozhovor",
+        "definition": "Rozhovor, v němž je dopředu připraveno pouze téma nebo tematické okruhy; konkrétní otázky vznikají pružně podle výpovědí účastníka.",
+        "authors": []
+      },
+      {
+        "term": "focus group / skupinový rozhovor",
+        "definition": "Moderovaný rozhovor skupiny lidí. Předpokládá, že účastníci si lépe uvědomí vlastní perspektivu při konfrontaci s názory ostatních.",
+        "authors": []
+      },
+      {
+        "term": "orální historie / biografie",
+        "definition": "Přístup upřednostňující subjektivní „history from below“ před oficiální „history from above“; rekonstruuje historické události prostřednictvím přímých svědků, jejich paměti a významů, které pro ně události měly.",
+        "authors": []
+      },
+      {
+        "term": "interview guide",
+        "definition": "Osnova rozhovoru odvozená od cíle a výzkumných otázek. Obvykle postupuje od širokých k konkrétnějším otázkám a zahrnuje úvod, ujištění o důvěrnosti, ice-breaking otázky, otevřené otázky, doplňující a nudging otázky.",
+        "authors": []
+      },
+      {
+        "term": "ice-breaking otázka",
+        "definition": "Krátká, jednoduchá, spíše faktická a nekontroverzní úvodní otázka, která má pomoci rozběhnout rozhovor nebo skupinovou diskusi.",
+        "authors": []
+      },
+      {
+        "term": "nudging otázky",
+        "definition": "Doplňující otázky používané k rozvedení odpovědi, například parafráze, otázky ďáblova advokáta, hypotetické otázky nebo srovnávání.",
+        "authors": []
+      },
+      {
+        "term": "rapport",
+        "definition": "Vztah založený na důvěře, porozumění a uvolněné komunikaci; cílem je vytvořit bezpečnou a respektující atmosféru, v níž účastník mluví otevřeně a má pocit, že je mu nasloucháno.",
+        "authors": []
+      },
+      {
+        "term": "memo",
+        "definition": "Poznámka nebo záznam po rozhovoru obsahující faktické informace, průběh rozhovoru, pokrytá témata, zajímavá slovní spojení a reflexe výzkumníka.",
+        "authors": []
+      },
+      {
+        "term": "přepis",
+        "definition": "Převod rozhovoru nebo skupinové diskuse do textové podoby; může být úplný/doslovný nebo selektivní. Materiály zdůrazňují, že přepis je zároveň začátkem analýzy.",
+        "authors": []
+      },
+      {
+        "term": "tematická analýza",
+        "definition": "Analýza hledající témata, společné a odlišné rysy a vzorce. Zahrnuje prvotní čtení, segmentaci textu, kódování, redukci redundantních kódů, seskupování kódů do témat, zkoumání vztahů mezi tématy a kontrolu spolehlivosti informací.",
+        "authors": []
+      },
+      {
+        "term": "induktivní a deduktivní kódování",
+        "definition": "Induktivní kódování vychází z dat, deduktivní z výzkumných otázek, literatury nebo teorie. Materiály zdůrazňují interaktivní vztah kódů, výzkumných otázek a literatury.",
+        "authors": []
+      },
+      {
+        "term": "kvalitativní obsahová analýza",
+        "definition": "Metoda systematického popisu významu kvalitativního materiálu tříděním materiálu do kategorií kódovacího rámce. Je systematická, flexibilní a může pracovat s textem i obrazovým materiálem.",
+        "authors": [
+          "Schreier"
+        ]
+      },
+      {
+        "term": "latentní význam",
+        "definition": "Skrytější, kontextově interpretovaný význam textu. Materiály jej uvádějí jako jeden z rozdílů kvalitativní obsahové analýzy oproti kvantitativní obsahové analýze zaměřené hlavně na manifestní význam.",
+        "authors": []
+      },
+      {
+        "term": "diskurz",
+        "definition": "Sada textů o určitém tématu ve společnosti, které budují význam a reflektují mocenské uspořádání. Diskurz formuje způsoby uvažování a nastavuje pravidla toho, co je považováno za legitimní nebo normální.",
+        "authors": []
+      },
+      {
+        "term": "kritická diskurzivní analýza (CDA)",
+        "definition": "Přístup, jehož cílem je odhalit mocenské vztahy v pozadí diskurzu a ukázat, jak jsou skrze diskurz vytvářeny sociální identity, pozice a vztahy. Sleduje reprodukci nerovných mocenských vztahů jazykem.",
+        "authors": [
+          "Fairclough",
+          "Sedláková"
+        ]
+      },
+      {
+        "term": "sémiotická analýza",
+        "definition": "Analýza znaků a tvorby významů v kulturním kontextu. Ptá se, z jakých znaků se text skládá, proč jsou uspořádány právě takto a jaké významy mají v dané kultuře.",
+        "authors": [
+          "de Saussure",
+          "Peirce",
+          "Roland Barthes"
+        ]
+      },
+      {
+        "term": "denotace a konotace",
+        "definition": "Denotace označuje základní popisnou rovinu významu, konotace kulturně a symbolicky rozšířený význam. Materiály používají Barthesovu analýzu reklamy Panzani jako příklad přechodu od denotace přes konotaci k mýtu.",
+        "authors": [
+          "Roland Barthes"
+        ]
+      },
+      {
+        "term": "etnografie",
+        "definition": "Metoda výzkumu i psaný produkt usilující o detailní holistický popis a analýzu kultur na základě intenzivní participativní práce v terénu. Cílem je zachytit perspektivu aktérů v přirozeném prostředí.",
+        "authors": [
+          "Barker",
+          "B. Malinowski",
+          "R. Park"
+        ]
+      },
+      {
+        "term": "cultural immersion",
+        "definition": "Život ve zkoumané kultuře a střídání fází splynutí s prostředím („going native“) a reflexivního odstupu.",
+        "authors": []
+      },
+      {
+        "term": "going native",
+        "definition": "Riziko nebo fáze etnografického výzkumu, kdy výzkumník příliš splyne se zkoumanou skupinou a ztrácí reflexivní odstup.",
+        "authors": []
+      },
+      {
+        "term": "pozorování",
+        "definition": "Technika sběru dat v přirozeném nebo strukturovaném prostředí. Materiály rozlišují strukturované a nestrukturované, zúčastněné a nezúčastněné, skryté a otevřené pozorování.",
+        "authors": []
+      },
+      {
+        "term": "terénní poznámky",
+        "definition": "Poznámky z pozorování, které mohou být popisné, reflexivní nebo analytické. Jsou základní součástí etnografického sběru dat.",
+        "authors": []
+      },
+      {
+        "term": "silné stránky etnografie",
+        "definition": "Data z první ruky přímo v terénu, zachycení rozdílu mezi tím, co lidé říkají a co dělají, holistický pohled, bohatá data, hluboké porozumění a vysoká validita.",
+        "authors": [
+          "Geertz"
+        ]
+      },
+      {
+        "term": "slabé stránky etnografie",
+        "definition": "Časová náročnost, obtrusivita otevřeného pozorování, reaktivita účastníků, nároky na výzkumníka, obtížná práce s velkým množstvím dat, problém reliability, subjektivní vklad a omezená možnost zobecnění.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Schreier",
+        "role": "V materiálech je citována definice kvalitativní obsahové analýzy jako systematického popisu významu kvalitativního materiálu pomocí kategorií kódovacího rámce."
+      },
+      {
+        "name": "Fairclough",
+        "role": "V materiálech je uveden jako autor/proud, který může specifikovat, jak pojmout diskurzivní analýzu; u CDA je spojován s otázkami moci a legitimity v textu."
+      },
+      {
+        "name": "Sedláková",
+        "role": "V materiálech je citována u definice CDA jako odhalování mocenských vztahů v pozadí diskurzu a tvorby sociálních identit, pozic a vztahů."
+      },
+      {
+        "name": "Foucault",
+        "role": "V materiálech je uveden jako jeden z autorů/proudů, podle nichž je nutné specifikovat, co v diskurzivní analýze znamená diskurz a na co se analyticky dívat."
+      },
+      {
+        "name": "de Saussure a Peirce",
+        "role": "V materiálech jsou uvedeni jako opora sémiotiky/sémiologie, tedy studia znaků ve společnosti."
+      },
+      {
+        "name": "Roland Barthes",
+        "role": "Materiály používají jeho analýzu reklamy Panzani k vysvětlení denotace, konotace a mýtu."
+      },
+      {
+        "name": "B. Malinowski a R. Park",
+        "role": "V materiálech jsou uvedeni u kořenů etnografie v sociální antropologii a výzkumu člověka jako kulturní a sociální bytosti."
+      },
+      {
+        "name": "Barker",
+        "role": "V materiálech je citován u definice etnografie jako empirického a teoretického přístupu usilujícího o detailní holistický popis kultur na základě intenzivní participativní práce v terénu."
+      },
+      {
+        "name": "Geertz",
+        "role": "V materiálech je citován u reflexe etnografických dat jako konstrukcí výzkumníka o konstrukcích zkoumaných lidí."
+      },
+      {
+        "name": "White, Tuchman, Gans a Breed",
+        "role": "Materiály je uvádějí jako příklady etnografických/produkčních výzkumů v mediálních studiích: gatekeeping, mediální rutiny a sociální kontrola v redakcích."
+      },
+      {
+        "name": "Wengraf",
+        "role": "V seznamu povinné literatury je uvedena Qualitative Research Interviewing; vztahuje se k biografickým narativním a polostrukturovaným metodám rozhovorů."
+      },
+      {
+        "name": "Creswell a Poth",
+        "role": "V seznamu povinné literatury je uvedena Qualitative Inquiry and Research Design; vztahuje se k návrhu kvalitativního výzkumu."
+      }
+    ],
+    "examiner_focus": [
+      "Studující má chápat kvalitativní výzkum jako systematický způsob poznání, nikoli jako volné dojmy.",
+      "Má umět rozlišit polostrukturovaný, hloubkový a skupinový rozhovor.",
+      "Má znát principy vedení rozhovoru: informovaný souhlas, důvěrnost, rapport, neodsuzující vystupování, naslouchání, poznámky a memo.",
+      "Má umět popsat, jak se z rozhovorů nebo textů vytvářejí kódy a témata.",
+      "Má odlišit kvalitativní obsahovou analýzu, diskurzivní analýzu/CDA a sémiotickou analýzu.",
+      "Má umět popsat etnografii jako dlouhodobý, reflexivní a terénní výzkum se silnými i slabými stránkami."
+    ],
+    "followup_questions": [
+      "Jaký je rozdíl mezi polostrukturovaným a hloubkovým rozhovorem?",
+      "Co je interview guide a proč nezačínat rozhovor hned nejcitlivější otázkou?",
+      "Jak moderátor/ka focus group pracuje s dominantními a pasivními účastníky?",
+      "Jaký je rozdíl mezi manifestním a latentním významem?",
+      "Jaké otázky si klade kritická diskurzivní analýza?",
+      "Proč je v etnografii důležitý reflexivní odstup?"
+    ],
+    "common_mistakes": [
+      "Záměna kvalitativního výzkumu za nesystematické vyprávění bez metody.",
+      "Představa, že malý vzorek je automaticky chyba; u kvalitativního výzkumu se obhajuje jinou logikou výběru a nasycením.",
+      "Vedení rozhovoru jako ankety se striktně stejnými otázkami bez práce s odpověďmi.",
+      "Ignorování vztahu důvěry a atmosféry rozhovoru.",
+      "Záměna CDA za jakoukoliv kritiku obsahu bez analýzy diskurzu, moci a legitimity.",
+      "Redukce sémiotické analýzy na prostý popis obrázku bez rozlišení znaků, denotace, konotace a kulturního kontextu.",
+      "Záměna etnografie za krátké pozorování nebo soubor anekdotických příkladů."
+    ],
+    "source_refs": [
+      {
+        "file": "prednaska8.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 15–21",
+        "relevance": "supporting"
+      },
+      {
+        "file": "prednaska12.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–48",
+        "relevance": "core"
+      },
+      {
+        "file": "prednaska13.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 15–33",
+        "relevance": "core"
+      },
+      {
+        "file": "szz_tmk_jednoobor_hlavni_vedlejsi_verze_03_2025.pdf",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "D. Metodologie mediálního výzkumu: otázky 43/40",
+        "relevance": "official_question_list"
+      }
+    ],
+    "review_status": "source_based_draft"
+  },
+  {
+    "id": "zurnalistika-q01",
+    "title": "Mediální krajina v ČR po roce 1989",
+    "short_title": "Mediální krajina po 1989",
+    "outline": [
+      "Vymezit výchozí stav médií před rokem 1989: stranicko-státní vlastnictví, politická kontrola a cenzurní dohled.",
+      "Popsat transformační proces po roce 1989: privatizaci, denacionalizaci, vznik médií veřejné služby, vstup zahraničních vlastníků a pozdější koncentraci trhu.",
+      "Ukázat proměny jednotlivých segmentů mediální krajiny: tisk, rozhlas, televize, online média a digitální platformy.",
+      "Vysvětlit současné postavení českých médií na trhu pomocí nákladu, čtenosti, poslechovosti, sledovanosti, návštěvnosti a inzertních příjmů.",
+      "Uvést významné mediální domy, vlastníky, současné novináře a oborové zdroje, které je třeba pro aktualizaci otázky sledovat."
+    ],
+    "key_terms": [
+      {
+        "term": "mediální krajina",
+        "definition": "Soubor médií, mediálních organizací, vlastníků, distribučních kanálů, regulačních institucí a tržních vztahů v určité zemi nebo regionu.",
+        "authors": []
+      },
+      {
+        "term": "transformace médií",
+        "definition": "Proměna českých médií po roce 1989 od stranicko-státního modelu k pluralitnímu, tržnímu a částečně veřejnoprávnímu mediálnímu systému.",
+        "authors": []
+      },
+      {
+        "term": "privatizace médií",
+        "definition": "Převod médií ze státního, stranického nebo společenského vlastnictví do soukromých rukou; v českém kontextu šlo často o spontánní a rychlý proces počátku 90. let.",
+        "authors": []
+      },
+      {
+        "term": "koncentrace vlastnictví",
+        "definition": "Proces, při němž se vlastnictví médií soustřeďuje do menšího počtu ekonomicky silných skupin, což může ovlivňovat pluralitu a podmínky redakční autonomie.",
+        "authors": []
+      },
+      {
+        "term": "média veřejné služby",
+        "definition": "Média zřízená zákonem a financovaná veřejnými prostředky nebo poplatky, jejichž úkolem je poskytovat objektivní, vyvážené a pluralitní služby veřejnosti.",
+        "authors": []
+      },
+      {
+        "term": "zezápadňování mediálního systému",
+        "definition": "Přiblížení českého mediálního systému západoevropským tržním, vlastnickým, institucionálním a profesním modelům po roce 1989.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Daniel C. Hallin",
+        "role": "komparativní teorie mediálních systémů"
+      },
+      {
+        "name": "Paolo Mancini",
+        "role": "komparativní teorie mediálních systémů"
+      },
+      {
+        "name": "Denis McQuail",
+        "role": "obecná teorie médií, mediální systém a společenské funkce médií"
+      },
+      {
+        "name": "Jan Jirák",
+        "role": "český kontext médií a společnosti"
+      },
+      {
+        "name": "Barbara Köpplová",
+        "role": "český kontext médií, dějiny a vývoj mediální krajiny"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má umět popsat proměnu médií od předlistopadového kontrolovaného systému k pluralitnímu tržnímu prostředí.",
+      "Má rozlišit jednotlivé fáze vývoje po roce 1989: spontánní privatizaci, vstup zahraničního kapitálu, koncentraci, digitalizaci a hledání nových obchodních modelů.",
+      "Má znát základní segmenty současné české mediální krajiny a umět je doložit aktuálními údaji o nákladu, čtenosti, návštěvnosti, sledovanosti a vlastnictví.",
+      "Má umět vysvětlit, proč vlastnická struktura a ekonomický model médií souvisejí s pluralitou, autonomií redakcí a obsahem médií."
+    ],
+    "followup_questions": [
+      "Jak se lišila média před rokem 1989 a po roce 1989?",
+      "Co znamenala spontánní privatizace českého tisku?",
+      "Jak se proměnilo vlastnictví českých médií po roce 2000?",
+      "Jaký je rozdíl mezi komerčními médii a médii veřejné služby?",
+      "Které zdroje byste použili pro ověření aktuální čtenosti, sledovanosti a návštěvnosti médií?"
+    ],
+    "common_mistakes": [
+      "Zaměnění mediální krajiny za prostý seznam médií bez vysvětlení vlastnictví, regulace a trhu.",
+      "Popis vývoje po roce 1989 bez rozlišení fází transformace.",
+      "Opomenutí role veřejnoprávních médií a regulatorních institucí.",
+      "Uvádění zastaralých údajů o trhu bez upozornění, že mediální data je nutné aktualizovat."
+    ],
+    "source_refs": [
+      {
+        "file": "zur_prednaska_04.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–38",
+        "relevance": "core"
+      },
+      {
+        "file": "zur_prednaska_05_ps2025.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 4–19",
+        "relevance": "core"
+      },
+      {
+        "file": "zur_prednaska_01_02.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 8–9",
+        "relevance": "supporting"
+      }
+    ],
     "review_status": "reviewed"
   },
   {
-    "id": "q02",
-    "title": "Populární kultura a její interpretace",
-    "short_title": "Populární kultura",
+    "id": "zurnalistika-q02",
+    "title": "Charakteristika a typologie médií",
+    "short_title": "Typologie médií",
     "outline": [
-      "Vymezit pojem populární kultura.",
-      "Vysvětlit rozdíl mezi kulturou produkovanou shora a kulturou užívanou publikem.",
-      "Popsat význam publika, recepce a každodennosti.",
-      "Uvést konkrétní příklad interpretace populárního textu."
+      "Vysvětlit, podle jakých hledisek lze média charakterizovat: typ média, historie, produkt, periodicita, publikum, distribuční kanál, vlastnictví a postavení na trhu.",
+      "Představit základní typy médií: tisk, rozhlas, televize, zpravodajské agentury, online média a média veřejné služby.",
+      "Rozlišit typologii podle technologie, obsahu, publika, periodicity, geografického dosahu a ekonomického modelu.",
+      "Vysvětlit vlastnickou strukturu médií a základní formy koncentrace vlastnictví.",
+      "Ukázat, jak typ média ovlivňuje žurnalistické postupy, žánry, organizaci práce a způsob měření výkonu na trhu."
     ],
     "key_terms": [
       {
-        "term": "populární kultura",
-        "definition": "Kultura široce sdílená, užívaná a interpretovaná různými skupinami publika.",
+        "term": "typologie médií",
+        "definition": "Systematické třídění médií podle vybraných kritérií, například technologie, periodicity, obsahu, cílového publika, vlastnictví, dosahu nebo ekonomického modelu.",
         "authors": []
       },
       {
-        "term": "recepce",
-        "definition": "Proces, v němž publikum přijímá, vykládá a někdy i přetváří mediální obsahy.",
+        "term": "mediální organizace",
+        "definition": "Instituce nebo podnik produkující a distribuující mediální obsahy; její struktura závisí na typu média, rozsahu distribuce, počtu platforem a produktu.",
+        "authors": []
+      },
+      {
+        "term": "horizontální koncentrace",
+        "definition": "Soukromé nebo korporátní soustřeďování vlastnictví v rámci téhož sektoru mediálního průmyslu, například vlastnictví více tiskových titulů jedním vydavatelstvím.",
+        "authors": []
+      },
+      {
+        "term": "diagonální koncentrace",
+        "definition": "Vlastnické propojení médií s podnikáním v jiných odvětvích, případně rozšiřování mediálních firem mimo původní mediální sektor.",
+        "authors": []
+      },
+      {
+        "term": "zpravodajská agentura",
+        "definition": "Organizace zaměřená na získávání a distribuci zpravodajských informací médiím, institucím a dalším odběratelům.",
+        "authors": []
+      },
+      {
+        "term": "postavení na trhu",
+        "definition": "Měřitelné umístění média v konkurenčním prostředí pomocí ukazatelů jako náklad, čtenost, poslechovost, sledovanost, návštěvnost nebo inzertní příjmy.",
         "authors": []
       }
     ],
     "authors": [
       {
-        "name": "Stuart Hall",
-        "role": "kódování/dekódování a aktivní role publika"
+        "name": "Denis McQuail",
+        "role": "obecná typologie médií, mediální instituce a společenské funkce médií"
       },
       {
-        "name": "John Fiske",
-        "role": "populární kultura jako prostor významového vyjednávání"
+        "name": "Daniel C. Hallin",
+        "role": "srovnávání mediálních systémů a vztahu médií, trhu a politiky"
+      },
+      {
+        "name": "Paolo Mancini",
+        "role": "srovnávání mediálních systémů a vztahu médií, trhu a politiky"
+      },
+      {
+        "name": "Irena Reifová a kol.",
+        "role": "pojmový aparát mediální komunikace"
       }
     ],
     "examiner_focus": [
-      "Studující má ukázat, že populární kultura není jen pasivně konzumovaná.",
-      "Má vysvětlit roli publika při tvorbě významu."
+      "Studující má umět ukázat, že typologie médií není jen dělení na tisk, rozhlas, televizi a internet, ale závisí na zvoleném kritériu.",
+      "Má vysvětlit, proč vlastnictví a koncentrace médií nejsou pouze ekonomická, ale i politická a kulturní otázka.",
+      "Má umět spojit typ média s odlišným produktem, publikem, žánrovou skladbou, redakčním provozem a tržním měřením.",
+      "Má znát základní zdroje dat o českém mediálním trhu: ABC ČR, Unie vydavatelů, NetMonitor, Radio Projekt, ATO/Nielsen a další oborové zdroje."
     ],
     "followup_questions": [
-      "Co znamená aktivní publikum?",
-      "Jak může publikum číst tentýž mediální text různě?",
-      "Jak se liší elitní kritika populární kultury od kulturálních studií?"
+      "Podle jakých kritérií můžeme třídit média?",
+      "Jaký je rozdíl mezi typem média a mediálním produktem?",
+      "Co znamená horizontální a diagonální koncentrace vlastnictví?",
+      "Jak se liší měření trhu u tisku, rozhlasu, televize a online médií?",
+      "Jakou roli mají zpravodajské agentury v mediálním systému?"
     ],
     "common_mistakes": [
-      "Ztotožnění populární kultury s nekvalitní kulturou.",
-      "Opomenutí role publika a recepce."
+      "Redukce typologie médií pouze na technologické nosiče.",
+      "Opomenutí vlastnické struktury jako součásti charakteristiky média.",
+      "Směšování nákladu, čtenosti, návštěvnosti, sledovanosti a poslechovosti.",
+      "Představa, že vlastnictví médií vždy přímo a jednoduše určuje každý jednotlivý obsah."
     ],
-    "source_refs": [],
+    "source_refs": [
+      {
+        "file": "zur_prednaska_05_ps2025.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–21",
+        "relevance": "core"
+      },
+      {
+        "file": "zur_prednaska_04.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 26–38",
+        "relevance": "supporting"
+      }
+    ],
     "review_status": "reviewed"
   },
   {
-    "id": "q03",
-    "title": "Kulturální studia a Birminghamská škola",
-    "short_title": "Kulturální studia",
+    "id": "zurnalistika-q03",
+    "title": "Typy žurnalistiky a jejich specifika",
+    "short_title": "Typy žurnalistiky",
     "outline": [
-      "Představit vznik a zaměření kulturálních studií.",
-      "Vysvětlit vztah kultury, moci a každodennosti.",
-      "Popsat význam třídy, rasy, genderu a subkultur.",
-      "Uvést rozdíl oproti elitní kritice masové kultury."
+      "Vymezit základní dělení žurnalistiky podle typu média: tištěná, agenturní, rozhlasová, televizní, online a multimediální žurnalistika.",
+      "Vysvětlit rozdíl mezi zpravodajstvím a publicistikou a ukázat, jak se tento rozdíl proměňuje v různých médiích.",
+      "Popsat specifika žurnalistických žánrů v různých typech médií: zpráva, rozhovor, reportáž, feature, komentář, blog, online zpráva a multimediální formáty.",
+      "Ukázat rozdíly v redakční práci: práce se zdroji, rychlost publikování, editace, newsroom, multiskilling, konvergence a zapojování publika.",
+      "Uvést konkrétní příklady, jak technologické vlastnosti média ovlivňují jazyk, kompozici a distribuci obsahu."
     ],
     "key_terms": [
       {
-        "term": "kulturální studia",
-        "definition": "Interdisciplinární přístup ke studiu kultury jako prostoru významů, konfliktů a mocenských vztahů.",
+        "term": "agenturní žurnalistika",
+        "definition": "Typ zpravodajské produkce založený na rychlém, neutrálním a distribuovatelném informačním servisu pro další média a odběratele.",
         "authors": []
       },
       {
-        "term": "hegemonie",
-        "definition": "Forma kulturní a politické dominance, která funguje skrze souhlas, významy a každodenní praxi.",
-        "authors": ["Antonio Gramsci"]
+        "term": "rozhlasová žurnalistika",
+        "definition": "Žurnalistika šířená audiální cestou, která vyžaduje jednoduchou větnou skladbu, mluvený styl, práci se zvukem a jasnou kompozici bez možnosti vracet se v textu zpět.",
+        "authors": []
+      },
+      {
+        "term": "televizní žurnalistika",
+        "definition": "Audiovizuální žurnalistika kombinující obraz, zvuk a slovní komentář; významnou roli v ní mají záběry, střih, stand-up, studiové uvedení a obrazová složka zprávy.",
+        "authors": []
+      },
+      {
+        "term": "online žurnalistika",
+        "definition": "Žurnalistika využívající okamžitost, interaktivitu, hypertextualitu a multimediální možnosti internetu; proměňuje zdroje, žánry, rytmus publikování i vztah k publiku.",
+        "authors": [
+          "James Foust"
+        ]
+      },
+      {
+        "term": "konvergence",
+        "definition": "Propojování mediálních platforem, redakčních procesů a distribučních kanálů, při němž se totožný nebo upravený obsah šíří různými médii.",
+        "authors": []
+      },
+      {
+        "term": "multiskilling",
+        "definition": "Požadavek, aby novinář zvládal více profesních činností současně, například psaní, natáčení, fotografování, editaci a publikování online.",
+        "authors": []
       }
     ],
     "authors": [
       {
-        "name": "Stuart Hall",
-        "role": "reprezentace, hegemonie, kódování/dekódování"
+        "name": "Barbora Osvaldová",
+        "role": "žurnalistická terminologie a praktická žánrová východiska"
       },
       {
-        "name": "Raymond Williams",
-        "role": "kultura jako způsob života"
+        "name": "Jan Halada",
+        "role": "žurnalistická terminologie a praktická žánrová východiska"
       },
       {
-        "name": "Richard Hoggart",
-        "role": "každodennost, dělnická kultura a média"
+        "name": "Tomáš Trampota",
+        "role": "teorie zpravodajství a zpravodajských postupů"
+      },
+      {
+        "name": "James Foust",
+        "role": "online žurnalistika a práce se zdroji v prostředí internetu"
+      },
+      {
+        "name": "Denis McQuail",
+        "role": "společenský význam médií a obecná teorie mediální komunikace"
       }
     ],
     "examiner_focus": [
-      "Studující má vysvětlit, proč kulturální studia odmítají jednoduché dělení na vysokou a nízkou kulturu.",
-      "Má ukázat vztah kultury a moci."
+      "Studující má umět ukázat, že žurnalistika se liší podle média nejen technologicky, ale i jazykem, tempem práce, žánry a vztahem k publiku.",
+      "Má odlišit zpravodajství a publicistiku a zároveň vysvětlit hraniční žánry, například news feature nebo reportáž.",
+      "Má znát specifika agenturního, rozhlasového, televizního a online zpravodajství.",
+      "Má umět vysvětlit, jak online prostředí vede ke zrychlování, propojování, konvergenci a zapojování uživatelů."
     ],
     "followup_questions": [
-      "Co znamená kultura jako způsob života?",
-      "Jak kulturální studia rozumí moci?",
-      "Proč jsou pro kulturální studia důležité subkultury?"
+      "V čem se liší práce rozhlasového a televizního reportéra?",
+      "Proč online žurnalistika mění práci se zdroji?",
+      "Co znamená konvergence v redakční práci?",
+      "Jak se liší agenturní zpráva od novinové zprávy?",
+      "Jaké žánry stojí na pomezí zpravodajství a publicistiky?"
     ],
     "common_mistakes": [
-      "Redukce kulturálních studií na studium populární zábavy.",
-      "Opomenutí politického a mocenského rozměru kultury."
+      "Popis typů žurnalistiky pouze podle nosiče bez vysvětlení produkčních a žánrových rozdílů.",
+      "Zaměňování online žurnalistiky za pouhé publikování tištěného textu na webu.",
+      "Ignorování rozdílu mezi audiálním a audiovizuálním sdělením.",
+      "Nejasné odlišení zpravodajských a publicistických žánrů."
     ],
-    "source_refs": [],
+    "source_refs": [
+      {
+        "file": "zur_prednaska_06_07.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 32–51",
+        "relevance": "core"
+      },
+      {
+        "file": "zur_prednaska_08_09_a.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 13–16",
+        "relevance": "supporting"
+      },
+      {
+        "file": "zur_prednaska_10.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 3–4",
+        "relevance": "supporting"
+      }
+    ],
+    "review_status": "reviewed"
+  },
+  {
+    "id": "zurnalistika-q04",
+    "title": "Zpravodajství",
+    "short_title": "Zpravodajství",
+    "outline": [
+      "Vymezit zpravodajství jako část žurnalistiky založenou na informacích, faktech, aktuálnosti, neutralitě a práci se zdroji.",
+      "Popsat proces vzniku zprávy: výběr tématu, kritéria relevance, hierarchizace informací, ověřování zdrojů, stavba textu a jazyk.",
+      "Vysvětlit základní pravidla práce se zdroji: důvěryhodnost, relevance, pravidlo dvou nezávislých zdrojů, citování, anonymita a přesnost.",
+      "Představit zpravodajské hodnoty, gatekeeping, objektivitu, vyváženost, neutralitu, zpravodajské stereotypy a pseudoudálosti.",
+      "Uvést hlavní zpravodajské žánry a rozdíly mezi tiskovým, agenturním, rozhlasovým, televizním a online zpravodajstvím."
+    ],
+    "key_terms": [
+      {
+        "term": "zpravodajství",
+        "definition": "Žurnalistická produkce zaměřená na vyhledávání, ověřování, výběr, zpracování a zveřejňování aktuálních informací o událostech.",
+        "authors": [
+          "Barbora Osvaldová",
+          "Jan Halada"
+        ]
+      },
+      {
+        "term": "kritéria relevance",
+        "definition": "Otázky a hlediska, podle nichž redakce posuzuje, zda je téma pro publikum důležité, nové, zajímavé, aktuální, blízké a dostatečně významné.",
+        "authors": []
+      },
+      {
+        "term": "obrácená pyramida",
+        "definition": "Kompoziční princip zprávy, v němž jsou nejdůležitější informace uvedeny na začátku a význam informací postupně klesá.",
+        "authors": []
+      },
+      {
+        "term": "zpravodajské hodnoty",
+        "definition": "Vlastnosti událostí, které zvyšují pravděpodobnost, že budou vybrány jako zpráva; patří sem například blízkost, novost, význam, konfliktnost, průběžnost nebo vztah k elitním osobám.",
+        "authors": [
+          "Johan Galtung",
+          "Mari Holmboe Ruge"
+        ]
+      },
+      {
+        "term": "gatekeeping",
+        "definition": "Proces výběru, filtrování a uspořádání informací před jejich zveřejněním; rozhoduje o tom, co se stane mediální zprávou.",
+        "authors": [
+          "David Manning White"
+        ]
+      },
+      {
+        "term": "pseudoudálost",
+        "definition": "Událost inscenovaná nebo organizovaná především proto, aby byla mediálně zaznamenána a šířena jako zpráva.",
+        "authors": [
+          "Daniel J. Boorstin"
+        ]
+      }
+    ],
+    "authors": [
+      {
+        "name": "Tomáš Trampota",
+        "role": "teorie zpravodajství, zpravodajské hodnoty a zpravodajské postupy"
+      },
+      {
+        "name": "David Manning White",
+        "role": "gatekeeping a role editorů při výběru zpráv"
+      },
+      {
+        "name": "Johan Galtung",
+        "role": "zpravodajské hodnoty"
+      },
+      {
+        "name": "Mari Holmboe Ruge",
+        "role": "zpravodajské hodnoty"
+      },
+      {
+        "name": "Daniel J. Boorstin",
+        "role": "pseudoudálosti a vztah médií k inscenovaným událostem"
+      },
+      {
+        "name": "Barbora Osvaldová a Jan Halada",
+        "role": "žurnalistická terminologie a žánrové vymezení"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má umět vysvětlit celý proces vzniku zprávy od námětu po publikaci.",
+      "Má prakticky rozlišit zprávu, rozšířenou zprávu, agenturní zprávu, reportážní zprávu a online zprávu.",
+      "Má ukázat, že objektivita není prosté opsání faktů, ale soubor profesních postupů: ověřování, práce se zdroji, vyváženost a transparentnost.",
+      "Má umět propojit praktické redakční postupy s teoretickými pojmy jako gatekeeping, zpravodajské hodnoty a pseudoudálost."
+    ],
+    "followup_questions": [
+      "Co dělá událost zpravodajsky relevantní?",
+      "Jak funguje pravidlo dvou nezávislých zdrojů?",
+      "Co je obrácená pyramida a kdy se používá?",
+      "Jaký je rozdíl mezi objektivitou, neutralitou a vyvážeností?",
+      "Co je gatekeeping a kdo ho v redakci vykonává?"
+    ],
+    "common_mistakes": [
+      "Zaměňování zpravodajství a publicistiky.",
+      "Redukce objektivity na tvrzení, že novinář ‚nemá názor‘.",
+      "Opomenutí práce se zdroji a ověřování informací.",
+      "Neznalost základní stavby zprávy: titulek, podtitulek, perex, tělo, background.",
+      "Přehlížení toho, že zpravodajství je výsledkem výběru, rutin a redakční organizace."
+    ],
+    "source_refs": [
+      {
+        "file": "zur_prednaska_06_07.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 3–57",
+        "relevance": "core"
+      },
+      {
+        "file": "zur_prednaska_01_02.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 10–14",
+        "relevance": "supporting"
+      }
+    ],
+    "review_status": "reviewed"
+  },
+  {
+    "id": "zurnalistika-q05",
+    "title": "Publicistika",
+    "short_title": "Publicistika",
+    "outline": [
+      "Vymezit publicistiku jako oblast žurnalistiky, která pracuje se stanoviskem, interpretací, hodnocením a autorským pohledem.",
+      "Odlišit publicistiku od zpravodajství: publicistika hledá souvislosti a komentuje, zatímco zpravodajství primárně informuje o aktuálních událostech.",
+      "Popsat metody práce v publicistice: výběr tématu, práce se zdroji, argumentace, kontextualizace, interpretace a práce s jazykem.",
+      "Představit hlavní publicistické žánry: komentář, glosa, úvodník, fejeton, sloupek, recenze, rozhovor, reportáž, feature, story a blog.",
+      "Ukázat rozdíly mezi psanou, online a audiovizuální publicistikou."
+    ],
+    "key_terms": [
+      {
+        "term": "publicistika",
+        "definition": "Žurnalistická tvorba spojená s názorem, stanoviskem, interpretací, hodnocením nebo autorskou perspektivou; pracuje s fakty, ale klade důraz na souvislosti a výklad.",
+        "authors": [
+          "Barbora Osvaldová",
+          "Jan Halada"
+        ]
+      },
+      {
+        "term": "komentář",
+        "definition": "Publicistický žánr, který analyzuje, vysvětluje, interpretuje a hodnotí události nebo výroky a pomáhá čtenáři vytvářet si vlastní názor.",
+        "authors": []
+      },
+      {
+        "term": "fejeton",
+        "definition": "Uměleckopublicistický žánr, který se vtipnou, subjektivní a literárně stylizovanou formou vyjadřuje k otázkám současnosti.",
+        "authors": []
+      },
+      {
+        "term": "interview",
+        "definition": "Řízený rozhovor směřující k určitému cíli; může být zpravodajský, publicistický nebo profilový podle účelu a zpracování.",
+        "authors": []
+      },
+      {
+        "term": "reportáž",
+        "definition": "Publicistický žánr založený na svědectví, osobní účasti a zážitku autora, který přináší faktický popis události i autorskou perspektivu.",
+        "authors": [
+          "Jo Bech-Karlsen"
+        ]
+      },
+      {
+        "term": "feature",
+        "definition": "Náročnější publicistický žánr stojící na pomezí reportáže, analýzy a příběhu; zpravidla popisuje širší trend, fenomén nebo pozadí události skrze konkrétní příběh.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Barbora Osvaldová",
+        "role": "publicistické žánry a praktická žurnalistická terminologie"
+      },
+      {
+        "name": "Jan Halada",
+        "role": "publicistické žánry a praktická žurnalistická terminologie"
+      },
+      {
+        "name": "Jo Bech-Karlsen",
+        "role": "reportáž jako metoda a žánr"
+      },
+      {
+        "name": "Malcolm F. Mallette",
+        "role": "praktické psaní a novinářské postupy"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má jasně odlišit publicistiku od zpravodajství a uvést, že publicistika může obsahovat stanovisko autora nebo redakce.",
+      "Má znát základní publicistické žánry a umět je rozdělit podle analytického, názorového, beletristického a reportážního stylu.",
+      "Má vysvětlit, že publicistika nesmí rezignovat na fakta, ověřování a etické zásady, i když pracuje s interpretací a názorem.",
+      "Má být schopen uvést konkrétní příklad komentáře, fejetonu, reportáže nebo feature a popsat jeho stavbu."
+    ],
+    "followup_questions": [
+      "Jaký je rozdíl mezi komentářem a zprávou?",
+      "Proč je fejeton vzdálenější zpravodajství než komentář?",
+      "Co odlišuje reportáž od zprávy?",
+      "Jak funguje feature a proč bývá náročnější než běžná reportáž?",
+      "Jak se publicistika proměňuje v online prostředí?"
+    ],
+    "common_mistakes": [
+      "Představa, že publicistika znamená libovolné subjektivní psaní bez faktické opory.",
+      "Nejasné rozlišení komentáře, glosy, fejetonu, reportáže a feature.",
+      "Zaměňování rozhovoru jako metody sběru informací a interview jako publikovaného žánru.",
+      "Opomenutí online a audiovizuální publicistiky."
+    ],
+    "source_refs": [
+      {
+        "file": "zur_prednaska_08_09_a.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–16",
+        "relevance": "core"
+      },
+      {
+        "file": "zur_prednaska_06_07.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 9–19",
+        "relevance": "supporting"
+      },
+      {
+        "file": "zur_prednaska_01_02.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 14",
+        "relevance": "supporting"
+      }
+    ],
+    "review_status": "reviewed"
+  },
+  {
+    "id": "zurnalistika-q06",
+    "title": "Základy redakční práce",
+    "short_title": "Redakční práce",
+    "outline": [
+      "Popsat redakci jako organizaci práce: role šéfredaktora, editorů, redaktorů, reportérů, fotografů, grafiků, korektorů, layoutérů a vedoucích vydání.",
+      "Vysvětlit redakční workflow: plánování témat, porady, rozdělení úkolů, práce se zdroji, editace, korektury, příprava stránky nebo výstupu a publikace.",
+      "Představit odpovědnosti v redakci: věcná správnost, relevance, srozumitelnost, jazyk, žánr, právo, etika a vztah k publiku.",
+      "Vysvětlit práci editora: kontrola formy, relevance, obsahu, legislativních a etických rizik, kompozice, stylu, jazyka a finální úpravy.",
+      "Ukázat proměny redakční práce v online a konvergentním prostředí: multiskilling, zrychlování, propojování platforem, zapojování publika a integrovaný newsroom."
+    ],
+    "key_terms": [
+      {
+        "term": "redakční workflow",
+        "definition": "Sled činností od výběru a plánování témat přes sběr informací, psaní, editaci a korekturu až po publikaci a distribuci mediálního obsahu.",
+        "authors": []
+      },
+      {
+        "term": "editace",
+        "definition": "Proces redakční úpravy textu nebo jiného obsahu, který má zlepšit věcnou správnost, srozumitelnost, žánrové zařazení, právní a etickou bezpečnost a výslednou podobu výstupu.",
+        "authors": []
+      },
+      {
+        "term": "editorské desatero",
+        "definition": "Soubor kontrolních hledisek pro redigování: forma, relevance, obsah, legislativa, kompozice, styl, jazyk a finální úprava textu.",
+        "authors": []
+      },
+      {
+        "term": "novinářské rutiny",
+        "definition": "Ustálené postupy, pravidla a organizační zvyklosti, které v redakci usnadňují každodenní výrobu zpráv, ale zároveň ovlivňují výsledný obsah.",
+        "authors": [
+          "Gaye Tuchman"
+        ]
+      },
+      {
+        "term": "redakční autonomie",
+        "definition": "Míra profesní nezávislosti redakce a novinářů vůči vlastníkům, politickým tlakům, inzerentům, zdrojům i vnitřní organizační hierarchii.",
+        "authors": []
+      },
+      {
+        "term": "integrovaný newsroom",
+        "definition": "Redakční uspořádání propojující různé platformy, profese a produkční procesy tak, aby obsah vznikal pro více distribučních kanálů současně.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Gaye Tuchman",
+        "role": "novinářské rutiny a sociologie zpravodajské produkce"
+      },
+      {
+        "name": "Tomáš Trampota",
+        "role": "zpravodajská produkce a redakční postupy"
+      },
+      {
+        "name": "Brian McNair",
+        "role": "sociologie žurnalistiky a profesionalizace novinářské práce"
+      },
+      {
+        "name": "Barbora Osvaldová a Jan Halada",
+        "role": "praktická terminologie a žánrové postupy v české žurnalistice"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má umět popsat redakci jako organizovaný proces, nikoli jen jako soubor individuálních autorů.",
+      "Má znát základní role v redakci a umět vysvětlit jejich odpovědnosti.",
+      "Má prakticky vysvětlit, co editor kontroluje a proč redigování nemá článek pokazit, ale zlepšit.",
+      "Má propojit praktickou redakční práci s pojmy rutiny, kultura redakce, autonomie a profesní odpovědnost."
+    ],
+    "followup_questions": [
+      "Jaké role existují v redakci a jak spolupracují?",
+      "Co má editor zkontrolovat před publikací textu?",
+      "Jaký je rozdíl mezi editací, korekturou a cenzurou?",
+      "Jak online prostředí mění redakční workflow?",
+      "Co znamená redakční autonomie a čím může být ohrožena?"
+    ],
+    "common_mistakes": [
+      "Redukce redakční práce pouze na psaní textu.",
+      "Zaměnění editace za pravopisnou korekturu.",
+      "Opomenutí právních a etických kontrol v redakčním procesu.",
+      "Přehlížení organizačních vlivů na obsah: rutiny, hierarchie, plánování, časový tlak a ekonomické podmínky.",
+      "Nejasné rozlišení rolí autora, editora, korektora, vedoucího vydání a šéfredaktora."
+    ],
+    "source_refs": [
+      {
+        "file": "zur_prednaska_10.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–15",
+        "relevance": "core"
+      },
+      {
+        "file": "zur_prednaska_06_07.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 45–49",
+        "relevance": "supporting"
+      }
+    ],
+    "review_status": "reviewed"
+  },
+  {
+    "id": "zurnalistika-q07",
+    "title": "Mediální právo",
+    "short_title": "Mediální právo",
+    "outline": [
+      "Vymezit rozdíl mezi regulací a samoregulací médií, včetně rozdílu v závaznosti a vymahatelnosti.",
+      "Představit hlavní mediální zákony v ČR: tiskový zákon, zákon o rozhlasovém a televizním vysílání, zákony o ČT, ČRo a ČTK, zákon o rozhlasových a televizních poplatcích.",
+      "Vysvětlit další právní normy důležité pro novinářskou práci: svobodný přístup k informacím, občanský zákoník, trestní zákon, trestní řád, autorské právo, regulace reklamy a ochrana utajovaných skutečností.",
+      "Popsat klíčové instituty tiskového práva: evidence periodického tisku, odpovědnost vydavatele, ochrana zdroje, právo na odpověď a dodatečné sdělení.",
+      "Uvést dohlížející orgány a vysvětlit, jak se právní odpovědnost novináře a vydavatele projevuje v praktických situacích."
+    ],
+    "key_terms": [
+      {
+        "term": "regulace médií",
+        "definition": "Soubor právních pravidel a institucí, které stanovují podmínky vydávání, vysílání, odpovědnosti, ochrany osobnosti, reklamy a dalších aspektů mediální činnosti.",
+        "authors": []
+      },
+      {
+        "term": "samoregulace médií",
+        "definition": "Dobrovolné nebo profesní mechanismy odpovědnosti médií a novinářů, například etické komise, kodexy a interní pravidla; na rozdíl od práva má slabší vymahatelnost.",
+        "authors": []
+      },
+      {
+        "term": "tiskový zákon",
+        "definition": "Zákon upravující práva a povinnosti při vydávání periodického tisku, včetně odpovědnosti vydavatele, evidence tisku, ochrany zdroje, práva na odpověď a dodatečného sdělení.",
+        "authors": []
+      },
+      {
+        "term": "ochrana zdroje informací",
+        "definition": "Právo novináře chránit identitu zdroje informací, s limity zejména v případech závažné trestné činnosti.",
+        "authors": []
+      },
+      {
+        "term": "právo na odpověď",
+        "definition": "Právo osoby požadovat zveřejnění odpovědi, pokud bylo publikováno skutkové tvrzení dotýkající se její cti, důstojnosti, soukromí, jména nebo dobré pověsti.",
+        "authors": []
+      },
+      {
+        "term": "dodatečné sdělení",
+        "definition": "Právo požadovat doplnění informace zejména v situaci, kdy bylo zveřejněno sdělení o trestním nebo přestupkovém řízení, které nebylo v době publikace pravomocně ukončeno.",
+        "authors": []
+      },
+      {
+        "term": "presumpce neviny",
+        "definition": "Zásada, podle níž je osoba považována za nevinnou, dokud její vina nebyla prokázána zákonným způsobem; v žurnalistice vyžaduje opatrné formulace o podezřelých a obviněných.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Tomáš Sokol",
+        "role": "výklad tiskového práva a právního rámce práce médií"
+      },
+      {
+        "name": "Ondřejka Sovová",
+        "role": "vývoj trhu periodik po roce 1990 v kontextu tiskového práva"
+      },
+      {
+        "name": "Rada pro rozhlasové a televizní vysílání",
+        "role": "dohled nad rozhlasovým a televizním vysíláním"
+      },
+      {
+        "name": "Rada České televize, Rada Českého rozhlasu a Rada ČTK",
+        "role": "kontrolní orgány médií veřejné služby a veřejnoprávní agentury"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má znát hlavní české mediální zákony a umět vysvětlit, k čemu se vztahují.",
+      "Má rozlišit právní regulaci a profesní samoregulaci a uvést rozdíl v závaznosti a vymahatelnosti.",
+      "Má prakticky vysvětlit právo na odpověď, dodatečné sdělení a ochranu zdroje.",
+      "Má umět popsat hranice novinářské práce u ochrany osobnosti, nezletilých, skryté kamery, presumpce neviny a pomluvy."
+    ],
+    "followup_questions": [
+      "Jaký je rozdíl mezi regulací a samoregulací médií?",
+      "Za co odpovídá vydavatel periodického tisku?",
+      "Kdy vzniká právo na odpověď a čím se liší od dodatečného sdělení?",
+      "Kdy může novinář chránit zdroj a kde jsou limity této ochrany?",
+      "Jaké právní problémy mohou vzniknout při použití skryté kamery nebo při informování o nezletilých?"
+    ],
+    "common_mistakes": [
+      "Zaměnění etického kodexu za zákon.",
+      "Neznalost rozdílu mezi tiskovým zákonem a zákonem o rozhlasovém a televizním vysílání.",
+      "Představa, že novinář může vždy absolutně chránit svůj zdroj.",
+      "Opomenutí občanského a trestního práva při otázkách ochrany osobnosti, pomluvy, presumpce neviny a nezletilých.",
+      "Směšování práva na odpověď, opravy faktické chyby a dodatečného sdělení."
+    ],
+    "source_refs": [
+      {
+        "file": "zur_prednaska_11_12.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 3–13",
+        "relevance": "core"
+      }
+    ],
     "review_status": "reviewed"
   }
 ]

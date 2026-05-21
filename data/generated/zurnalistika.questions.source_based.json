@@ -1,0 +1,710 @@
+[
+  {
+    "id": "zurnalistika-q01",
+    "title": "Mediální krajina v ČR po roce 1989",
+    "short_title": "Mediální krajina po 1989",
+    "outline": [
+      "Vymezit výchozí stav médií před rokem 1989: stranicko-státní vlastnictví, politická kontrola a cenzurní dohled.",
+      "Popsat transformační proces po roce 1989: privatizaci, denacionalizaci, vznik médií veřejné služby, vstup zahraničních vlastníků a pozdější koncentraci trhu.",
+      "Ukázat proměny jednotlivých segmentů mediální krajiny: tisk, rozhlas, televize, online média a digitální platformy.",
+      "Vysvětlit současné postavení českých médií na trhu pomocí nákladu, čtenosti, poslechovosti, sledovanosti, návštěvnosti a inzertních příjmů.",
+      "Uvést významné mediální domy, vlastníky, současné novináře a oborové zdroje, které je třeba pro aktualizaci otázky sledovat."
+    ],
+    "key_terms": [
+      {
+        "term": "mediální krajina",
+        "definition": "Soubor médií, mediálních organizací, vlastníků, distribučních kanálů, regulačních institucí a tržních vztahů v určité zemi nebo regionu.",
+        "authors": []
+      },
+      {
+        "term": "transformace médií",
+        "definition": "Proměna českých médií po roce 1989 od stranicko-státního modelu k pluralitnímu, tržnímu a částečně veřejnoprávnímu mediálnímu systému.",
+        "authors": []
+      },
+      {
+        "term": "privatizace médií",
+        "definition": "Převod médií ze státního, stranického nebo společenského vlastnictví do soukromých rukou; v českém kontextu šlo často o spontánní a rychlý proces počátku 90. let.",
+        "authors": []
+      },
+      {
+        "term": "koncentrace vlastnictví",
+        "definition": "Proces, při němž se vlastnictví médií soustřeďuje do menšího počtu ekonomicky silných skupin, což může ovlivňovat pluralitu a podmínky redakční autonomie.",
+        "authors": []
+      },
+      {
+        "term": "média veřejné služby",
+        "definition": "Média zřízená zákonem a financovaná veřejnými prostředky nebo poplatky, jejichž úkolem je poskytovat objektivní, vyvážené a pluralitní služby veřejnosti.",
+        "authors": []
+      },
+      {
+        "term": "zezápadňování mediálního systému",
+        "definition": "Přiblížení českého mediálního systému západoevropským tržním, vlastnickým, institucionálním a profesním modelům po roce 1989.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Daniel C. Hallin",
+        "role": "komparativní teorie mediálních systémů"
+      },
+      {
+        "name": "Paolo Mancini",
+        "role": "komparativní teorie mediálních systémů"
+      },
+      {
+        "name": "Denis McQuail",
+        "role": "obecná teorie médií, mediální systém a společenské funkce médií"
+      },
+      {
+        "name": "Jan Jirák",
+        "role": "český kontext médií a společnosti"
+      },
+      {
+        "name": "Barbara Köpplová",
+        "role": "český kontext médií, dějiny a vývoj mediální krajiny"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má umět popsat proměnu médií od předlistopadového kontrolovaného systému k pluralitnímu tržnímu prostředí.",
+      "Má rozlišit jednotlivé fáze vývoje po roce 1989: spontánní privatizaci, vstup zahraničního kapitálu, koncentraci, digitalizaci a hledání nových obchodních modelů.",
+      "Má znát základní segmenty současné české mediální krajiny a umět je doložit aktuálními údaji o nákladu, čtenosti, návštěvnosti, sledovanosti a vlastnictví.",
+      "Má umět vysvětlit, proč vlastnická struktura a ekonomický model médií souvisejí s pluralitou, autonomií redakcí a obsahem médií."
+    ],
+    "followup_questions": [
+      "Jak se lišila média před rokem 1989 a po roce 1989?",
+      "Co znamenala spontánní privatizace českého tisku?",
+      "Jak se proměnilo vlastnictví českých médií po roce 2000?",
+      "Jaký je rozdíl mezi komerčními médii a médii veřejné služby?",
+      "Které zdroje byste použili pro ověření aktuální čtenosti, sledovanosti a návštěvnosti médií?"
+    ],
+    "common_mistakes": [
+      "Zaměnění mediální krajiny za prostý seznam médií bez vysvětlení vlastnictví, regulace a trhu.",
+      "Popis vývoje po roce 1989 bez rozlišení fází transformace.",
+      "Opomenutí role veřejnoprávních médií a regulatorních institucí.",
+      "Uvádění zastaralých údajů o trhu bez upozornění, že mediální data je nutné aktualizovat."
+    ],
+    "source_refs": [
+      {
+        "file": "zur_prednaska_04.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–38",
+        "relevance": "core"
+      },
+      {
+        "file": "zur_prednaska_05_ps2025.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 4–19",
+        "relevance": "core"
+      },
+      {
+        "file": "zur_prednaska_01_02.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 8–9",
+        "relevance": "supporting"
+      }
+    ],
+    "review_status": "reviewed"
+  },
+  {
+    "id": "zurnalistika-q02",
+    "title": "Charakteristika a typologie médií",
+    "short_title": "Typologie médií",
+    "outline": [
+      "Vysvětlit, podle jakých hledisek lze média charakterizovat: typ média, historie, produkt, periodicita, publikum, distribuční kanál, vlastnictví a postavení na trhu.",
+      "Představit základní typy médií: tisk, rozhlas, televize, zpravodajské agentury, online média a média veřejné služby.",
+      "Rozlišit typologii podle technologie, obsahu, publika, periodicity, geografického dosahu a ekonomického modelu.",
+      "Vysvětlit vlastnickou strukturu médií a základní formy koncentrace vlastnictví.",
+      "Ukázat, jak typ média ovlivňuje žurnalistické postupy, žánry, organizaci práce a způsob měření výkonu na trhu."
+    ],
+    "key_terms": [
+      {
+        "term": "typologie médií",
+        "definition": "Systematické třídění médií podle vybraných kritérií, například technologie, periodicity, obsahu, cílového publika, vlastnictví, dosahu nebo ekonomického modelu.",
+        "authors": []
+      },
+      {
+        "term": "mediální organizace",
+        "definition": "Instituce nebo podnik produkující a distribuující mediální obsahy; její struktura závisí na typu média, rozsahu distribuce, počtu platforem a produktu.",
+        "authors": []
+      },
+      {
+        "term": "horizontální koncentrace",
+        "definition": "Soukromé nebo korporátní soustřeďování vlastnictví v rámci téhož sektoru mediálního průmyslu, například vlastnictví více tiskových titulů jedním vydavatelstvím.",
+        "authors": []
+      },
+      {
+        "term": "diagonální koncentrace",
+        "definition": "Vlastnické propojení médií s podnikáním v jiných odvětvích, případně rozšiřování mediálních firem mimo původní mediální sektor.",
+        "authors": []
+      },
+      {
+        "term": "zpravodajská agentura",
+        "definition": "Organizace zaměřená na získávání a distribuci zpravodajských informací médiím, institucím a dalším odběratelům.",
+        "authors": []
+      },
+      {
+        "term": "postavení na trhu",
+        "definition": "Měřitelné umístění média v konkurenčním prostředí pomocí ukazatelů jako náklad, čtenost, poslechovost, sledovanost, návštěvnost nebo inzertní příjmy.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Denis McQuail",
+        "role": "obecná typologie médií, mediální instituce a společenské funkce médií"
+      },
+      {
+        "name": "Daniel C. Hallin",
+        "role": "srovnávání mediálních systémů a vztahu médií, trhu a politiky"
+      },
+      {
+        "name": "Paolo Mancini",
+        "role": "srovnávání mediálních systémů a vztahu médií, trhu a politiky"
+      },
+      {
+        "name": "Irena Reifová a kol.",
+        "role": "pojmový aparát mediální komunikace"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má umět ukázat, že typologie médií není jen dělení na tisk, rozhlas, televizi a internet, ale závisí na zvoleném kritériu.",
+      "Má vysvětlit, proč vlastnictví a koncentrace médií nejsou pouze ekonomická, ale i politická a kulturní otázka.",
+      "Má umět spojit typ média s odlišným produktem, publikem, žánrovou skladbou, redakčním provozem a tržním měřením.",
+      "Má znát základní zdroje dat o českém mediálním trhu: ABC ČR, Unie vydavatelů, NetMonitor, Radio Projekt, ATO/Nielsen a další oborové zdroje."
+    ],
+    "followup_questions": [
+      "Podle jakých kritérií můžeme třídit média?",
+      "Jaký je rozdíl mezi typem média a mediálním produktem?",
+      "Co znamená horizontální a diagonální koncentrace vlastnictví?",
+      "Jak se liší měření trhu u tisku, rozhlasu, televize a online médií?",
+      "Jakou roli mají zpravodajské agentury v mediálním systému?"
+    ],
+    "common_mistakes": [
+      "Redukce typologie médií pouze na technologické nosiče.",
+      "Opomenutí vlastnické struktury jako součásti charakteristiky média.",
+      "Směšování nákladu, čtenosti, návštěvnosti, sledovanosti a poslechovosti.",
+      "Představa, že vlastnictví médií vždy přímo a jednoduše určuje každý jednotlivý obsah."
+    ],
+    "source_refs": [
+      {
+        "file": "zur_prednaska_05_ps2025.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–21",
+        "relevance": "core"
+      },
+      {
+        "file": "zur_prednaska_04.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 26–38",
+        "relevance": "supporting"
+      }
+    ],
+    "review_status": "reviewed"
+  },
+  {
+    "id": "zurnalistika-q03",
+    "title": "Typy žurnalistiky a jejich specifika",
+    "short_title": "Typy žurnalistiky",
+    "outline": [
+      "Vymezit základní dělení žurnalistiky podle typu média: tištěná, agenturní, rozhlasová, televizní, online a multimediální žurnalistika.",
+      "Vysvětlit rozdíl mezi zpravodajstvím a publicistikou a ukázat, jak se tento rozdíl proměňuje v různých médiích.",
+      "Popsat specifika žurnalistických žánrů v různých typech médií: zpráva, rozhovor, reportáž, feature, komentář, blog, online zpráva a multimediální formáty.",
+      "Ukázat rozdíly v redakční práci: práce se zdroji, rychlost publikování, editace, newsroom, multiskilling, konvergence a zapojování publika.",
+      "Uvést konkrétní příklady, jak technologické vlastnosti média ovlivňují jazyk, kompozici a distribuci obsahu."
+    ],
+    "key_terms": [
+      {
+        "term": "agenturní žurnalistika",
+        "definition": "Typ zpravodajské produkce založený na rychlém, neutrálním a distribuovatelném informačním servisu pro další média a odběratele.",
+        "authors": []
+      },
+      {
+        "term": "rozhlasová žurnalistika",
+        "definition": "Žurnalistika šířená audiální cestou, která vyžaduje jednoduchou větnou skladbu, mluvený styl, práci se zvukem a jasnou kompozici bez možnosti vracet se v textu zpět.",
+        "authors": []
+      },
+      {
+        "term": "televizní žurnalistika",
+        "definition": "Audiovizuální žurnalistika kombinující obraz, zvuk a slovní komentář; významnou roli v ní mají záběry, střih, stand-up, studiové uvedení a obrazová složka zprávy.",
+        "authors": []
+      },
+      {
+        "term": "online žurnalistika",
+        "definition": "Žurnalistika využívající okamžitost, interaktivitu, hypertextualitu a multimediální možnosti internetu; proměňuje zdroje, žánry, rytmus publikování i vztah k publiku.",
+        "authors": ["James Foust"]
+      },
+      {
+        "term": "konvergence",
+        "definition": "Propojování mediálních platforem, redakčních procesů a distribučních kanálů, při němž se totožný nebo upravený obsah šíří různými médii.",
+        "authors": []
+      },
+      {
+        "term": "multiskilling",
+        "definition": "Požadavek, aby novinář zvládal více profesních činností současně, například psaní, natáčení, fotografování, editaci a publikování online.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Barbora Osvaldová",
+        "role": "žurnalistická terminologie a praktická žánrová východiska"
+      },
+      {
+        "name": "Jan Halada",
+        "role": "žurnalistická terminologie a praktická žánrová východiska"
+      },
+      {
+        "name": "Tomáš Trampota",
+        "role": "teorie zpravodajství a zpravodajských postupů"
+      },
+      {
+        "name": "James Foust",
+        "role": "online žurnalistika a práce se zdroji v prostředí internetu"
+      },
+      {
+        "name": "Denis McQuail",
+        "role": "společenský význam médií a obecná teorie mediální komunikace"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má umět ukázat, že žurnalistika se liší podle média nejen technologicky, ale i jazykem, tempem práce, žánry a vztahem k publiku.",
+      "Má odlišit zpravodajství a publicistiku a zároveň vysvětlit hraniční žánry, například news feature nebo reportáž.",
+      "Má znát specifika agenturního, rozhlasového, televizního a online zpravodajství.",
+      "Má umět vysvětlit, jak online prostředí vede ke zrychlování, propojování, konvergenci a zapojování uživatelů."
+    ],
+    "followup_questions": [
+      "V čem se liší práce rozhlasového a televizního reportéra?",
+      "Proč online žurnalistika mění práci se zdroji?",
+      "Co znamená konvergence v redakční práci?",
+      "Jak se liší agenturní zpráva od novinové zprávy?",
+      "Jaké žánry stojí na pomezí zpravodajství a publicistiky?"
+    ],
+    "common_mistakes": [
+      "Popis typů žurnalistiky pouze podle nosiče bez vysvětlení produkčních a žánrových rozdílů.",
+      "Zaměňování online žurnalistiky za pouhé publikování tištěného textu na webu.",
+      "Ignorování rozdílu mezi audiálním a audiovizuálním sdělením.",
+      "Nejasné odlišení zpravodajských a publicistických žánrů."
+    ],
+    "source_refs": [
+      {
+        "file": "zur_prednaska_06_07.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 32–51",
+        "relevance": "core"
+      },
+      {
+        "file": "zur_prednaska_08_09_a.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 13–16",
+        "relevance": "supporting"
+      },
+      {
+        "file": "zur_prednaska_10.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 3–4",
+        "relevance": "supporting"
+      }
+    ],
+    "review_status": "reviewed"
+  },
+  {
+    "id": "zurnalistika-q04",
+    "title": "Zpravodajství",
+    "short_title": "Zpravodajství",
+    "outline": [
+      "Vymezit zpravodajství jako část žurnalistiky založenou na informacích, faktech, aktuálnosti, neutralitě a práci se zdroji.",
+      "Popsat proces vzniku zprávy: výběr tématu, kritéria relevance, hierarchizace informací, ověřování zdrojů, stavba textu a jazyk.",
+      "Vysvětlit základní pravidla práce se zdroji: důvěryhodnost, relevance, pravidlo dvou nezávislých zdrojů, citování, anonymita a přesnost.",
+      "Představit zpravodajské hodnoty, gatekeeping, objektivitu, vyváženost, neutralitu, zpravodajské stereotypy a pseudoudálosti.",
+      "Uvést hlavní zpravodajské žánry a rozdíly mezi tiskovým, agenturním, rozhlasovým, televizním a online zpravodajstvím."
+    ],
+    "key_terms": [
+      {
+        "term": "zpravodajství",
+        "definition": "Žurnalistická produkce zaměřená na vyhledávání, ověřování, výběr, zpracování a zveřejňování aktuálních informací o událostech.",
+        "authors": ["Barbora Osvaldová", "Jan Halada"]
+      },
+      {
+        "term": "kritéria relevance",
+        "definition": "Otázky a hlediska, podle nichž redakce posuzuje, zda je téma pro publikum důležité, nové, zajímavé, aktuální, blízké a dostatečně významné.",
+        "authors": []
+      },
+      {
+        "term": "obrácená pyramida",
+        "definition": "Kompoziční princip zprávy, v němž jsou nejdůležitější informace uvedeny na začátku a význam informací postupně klesá.",
+        "authors": []
+      },
+      {
+        "term": "zpravodajské hodnoty",
+        "definition": "Vlastnosti událostí, které zvyšují pravděpodobnost, že budou vybrány jako zpráva; patří sem například blízkost, novost, význam, konfliktnost, průběžnost nebo vztah k elitním osobám.",
+        "authors": ["Johan Galtung", "Mari Holmboe Ruge"]
+      },
+      {
+        "term": "gatekeeping",
+        "definition": "Proces výběru, filtrování a uspořádání informací před jejich zveřejněním; rozhoduje o tom, co se stane mediální zprávou.",
+        "authors": ["David Manning White"]
+      },
+      {
+        "term": "pseudoudálost",
+        "definition": "Událost inscenovaná nebo organizovaná především proto, aby byla mediálně zaznamenána a šířena jako zpráva.",
+        "authors": ["Daniel J. Boorstin"]
+      }
+    ],
+    "authors": [
+      {
+        "name": "Tomáš Trampota",
+        "role": "teorie zpravodajství, zpravodajské hodnoty a zpravodajské postupy"
+      },
+      {
+        "name": "David Manning White",
+        "role": "gatekeeping a role editorů při výběru zpráv"
+      },
+      {
+        "name": "Johan Galtung",
+        "role": "zpravodajské hodnoty"
+      },
+      {
+        "name": "Mari Holmboe Ruge",
+        "role": "zpravodajské hodnoty"
+      },
+      {
+        "name": "Daniel J. Boorstin",
+        "role": "pseudoudálosti a vztah médií k inscenovaným událostem"
+      },
+      {
+        "name": "Barbora Osvaldová a Jan Halada",
+        "role": "žurnalistická terminologie a žánrové vymezení"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má umět vysvětlit celý proces vzniku zprávy od námětu po publikaci.",
+      "Má prakticky rozlišit zprávu, rozšířenou zprávu, agenturní zprávu, reportážní zprávu a online zprávu.",
+      "Má ukázat, že objektivita není prosté opsání faktů, ale soubor profesních postupů: ověřování, práce se zdroji, vyváženost a transparentnost.",
+      "Má umět propojit praktické redakční postupy s teoretickými pojmy jako gatekeeping, zpravodajské hodnoty a pseudoudálost."
+    ],
+    "followup_questions": [
+      "Co dělá událost zpravodajsky relevantní?",
+      "Jak funguje pravidlo dvou nezávislých zdrojů?",
+      "Co je obrácená pyramida a kdy se používá?",
+      "Jaký je rozdíl mezi objektivitou, neutralitou a vyvážeností?",
+      "Co je gatekeeping a kdo ho v redakci vykonává?"
+    ],
+    "common_mistakes": [
+      "Zaměňování zpravodajství a publicistiky.",
+      "Redukce objektivity na tvrzení, že novinář ‚nemá názor‘.",
+      "Opomenutí práce se zdroji a ověřování informací.",
+      "Neznalost základní stavby zprávy: titulek, podtitulek, perex, tělo, background.",
+      "Přehlížení toho, že zpravodajství je výsledkem výběru, rutin a redakční organizace."
+    ],
+    "source_refs": [
+      {
+        "file": "zur_prednaska_06_07.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 3–57",
+        "relevance": "core"
+      },
+      {
+        "file": "zur_prednaska_01_02.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 10–14",
+        "relevance": "supporting"
+      }
+    ],
+    "review_status": "reviewed"
+  },
+  {
+    "id": "zurnalistika-q05",
+    "title": "Publicistika",
+    "short_title": "Publicistika",
+    "outline": [
+      "Vymezit publicistiku jako oblast žurnalistiky, která pracuje se stanoviskem, interpretací, hodnocením a autorským pohledem.",
+      "Odlišit publicistiku od zpravodajství: publicistika hledá souvislosti a komentuje, zatímco zpravodajství primárně informuje o aktuálních událostech.",
+      "Popsat metody práce v publicistice: výběr tématu, práce se zdroji, argumentace, kontextualizace, interpretace a práce s jazykem.",
+      "Představit hlavní publicistické žánry: komentář, glosa, úvodník, fejeton, sloupek, recenze, rozhovor, reportáž, feature, story a blog.",
+      "Ukázat rozdíly mezi psanou, online a audiovizuální publicistikou."
+    ],
+    "key_terms": [
+      {
+        "term": "publicistika",
+        "definition": "Žurnalistická tvorba spojená s názorem, stanoviskem, interpretací, hodnocením nebo autorskou perspektivou; pracuje s fakty, ale klade důraz na souvislosti a výklad.",
+        "authors": ["Barbora Osvaldová", "Jan Halada"]
+      },
+      {
+        "term": "komentář",
+        "definition": "Publicistický žánr, který analyzuje, vysvětluje, interpretuje a hodnotí události nebo výroky a pomáhá čtenáři vytvářet si vlastní názor.",
+        "authors": []
+      },
+      {
+        "term": "fejeton",
+        "definition": "Uměleckopublicistický žánr, který se vtipnou, subjektivní a literárně stylizovanou formou vyjadřuje k otázkám současnosti.",
+        "authors": []
+      },
+      {
+        "term": "interview",
+        "definition": "Řízený rozhovor směřující k určitému cíli; může být zpravodajský, publicistický nebo profilový podle účelu a zpracování.",
+        "authors": []
+      },
+      {
+        "term": "reportáž",
+        "definition": "Publicistický žánr založený na svědectví, osobní účasti a zážitku autora, který přináší faktický popis události i autorskou perspektivu.",
+        "authors": ["Jo Bech-Karlsen"]
+      },
+      {
+        "term": "feature",
+        "definition": "Náročnější publicistický žánr stojící na pomezí reportáže, analýzy a příběhu; zpravidla popisuje širší trend, fenomén nebo pozadí události skrze konkrétní příběh.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Barbora Osvaldová",
+        "role": "publicistické žánry a praktická žurnalistická terminologie"
+      },
+      {
+        "name": "Jan Halada",
+        "role": "publicistické žánry a praktická žurnalistická terminologie"
+      },
+      {
+        "name": "Jo Bech-Karlsen",
+        "role": "reportáž jako metoda a žánr"
+      },
+      {
+        "name": "Malcolm F. Mallette",
+        "role": "praktické psaní a novinářské postupy"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má jasně odlišit publicistiku od zpravodajství a uvést, že publicistika může obsahovat stanovisko autora nebo redakce.",
+      "Má znát základní publicistické žánry a umět je rozdělit podle analytického, názorového, beletristického a reportážního stylu.",
+      "Má vysvětlit, že publicistika nesmí rezignovat na fakta, ověřování a etické zásady, i když pracuje s interpretací a názorem.",
+      "Má být schopen uvést konkrétní příklad komentáře, fejetonu, reportáže nebo feature a popsat jeho stavbu."
+    ],
+    "followup_questions": [
+      "Jaký je rozdíl mezi komentářem a zprávou?",
+      "Proč je fejeton vzdálenější zpravodajství než komentář?",
+      "Co odlišuje reportáž od zprávy?",
+      "Jak funguje feature a proč bývá náročnější než běžná reportáž?",
+      "Jak se publicistika proměňuje v online prostředí?"
+    ],
+    "common_mistakes": [
+      "Představa, že publicistika znamená libovolné subjektivní psaní bez faktické opory.",
+      "Nejasné rozlišení komentáře, glosy, fejetonu, reportáže a feature.",
+      "Zaměňování rozhovoru jako metody sběru informací a interview jako publikovaného žánru.",
+      "Opomenutí online a audiovizuální publicistiky."
+    ],
+    "source_refs": [
+      {
+        "file": "zur_prednaska_08_09_a.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–16",
+        "relevance": "core"
+      },
+      {
+        "file": "zur_prednaska_06_07.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 9–19",
+        "relevance": "supporting"
+      },
+      {
+        "file": "zur_prednaska_01_02.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 14",
+        "relevance": "supporting"
+      }
+    ],
+    "review_status": "reviewed"
+  },
+  {
+    "id": "zurnalistika-q06",
+    "title": "Základy redakční práce",
+    "short_title": "Redakční práce",
+    "outline": [
+      "Popsat redakci jako organizaci práce: role šéfredaktora, editorů, redaktorů, reportérů, fotografů, grafiků, korektorů, layoutérů a vedoucích vydání.",
+      "Vysvětlit redakční workflow: plánování témat, porady, rozdělení úkolů, práce se zdroji, editace, korektury, příprava stránky nebo výstupu a publikace.",
+      "Představit odpovědnosti v redakci: věcná správnost, relevance, srozumitelnost, jazyk, žánr, právo, etika a vztah k publiku.",
+      "Vysvětlit práci editora: kontrola formy, relevance, obsahu, legislativních a etických rizik, kompozice, stylu, jazyka a finální úpravy.",
+      "Ukázat proměny redakční práce v online a konvergentním prostředí: multiskilling, zrychlování, propojování platforem, zapojování publika a integrovaný newsroom."
+    ],
+    "key_terms": [
+      {
+        "term": "redakční workflow",
+        "definition": "Sled činností od výběru a plánování témat přes sběr informací, psaní, editaci a korekturu až po publikaci a distribuci mediálního obsahu.",
+        "authors": []
+      },
+      {
+        "term": "editace",
+        "definition": "Proces redakční úpravy textu nebo jiného obsahu, který má zlepšit věcnou správnost, srozumitelnost, žánrové zařazení, právní a etickou bezpečnost a výslednou podobu výstupu.",
+        "authors": []
+      },
+      {
+        "term": "editorské desatero",
+        "definition": "Soubor kontrolních hledisek pro redigování: forma, relevance, obsah, legislativa, kompozice, styl, jazyk a finální úprava textu.",
+        "authors": []
+      },
+      {
+        "term": "novinářské rutiny",
+        "definition": "Ustálené postupy, pravidla a organizační zvyklosti, které v redakci usnadňují každodenní výrobu zpráv, ale zároveň ovlivňují výsledný obsah.",
+        "authors": ["Gaye Tuchman"]
+      },
+      {
+        "term": "redakční autonomie",
+        "definition": "Míra profesní nezávislosti redakce a novinářů vůči vlastníkům, politickým tlakům, inzerentům, zdrojům i vnitřní organizační hierarchii.",
+        "authors": []
+      },
+      {
+        "term": "integrovaný newsroom",
+        "definition": "Redakční uspořádání propojující různé platformy, profese a produkční procesy tak, aby obsah vznikal pro více distribučních kanálů současně.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Gaye Tuchman",
+        "role": "novinářské rutiny a sociologie zpravodajské produkce"
+      },
+      {
+        "name": "Tomáš Trampota",
+        "role": "zpravodajská produkce a redakční postupy"
+      },
+      {
+        "name": "Brian McNair",
+        "role": "sociologie žurnalistiky a profesionalizace novinářské práce"
+      },
+      {
+        "name": "Barbora Osvaldová a Jan Halada",
+        "role": "praktická terminologie a žánrové postupy v české žurnalistice"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má umět popsat redakci jako organizovaný proces, nikoli jen jako soubor individuálních autorů.",
+      "Má znát základní role v redakci a umět vysvětlit jejich odpovědnosti.",
+      "Má prakticky vysvětlit, co editor kontroluje a proč redigování nemá článek pokazit, ale zlepšit.",
+      "Má propojit praktickou redakční práci s pojmy rutiny, kultura redakce, autonomie a profesní odpovědnost."
+    ],
+    "followup_questions": [
+      "Jaké role existují v redakci a jak spolupracují?",
+      "Co má editor zkontrolovat před publikací textu?",
+      "Jaký je rozdíl mezi editací, korekturou a cenzurou?",
+      "Jak online prostředí mění redakční workflow?",
+      "Co znamená redakční autonomie a čím může být ohrožena?"
+    ],
+    "common_mistakes": [
+      "Redukce redakční práce pouze na psaní textu.",
+      "Zaměnění editace za pravopisnou korekturu.",
+      "Opomenutí právních a etických kontrol v redakčním procesu.",
+      "Přehlížení organizačních vlivů na obsah: rutiny, hierarchie, plánování, časový tlak a ekonomické podmínky.",
+      "Nejasné rozlišení rolí autora, editora, korektora, vedoucího vydání a šéfredaktora."
+    ],
+    "source_refs": [
+      {
+        "file": "zur_prednaska_10.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–15",
+        "relevance": "core"
+      },
+      {
+        "file": "zur_prednaska_06_07.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 45–49",
+        "relevance": "supporting"
+      }
+    ],
+    "review_status": "reviewed"
+  },
+  {
+    "id": "zurnalistika-q07",
+    "title": "Mediální právo",
+    "short_title": "Mediální právo",
+    "outline": [
+      "Vymezit rozdíl mezi regulací a samoregulací médií, včetně rozdílu v závaznosti a vymahatelnosti.",
+      "Představit hlavní mediální zákony v ČR: tiskový zákon, zákon o rozhlasovém a televizním vysílání, zákony o ČT, ČRo a ČTK, zákon o rozhlasových a televizních poplatcích.",
+      "Vysvětlit další právní normy důležité pro novinářskou práci: svobodný přístup k informacím, občanský zákoník, trestní zákon, trestní řád, autorské právo, regulace reklamy a ochrana utajovaných skutečností.",
+      "Popsat klíčové instituty tiskového práva: evidence periodického tisku, odpovědnost vydavatele, ochrana zdroje, právo na odpověď a dodatečné sdělení.",
+      "Uvést dohlížející orgány a vysvětlit, jak se právní odpovědnost novináře a vydavatele projevuje v praktických situacích."
+    ],
+    "key_terms": [
+      {
+        "term": "regulace médií",
+        "definition": "Soubor právních pravidel a institucí, které stanovují podmínky vydávání, vysílání, odpovědnosti, ochrany osobnosti, reklamy a dalších aspektů mediální činnosti.",
+        "authors": []
+      },
+      {
+        "term": "samoregulace médií",
+        "definition": "Dobrovolné nebo profesní mechanismy odpovědnosti médií a novinářů, například etické komise, kodexy a interní pravidla; na rozdíl od práva má slabší vymahatelnost.",
+        "authors": []
+      },
+      {
+        "term": "tiskový zákon",
+        "definition": "Zákon upravující práva a povinnosti při vydávání periodického tisku, včetně odpovědnosti vydavatele, evidence tisku, ochrany zdroje, práva na odpověď a dodatečného sdělení.",
+        "authors": []
+      },
+      {
+        "term": "ochrana zdroje informací",
+        "definition": "Právo novináře chránit identitu zdroje informací, s limity zejména v případech závažné trestné činnosti.",
+        "authors": []
+      },
+      {
+        "term": "právo na odpověď",
+        "definition": "Právo osoby požadovat zveřejnění odpovědi, pokud bylo publikováno skutkové tvrzení dotýkající se její cti, důstojnosti, soukromí, jména nebo dobré pověsti.",
+        "authors": []
+      },
+      {
+        "term": "dodatečné sdělení",
+        "definition": "Právo požadovat doplnění informace zejména v situaci, kdy bylo zveřejněno sdělení o trestním nebo přestupkovém řízení, které nebylo v době publikace pravomocně ukončeno.",
+        "authors": []
+      },
+      {
+        "term": "presumpce neviny",
+        "definition": "Zásada, podle níž je osoba považována za nevinnou, dokud její vina nebyla prokázána zákonným způsobem; v žurnalistice vyžaduje opatrné formulace o podezřelých a obviněných.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Tomáš Sokol",
+        "role": "výklad tiskového práva a právního rámce práce médií"
+      },
+      {
+        "name": "Ondřejka Sovová",
+        "role": "vývoj trhu periodik po roce 1990 v kontextu tiskového práva"
+      },
+      {
+        "name": "Rada pro rozhlasové a televizní vysílání",
+        "role": "dohled nad rozhlasovým a televizním vysíláním"
+      },
+      {
+        "name": "Rada České televize, Rada Českého rozhlasu a Rada ČTK",
+        "role": "kontrolní orgány médií veřejné služby a veřejnoprávní agentury"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má znát hlavní české mediální zákony a umět vysvětlit, k čemu se vztahují.",
+      "Má rozlišit právní regulaci a profesní samoregulaci a uvést rozdíl v závaznosti a vymahatelnosti.",
+      "Má prakticky vysvětlit právo na odpověď, dodatečné sdělení a ochranu zdroje.",
+      "Má umět popsat hranice novinářské práce u ochrany osobnosti, nezletilých, skryté kamery, presumpce neviny a pomluvy."
+    ],
+    "followup_questions": [
+      "Jaký je rozdíl mezi regulací a samoregulací médií?",
+      "Za co odpovídá vydavatel periodického tisku?",
+      "Kdy vzniká právo na odpověď a čím se liší od dodatečného sdělení?",
+      "Kdy může novinář chránit zdroj a kde jsou limity této ochrany?",
+      "Jaké právní problémy mohou vzniknout při použití skryté kamery nebo při informování o nezletilých?"
+    ],
+    "common_mistakes": [
+      "Zaměnění etického kodexu za zákon.",
+      "Neznalost rozdílu mezi tiskovým zákonem a zákonem o rozhlasovém a televizním vysílání.",
+      "Představa, že novinář může vždy absolutně chránit svůj zdroj.",
+      "Opomenutí občanského a trestního práva při otázkách ochrany osobnosti, pomluvy, presumpce neviny a nezletilých.",
+      "Směšování práva na odpověď, opravy faktické chyby a dodatečného sdělení."
+    ],
+    "source_refs": [
+      {
+        "file": "zur_prednaska_11_12.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 3–13",
+        "relevance": "core"
+      }
+    ],
+    "review_status": "reviewed"
+  }
+]

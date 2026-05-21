@@ -5,6 +5,7 @@ require_once __DIR__ . '/../../app/auth.php';
 require_once __DIR__ . '/../../app/students.php';
 require_once __DIR__ . '/../../app/stack.php';
 require_once __DIR__ . '/../../app/is_import.php';
+require_once __DIR__ . '/../../app/workspaces.php';
 
 require_auth();
 require_post();
@@ -12,18 +13,18 @@ verify_csrf();
 
 const IS_IMPORT_MAX_BYTES = 512000;
 
-function is_import_preview_status(PDO $pdo, array $student): array
+function is_import_preview_status(PDO $pdo, int $workspaceId, array $student): array
 {
     $students = db_table('students');
     if (($student['uco'] ?? '') !== '') {
-        $stmt = $pdo->prepare("SELECT id FROM {$students} WHERE uco = :uco LIMIT 1");
-        $stmt->execute([':uco' => $student['uco']]);
+        $stmt = $pdo->prepare("SELECT id FROM {$students} WHERE workspace_id = :workspace_id AND uco = :uco LIMIT 1");
+        $stmt->execute([':workspace_id' => $workspaceId, ':uco' => $student['uco']]);
         if ($stmt->fetchColumn() !== false) {
             return ['status' => 'duplicate_uco', 'label' => 'duplicita podle UČO', 'can_import' => false];
         }
     } else {
-        $stmt = $pdo->prepare("SELECT id FROM {$students} WHERE LOWER(TRIM(name)) = LOWER(TRIM(:name)) LIMIT 1");
-        $stmt->execute([':name' => $student['name']]);
+        $stmt = $pdo->prepare("SELECT id FROM {$students} WHERE workspace_id = :workspace_id AND LOWER(TRIM(name)) = LOWER(TRIM(:name)) LIMIT 1");
+        $stmt->execute([':workspace_id' => $workspaceId, ':name' => $student['name']]);
         if ($stmt->fetchColumn() !== false) {
             return ['status' => 'possible_duplicate', 'label' => 'možná duplicita', 'can_import' => false];
         }
@@ -36,10 +37,10 @@ function is_import_preview_status(PDO $pdo, array $student): array
     return ['status' => 'new', 'label' => 'nový', 'can_import' => true];
 }
 
-function is_import_preview_rows(PDO $pdo, array $students): array
+function is_import_preview_rows(PDO $pdo, int $workspaceId, array $students): array
 {
     foreach ($students as &$student) {
-        $status = is_import_preview_status($pdo, $student);
+        $status = is_import_preview_status($pdo, $workspaceId, $student);
         $student['status'] = $status['status'];
         $student['status_label'] = $status['label'];
         $student['can_import'] = $status['can_import'];
@@ -74,6 +75,7 @@ try {
     }
 
     $pdo = db();
+    $workspaceId = require_current_workspace($pdo);
     $config = app_config();
 
     if ($action === 'detect_terms') {
@@ -98,7 +100,7 @@ try {
         if (!$parsed['selected_term']) {
             throw new InvalidArgumentException('Vyberte termín Teorie masové komunikace / TMK.');
         }
-        $students = is_import_preview_rows($pdo, $parsed['students']);
+        $students = is_import_preview_rows($pdo, $workspaceId, $parsed['students']);
 
         if ($action === 'preview') {
             json_response([
@@ -131,13 +133,13 @@ try {
                     continue;
                 }
 
-                $status = is_import_preview_status($pdo, $student);
+                $status = is_import_preview_status($pdo, $workspaceId, $student);
                 if (!$status['can_import']) {
                     $skippedDuplicates++;
                     continue;
                 }
 
-                $result = add_student($pdo, [
+                $result = add_student($pdo, $workspaceId, [
                     'name' => $student['name'],
                     'uco' => $student['uco'],
                     'email' => '',
@@ -146,8 +148,8 @@ try {
                 if (!empty($result['created'])) {
                     $imported++;
                 }
-                add_to_stack($pdo, (int)$result['id']);
-                set_app_setting('student_import_note:' . (int)$result['id'], $student['import_note'] ?? null, $pdo);
+                add_to_stack($pdo, $workspaceId, (int)$result['id']);
+                set_app_setting('student_import_note:' . (int)$result['id'], $student['import_note'] ?? null, $workspaceId, $pdo);
             }
             $pdo->commit();
         } catch (Throwable $e) {
@@ -162,9 +164,9 @@ try {
             'skippedDuplicates' => $skippedDuplicates,
             'skipped' => $skipped,
             'warnings' => $warnings,
-            'students' => list_students($pdo),
-            'stack' => list_stack($pdo),
-            'activeStudentId' => get_active_student_id($pdo),
+            'students' => list_students($pdo, $workspaceId),
+            'stack' => list_stack($pdo, $workspaceId),
+            'activeStudentId' => get_active_student_id($pdo, $workspaceId),
         ]);
     }
 

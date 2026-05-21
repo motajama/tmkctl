@@ -24,6 +24,7 @@ $defaults = [
     'base_path' => getenv('TMKCTL_BASE_PATH') ?: '',
 
     'install_enabled' => false,
+    'debug' => false,
 
     'is_import_study_code_map' => [
         'MSZU01' => 'single',

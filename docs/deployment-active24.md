@@ -166,10 +166,20 @@ data/questions.reviewed.json
 
 Use the bottom **OTÁZKY** command, or console command `:questions`, to inspect and validate the current question pack. Upload only a manually reviewed replacement JSON. The validator checks JSON structure and required fields, but it does not verify scholarly accuracy.
 
-Before replacing the file, the app creates a backup in:
+The same window can merge one or more JSON files into the current `data/questions.reviewed.json`. The current file is always the base. Validate the merge first, review preview counts and duplicate `id` conflicts, then choose **SLOUČIT / MERGE**. The default conflict strategy keeps existing questions; the alternate strategy replaces existing questions with uploaded ones for matching `id` values.
+
+Before replacing the file through upload or merge, the app creates a backup in:
 
 ```text
 data/backups/
 ```
 
 If a backup must be restored, copy the chosen backup manually back to `data/questions.reviewed.json`, then validate it in **OTÁZKY**.
+
+## 9. Shared Workspaces
+
+After login, users choose or create a workspace in **VÝBĚR RELACE / TERMÍNU**. A workspace is one exam run. Students, stack, notes, reset, current term label, and exports are scoped to the selected workspace. Questions remain global.
+
+The app identifies connected browsers with the `tmkctl_client_id` cookie. Cookies must be enabled; otherwise the workspace selection screen blocks entry and shows a warning. Dashboard presence is refreshed by `public/api/heartbeat.php`, and inactive workspaces are hidden from the active list once no fresh presence remains.
+
+Debug deployments can set `debug => true`. In that mode, entering a workspace shows a red warning window with text from `data/debug-stage.txt`.

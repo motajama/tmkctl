@@ -100,6 +100,9 @@
     const modal = $(`modal-${name}`);
     if (!modal) return;
     modal.classList.remove("hidden");
+    if (name === "help") {
+      loadHelpContent();
+    }
     const focusTarget = modal.querySelector("input, textarea, select, button, a[href]");
     if (focusTarget) focusTarget.focus();
   }
@@ -341,6 +344,8 @@
     $("manual-warning").classList.toggle("hidden", state.mode !== "manual");
     $("question-mode-follow").classList.toggle("selected", state.mode === "follow");
     $("question-mode-manual").classList.toggle("selected", state.mode === "manual");
+    $("question-mode-follow").setAttribute("aria-pressed", state.mode === "follow" ? "true" : "false");
+    $("question-mode-manual").setAttribute("aria-pressed", state.mode === "manual" ? "true" : "false");
     $("manual-question-select").disabled = state.mode !== "manual";
 
     if (state.questionsError) {
@@ -616,11 +621,67 @@
     `;
   }
 
+  function renderMergePreview(summary, validation) {
+    const box = $("question-merge-preview");
+    if (!box) return;
+    if (!summary) {
+      box.innerHTML = "";
+      return;
+    }
+    const conflicts = summary.duplicate_id_conflicts || [];
+    const warnings = summary.validation_warnings || (validation && validation.warnings) || [];
+    const errors = summary.validation_errors || (validation && validation.errors) || [];
+    box.innerHTML = `
+      <div class="question-pack-grid">
+        <div>AKTUÁLNÍ OTÁZKY</div><div>${escapeHtml(summary.current_question_count)}</div>
+        <div>PŘIDANÉ</div><div>${escapeHtml(summary.added_question_count)}</div>
+        <div>NAHRAZENÉ</div><div>${escapeHtml(summary.replaced_question_count)}</div>
+        <div>STRATEGIE</div><div>${summary.strategy === "replace-existing" ? "nahradit existující" : "ponechat existující"}</div>
+        <div>KONFLIKTY ID</div><div>${escapeHtml(conflicts.length)}</div>
+      </div>
+      <div class="split-title">DUPLICITNÍ ID</div>
+      ${conflicts.length ? `<ul class="validation-list">${conflicts.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : '<div class="empty-row">žádné</div>'}
+      <div class="split-title">VAROVÁNÍ MERGE</div>
+      ${warnings.length ? `<ul class="validation-list">${warnings.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : '<div class="empty-row">žádné</div>'}
+      <div class="split-title">CHYBY MERGE</div>
+      ${errors.length ? `<ul class="validation-list error">${errors.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : '<div class="empty-row">žádné</div>'}
+    `;
+  }
+
   async function loadQuestionPackStatus() {
     const payload = await api("api/questions_status.php");
     renderQuestionPackStatus(payload.status);
     setQuestionPackStatusMessage("Validace otázkového balíku dokončena.", payload.status && payload.status.schema_valid ? "success" : "error");
     return payload.status;
+  }
+
+  async function loadHelpContent() {
+    const box = $("help-content");
+    if (!box || box.dataset.loaded === "1") return;
+    const source = box.dataset.helpSrc || "assets/help.html";
+    try {
+      const response = await fetch(source, { cache: "no-cache" });
+      if (!response.ok) throw new Error("help fetch failed");
+      box.innerHTML = await response.text();
+      box.dataset.loaded = "1";
+    } catch (error) {
+      box.textContent = "Nápovědu se nepodařilo načíst.";
+    }
+  }
+
+  function toggleAiChat(open) {
+    const win = $("ai-chat-window");
+    const button = $("ai-chat-toggle");
+    if (!win || !button) return;
+    const nextOpen = typeof open === "boolean" ? open : win.classList.contains("hidden");
+    win.classList.toggle("hidden", !nextOpen);
+    button.setAttribute("aria-expanded", nextOpen ? "true" : "false");
+    if (nextOpen) {
+      const closeButton = $("ai-chat-close");
+      if (closeButton) closeButton.focus();
+    } else {
+      button.focus();
+    }
   }
 
   function focusRelative(offset) {
@@ -962,6 +1023,34 @@
     $("validate-question-pack").addEventListener("click", () => {
       loadQuestionPackStatus().catch((error) => setQuestionPackStatusMessage(error.message, "error"));
     });
+    $("question-pack-merge-form").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const submitter = event.submitter;
+      const data = new FormData(event.target);
+      data.set("action", submitter && submitter.value === "merge" ? "merge" : "validate");
+      try {
+        const payload = await postForm("api/questions_merge.php", data);
+        renderMergePreview(payload.summary, payload.validation);
+        if (payload.status) renderQuestionPackStatus(payload.status);
+        if (Array.isArray(payload.questions)) {
+          state.questions = payload.questions;
+          state.questionsError = "";
+          state.manualQuestionId = state.questions[0] ? state.questions[0].id : null;
+          renderQuestionSelect();
+          renderAll();
+        }
+        const warningCount = payload.summary && payload.summary.validation_warnings ? payload.summary.validation_warnings.length : 0;
+        setQuestionPackStatusMessage((payload.message || "Merge dokončen.") + (warningCount ? ` Varování: ${warningCount}.` : ""), "success");
+        if (data.get("action") === "merge") {
+          event.target.reset();
+          const fileName = $("merge-questions-json-file-name");
+          if (fileName) fileName.textContent = "no file selected";
+        }
+      } catch (error) {
+        renderMergePreview(error.payload && error.payload.summary, error.payload && error.payload.validation);
+        setQuestionPackStatusMessage(error.message, "error");
+      }
+    });
     $("question-pack-upload-form").addEventListener("submit", async (event) => {
       event.preventDefault();
       try {
@@ -1042,6 +1131,51 @@
       });
     }
 
+    const mergeFileInput = $("merge-questions-json-files");
+    const mergeFileName = $("merge-questions-json-file-name");
+    if (mergeFileInput && mergeFileName) {
+      mergeFileInput.addEventListener("change", () => {
+        if (!mergeFileInput.files.length) {
+          mergeFileName.textContent = "no file selected";
+        } else if (mergeFileInput.files.length === 1) {
+          mergeFileName.textContent = mergeFileInput.files[0].name;
+        } else {
+          mergeFileName.textContent = `${mergeFileInput.files.length} files selected`;
+        }
+      });
+      const mergeFileButton = document.querySelector("label[for='merge-questions-json-files']");
+      if (mergeFileButton) {
+        mergeFileButton.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            mergeFileInput.click();
+          }
+        });
+      }
+      $("question-pack-merge-form").addEventListener("reset", () => {
+        window.setTimeout(() => { mergeFileName.textContent = "no file selected"; }, 0);
+      });
+    }
+
+    const aiToggle = $("ai-chat-toggle");
+    const aiClose = $("ai-chat-close");
+    if (aiToggle) aiToggle.addEventListener("click", () => toggleAiChat());
+    if (aiClose) aiClose.addEventListener("click", () => toggleAiChat(false));
+
+    const debugLayer = $("debug-modal-layer");
+    const debugClose = $("debug-modal-close");
+    const debugKey = `tmkctl-debug-ack:${state.workspaceId || "global"}`;
+    if (debugLayer && window.sessionStorage.getItem(debugKey) === "1") {
+      debugLayer.classList.add("hidden");
+    }
+    if (debugLayer && debugClose) {
+      debugClose.addEventListener("click", () => {
+        window.sessionStorage.setItem(debugKey, "1");
+        debugLayer.classList.add("hidden");
+      });
+      debugClose.focus();
+    }
+
     const time = $("global-time");
     if (time) {
       const updateTime = () => {
@@ -1056,6 +1190,9 @@
     setInterval(() => {
       if (state.noteDirty) saveNote(false);
     }, 8000);
+    setInterval(() => {
+      api("api/heartbeat.php").catch(() => {});
+    }, 30000);
   }
 
   renderQuestionSelect();

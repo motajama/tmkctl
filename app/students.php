@@ -26,10 +26,11 @@ function study_type_label(?string $value): string
     };
 }
 
-function list_students(PDO $pdo): array
+function list_students(PDO $pdo, int $workspaceId): array
 {
     $students = db_table('students');
-    $stmt = $pdo->query("SELECT id, name, uco, email, study_type, created_at, updated_at FROM {$students} ORDER BY name ASC, id ASC");
+    $stmt = $pdo->prepare("SELECT id, name, uco, email, study_type, created_at, updated_at FROM {$students} WHERE workspace_id = :workspace_id ORDER BY name ASC, id ASC");
+    $stmt->execute([':workspace_id' => $workspaceId]);
     $rows = $stmt->fetchAll();
     foreach ($rows as &$row) {
         $row['study_type_label'] = study_type_label($row['study_type'] ?? 'unknown');
@@ -56,12 +57,12 @@ function validate_student_data(array $data): array
     ];
 }
 
-function find_existing_student(PDO $pdo, ?string $uco, string $name, ?string $email): ?int
+function find_existing_student(PDO $pdo, int $workspaceId, ?string $uco, string $name, ?string $email): ?int
 {
     if ($uco !== null) {
         $students = db_table('students');
-        $stmt = $pdo->prepare("SELECT id FROM {$students} WHERE uco = :uco");
-        $stmt->execute([':uco' => $uco]);
+        $stmt = $pdo->prepare("SELECT id FROM {$students} WHERE workspace_id = :workspace_id AND uco = :uco");
+        $stmt->execute([':workspace_id' => $workspaceId, ':uco' => $uco]);
         $id = $stmt->fetchColumn();
         if ($id !== false) {
             return (int)$id;
@@ -69,8 +70,8 @@ function find_existing_student(PDO $pdo, ?string $uco, string $name, ?string $em
     }
     if ($email !== null) {
         $students = db_table('students');
-        $stmt = $pdo->prepare("SELECT id FROM {$students} WHERE LOWER(TRIM(name)) = LOWER(TRIM(:name)) AND LOWER(TRIM(email)) = LOWER(TRIM(:email)) LIMIT 1");
-        $stmt->execute([':name' => $name, ':email' => $email]);
+        $stmt = $pdo->prepare("SELECT id FROM {$students} WHERE workspace_id = :workspace_id AND LOWER(TRIM(name)) = LOWER(TRIM(:name)) AND LOWER(TRIM(email)) = LOWER(TRIM(:email)) LIMIT 1");
+        $stmt->execute([':workspace_id' => $workspaceId, ':name' => $name, ':email' => $email]);
         $id = $stmt->fetchColumn();
         if ($id !== false) {
             return (int)$id;
@@ -79,10 +80,10 @@ function find_existing_student(PDO $pdo, ?string $uco, string $name, ?string $em
     return null;
 }
 
-function add_student(PDO $pdo, array $data): array
+function add_student(PDO $pdo, int $workspaceId, array $data): array
 {
     $student = validate_student_data($data);
-    $existingId = find_existing_student($pdo, $student['uco'], $student['name'], $student['email']);
+    $existingId = find_existing_student($pdo, $workspaceId, $student['uco'], $student['name'], $student['email']);
 
     if ($existingId !== null) {
         $studentsTable = db_table('students');
@@ -102,8 +103,9 @@ function add_student(PDO $pdo, array $data): array
     }
 
     $studentsTable = db_table('students');
-    $stmt = $pdo->prepare("INSERT INTO {$studentsTable} (name, uco, email, study_type) VALUES (:name, :uco, :email, :study_type)");
+    $stmt = $pdo->prepare("INSERT INTO {$studentsTable} (workspace_id, name, uco, email, study_type) VALUES (:workspace_id, :name, :uco, :email, :study_type)");
     $stmt->execute([
+        ':workspace_id' => $workspaceId,
         ':name' => $student['name'],
         ':uco' => $student['uco'],
         ':email' => $student['email'],
@@ -112,11 +114,16 @@ function add_student(PDO $pdo, array $data): array
     return ['id' => (int)$pdo->lastInsertId(), 'created' => true];
 }
 
-function get_student(PDO $pdo, int $studentId): ?array
+function get_student(PDO $pdo, int $studentId, ?int $workspaceId = null): ?array
 {
     $students = db_table('students');
-    $stmt = $pdo->prepare("SELECT id, name, uco, email, study_type FROM {$students} WHERE id = :id");
-    $stmt->execute([':id' => $studentId]);
+    if ($workspaceId === null) {
+        $stmt = $pdo->prepare("SELECT id, name, uco, email, study_type FROM {$students} WHERE id = :id");
+        $stmt->execute([':id' => $studentId]);
+    } else {
+        $stmt = $pdo->prepare("SELECT id, name, uco, email, study_type FROM {$students} WHERE id = :id AND workspace_id = :workspace_id");
+        $stmt->execute([':id' => $studentId, ':workspace_id' => $workspaceId]);
+    }
     $student = $stmt->fetch();
     if (!$student) {
         return null;
@@ -125,7 +132,7 @@ function get_student(PDO $pdo, int $studentId): ?array
     return $student;
 }
 
-function import_students_csv(PDO $pdo, string $path): array
+function import_students_csv(PDO $pdo, int $workspaceId, string $path): array
 {
     $handle = fopen($path, 'rb');
     if (!$handle) {
@@ -175,7 +182,7 @@ function import_students_csv(PDO $pdo, string $path): array
         }
 
         try {
-            $result = add_student($pdo, [
+            $result = add_student($pdo, $workspaceId, [
                 'name' => $data['name'] ?? '',
                 'uco' => $data['uco'] ?? '',
                 'email' => $data['email'] ?? '',

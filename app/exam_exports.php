@@ -19,22 +19,24 @@ function export_timestamp(): string
     return date('Y-m-d-His');
 }
 
-function export_students_rows(PDO $pdo): array
+function export_students_rows(PDO $pdo, int $workspaceId): array
 {
     $students = db_table('students');
     $examStack = db_table('exam_stack');
     $examNotes = db_table('exam_notes');
-    $stmt = $pdo->query("
+    $stmt = $pdo->prepare("
         SELECT s.id, s.name, s.uco, s.email, s.study_type, s.created_at,
                es.state AS stack_status, es.question_id,
                en.note_text AS note, en.suggested_grade, en.updated_at AS note_updated_at
         FROM {$students} s
-        LEFT JOIN {$examStack} es ON es.student_id = s.id
+        LEFT JOIN {$examStack} es ON es.student_id = s.id AND es.workspace_id = :workspace_id
         LEFT JOIN {$examNotes} en ON en.student_id = s.id AND (
             en.question_id = es.question_id OR (es.question_id IS NULL AND en.question_id IS NULL)
-        )
+        ) AND en.workspace_id = :workspace_id
+        WHERE s.workspace_id = :workspace_id
         ORDER BY COALESCE(NULLIF(FIELD(es.state, 'examining', 'done', 'preparing', 'waiting'), 0), 5), s.name ASC, s.id ASC
     ");
+    $stmt->execute([':workspace_id' => $workspaceId]);
     $questions = [];
     try {
         $questions = question_map();
@@ -52,20 +54,22 @@ function export_students_rows(PDO $pdo): array
     return $rows;
 }
 
-function export_notes_rows(PDO $pdo): array
+function export_notes_rows(PDO $pdo, int $workspaceId): array
 {
     $students = db_table('students');
     $examStack = db_table('exam_stack');
     $examNotes = db_table('exam_notes');
-    $stmt = $pdo->query("
+    $stmt = $pdo->prepare("
         SELECT en.student_id, en.question_id, en.note_text, en.suggested_grade, en.updated_at,
                s.name, s.uco, s.email, s.study_type,
                es.state AS stack_status
         FROM {$examNotes} en
         JOIN {$students} s ON s.id = en.student_id
-        LEFT JOIN {$examStack} es ON es.student_id = en.student_id
+        LEFT JOIN {$examStack} es ON es.student_id = en.student_id AND es.workspace_id = :workspace_id
+        WHERE en.workspace_id = :workspace_id AND s.workspace_id = :workspace_id
         ORDER BY COALESCE(NULLIF(FIELD(es.state, 'examining', 'done', 'preparing', 'waiting'), 0), 5), s.name ASC, en.updated_at DESC
     ");
+    $stmt->execute([':workspace_id' => $workspaceId]);
     $questions = [];
     try {
         $questions = question_map();
@@ -100,10 +104,10 @@ function markdown_fence(string $value): string
     return $fence . "\n" . rtrim($value) . "\n" . $fence;
 }
 
-function build_all_notes_markdown(PDO $pdo): string
+function build_all_notes_markdown(PDO $pdo, int $workspaceId): string
 {
-    $label = (string)get_app_setting('current_exam_label', '', $pdo);
-    $rows = export_notes_rows($pdo);
+    $label = (string)get_app_setting('current_exam_label', '', $workspaceId, $pdo);
+    $rows = export_notes_rows($pdo, $workspaceId);
 
     $out = "# Zápisy ze zkoušení\n\n";
     $out .= '| Pole | Hodnota |' . "\n" . '| --- | --- |' . "\n";
@@ -134,10 +138,10 @@ function build_all_notes_markdown(PDO $pdo): string
     return $out;
 }
 
-function build_all_notes_text(PDO $pdo): string
+function build_all_notes_text(PDO $pdo, int $workspaceId): string
 {
-    $label = (string)get_app_setting('current_exam_label', '', $pdo);
-    $rows = export_notes_rows($pdo);
+    $label = (string)get_app_setting('current_exam_label', '', $workspaceId, $pdo);
+    $rows = export_notes_rows($pdo, $workspaceId);
     $out = "Zápisy ze zkoušení\n";
     $out .= "Exportováno: " . date('Y-m-d H:i:s') . "\n";
     $out .= "Termín: " . $label . "\n\n";
@@ -161,7 +165,7 @@ function build_all_notes_text(PDO $pdo): string
     return $out;
 }
 
-function build_students_csv(PDO $pdo): string
+function build_students_csv(PDO $pdo, int $workspaceId): string
 {
     $handle = fopen('php://temp', 'r+b');
     if (!$handle) {
@@ -169,7 +173,7 @@ function build_students_csv(PDO $pdo): string
     }
     fwrite($handle, "\xEF\xBB\xBF");
     fputcsv($handle, ['name', 'uco', 'email', 'study_type', 'stack_status', 'question_id', 'question_title', 'note', 'created_at']);
-    foreach (export_students_rows($pdo) as $row) {
+    foreach (export_students_rows($pdo, $workspaceId) as $row) {
         fputcsv($handle, [
             $row['name'] ?? '',
             $row['uco'] ?? '',
@@ -188,7 +192,7 @@ function build_students_csv(PDO $pdo): string
     return $csv === false ? '' : $csv;
 }
 
-function build_exam_state(PDO $pdo): array
+function build_exam_state(PDO $pdo, int $workspaceId): array
 {
     $questions = [];
     try {
@@ -205,10 +209,10 @@ function build_exam_state(PDO $pdo): array
 
     return [
         'exported_at' => date('c'),
-        'current_exam_label' => (string)get_app_setting('current_exam_label', '', $pdo),
-        'students' => export_students_rows($pdo),
-        'stack' => list_stack($pdo),
-        'notes' => export_notes_rows($pdo),
+        'current_exam_label' => (string)get_app_setting('current_exam_label', '', $workspaceId, $pdo),
+        'students' => export_students_rows($pdo, $workspaceId),
+        'stack' => list_stack($pdo, $workspaceId),
+        'notes' => export_notes_rows($pdo, $workspaceId),
         'questions' => $questions,
     ];
 }

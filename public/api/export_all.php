@@ -7,12 +7,14 @@ require_once __DIR__ . '/../../app/students.php';
 require_once __DIR__ . '/../../app/stack.php';
 require_once __DIR__ . '/../../app/notes.php';
 require_once __DIR__ . '/../../app/exam_exports.php';
+require_once __DIR__ . '/../../app/workspaces.php';
 
 require_auth();
 
 try {
     $pdo = db();
-    $state = build_exam_state($pdo);
+    $workspaceId = require_current_workspace($pdo);
+    $state = build_exam_state($pdo, $workspaceId);
     $json = json_encode($state, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
     if ($json === false) {
         throw new RuntimeException('Nelze připravit JSON export.');
@@ -28,9 +30,9 @@ try {
             @unlink($zipPath);
             throw new RuntimeException('Nelze otevřít ZIP export.');
         }
-        $zip->addFromString('notes.md', build_all_notes_markdown($pdo));
-        $zip->addFromString('notes.txt', build_all_notes_text($pdo));
-        $zip->addFromString('students.csv', build_students_csv($pdo));
+        $zip->addFromString('notes.md', build_all_notes_markdown($pdo, $workspaceId));
+        $zip->addFromString('notes.txt', build_all_notes_text($pdo, $workspaceId));
+        $zip->addFromString('students.csv', build_students_csv($pdo, $workspaceId));
         $zip->addFromString('exam_state.json', $json . "\n");
         $zip->close();
 

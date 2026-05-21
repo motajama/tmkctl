@@ -17,9 +17,10 @@ html {
 body {
   min-height: 100vh;
   margin: 0;
-  padding-bottom: 38px;
+  padding-bottom: 82px;
   color: var(--ui-black);
   background: var(--ui-white) url("background.png") repeat;
+  background-attachment: fixed;
   font-family: ui-monospace, "Courier New", Courier, monospace;
   font-size: 15px;
   line-height: 1.25;
@@ -179,6 +180,19 @@ label {
 .center-panel,
 .right-panel {
   min-height: 0;
+  min-width: 0;
+}
+
+.right-panel {
+  overflow-x: hidden;
+}
+
+.right-panel > .note-context,
+.right-panel > .panel-controls,
+.right-panel > label,
+.right-panel > textarea {
+  width: calc(100% - 16px);
+  max-width: calc(100% - 16px);
 }
 
 .left-panel > form,
@@ -197,6 +211,7 @@ label {
 .setup-error > :not(.panel-title) {
   margin-left: 8px;
   margin-right: 8px;
+  min-width: 0;
 }
 
 .compact-form {
@@ -563,6 +578,10 @@ label {
   background: var(--ui-white);
 }
 
+.left-panel > .status-accordion:first-of-type {
+  margin-top: 0.55rem;
+}
+
 .accordion-title {
   width: 100%;
   display: flex;
@@ -809,9 +828,32 @@ label {
   align-items: center;
 }
 
+.mode-button {
+  width: 34px;
+  height: 34px;
+  display: inline-grid;
+  place-items: center;
+  padding: 2px;
+}
+
+.mode-button img {
+  width: 24px;
+  height: 24px;
+  display: block;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: grayscale(1) contrast(2);
+}
+
 .mode-button.selected {
   color: var(--ui-white);
   background: var(--ui-black);
+  outline: 2px solid var(--ui-black);
+  outline-offset: 1px;
+}
+
+.mode-button.selected img {
+  filter: grayscale(1) contrast(2) invert(1);
 }
 
 .note-context {
@@ -824,6 +866,9 @@ label {
 
 .right-panel textarea {
   flex: 1 1 auto;
+  width: calc(100% - 16px);
+  max-width: calc(100% - 16px);
+  min-width: 0;
   min-height: 260px;
   background: var(--ui-white);
 }
@@ -831,10 +876,13 @@ label {
 .notes-toolbar {
   display: grid;
   gap: 5px;
+  min-width: 0;
 }
 
 .notes-toolbar input {
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .status-line {
@@ -861,11 +909,6 @@ label {
   padding: 1px 6px;
 }
 
-.ai-panel {
-  grid-column: 1 / 4;
-  min-height: 0;
-}
-
 .disabled-ai {
   flex: 1 1 auto;
   display: flex;
@@ -879,8 +922,30 @@ label {
   border: 2px solid var(--ui-black);
 }
 
-.ai-menu {
-  justify-content: flex-start;
+.ai-chat-toggle {
+  position: fixed;
+  right: 8px;
+  bottom: 88px;
+  left: auto;
+  z-index: 40;
+  min-width: 58px;
+  min-height: 34px;
+  font-weight: bold;
+}
+
+.ai-chat-window {
+  position: fixed;
+  right: 8px;
+  bottom: 128px;
+  z-index: 45;
+  width: min(520px, calc(100vw - 2rem));
+  max-height: min(520px, calc(100vh - 5rem));
+}
+
+.ai-chat-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .setup-error {
@@ -907,7 +972,7 @@ label {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  min-height: 34px;
+  min-height: 76px;
   color: var(--ui-black);
   background: var(--ui-white);
   border-top: 2px solid var(--ui-black);
@@ -915,19 +980,24 @@ label {
 }
 
 .global-actions {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(92px, 1fr));
   align-items: stretch;
-  gap: 0;
+  gap: 2px;
+  padding: 2px;
+  width: min(640px, 58vw);
 }
 
 .global-status-message {
   flex: 1 1 auto;
   min-width: 120px;
+  max-height: 32px;
   padding: 0 8px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow: auto;
+  font-size: 12px;
+  line-height: 1.1;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .global-status-message.error::before {
@@ -942,9 +1012,11 @@ label {
 .global-command-bar button {
   display: flex;
   align-items: center;
+  justify-content: center;
   min-height: 32px;
+  width: 100%;
   padding: 4px 10px;
-  border-width: 0 2px 0 0;
+  border-width: 2px;
   border-color: var(--ui-black);
   border-style: solid;
   color: var(--ui-black);
@@ -1000,6 +1072,21 @@ label {
   outline: 2px solid var(--ui-white);
 }
 
+.debug-title {
+  color: var(--ui-white);
+  background: #b00000;
+}
+
+.debug-body pre {
+  margin: 8px 0;
+  padding: 8px;
+  overflow: auto;
+  color: var(--ui-black);
+  background: var(--ui-white);
+  border: 2px solid var(--ui-black);
+  white-space: pre-wrap;
+}
+
 .modal-body {
   min-height: 0;
   padding: 8px;
@@ -1014,7 +1101,29 @@ label {
   margin: 0 0 8px;
 }
 
+.help-text img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid var(--ui-black);
+}
+
+.help-text table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.help-text th,
+.help-text td {
+  padding: 3px 5px;
+  border: 1px solid var(--ui-black);
+  vertical-align: top;
+}
+
 .question-pack-status {
+  margin: 8px 0;
+}
+
+.question-merge-preview {
   margin: 8px 0;
 }
 
@@ -1144,6 +1253,35 @@ label {
   width: min(420px, calc(100vw - 24px));
 }
 
+.workspace-select {
+  width: min(860px, calc(100vw - 24px));
+}
+
+.workspace-section {
+  margin: 8px;
+}
+
+.workspace-list {
+  border: 2px solid var(--ui-black);
+  border-top: 0;
+}
+
+.workspace-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  gap: 8px;
+  align-items: center;
+  padding: 6px;
+  border-top: 1px solid var(--ui-black);
+}
+
+.workspace-row span {
+  display: block;
+  margin-top: 3px;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
 .login-cover {
   display: block;
   width: 100%;
@@ -1161,12 +1299,11 @@ label {
 
 @media (max-width: 1100px) {
   .workstation {
-    min-height: calc(100vh - 38px);
+    min-height: calc(100vh - 120px);
     grid-template-columns: 1fr;
     grid-template-rows: auto;
   }
 
-  .ai-panel,
   .setup-error {
     grid-column: auto;
   }
@@ -1192,6 +1329,27 @@ label {
   }
 
   body {
-    padding-bottom: 76px;
+    padding-bottom: 126px;
+  }
+
+  .ai-chat-toggle {
+    right: 8px;
+    bottom: 132px;
+  }
+
+  .ai-chat-window {
+    right: 8px;
+    bottom: 172px;
+    width: min(520px, calc(100vw - 16px));
+    max-height: calc(100vh - 190px);
+  }
+
+  .global-status-message {
+    max-height: 42px;
+  }
+
+  .global-actions {
+    width: 100%;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }

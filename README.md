@@ -225,7 +225,7 @@ data/is-mu-paste.sample.txt
 
 ## Provoz zkouškového dne
 
-Ve spodním stavovém řádku nastav název aktuálního termínu, například `TMK - 10. 6. 2026`, a ulož ho tlačítkem **ULOŽIT TERMÍN**. Název se ukládá do `tmkctl_app_settings` pod klíčem `current_exam_label` a zobrazuje se ve spodním stavovém řádku.
+Ve spodním stavovém řádku nastav název aktuálního termínu, například `TMK - 10. 6. 2026`, a ulož ho tlačítkem **ULOŽIT TERMÍN**. Název se ukládá jako workspace-scoped `current_exam_label` a zobrazuje se ve spodním stavovém řádku.
 
 Doporučený postup pro jeden termín:
 
@@ -243,7 +243,7 @@ Exporty:
 - **JSON/ZIP** stáhne ZIP s `notes.md`, `notes.txt`, `students.csv` a `exam_state.json`, pokud je dostupné PHP rozšíření `ZipArchive`. Bez něj stáhne JSON export.
 - **KOPÍROVAT VŠE** zkopíruje všechny poznámky do schránky, pokud ji prohlížeč zpřístupní.
 
-Reset termínu je dostupný jen přes POST s CSRF tokenem a vyžaduje přesné potvrzení `RESET`. Smaže studující, stack a poznámky aktuálního běhu a resetuje aktivního studujícího. Otázky v `data/questions.reviewed.json`, konfigurace aplikace a databázové schéma zůstávají zachované. Název termínu zůstává zachovaný, pokud nezaškrtneš **Smazat i název termínu**.
+Reset termínu je dostupný jen přes POST s CSRF tokenem a vyžaduje přesné potvrzení `RESET`. Smaže studující, stack a poznámky aktuálního běhu a vyčistí aktuální výběr v dané relaci. Otázky v `data/questions.reviewed.json`, konfigurace aplikace a databázové schéma zůstávají zachované. Název termínu zůstává zachovaný, pokud nezaškrtneš **Smazat i název termínu**.
 
 Před resetem vždy nejdřív udělej export. Reset neslouží jako záloha a nemaže otázky.
 
@@ -255,7 +255,7 @@ Otázky žijí v:
 data/questions.reviewed.json
 ```
 
-Spodní příkaz **OTÁZKY** otevře okno pro kontrolu a nahrání nového ručně zkontrolovaného JSON souboru. Stejné okno otevře konzolový příkaz `:questions`.
+Spodní příkaz **OTÁZKY** otevře okno pro kontrolu, nahrání nového ručně zkontrolovaného JSON souboru a sloučení více JSON souborů. Stejné okno otevře konzolový příkaz `:questions`.
 
 Validace kontroluje jen strukturu souboru:
 
@@ -265,7 +265,7 @@ Validace kontroluje jen strukturu souboru:
 - povolené `review_status`: `reviewed`, `generated`, `needs_review`
 - varování pro prázdné `source_refs` a položky, které nejsou `reviewed`
 
-Validace nekontroluje odbornou správnost. Nahrávej jen soubor, který byl ručně zkontrolovaný. Před nahrazením se původní soubor automaticky zálohuje do:
+Validace nekontroluje odbornou správnost. Nahrávej jen soubor, který byl ručně zkontrolovaný. Tlačítko **NAHRÁT NOVÝ BALÍK** nahradí celý `questions.reviewed.json`, ale pouze po úspěšné validaci. Před nahrazením se původní soubor automaticky zálohuje do:
 
 ```text
 data/backups/questions.reviewed.YYYYMMDD-HHMMSS.json
@@ -273,7 +273,52 @@ data/backups/questions.reviewed.YYYYMMDD-HHMMSS.json
 
 Obnova ze zálohy je v této fázi ruční: zkopíruj vybranou zálohu zpět jako `data/questions.reviewed.json` a zkontroluj ji v okně **OTÁZKY**.
 
+### Merge více JSON souborů
+
+Sekce **MERGE JSON** bere aktuální `data/questions.reviewed.json` jako základ. Vyber jeden nebo více JSON souborů a nejdřív použij **VALIDOVAT MERGE**. Náhled ukáže:
+
+- počet aktuálních otázek
+- počet přidaných otázek
+- počet nahrazených otázek
+- konfliktní duplicitní `id`
+- validační varování a chyby
+
+Konflikty `id` se řeší globální strategií:
+
+- `ponechat existující` je výchozí a nikdy nepřepíše otázku z aktuálního souboru
+- `nahradit nahranými` použije otázku z nahraného JSON souboru pro stejné `id`
+
+Tlačítko **SLOUČIT / MERGE** zapíše výsledek jen tehdy, když jsou všechny vstupní soubory platné a platný je i výsledný sloučený balík. Před zápisem se vždy vytvoří záloha v `data/backups/`.
+
+## Nápověda
+
+Okno **NÁPOVĚDA** načítá obsah z fragmentu:
+
+```text
+public/assets/help.html
+```
+
+Fragment neobsahuje `<html>`, `<head>`, `<body>` ani CSS. Formát a vkládání obrázků popisuje `docs/help-format.md`.
+
 Později přibude AI generátor, který může připravit `generated` JSON. Tato fáze pouze spravuje finální reviewed soubor a negeneruje otázky.
+
+## Sdílené relace / workspaces
+
+Po přihlášení aplikace otevře **VÝBĚR RELACE / TERMÍNU**. Relace představuje jeden sdílený běh zkoušení. Více uživatelů může vstoupit do stejné relace a společně vidí studenty, frontu, potítko, zkoušené, poznámky a exporty daného termínu.
+
+Aktivní relace jsou vidět jen tehdy, když je v nich čerstvá přítomnost alespoň jednoho prohlížeče. Přítomnost se obnovuje heartbeat požadavkem. Identita prohlížeče používá cookie `tmkctl_client_id`; cookies musí být povolené, jinak nelze vstoupit do relace.
+
+Studenti, stack, poznámky, reset a exporty jsou oddělené podle relace. Otázky v `data/questions.reviewed.json` zůstávají globální pro celou instalaci. Detaily jsou v `docs/workspaces.md`.
+
+## Debug režim
+
+Pokud je v konfiguraci `debug => true`, po vstupu do dashboardu se zobrazí červené varování **DEBUG REŽIM — NEFINÁLNÍ VERZE**. Text aktuální fáze se čte z:
+
+```text
+data/debug-stage.txt
+```
+
+Soubor je obyčejný editovatelný TXT. Když chybí, aplikace zobrazí bezpečnou fallback zprávu bez interních cest nebo tajných hodnot.
 
 ## Offline Question Generator
 

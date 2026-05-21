@@ -1,47 +1,54 @@
 <?php
 
-$defaults = [
-    'db_host' => getenv('TMKCTL_DB_HOST') ?: '127.0.0.1',
-    'db_port' => getenv('TMKCTL_DB_PORT') ?: '3306',
-    'db_name' => getenv('TMKCTL_DB_NAME') ?: '',
-    'db_user' => getenv('TMKCTL_DB_USER') ?: '',
-    'db_pass' => getenv('TMKCTL_DB_PASS') ?: '',
+$defaultConfig = [
+    'db_host' => '127.0.0.1',
+    'db_port' => '3306',
+    'db_name' => 'tmkctl',
+    'db_user' => 'tmkctl',
+    'db_pass' => '',
     'db_charset' => 'utf8mb4',
-    'table_prefix' => getenv('TMKCTL_TABLE_PREFIX') ?: 'tmkctl_',
 
     'database' => [
-        'host' => getenv('TMKCTL_DB_HOST') ?: '127.0.0.1',
-        'port' => getenv('TMKCTL_DB_PORT') ?: '3306',
-        'name' => getenv('TMKCTL_DB_NAME') ?: '',
-        'user' => getenv('TMKCTL_DB_USER') ?: '',
-        'pass' => getenv('TMKCTL_DB_PASS') ?: '',
+        'host' => '127.0.0.1',
+        'port' => '3306',
+        'name' => 'tmkctl',
+        'user' => 'tmkctl',
+        'pass' => '',
         'charset' => 'utf8mb4',
     ],
 
+    'table_prefix' => 'tmkctl_',
+
     'app_name' => 'tmkctl',
-    'course_name' => getenv('TMKCTL_COURSE_NAME') ?: 'Teorie masové kultury',
-    'timezone' => getenv('TMKCTL_TIMEZONE') ?: 'Europe/Prague',
-    'base_path' => getenv('TMKCTL_BASE_PATH') ?: '',
+    'course_name' => 'Teorie masové komunikace',
+    'timezone' => 'Europe/Prague',
 
     'install_enabled' => false,
     'debug' => false,
+
+    'app_password_hash' => '',
+    'password_hash' => '',
 
     'is_import_study_code_map' => [
         'MSZU01' => 'single',
         'MSZU02' => 'double',
     ],
-
-    'app_password_hash' => getenv('TMKCTL_PASSWORD_HASH') ?: '',
-    'password_hash' => getenv('TMKCTL_PASSWORD_HASH') ?: '',
 ];
 
-$localPath = __DIR__ . '/config.local.php';
-if (is_file($localPath)) {
-    $local = require $localPath;
-    if (!is_array($local)) {
-        throw new RuntimeException('app/config.local.php must return a configuration array.');
+$localConfigPath = __DIR__ . '/config.local.php';
+
+if (is_file($localConfigPath)) {
+    $localConfig = require $localConfigPath;
+
+    if (!is_array($localConfig)) {
+        throw new RuntimeException('app/config.local.php must return an array.');
     }
-    return array_replace_recursive($defaults, $local);
+
+    /*
+     * Important:
+     * local config must override defaults.
+     */
+    $defaultConfig = array_replace_recursive($defaultConfig, $localConfig);
 }
 
-return $defaults;
+return $defaultConfig;

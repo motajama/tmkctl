@@ -748,187 +748,1816 @@
     "title": "09. Základní vymezení komunikačních a mediálních studií",
     "short_title": "Vymezení mediálních studií",
     "outline": [
-      "Otázka chybí."
+      "Vymezit komunikační a mediální studia jako interdisciplinární oblast zkoumání komunikace, médií a jejich vztahu k moderní společnosti.",
+      "Vysvětlit sociologický pohled na média: média nejsou jen technické kanály, ale instituce, kulturní formy, sociální vztahy a aktéři konstrukce reality.",
+      "Odlišit základní předměty zkoumání: komunikace, média, mediální instituce, obsahy, publika, technologie, moc, veřejnost a sociální důsledky médií.",
+      "Zasadit vznik mediálních studií do modernity: rozvoj tisku, masové komunikace, mediálních institucí a symbolické směny v prostoru a čase.",
+      "Představit hlavní paradigmata a tradice studia médií: administrativní/empirický výzkum, kritická teorie, kulturální studia, sémiotika, politická ekonomie médií, sociologie médií a výzkum mediálních účinků. ~",
+      "Ukázat, že mediální studia jsou multiparadigmatická: kombinují kvantitativní i kvalitativní metody, teorii společnosti, teorii komunikace, analýzu textu i výzkum publik. ~"
     ],
-    "key_terms": [],
-    "authors": [],
+    "key_terms": [
+      {
+        "term": "komunikační studia",
+        "definition": "Interdisciplinární oblast zkoumající procesy tvorby, přenosu, sdílení, interpretace a sociálních důsledků komunikace mezi lidmi, institucemi a technologiemi. ~",
+        "authors": []
+      },
+      {
+        "term": "mediální studia",
+        "definition": "Interdisciplinární oblast zkoumající média jako instituce, technologie, obsahy, kulturní formy, ekonomické organizace, nástroje moci i každodenní praktiky užívání.",
+        "authors": []
+      },
+      {
+        "term": "sociologie médií",
+        "definition": "Přístup, který zkoumá média ve vztahu ke společnosti: k modernitě, sociálním vztahům, institucím, moci, veřejnosti, kultuře, nerovnostem a každodennosti.",
+        "authors": [
+          "Lindner",
+          "Barnard",
+          "John B. Thompson"
+        ]
+      },
+      {
+        "term": "média jako symbolická produkce",
+        "definition": "Média produkují, shromažďují a distribuují symbolické formy; v modernitě se tyto formy stávají zbožím, šíří se v prostoru a čase a mění podmínky sociální komunikace.",
+        "authors": [
+          "John B. Thompson"
+        ]
+      },
+      {
+        "term": "modernita a média",
+        "definition": "Moderní společnost je spojena s diferenciací institucí, proměnou prostoru a času, růstem mediálních institucí a rozšířením symbolické komunikace za hranice bezprostřední interakce.",
+        "authors": [
+          "Anthony Giddens",
+          "John B. Thompson",
+          "David Morley"
+        ]
+      },
+      {
+        "term": "mediální instituce",
+        "definition": "Relativně stabilní organizace a pravidla produkce a distribuce mediálních obsahů; zahrnují redakce, vysílatele, vydavatelství, platformy a regulační či tržní infrastruktury. ~",
+        "authors": [
+          "Denis McQuail"
+        ]
+      },
+      {
+        "term": "mediální obsah",
+        "definition": "Symbolický materiál šířený médii – zprávy, obrazy, texty, zvuky, audiovizuální formy a digitální objekty – který je třeba analyzovat jako reprezentaci a kulturní konstrukci. ~",
+        "authors": []
+      },
+      {
+        "term": "mediální publikum",
+        "definition": "Jednotlivci a skupiny, kteří média užívají, interpretují a začleňují do každodenního života; v novějších přístupech nejde o pasivní masu, ale o diferencované a aktivní uživatele. ~",
+        "authors": [
+          "Denis McQuail",
+          "Jakub Macek"
+        ]
+      },
+      {
+        "term": "administrativní / empirický výzkum médií",
+        "definition": "Tradice výzkumu zaměřená na měřitelné otázky mediálního chování, účinků, publik a provozu médií; často pracuje se survey, experimentem a obsahovou analýzou. ~",
+        "authors": [
+          "Paul F. Lazarsfeld"
+        ]
+      },
+      {
+        "term": "kritická tradice mediálních studií",
+        "definition": "Tradice zkoumající média ve vztahu k moci, ideologii, kulturní dominanci, komodifikaci a nerovnostem; navazuje mimo jiné na frankfurtskou školu, marxismus a politickou ekonomii médií. ~",
+        "authors": [
+          "Theodor W. Adorno",
+          "Max Horkheimer",
+          "Stuart Hall"
+        ]
+      },
+      {
+        "term": "kulturální studia",
+        "definition": "Přístup zdůrazňující vztah kultury, moci, reprezentace, identity a každodennosti; média chápe jako prostor významového vyjednávání, nikoli jen jako kanál přenosu informací. ~",
+        "authors": [
+          "Stuart Hall",
+          "Raymond Williams",
+          "Richard Hoggart"
+        ]
+      },
+      {
+        "term": "komunikačně-technologická tradice",
+        "definition": "Tradice, která se ptá, jak komunikační technologie proměňují čas, prostor, společenské instituce a formy vědění. ~",
+        "authors": [
+          "Harold Innis",
+          "Marshall McLuhan",
+          "John B. Thompson"
+        ]
+      }
+    ],
+    "authors": [
+      {
+        "name": "Lindner a Barnard",
+        "role": "Materiály je uvádějí jako oporu pro sociologické perspektivy na masová média a pro otázku, co znamená zkoumat média sociologicky."
+      },
+      {
+        "name": "John B. Thompson",
+        "role": "Sociální teorie médií: média jsou institucionální produkcí a cirkulací symbolických forem, která zásadně proměňuje prostor, čas a sociální vztahy modernity."
+      },
+      {
+        "name": "David Morley",
+        "role": "Materiály jej uvádějí v souvislosti s médii, modernitou, technologií a disciplinárními dilematy mediálních studií."
+      },
+      {
+        "name": "Anthony Giddens",
+        "role": "V materiálech slouží k výkladu modernity, časoprostorového rozpojení a významu komunikace pro proměny moderní společnosti."
+      },
+      {
+        "name": "Denis McQuail",
+        "role": "Obecný rámec mediálních studií: média jako instituce, organizace, obsahy, publika a společenské funkce; doplněno pro přesnější vymezení otázky. ~"
+      },
+      {
+        "name": "Stuart Hall",
+        "role": "Kulturální studia, reprezentace, ideologie a aktivní publikum; doplněno jako klíčová tradice mediálních a komunikačních studií. ~"
+      },
+      {
+        "name": "Paul F. Lazarsfeld",
+        "role": "Empirický výzkum médií, publika a účinků; doplněno jako příklad administrativní/empirické tradice mediálního výzkumu. ~"
+      }
+    ],
     "examiner_focus": [
-      "Otázka chybí."
+      "Studující má vysvětlit, že mediální studia nejsou pouze praktická nauka o médiích, ale vědecký obor zkoumající média v sociálním, kulturním, politickém a technologickém kontextu.",
+      "Má umět definovat média a komunikaci jako předmět zkoumání, nikoli jen vyjmenovat typy médií.",
+      "Má zasadit mediální studia do moderní společnosti a vysvětlit, proč rozvoj médií mění symbolickou produkci, prostor, čas a veřejnost.",
+      "Má znát základní výzkumné tradice mediálních studií a umět ukázat, jak by se lišily jejich otázky a metody. ~"
     ],
-    "followup_questions": [],
-    "common_mistakes": [],
-    "source_refs": [],
-    "review_status": "missing_question_placeholder"
+    "followup_questions": [
+      "Proč média nelze chápat pouze jako technické kanály?",
+      "Jak Thompson chápe vztah médií a modernity?",
+      "V čem se liší sociologie médií od praktické žurnalistiky?",
+      "Jaké jsou hlavní výzkumné oblasti mediálních studií?",
+      "Jak by tentýž mediální problém zkoumal empirický výzkum, kritická teorie a kulturální studia? ~"
+    ],
+    "common_mistakes": [
+      "Redukce mediálních studií na praktickou znalost médií nebo žurnalistiky.",
+      "Záměna média jako technologie za média jako instituce, organizace a kulturní formy.",
+      "Opomenutí vztahu médií k modernitě, sociálním vztahům a symbolické moci.",
+      "Mechanické vyjmenování paradigmat bez vysvětlení, jak se liší jejich výzkumný zájem. ~"
+    ],
+    "source_refs": [
+      {
+        "file": "01_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 1–20",
+        "relevance": "core"
+      },
+      {
+        "file": "02_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 1–8",
+        "relevance": "supporting"
+      }
+    ],
+    "review_status": "reviewed_from_zip_supplemented_marked"
   },
   {
     "id": "q10",
     "title": "10. Formy, typy a funkce komunikace",
     "short_title": "Formy a funkce komunikace",
     "outline": [
-      "Otázka chybí."
+      "Vymezit komunikaci jako sociální proces vytváření, sdílení a interpretace významů.",
+      "Odlišit interpersonální, skupinovou, organizační, veřejnou, masovou, mediovanou a mediální komunikaci. ~",
+      "Vysvětlit rozdíl mezi masovou a mediální komunikací: masová komunikace předpokládá institucionální produkci pro rozptýlené publikum, mediální komunikace zahrnuje širší škálu komunikace prostřednictvím médií a platforem. ~",
+      "Ukázat, jak média rozšiřují komunikaci v prostoru a čase: komunikace už není závislá jen na fyzické kopřítomnosti aktérů.",
+      "Představit vývojové etapy lidské a mediální komunikace: oralita, písmo, tisk, elektronická média, digitální a síťová komunikace. ~",
+      "Popsat základní funkce komunikace: informační, integrační, socializační, expresivní, identitotvornou, kontrolní, zábavní, rituální a mocenskou. ~",
+      "Ukázat vztah komunikace a moderní společnosti: komunikace je podmínkou koordinace, institucí, veřejnosti, sociální integrace i konfliktu."
     ],
-    "key_terms": [],
-    "authors": [],
+    "key_terms": [
+      {
+        "term": "komunikace",
+        "definition": "Sociální proces, v němž aktéři vytvářejí, sdílejí, předávají a interpretují významy; nejde pouze o technický přenos informace, ale také o ustavování sociálních vztahů. ~",
+        "authors": [
+          "James W. Carey"
+        ]
+      },
+      {
+        "term": "interpersonální komunikace",
+        "definition": "Komunikace mezi jednotlivci v relativně bezprostředním sociálním vztahu; obvykle umožňuje zpětnou vazbu, kontextovou interpretaci a obousměrnost. ~",
+        "authors": []
+      },
+      {
+        "term": "masová komunikace",
+        "definition": "Institucionalizovaná produkce a šíření sdělení směrem k velkému, rozptýlenému a heterogennímu publiku pomocí technických médií. ~",
+        "authors": [
+          "Denis McQuail"
+        ]
+      },
+      {
+        "term": "mediovaná komunikace",
+        "definition": "Komunikace zprostředkovaná technickým médiem; může být interpersonální, skupinová i masová, podle povahy vztahu mezi komunikátory a publikem. ~",
+        "authors": []
+      },
+      {
+        "term": "mediální komunikace",
+        "definition": "Širší pojem pro komunikaci probíhající prostřednictvím médií; zahrnuje tradiční masová média, digitální platformy, síťovou komunikaci a hybridní formy komunikace. ~",
+        "authors": []
+      },
+      {
+        "term": "symbolická směna",
+        "definition": "Proces produkce, cirkulace a přijímání symbolických forem; v modernitě se díky médiím rozšiřuje v prostoru a čase a získává institucionální a ekonomickou podobu.",
+        "authors": [
+          "John B. Thompson"
+        ]
+      },
+      {
+        "term": "časoprostorové rozpojení",
+        "definition": "Moderní komunikace umožňuje oddělit interakci od bezprostřední fyzické kopřítomnosti; sdělení může být uchováno, reprodukováno a přijímáno v jiném čase a prostoru.",
+        "authors": [
+          "Anthony Giddens",
+          "John B. Thompson"
+        ]
+      },
+      {
+        "term": "oralita",
+        "definition": "Vývojová etapa komunikace založená na mluveném slovu, paměti, situovanosti a bezprostředním vztahu mezi mluvčím a posluchačem. ~",
+        "authors": [
+          "Walter J. Ong"
+        ]
+      },
+      {
+        "term": "písmo",
+        "definition": "Technologie uchování a organizace komunikace, která umožňuje záznam, administraci, stabilizaci paměti a přenos sdělení mimo bezprostřední situaci. ~",
+        "authors": [
+          "Claude Lévi-Strauss",
+          "Anthony Giddens"
+        ]
+      },
+      {
+        "term": "tisk",
+        "definition": "Mediální technologie umožňující standardizovanou reprodukci textů, širší cirkulaci symbolických forem a rozvoj veřejnosti, trhu a moderních institucí. ~",
+        "authors": [
+          "Elizabeth Eisenstein",
+          "John B. Thompson"
+        ]
+      },
+      {
+        "term": "elektronická média",
+        "definition": "Rozhlas, televize a další média založená na elektrickém nebo elektromagnetickém přenosu, která umožňují simultánní oslovení rozptýleného publika. ~",
+        "authors": []
+      },
+      {
+        "term": "digitální komunikace",
+        "definition": "Komunikace založená na digitálním kódování, síťovém přenosu, interaktivitě, modularitě a proměně vztahu mezi producentem a příjemcem. ~",
+        "authors": [
+          "Lev Manovich"
+        ]
+      },
+      {
+        "term": "funkce komunikace",
+        "definition": "Komunikace informuje, integruje, socializuje, vytváří identitu, umožňuje koordinaci, vyjednávání moci, reprezentaci světa, zábavu a rituální potvrzování společenství. ~",
+        "authors": [
+          "Denis McQuail",
+          "James W. Carey"
+        ]
+      }
+    ],
+    "authors": [
+      {
+        "name": "John B. Thompson",
+        "role": "Výklad médií jako institucionální symbolické produkce, která proměňuje sociální vztahy, prostor a čas."
+      },
+      {
+        "name": "Anthony Giddens",
+        "role": "Materiály jej spojují s modernitou a významem komunikace pro zásadní proměny společnosti."
+      },
+      {
+        "name": "James W. Carey",
+        "role": "Rozlišení přenosového a rituálového pojetí komunikace: komunikace není jen distribuce informace v prostoru, ale také udržování společenství v čase. ~"
+      },
+      {
+        "name": "Denis McQuail",
+        "role": "Obecná typologie masové a mediální komunikace a jejích společenských funkcí. ~"
+      },
+      {
+        "name": "Walter J. Ong",
+        "role": "Doplněn pro výklad přechodu od orality k písemnosti a změnám ve formách komunikace. ~"
+      }
+    ],
     "examiner_focus": [
-      "Otázka chybí."
+      "Studující má umět vysvětlit komunikaci jako sociální a kulturní proces, ne jen jako přenos informace.",
+      "Má přesně rozlišit interpersonální, masovou, mediovanou a mediální komunikaci. ~",
+      "Má umět zasadit vývoj komunikace do dějin médií a modernity: oralita, písmo, tisk, elektronická a digitální média. ~",
+      "Má znát hlavní funkce komunikace a umět je ukázat na konkrétním mediálním příkladu. ~"
     ],
-    "followup_questions": [],
-    "common_mistakes": [],
-    "source_refs": [],
-    "review_status": "missing_question_placeholder"
+    "followup_questions": [
+      "Jaký je rozdíl mezi masovou a mediální komunikací?",
+      "Proč Thompson spojuje média s proměnou symbolické směny?",
+      "Co znamená časoprostorové rozpojení komunikace?",
+      "Jak se liší přenosové a rituálové pojetí komunikace? ~",
+      "Jaké funkce může mít televizní zpravodajství kromě informování? ~"
+    ],
+    "common_mistakes": [
+      "Ztotožnění komunikace s prostým přenosem dat.",
+      "Záměna interpersonální, mediované a masové komunikace.",
+      "Opomenutí rituální, integrační a mocenské funkce komunikace. ~",
+      "Popis vývojových etap komunikace jako technického pokroku bez sociálních důsledků. ~"
+    ],
+    "source_refs": [
+      {
+        "file": "01_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 2–20",
+        "relevance": "core"
+      },
+      {
+        "file": "02_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 1–8",
+        "relevance": "supporting"
+      }
+    ],
+    "review_status": "reviewed_from_zip_supplemented_marked"
   },
   {
     "id": "q11",
     "title": "11. Základní komunikační modely a jejich srovnání",
     "short_title": "Komunikační modely",
     "outline": [
-      "Otázka chybí."
+      "Vymezit komunikační model jako zjednodušené schéma, které ukazuje prvky, vztahy a předpoklady komunikačního procesu. ~",
+      "Představit přenosové modely: Lasswellův model, Shannonův a Weaverův model, lineární pojetí komunikace, problém šumu, kanálu, zdroje a účinku. ~",
+      "Vysvětlit dvoustupňový model komunikace: média nepůsobí jen přímo, ale přes názorové vůdce, sociální vazby a mezilidskou komunikaci. ~",
+      "Vyložit propagační/propagandistický model jako model komunikace zaměřený na moc, přesvědčování, kontrolu veřejného mínění a strategickou komunikaci. ~",
+      "Představit rituálový model komunikace: komunikace udržuje společnost v čase, sdílí symboly, potvrzuje hodnoty a vytváří společenství. ~",
+      "Představit příjmový/recepční model: význam nevzniká pouze u producenta, ale v procesu čtení, dekódování a interpretace publikem. ~",
+      "Srovnat modely podle otázky, zda komunikaci chápou jako přenos, účinek, sociální vazbu, mocenské působení nebo interpretaci významu. ~"
     ],
-    "key_terms": [],
-    "authors": [],
+    "key_terms": [
+      {
+        "term": "komunikační model",
+        "definition": "Analytické schéma, které zjednodušuje komunikaci do prvků a vztahů; ukazuje, co daná teorie považuje za důležité: přenos, šum, účinek, sdílení významu, moc nebo interpretaci. ~",
+        "authors": []
+      },
+      {
+        "term": "Lasswellův model",
+        "definition": "Model shrnutý otázkou: kdo říká co, jakým kanálem, komu a s jakým účinkem; vhodný pro analýzu mediálních sdělení, propagandy a účinků, ale lineárně zjednodušuje komunikaci. ~",
+        "authors": [
+          "Harold D. Lasswell"
+        ]
+      },
+      {
+        "term": "Shannonův a Weaverův model",
+        "definition": "Technický model komunikace se zdrojem informace, vysílačem, kanálem, šumem, přijímačem a cílem; zaměřuje se na přesnost přenosu signálu, nikoli primárně na kulturní význam. ~",
+        "authors": [
+          "Claude E. Shannon",
+          "Warren Weaver"
+        ]
+      },
+      {
+        "term": "šum",
+        "definition": "Rušivý prvek v kanálu nebo procesu komunikace, který snižuje přesnost přenosu signálu či sdělení; v sociální komunikaci může být technický, sémantický nebo kulturní. ~",
+        "authors": [
+          "Claude E. Shannon",
+          "Warren Weaver"
+        ]
+      },
+      {
+        "term": "dvoustupňový tok komunikace",
+        "definition": "Model, podle něhož mediální sdělení často působí přes názorové vůdce a sociální sítě, nikoli pouze jako přímý zásah do izolovaného publika. ~",
+        "authors": [
+          "Paul F. Lazarsfeld",
+          "Elihu Katz"
+        ]
+      },
+      {
+        "term": "názorový vůdce",
+        "definition": "Osoba, která aktivněji sleduje média, interpretuje sdělení a zprostředkovává jejich význam ostatním členům sociální skupiny. ~",
+        "authors": [
+          "Paul F. Lazarsfeld",
+          "Elihu Katz"
+        ]
+      },
+      {
+        "term": "propagační model",
+        "definition": "Model zdůrazňující komunikaci jako strategické ovlivňování; zajímá se o moc komunikátora, výběr kanálu, cílovou skupinu, přesvědčovací techniky a kontrolu interpretace. ~",
+        "authors": [
+          "Harold D. Lasswell",
+          "Garth Jowett"
+        ]
+      },
+      {
+        "term": "rituálový model komunikace",
+        "definition": "Pojetí, podle něhož komunikace není primárně přenosem informace v prostoru, ale sdílením, účastí, potvrzováním společných významů a udržováním společnosti v čase. ~",
+        "authors": [
+          "James W. Carey"
+        ]
+      },
+      {
+        "term": "příjmový / recepční model",
+        "definition": "Model zdůrazňující aktivní roli publika při dekódování sdělení; význam je výsledkem vztahu mezi textem, kulturními kódy a sociální pozicí příjemce. ~",
+        "authors": [
+          "Stuart Hall"
+        ]
+      },
+      {
+        "term": "kódování/dekódování",
+        "definition": "Model, v němž producenti zakódují preferovaný význam do sdělení, ale publikum jej může číst dominantně, vyjednávaně nebo opozičně. ~",
+        "authors": [
+          "Stuart Hall"
+        ]
+      },
+      {
+        "term": "dominantní čtení",
+        "definition": "Recepční pozice, v níž publikum přijímá preferovaný význam sdělení v rámci dominantního kódu. ~",
+        "authors": [
+          "Stuart Hall"
+        ]
+      },
+      {
+        "term": "vyjednávané čtení",
+        "definition": "Recepční pozice, v níž publikum částečně přijímá preferovaný význam, ale přizpůsobuje jej své zkušenosti, sociální pozici nebo kontextu. ~",
+        "authors": [
+          "Stuart Hall"
+        ]
+      },
+      {
+        "term": "opoziční čtení",
+        "definition": "Recepční pozice, v níž publikum rozumí preferovanému významu, ale odmítá jej a interpretuje sdělení z alternativního kódu. ~",
+        "authors": [
+          "Stuart Hall"
+        ]
+      }
+    ],
+    "authors": [
+      {
+        "name": "Harold D. Lasswell",
+        "role": "Lineární model komunikace vhodný pro analýzu propagandy a účinků: kdo říká co, jakým kanálem, komu a s jakým účinkem. ~"
+      },
+      {
+        "name": "Claude E. Shannon a Warren Weaver",
+        "role": "Matematický/technický model přenosu signálu: zdroj, vysílač, kanál, šum, přijímač a cíl; klíčový pro pojem šumu a kanálu. ~"
+      },
+      {
+        "name": "Paul F. Lazarsfeld a Elihu Katz",
+        "role": "Dvoustupňový tok komunikace a názoroví vůdci; zpochybňují představu přímého univerzálního účinku médií. ~"
+      },
+      {
+        "name": "James W. Carey",
+        "role": "Rituálový model: komunikace jako sdílení, účast, potvrzování společných významů a udržování společnosti v čase. ~"
+      },
+      {
+        "name": "Stuart Hall",
+        "role": "Příjmový model/kódování a dekódování: význam je vyjednáván v procesu recepce; dominantní, vyjednávané a opoziční čtení. ~"
+      }
+    ],
     "examiner_focus": [
-      "Otázka chybí."
+      "Studující má umět modely nejen vyjmenovat, ale porovnat jejich představu komunikace: přenos, účinek, sociální zprostředkování, rituál, recepce. ~",
+      "Má umět vysvětlit, proč lineární modely nestačí pro kulturní a mediální komunikaci. ~",
+      "Má ukázat, že recepční model přesouvá část moci od producenta k publiku, ale nepopírá existenci dominantních kódů. ~"
     ],
-    "followup_questions": [],
-    "common_mistakes": [],
-    "source_refs": [],
-    "review_status": "missing_question_placeholder"
+    "followup_questions": [
+      "V čem je Lasswellův model užitečný a v čem zjednodušující? ~",
+      "Co je šum u Shannona a Weavera a jak by se dal převést do sociální komunikace? ~",
+      "Jak dvoustupňový model mění představu mediálního vlivu? ~",
+      "Jak se liší přenosový a rituálový model komunikace? ~",
+      "Jaké jsou tři pozice dekódování podle Stuarta Halla? ~"
+    ],
+    "common_mistakes": [
+      "Zaměňovat komunikační model za empirický popis každé skutečné komunikace.",
+      "Vykládat Shannonův model jako teorii významu, přestože původně řeší technický přenos signálu. ~",
+      "Redukovat dvoustupňový tok na tvrzení, že média nepůsobí vůbec. ~",
+      "Chápat Hallovo dekódování jako libovolnou interpretaci bez vztahu k moci a dominantním kódům. ~"
+    ],
+    "source_refs": [
+      {
+        "file": "01_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 1–20",
+        "relevance": "supporting",
+        "note": "ZIP se otázky dotýká obecně přes sociologii médií; konkrétní modely byly doplněny online rešerší a označeny tildou."
+      }
+    ],
+    "review_status": "reviewed_supplemented_marked"
   },
   {
     "id": "q12",
     "title": "12. Reprezentace a sociální konstrukce reality",
     "short_title": "Reprezentace a konstrukce reality",
     "outline": [
-      "Otázka chybí."
+      "Vymezit reprezentaci jako proces tvorby významu, v němž média a jazyk nepředkládají realitu jednoduše jako zrcadlo, ale strukturují její porozumění.",
+      "Vysvětlit vztah mezi reprezentací a realitou: reprezentace odkazuje k realitě, ale zároveň ji kulturně a symbolicky organizuje. ~",
+      "Představit sociální konstrukci reality: každodenní svět je produkován a udržován skrze typizace, instituce, legitimizace, jazyk a sdílené vědění.",
+      "Vyložit Schützův pojem příručního vědění jako zásobu samozřejmých interpretací, které lidé používají v každodenním jednání.",
+      "Popsat Bergerovu a Luckmannovu triádu externalizace, objektivace a internalizace jako proces, v němž lidské výtvory získávají podobu objektivní reality a jsou opět osvojovány subjekty. ~",
+      "Ukázat média jako aktéry sociální konstrukce reality: média vytvářejí definice situace, vybírají témata, rámují události a normalizují určité významy.",
+      "Vysvětlit archetypy, typy a stereotypy v mediálním diskurzu jako zjednodušující a opakované formy reprezentace.",
+      "Propojit reprezentaci se sociální mocí: kdo určuje významy, spoluurčuje, co je považováno za normální, přirozené, problémové nebo legitimní."
     ],
-    "key_terms": [],
-    "authors": [],
+    "key_terms": [
+      {
+        "term": "reprezentace",
+        "definition": "Proces, v němž jazyk, obraz a mediální formy vytvářejí významy o světě; nejde o neutrální odraz reality, ale o kulturně a sociálně podmíněné významové zprostředkování. ~",
+        "authors": [
+          "Stuart Hall"
+        ]
+      },
+      {
+        "term": "sociální konstrukce reality",
+        "definition": "Pojetí, podle něhož se každodenní realita ustavuje sociální interakcí, institucionalizací, legitimizací a jazykem; lidé žijí ve světě, který se jim jeví jako samozřejmý, přestože je historicky a sociálně vytvořen.",
+        "authors": [
+          "Peter L. Berger",
+          "Thomas Luckmann"
+        ]
+      },
+      {
+        "term": "příruční vědění",
+        "definition": "Zásoba samozřejmých typizací a praktických znalostí, která umožňuje lidem orientovat se v každodenním světě.",
+        "authors": [
+          "Alfred Schütz"
+        ]
+      },
+      {
+        "term": "externalizace",
+        "definition": "Moment sociální konstrukce, v němž lidé jednáním a tvorbou významů produkují sociální svět. ~",
+        "authors": [
+          "Peter L. Berger",
+          "Thomas Luckmann"
+        ]
+      },
+      {
+        "term": "objektivace",
+        "definition": "Moment sociální konstrukce, v němž se lidské produkty, instituce a významy jeví jako objektivní a na jednotlivci nezávislá realita. ~",
+        "authors": [
+          "Peter L. Berger",
+          "Thomas Luckmann"
+        ]
+      },
+      {
+        "term": "internalizace",
+        "definition": "Moment sociální konstrukce, v němž si jednotlivci osvojují již objektivovaný sociální svět jako samozřejmou realitu. ~",
+        "authors": [
+          "Peter L. Berger",
+          "Thomas Luckmann"
+        ]
+      },
+      {
+        "term": "legitimizace",
+        "definition": "Výkladový rámec, který ospravedlňuje institucionalizované jednání a dodává mu smysl; v materiálech je spojena s kosmologií, symbolickým univerzem a symbolickým světem.",
+        "authors": [
+          "Peter L. Berger",
+          "Thomas Luckmann"
+        ]
+      },
+      {
+        "term": "symbolické univerzum",
+        "definition": "Široký významový rámec, který integruje a legitimizuje instituce, role a jednání ve společnosti; dává jednotlivým sociálním praktikám místo v celku světa.",
+        "authors": [
+          "Peter L. Berger",
+          "Thomas Luckmann"
+        ]
+      },
+      {
+        "term": "definice situace",
+        "definition": "Významový rámec, který určuje, co se v určité situaci děje a jak má být situace interpretována; média mohou tyto definice významně spoluutvářet.",
+        "authors": [
+          "William I. Thomas"
+        ]
+      },
+      {
+        "term": "stereotyp",
+        "definition": "Opakovaná, zjednodušená a kulturně sdílená reprezentace skupiny, identity nebo sociálního jevu, která může stabilizovat nerovnosti a očekávání. ~",
+        "authors": [
+          "Walter Lippmann",
+          "Stuart Hall"
+        ]
+      },
+      {
+        "term": "typizace",
+        "definition": "Zjednodušující a sdílené schéma, které umožňuje rozpoznávat osoby, situace a role v každodenním světě; je nutná pro orientaci, ale může vést ke stereotypizaci.",
+        "authors": [
+          "Alfred Schütz"
+        ]
+      },
+      {
+        "term": "média jako aktéři konstrukce reality",
+        "definition": "Média se nepodílejí jen na šíření informací, ale také na tom, jaké významy, témata, kategorie a rámce se stávají dostupnými a samozřejmými.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Stuart Hall",
+        "role": "Reprezentace jako kulturní produkce významu; význam nevzniká přímým odrazem světa, ale prostřednictvím jazyka, znaků, diskurzů a kódů. ~"
+      },
+      {
+        "name": "Peter L. Berger a Thomas Luckmann",
+        "role": "Sociální konstrukce reality: externalizace, objektivace, internalizace, institucionalizace a legitimizace každodenní reality."
+      },
+      {
+        "name": "Alfred Schütz",
+        "role": "Příruční vědění a typizace každodenního světa; materiály jej používají pro vysvětlení samozřejmosti sociální reality."
+      },
+      {
+        "name": "Karl Mannheim",
+        "role": "Sociologie vědění: myšlení je vázáno na sociální bytí a historický kontext; materiály jej propojují s otázkou ideologie."
+      },
+      {
+        "name": "William I. Thomas",
+        "role": "Doplněn pro pojem definice situace: pokud lidé definují situace jako reálné, jsou reálné ve svých důsledcích. ~"
+      }
+    ],
     "examiner_focus": [
-      "Otázka chybí."
+      "Studující má vysvětlit, proč reprezentace není neutrální zrcadlení reality.",
+      "Má umět popsat sociální konstrukci reality přes Schütze, Bergera a Luckmanna.",
+      "Má ukázat, jak jazyk a média vytvářejí samozřejmé definice situací.",
+      "Má propojit stereotypy, typizace a mediální diskurz s mocí a nerovností."
     ],
-    "followup_questions": [],
-    "common_mistakes": [],
-    "source_refs": [],
-    "review_status": "missing_question_placeholder"
+    "followup_questions": [
+      "Jaký je rozdíl mezi realitou a reprezentací?",
+      "Co znamená příruční vědění?",
+      "Jak Berger a Luckmann vysvětlují externalizaci, objektivaci a internalizaci? ~",
+      "Jak média spoluutvářejí sociální konstrukci reality?",
+      "Jaký je rozdíl mezi typem, archetypem a stereotypem?"
+    ],
+    "common_mistakes": [
+      "Chápat reprezentaci jako pouhý obrázek nebo mediální zobrazení bez vztahu k významu a moci.",
+      "Popisovat sociální konstrukci reality jako tvrzení, že realita neexistuje.",
+      "Zaměňovat typizaci jako nutné zjednodušení se stereotypizací jako mocensky problematickou reprezentací.",
+      "Opomenout roli jazyka a institucí při legitimizaci sociální reality."
+    ],
+    "source_refs": [
+      {
+        "file": "07_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 1–20",
+        "relevance": "core"
+      },
+      {
+        "file": "08_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 1–8",
+        "relevance": "core"
+      },
+      {
+        "file": "01_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 10–20",
+        "relevance": "supporting"
+      }
+    ],
+    "review_status": "reviewed_from_zip_supplemented_marked"
   },
   {
     "id": "q13",
     "title": "13. Znaky a významy",
     "short_title": "Znaky a významy",
     "outline": [
-      "Otázka chybí."
+      "Vymezit sémiotiku jako studium znaků, znakových systémů a tvorby významu. ~",
+      "Odlišit sémiotickou školu od procesuální školy: sémiotická škola zkoumá význam, znaky a kódy; procesuální škola modeluje komunikaci jako přenos sdělení. ~",
+      "Představit Saussurův dyadický model znaku: označující, označované a arbitrárnost znaku.",
+      "Vysvětlit jazyk jako strukturu vztahů: význam vzniká z rozdílů mezi znaky, ne z přirozené vazby slova k věci. ~",
+      "Představit Peircův triadický model znaku: representamen, objekt a interpretant; rozlišit ikon, index a symbol. ~",
+      "Vyložit Barthesovy dva stupně označování: denotaci a konotaci, a pojem mýtus jako naturalizovaný kulturní význam. ~",
+      "Ukázat, jak se sémiotika používá v mediální analýze: čtení obrazů, reklam, zpráv, žánrů, narativů a ideologických významů. ~"
     ],
-    "key_terms": [],
-    "authors": [],
+    "key_terms": [
+      {
+        "term": "znak",
+        "definition": "Něco, co pro někoho v určitém kontextu něco zastupuje nebo označuje; znak je základní jednotkou významu. ~",
+        "authors": [
+          "Ferdinand de Saussure",
+          "Charles S. Peirce"
+        ]
+      },
+      {
+        "term": "sémiotika",
+        "definition": "Studium znaků, znakových systémů, kódů a procesů označování; v mediálních studiích slouží k analýze toho, jak mediální texty vytvářejí význam. ~",
+        "authors": [
+          "Daniel Chandler"
+        ]
+      },
+      {
+        "term": "sémiologie",
+        "definition": "Saussurovské označení vědy o znacích v rámci sociálního života; zdůrazňuje jazyk jako systém rozdílů. ~",
+        "authors": [
+          "Ferdinand de Saussure"
+        ]
+      },
+      {
+        "term": "označující",
+        "definition": "Materiální nebo vnímatelná složka znaku, například zvuková podoba slova, napsané slovo nebo obrazový prvek. ~",
+        "authors": [
+          "Ferdinand de Saussure"
+        ]
+      },
+      {
+        "term": "označované",
+        "definition": "Konceptuální složka znaku, tedy představa nebo význam, který je se znakem spojen. ~",
+        "authors": [
+          "Ferdinand de Saussure"
+        ]
+      },
+      {
+        "term": "arbitrárnost znaku",
+        "definition": "Vztah mezi označujícím a označovaným není přirozený, ale konvenční; význam je dán jazykovým a kulturním systémem. ~",
+        "authors": [
+          "Ferdinand de Saussure"
+        ]
+      },
+      {
+        "term": "Peircův triadický znak",
+        "definition": "Znak vzniká vztahem representamenu, objektu a interpretantu; význam je proces interpretace, nikoli pevná dvojice slovo–věc. ~",
+        "authors": [
+          "Charles S. Peirce"
+        ]
+      },
+      {
+        "term": "ikon",
+        "definition": "Znak založený na podobnosti se svým objektem, například portrét, mapa nebo realistická fotografie. ~",
+        "authors": [
+          "Charles S. Peirce"
+        ]
+      },
+      {
+        "term": "index",
+        "definition": "Znak založený na faktické, příčinné nebo stopové souvislosti s objektem, například kouř jako index ohně nebo stopa jako index přítomnosti. ~",
+        "authors": [
+          "Charles S. Peirce"
+        ]
+      },
+      {
+        "term": "symbol",
+        "definition": "Znak založený na konvenci nebo pravidlu, například slova jazyka, dopravní značky nebo národní symboly. ~",
+        "authors": [
+          "Charles S. Peirce"
+        ]
+      },
+      {
+        "term": "denotace",
+        "definition": "První, relativně základní rovina označování: co znak doslovně nebo popisně označuje. ~",
+        "authors": [
+          "Roland Barthes"
+        ]
+      },
+      {
+        "term": "konotace",
+        "definition": "Druhá rovina označování: kulturní, hodnotové a asociativní významy, které se ke znaku připojují. ~",
+        "authors": [
+          "Roland Barthes"
+        ]
+      },
+      {
+        "term": "mýtus",
+        "definition": "Barthesovo označení pro druhotný znakový systém, který naturalizuje historické a ideologické významy jako samozřejmé. ~",
+        "authors": [
+          "Roland Barthes"
+        ]
+      },
+      {
+        "term": "význam jako rozdíl",
+        "definition": "Saussurovská představa, že význam znaku vzniká ze vztahů a rozdílů uvnitř systému, nikoli z přirozeného spojení se světem. ~",
+        "authors": [
+          "Ferdinand de Saussure"
+        ]
+      }
+    ],
+    "authors": [
+      {
+        "name": "Ferdinand de Saussure",
+        "role": "Jazyk jako struktura, dyadický znak, označující/označované, arbitrárnost znaku a význam jako systém rozdílů."
+      },
+      {
+        "name": "Charles S. Peirce",
+        "role": "Triadický model znaku a typologie znaků: ikon, index, symbol. ~"
+      },
+      {
+        "name": "Roland Barthes",
+        "role": "Denotace, konotace a mýtus; mediální a kulturní texty mohou naturalizovat ideologické významy. ~"
+      },
+      {
+        "name": "Daniel Chandler",
+        "role": "Učebnicový výklad sémiotiky, znaků, kódů, textů a mediální analýzy; doplněn pro přehled pojmů. ~"
+      }
+    ],
     "examiner_focus": [
-      "Otázka chybí."
+      "Studující má umět jasně vysvětlit rozdíl mezi Saussurovým a Peircovým modelem znaku. ~",
+      "Má znát Barthesovo rozlišení denotace, konotace a mýtu. ~",
+      "Má umět použít sémiotické pojmy na konkrétní mediální text, obraz, reklamu nebo zpravodajský materiál. ~"
     ],
-    "followup_questions": [],
-    "common_mistakes": [],
-    "source_refs": [],
-    "review_status": "missing_question_placeholder"
+    "followup_questions": [
+      "Co je označující a označované?",
+      "Proč je znak arbitrární?",
+      "Jaký je rozdíl mezi ikonem, indexem a symbolem? ~",
+      "Jak se liší denotace a konotace? ~",
+      "Co znamená, že mýtus naturalizuje ideologii? ~"
+    ],
+    "common_mistakes": [
+      "Zaměňovat znak s věcí, na kterou znak odkazuje.",
+      "Vykládat denotaci jako zcela objektivní význam bez kulturního rámce. ~",
+      "Mechanicky určit ikon/index/symbol bez vysvětlení vztahu znaku k objektu. ~",
+      "Opomenout, že význam vzniká ve znakových systémech a kódech, nikoli izolovaně. ~"
+    ],
+    "source_refs": [
+      {
+        "file": "07_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 4–12",
+        "relevance": "supporting",
+        "note": "Materiál pokrývá kulturu, jazyk a Saussura; Peirce, Barthes a systematická sémiotika byly doplněny online rešerší a označeny tildou."
+      },
+      {
+        "file": "08_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 4–8",
+        "relevance": "supporting"
+      }
+    ],
+    "review_status": "reviewed_supplemented_marked"
   },
   {
     "id": "q14",
     "title": "14. Mediální kódy",
     "short_title": "Mediální kódy",
     "outline": [
-      "Otázka chybí."
+      "Vymezit kód v sémiotice jako systém pravidel a konvencí, které umožňují vytvářet a interpretovat znaky. ~",
+      "Vysvětlit, že kódy nejsou jen technické šifry, ale kulturní a sociální pravidla rozpoznávání významu. ~",
+      "Ukázat binární opozice jako strukturující princip významu: význam často vzniká skrze rozdíly, například muž/žena, příroda/kultura, elita/lid, centrum/periferie. ~",
+      "Představit kulturní a sociální kódy: pravidla vkusu, žánru, identity, třídy, genderu, etnicity, profesionality a každodenního jednání. ~",
+      "Vysvětlit paradigmatickou a syntagmatickou osu jazyka: výběr prvků a jejich kombinace. ~",
+      "Ukázat mediální kódy v praxi: obrazové kódy, střih, hudba, zpravodajské žánry, layout, titulky, kamera, narativní struktury a platformní rozhraní. ~",
+      "Popsat kodifikaci, interpretaci, dosah a hybriditu mediálních kódů: kódy mohou být sdílené, profesní, žánrové, subkulturní nebo platformní. ~"
     ],
-    "key_terms": [],
-    "authors": [],
+    "key_terms": [
+      {
+        "term": "kód",
+        "definition": "Systém pravidel a konvencí, který umožňuje spojovat znaky s významy a interpretovat je v rámci určité kultury nebo komunikační situace. ~",
+        "authors": [
+          "Daniel Chandler",
+          "Ferdinand de Saussure"
+        ]
+      },
+      {
+        "term": "mediální kód",
+        "definition": "Soubor formálních, žánrových, technologických a kulturních pravidel, podle nichž mediální texty vytvářejí význam a publika je čtou. ~",
+        "authors": [
+          "Daniel Chandler"
+        ]
+      },
+      {
+        "term": "kulturní kód",
+        "definition": "Sdílený soubor hodnot, očekávání a významových pravidel určité kultury, který umožňuje chápat texty, obrazy, rituály a sociální situace. ~",
+        "authors": [
+          "Stuart Hall",
+          "Roland Barthes"
+        ]
+      },
+      {
+        "term": "sociální kód",
+        "definition": "Pravidla interpretace spojená se sociálními rolemi, třídou, genderem, profesí, statusem, institucemi nebo skupinovou příslušností. ~",
+        "authors": [
+          "Pierre Bourdieu",
+          "Erving Goffman"
+        ]
+      },
+      {
+        "term": "binární opozice",
+        "definition": "Dvojice protikladných kategorií, které strukturují význam; v analýze médií pomáhají ukázat, jak texty vytvářejí rozdíly a hierarchie. ~",
+        "authors": [
+          "Claude Lévi-Strauss"
+        ]
+      },
+      {
+        "term": "paradigmatická osa",
+        "definition": "Osa výběru: z dostupného souboru možností je vybrán určitý znak, záběr, slovo nebo žánrový prvek namísto jiného. ~",
+        "authors": [
+          "Ferdinand de Saussure",
+          "Roman Jakobson"
+        ]
+      },
+      {
+        "term": "syntagmatická osa",
+        "definition": "Osa kombinace: vybrané znaky jsou řazeny do sekvence, kompozice, narativu nebo textové struktury. ~",
+        "authors": [
+          "Ferdinand de Saussure",
+          "Roman Jakobson"
+        ]
+      },
+      {
+        "term": "žánrový kód",
+        "definition": "Soubor očekávání, pravidel a rozpoznatelných znaků, podle nichž publikum poznává žánr, například zprávu, reportáž, sitcom, reklamu nebo dokument. ~",
+        "authors": []
+      },
+      {
+        "term": "obrazový kód",
+        "definition": "Pravidla tvorby a interpretace vizuálních významů: kompozice, barva, úhel kamery, světlo, rámování, perspektiva, pohled a vztah obrazu k textu. ~",
+        "authors": [
+          "Nicholas Mirzoeff",
+          "Roland Barthes"
+        ]
+      },
+      {
+        "term": "technický kód",
+        "definition": "Mediální významy vytvářené technickými prostředky, například střihem, kamerou, zvukem, typografií, layoutem, algoritmickým doporučováním nebo rozhraním. ~",
+        "authors": []
+      },
+      {
+        "term": "hybridita kódů",
+        "definition": "Propojování různých kódů a žánrových pravidel v jednom mediálním textu, například infotainment, docudrama, meme, reels nebo multimediální reportáž. ~",
+        "authors": []
+      },
+      {
+        "term": "preferovaný význam",
+        "definition": "Význam, který mediální text nabízí jako dominantní nebo nejpravděpodobnější interpretaci; publikum jej ale může číst vyjednávaně nebo opozičně. ~",
+        "authors": [
+          "Stuart Hall"
+        ]
+      }
+    ],
+    "authors": [
+      {
+        "name": "Daniel Chandler",
+        "role": "Sémiotické pojetí kódů: kódy organizují znaky, texty a interpretace; vhodné pro mediální analýzu. ~"
+      },
+      {
+        "name": "Ferdinand de Saussure",
+        "role": "Jazyk jako systém rozdílů a struktura, z níž vychází rozlišení paradigmatické a syntagmatické osy. ~"
+      },
+      {
+        "name": "Roman Jakobson",
+        "role": "Doplněn k paradigmatické a syntagmatické ose jako vztahu výběru a kombinace. ~"
+      },
+      {
+        "name": "Roland Barthes",
+        "role": "Kulturní kódy, konotace a mýtus; mediální texty naturalizují kulturní významy. ~"
+      },
+      {
+        "name": "Stuart Hall",
+        "role": "Kódy jako součást kódování/dekódování; významy jsou kulturně a mocensky strukturované. ~"
+      },
+      {
+        "name": "Claude Lévi-Strauss",
+        "role": "Binární opozice jako strukturující princip kulturního významu. ~"
+      }
+    ],
     "examiner_focus": [
-      "Otázka chybí."
+      "Studující má vysvětlit, že kód je kulturní pravidlo významu, nikoli pouze technický převodník.",
+      "Má umět rozlišit kulturní, sociální, žánrové, obrazové a technické kódy. ~",
+      "Má použít paradigmatickou a syntagmatickou osu na konkrétní mediální text. ~",
+      "Má ukázat, jak kódy souvisejí s mocí, přirozeností významů a dominantními interpretacemi. ~"
     ],
-    "followup_questions": [],
-    "common_mistakes": [],
-    "source_refs": [],
-    "review_status": "missing_question_placeholder"
+    "followup_questions": [
+      "Co je kód v sémiotice?",
+      "Jaký je rozdíl mezi paradigmatickou a syntagmatickou osou? ~",
+      "Jak fungují binární opozice v mediální reprezentaci? ~",
+      "Jaké kódy poznáte v televizním zpravodajství nebo reklamě? ~",
+      "Co znamená hybridita mediálních kódů? ~"
+    ],
+    "common_mistakes": [
+      "Zaměňovat kód za tajnou šifru nebo čistě technický protokol.",
+      "Neodlišit výběr prvků od jejich kombinace. ~",
+      "Vyjmenovat kódy bez analýzy, jak vytvářejí význam. ~",
+      "Opomenout, že kódy jsou kulturně naučené a historicky proměnlivé. ~"
+    ],
+    "source_refs": [
+      {
+        "file": "07_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 4–12",
+        "relevance": "supporting",
+        "note": "ZIP se dotýká kultury a jazyka; vlastní teorie mediálních kódů byla doplněna online rešerší a označena tildou."
+      },
+      {
+        "file": "08_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 4–8",
+        "relevance": "supporting"
+      }
+    ],
+    "review_status": "reviewed_supplemented_marked"
   },
   {
     "id": "q15",
     "title": "15. Ideologie a hegemonie",
     "short_title": "Ideologie a hegemonie",
     "outline": [
-      "Otázka chybí."
+      "Vymezit ideologii jako pojem pro vztah vědění, významu, moci a sociálního uspořádání.",
+      "Vysvětlit, proč je ideologie relevantní pro mediální výzkum: média se podílejí na tvorbě významů, definic situace a naturalizaci určitých pohledů na svět.",
+      "Představit Marxovo a Engelsovo pojetí ideologie jako převráceného vědomí / falešného vědomí, v němž dominantní myšlenky souvisejí s materiální mocí dominantní třídy. ~",
+      "Vyložit Mannheimovu sociologii vědění: myšlení a poznání je vázáno na sociální bytí, dobový rámec a pozici nositelů vědění.",
+      "Představit Althussera: represivní a ideologické aparáty státu, interpelace subjektů a ideologie jako materiální praxe institucí. ~",
+      "Vysvětlit Gramsciho kulturní hegemonii: dominance není udržována jen nátlakem, ale i souhlasem, občanskou společností, kulturou a každodenním rozumem. ~",
+      "Propojit ideologii s reprezentací, kódy a sociální konstrukcí reality: moc spočívá v tom, kdo určuje významy a co se jeví jako přirozené.",
+      "Ukázat mediální příklady ideologie: národ, gender, třída, rasa, konzumerismus, individualismus, bezpečnost, práce, úspěch nebo normalita."
     ],
-    "key_terms": [],
-    "authors": [],
+    "key_terms": [
+      {
+        "term": "ideologie",
+        "definition": "Významový rámec, který organizuje porozumění světu a vztahuje vědění k moci; v materiálech je spojena se sociologií vědění a tím, že tvorba významu není neutrální.",
+        "authors": [
+          "Karl Mannheim",
+          "Michael Freeden"
+        ]
+      },
+      {
+        "term": "sociologie vědění",
+        "definition": "Směr zkoumající sociální podmíněnost poznání a interpretací světa; materiály zdůrazňují, že kdo určuje významy, určuje definice situace.",
+        "authors": [
+          "Karl Mannheim"
+        ]
+      },
+      {
+        "term": "falešné vědomí",
+        "definition": "Marxistické pojetí ideologie jako převráceného či zkresleného obrazu společenských vztahů, který zakrývá materiální podmínky dominance. ~",
+        "authors": [
+          "Karl Marx",
+          "Friedrich Engels"
+        ]
+      },
+      {
+        "term": "dominantní ideologie",
+        "definition": "Soubor významů a přesvědčení, které podporují nebo naturalizují uspořádání společnosti výhodné pro dominantní skupiny. ~",
+        "authors": [
+          "Karl Marx",
+          "Stuart Hall"
+        ]
+      },
+      {
+        "term": "ideologické státní aparáty",
+        "definition": "Althusserův pojem pro instituce, které reprodukují ideologii a společenské vztahy především skrze význam, výchovu a subjektivaci, například škola, rodina, náboženství, kultura a média. ~",
+        "authors": [
+          "Louis Althusser"
+        ]
+      },
+      {
+        "term": "represivní státní aparát",
+        "definition": "Althusserův pojem pro aparát fungující převážně prostřednictvím nátlaku a práva, například policie, soudy, armáda a vězeňství. ~",
+        "authors": [
+          "Louis Althusser"
+        ]
+      },
+      {
+        "term": "interpelace",
+        "definition": "Proces, v němž ideologie oslovuje jednotlivce jako subjekty a umožňuje jim rozpoznat se v určité sociální pozici, roli nebo identitě. ~",
+        "authors": [
+          "Louis Althusser"
+        ]
+      },
+      {
+        "term": "hegemonie",
+        "definition": "Forma dominance založená nejen na donucení, ale i na souhlasu, kulturním vedení a ustavení určitého světonázoru jako obecného či zdravého rozumu. ~",
+        "authors": [
+          "Antonio Gramsci"
+        ]
+      },
+      {
+        "term": "občanská společnost",
+        "definition": "Prostor institucí, vztahů a kulturních forem, v němž se podle Gramsciho získává souhlas a utváří hegemonie. ~",
+        "authors": [
+          "Antonio Gramsci"
+        ]
+      },
+      {
+        "term": "zdravý rozum",
+        "definition": "Soubor samozřejmých, často protikladných každodenních představ, které mohou podporovat hegemonní významy tím, že je činí přirozenými. ~",
+        "authors": [
+          "Antonio Gramsci"
+        ]
+      },
+      {
+        "term": "organický intelektuál",
+        "definition": "Gramsciho pojem pro aktéra spojeného s určitou sociální skupinou, který artikuluje její zájmy a podílí se na zápase o hegemonii. ~",
+        "authors": [
+          "Antonio Gramsci"
+        ]
+      },
+      {
+        "term": "morfologický přístup k ideologii",
+        "definition": "Pojetí ideologií jako uspořádání politických konceptů, jejichž význam je stabilizován a vzájemně strukturován; ideologie nejsou jen iluze, ale formy politického myšlení. ~",
+        "authors": [
+          "Michael Freeden"
+        ]
+      },
+      {
+        "term": "naturalizace významu",
+        "definition": "Proces, v němž historické a kulturní významy vypadají jako samozřejmé, přirozené nebo neutrální; v médiích souvisí s reprezentací a mýtem. ~",
+        "authors": [
+          "Roland Barthes",
+          "Stuart Hall"
+        ]
+      }
+    ],
+    "authors": [
+      {
+        "name": "Karl Mannheim",
+        "role": "Sociologie vědění: myšlení a poznání je vázáno na bytí, historický kontext a sociální pozici; materiály jej přímo uvádějí."
+      },
+      {
+        "name": "Karl Marx a Friedrich Engels",
+        "role": "Ideologie jako převrácené/falešné vědomí a dominantní myšlenky jako myšlenky dominantní třídy; doplněno k oficiální otázce. ~"
+      },
+      {
+        "name": "Louis Althusser",
+        "role": "Represivní a ideologické státní aparáty, interpelace subjektů a ideologie jako materiálně zakotvená praxe institucí. ~"
+      },
+      {
+        "name": "Antonio Gramsci",
+        "role": "Kulturní hegemonie: dominance skrze souhlas, občanskou společnost, zdravý rozum a kulturní vedení. ~"
+      },
+      {
+        "name": "Michael Freeden",
+        "role": "Doplněn jako moderní nepejorativní pojetí ideologie: ideologie jako strukturované uspořádání politických konceptů. ~"
+      },
+      {
+        "name": "Pierre Bourdieu",
+        "role": "Materiály jej spojují s mocenskými asymetriemi, habitusem, kapitálem a symbolickou mocí; vhodné pro propojení ideologie s nerovnostmi."
+      }
+    ],
     "examiner_focus": [
-      "Otázka chybí."
+      "Studující má umět odlišit marxistické, mannheimovské, althusserovské, gramsciovské a freedenovské pojetí ideologie.",
+      "Má vysvětlit, proč média nejsou jen neutrální zprostředkovatelé, ale aktéři tvorby významu a definic situace.",
+      "Má ukázat rozdíl mezi ideologií jako falešným vědomím a ideologií jako širším rámcem politického/kulturního myšlení. ~",
+      "Má vysvětlit hegemonii jako vládu skrze souhlas, nikoli jen přímé donucení. ~"
     ],
-    "followup_questions": [],
-    "common_mistakes": [],
-    "source_refs": [],
-    "review_status": "missing_question_placeholder"
+    "followup_questions": [
+      "Jak Mannheim rozumí vazbě myšlení na sociální bytí?",
+      "Co znamená, že tvorba významu není neutrální akt?",
+      "Jak se liší represivní a ideologické aparáty státu? ~",
+      "Co je interpelace? ~",
+      "Jak média přispívají k hegemonii? ~",
+      "Jaký je rozdíl mezi ideologií a propagandou?"
+    ],
+    "common_mistakes": [
+      "Redukce ideologie na lež nebo propagandu.",
+      "Záměna ideologie za osobní názor jednotlivce bez vztahu ke společnosti a moci.",
+      "Vysvětlení hegemonie jako prosté převahy nebo nadvlády bez souhlasu. ~",
+      "Opomenutí médií jako aktérů sociální konstrukce významů.",
+      "Směšování Marxova, Mannheimova, Althusserova a Gramsciho pojetí ideologie. ~"
+    ],
+    "source_refs": [
+      {
+        "file": "08_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 1–20",
+        "relevance": "core"
+      },
+      {
+        "file": "07_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 1–20",
+        "relevance": "core"
+      },
+      {
+        "file": "05_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 4–20",
+        "relevance": "supporting"
+      }
+    ],
+    "review_status": "reviewed_from_zip_supplemented_marked"
   },
   {
     "id": "q16",
     "title": "16. Vizuální kultura",
     "short_title": "Vizuální kultura",
     "outline": [
-      "Otázka chybí."
+      "Vymezit vizuální kulturu jako interdisciplinární studium vizuálních událostí, obrazů, technologií vidění a sociálních praktik dívání. ~",
+      "Odlišit vizuální kulturu od dějin umění: nejde jen o umělecká díla, ale také o média, reklamu, televizi, fotografie, rozhraní, sociální sítě, mapy, grafy, dohled a každodenní obrazy. ~",
+      "Vysvětlit pojmy vizualita a vizualizace: vizualita označuje společensky organizované způsoby vidění, vizualizace převádí data, moc a poznání do obrazových forem. ~",
+      "Popsat vizuální moc: kdo může zobrazovat, kdo je zobrazován, kdo se dívá, kdo je viděn a jaké instituce dívání organizují. ~",
+      "Vyložit vizuální slast, pohled a krásu jako kulturně a mocensky strukturované způsoby estetického a mediálního vnímání. ~",
+      "Ukázat vztah vizuální kultury k reprezentaci a ideologii: obrazy mohou naturalizovat gender, rasu, třídu, národ, tělo, bezpečnost i spotřebu. ~",
+      "V mediálním příkladu analyzovat obrazové kódy: kompozici, barvu, světlo, rámování, perspektivu, pohled kamery, text a kontext. ~"
     ],
-    "key_terms": [],
-    "authors": [],
+    "key_terms": [
+      {
+        "term": "vizuální kultura",
+        "definition": "Interdisciplinární pole zkoumající vizuální události, obrazy, technologie vidění a způsoby, jimiž lidé skrze vizuální média hledají informaci, význam nebo potěšení. ~",
+        "authors": [
+          "Nicholas Mirzoeff"
+        ]
+      },
+      {
+        "term": "vizuální událost",
+        "definition": "Situace, v níž se informace, význam nebo slast hledá v interakci diváka s vizuální technologií, od malby přes fotografii a televizi po digitální obrazovky. ~",
+        "authors": [
+          "Nicholas Mirzoeff"
+        ]
+      },
+      {
+        "term": "vizualita",
+        "definition": "Historicky a sociálně organizovaný způsob vidění a uspořádání viditelného; nezahrnuje jen biologický zrak, ale i mocenské a kulturní režimy dívání. ~",
+        "authors": [
+          "Nicholas Mirzoeff"
+        ]
+      },
+      {
+        "term": "vizualizace",
+        "definition": "Proces převodu poznání, dat, vztahů nebo moci do viditelných forem, například map, grafů, schémat, fotografií, infografik nebo rozhraní. ~",
+        "authors": []
+      },
+      {
+        "term": "vizuální moc",
+        "definition": "Schopnost určovat, co a kdo bude viditelné, jak bude zobrazeno a kdo má právo dívat se; souvisí s dohledem, reprezentací, autoritou a nerovností. ~",
+        "authors": [
+          "Michel Foucault",
+          "Nicholas Mirzoeff"
+        ]
+      },
+      {
+        "term": "pohled / gaze",
+        "definition": "Kulturně a mocensky uspořádaný vztah dívání, v němž je divák, zobrazovaný objekt a instituce vidění nerovnoměrně rozmístěna. ~",
+        "authors": [
+          "Laura Mulvey",
+          "Michel Foucault"
+        ]
+      },
+      {
+        "term": "vizuální slast",
+        "definition": "Estetické, emocionální a někdy erotizované potěšení z dívání; v mediální analýze se zkoumá, jak je organizováno genderem, kamerou, žánrem a pozicí diváka. ~",
+        "authors": [
+          "Laura Mulvey"
+        ]
+      },
+      {
+        "term": "krása",
+        "definition": "Kulturně proměnlivá norma estetického hodnocení, která může být spojena s mocí, třídou, genderem, komercí a mediální reprezentací. ~",
+        "authors": [
+          "Nicholas Mirzoeff"
+        ]
+      },
+      {
+        "term": "obrazový kód",
+        "definition": "Pravidla tvorby vizuálního významu: kompozice, barva, rámování, perspektiva, úhel, světlo, ostrost, střih a vztah obrazu k textu. ~",
+        "authors": [
+          "Roland Barthes",
+          "Daniel Chandler"
+        ]
+      },
+      {
+        "term": "indexikalita fotografie",
+        "definition": "Tradiční představa, že fotografie je spojena s otiskem reality; v digitální a mediální kultuře je nutné ji doplnit o otázku manipulace, kontextu a interpretace. ~",
+        "authors": [
+          "Charles S. Peirce",
+          "Roland Barthes"
+        ]
+      }
+    ],
+    "authors": [
+      {
+        "name": "Nicholas Mirzoeff",
+        "role": "Úvod do vizuální kultury: vizuální kultura jako studium vizuálních událostí, vizuálních technologií, vizuality, moci a slasti. ~"
+      },
+      {
+        "name": "Laura Mulvey",
+        "role": "Doplněna pro pojem pohledu a vizuální slasti, zejména v souvislosti s genderovaným díváním ve filmu a audiovizuální kultuře. ~"
+      },
+      {
+        "name": "Michel Foucault",
+        "role": "Doplněn pro vztah vidění, dohledu, moci a disciplinace; důležitý pro analýzu vizuální moci. ~"
+      },
+      {
+        "name": "Roland Barthes",
+        "role": "Doplněn pro analýzu fotografie, denotace, konotace a mýtu ve vizuálních textech. ~"
+      },
+      {
+        "name": "Stuart Hall",
+        "role": "Doplněn pro reprezentaci a vztah obrazu k identitě, moci a kulturním významům. ~"
+      }
+    ],
     "examiner_focus": [
-      "Otázka chybí."
+      "Studující má umět definovat vizuální kulturu a neomezit ji na dějiny umění. ~",
+      "Má ukázat, že obraz není neutrální: je kódovaný, institucionální a mocensky uspořádaný. ~",
+      "Má rozlišit vizualitu, vizualizaci, vizuální moc, pohled, slast a krásu. ~",
+      "Má umět provést základní analýzu konkrétního mediálního obrazu. ~"
     ],
-    "followup_questions": [],
-    "common_mistakes": [],
-    "source_refs": [],
-    "review_status": "missing_question_placeholder"
+    "followup_questions": [
+      "Co je vizuální kultura a čím se liší od dějin umění? ~",
+      "Co znamená vizualita? ~",
+      "Jak obraz souvisí s mocí? ~",
+      "Co je gaze/pohled a proč je důležitý pro mediální analýzu? ~",
+      "Jak byste analyzoval/a fotografii v novinách nebo reklamní obraz? ~"
+    ],
+    "common_mistakes": [
+      "Redukovat vizuální kulturu na studium krásných obrazů nebo umění.",
+      "Předpokládat, že fotografie je prostý důkaz reality bez kódu a interpretace. ~",
+      "Opomenout vztah vizuální reprezentace k genderu, třídě, rase, tělu a moci. ~",
+      "Analyzovat obraz jen popisem obsahu, bez kompozice, kódů a kontextu. ~"
+    ],
+    "source_refs": [
+      {
+        "file": "06_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 1–10",
+        "relevance": "supporting",
+        "note": "ZIP se vizuální kultury dotýká pouze okrajově přes veřejný prostor; výklad vizuální kultury byl doplněn online rešerší a označen tildou."
+      }
+    ],
+    "review_status": "reviewed_supplemented_marked"
   },
   {
     "id": "q17",
     "title": "17. Mediální organizace a ekonomické podmínky fungování médií",
     "short_title": "Mediální organizace",
     "outline": [
-      "Otázka chybí."
+      "Vymezit mediální organizaci jako instituci produkující a distribuující symbolické obsahy v určitých ekonomických, politických, technologických a kulturních podmínkách.",
+      "Vysvětlit média jako součást moderní institucionální proměny: symbolické formy jsou produkovány, reprodukovány, distribuovány a komodifikovány.",
+      "Popsat ekonomickou povahu médií: dvojí trh publika a inzerentů, náklady produkce, distribuce, pozornost jako zdroj a závislost na vlastnictví a obchodním modelu. ~",
+      "Vysvětlit vlastnictví a koncentraci médií: horizontální, vertikální a diagonální/konglomerátní koncentrace, jejich důsledky pro pluralitu a autonomii. ~",
+      "Představit mediální systém jako soubor institucí, tržních vztahů, regulace, profesních norem a vazeb médií na politiku.",
+      "Ukázat Hallina a Manciniho dimenze mediálních systémů: mediální trh, politický paralelismus, profesionalizace žurnalistiky a role státu. ~",
+      "Propojit organizaci médií s mocí a nerovností: redakce, vlastníci, stát, trh, publika a platformy mají rozdílné zdroje a zájmy.",
+      "Zohlednit digitální proměnu: platformizace, metriky sledovanosti, algoritmická distribuce, fragmentace příjmů a tlak na rychlost produkce. ~"
     ],
-    "key_terms": [],
-    "authors": [],
+    "key_terms": [
+      {
+        "term": "mediální organizace",
+        "definition": "Instituce nebo podnik, který produkuje, vybírá, zpracovává a distribuuje mediální obsahy; její fungování je určeno redakčními rutinami, vlastnictvím, ekonomikou, regulací a technologií. ~",
+        "authors": [
+          "Denis McQuail"
+        ]
+      },
+      {
+        "term": "symbolická produkce",
+        "definition": "Produkce významů, obrazů, textů a dalších symbolických forem; v modernitě se podle materiálů proměňuje v institucionální a tržní činnost médií.",
+        "authors": [
+          "John B. Thompson"
+        ]
+      },
+      {
+        "term": "komodifikace symbolických forem",
+        "definition": "Proces, v němž se mediální obsahy a symbolické formy stávají zbožím, které lze prodávat, kupovat a distribuovat na trhu.",
+        "authors": [
+          "John B. Thompson"
+        ]
+      },
+      {
+        "term": "mediální trh",
+        "definition": "Ekonomické prostředí, v němž média soutěží o publikum, pozornost, reklamu, předplatné, data, distribuci a legitimitu. ~",
+        "authors": []
+      },
+      {
+        "term": "dvojí trh médií",
+        "definition": "Média často prodávají obsahy nebo přístup publikům a zároveň prodávají pozornost publika inzerentům; tato logika ovlivňuje obsah i organizaci práce. ~",
+        "authors": [
+          "Denis McQuail"
+        ]
+      },
+      {
+        "term": "vlastnictví médií",
+        "definition": "Struktura kontroly nad mediálními organizacemi; vlastnictví může ovlivňovat strategii, ekonomické cíle, redakční autonomii a pluralitu. ~",
+        "authors": []
+      },
+      {
+        "term": "koncentrace médií",
+        "definition": "Soustřeďování mediálního vlastnictví, trhu nebo distribuce do menšího počtu subjektů; může být horizontální, vertikální nebo diagonální/konglomerátní. ~",
+        "authors": []
+      },
+      {
+        "term": "mediální systém",
+        "definition": "Soubor médií, institucí, trhů, regulace, profesních norem a politických vazeb v určité společnosti; nelze jej chápat jen jako seznam médií. ~",
+        "authors": [
+          "Daniel C. Hallin",
+          "Paolo Mancini"
+        ]
+      },
+      {
+        "term": "politický paralelismus",
+        "definition": "Míra, v níž jsou média propojena s politickými stranami, ideologiemi, sociálními skupinami nebo konfliktními liniemi společnosti. ~",
+        "authors": [
+          "Daniel C. Hallin",
+          "Paolo Mancini"
+        ]
+      },
+      {
+        "term": "profesionalizace žurnalistiky",
+        "definition": "Míra profesní autonomie, sdílených norem, odborné socializace a veřejné služby v novinářské práci. ~",
+        "authors": [
+          "Daniel C. Hallin",
+          "Paolo Mancini"
+        ]
+      },
+      {
+        "term": "role státu v mediálním systému",
+        "definition": "Způsob, jak stát média reguluje, podporuje, vlastní, kontroluje nebo chrání jejich pluralitu a veřejnou službu. ~",
+        "authors": [
+          "Daniel C. Hallin",
+          "Paolo Mancini"
+        ]
+      },
+      {
+        "term": "platformizace médií",
+        "definition": "Proměna mediální distribuce a ekonomiky v závislosti na digitálních platformách, algoritmech, datech, metrikách a infrastruktuře velkých technologických firem. ~",
+        "authors": []
+      },
+      {
+        "term": "symbolická moc",
+        "definition": "Schopnost určovat významy, kategorie a legitimní pohled na sociální svět; ve vztahu k médiím souvisí s reprezentací a veřejnou viditelností.",
+        "authors": [
+          "Pierre Bourdieu"
+        ]
+      }
+    ],
+    "authors": [
+      {
+        "name": "John B. Thompson",
+        "role": "Média a modernita: média jako institucionální produkce a komodifikace symbolických forem v moderní společnosti."
+      },
+      {
+        "name": "Denis McQuail",
+        "role": "Mediální organizace, mediální instituce, vlivy na obsah, ekonomická logika médií a dvojí trh médií. ~"
+      },
+      {
+        "name": "Daniel C. Hallin a Paolo Mancini",
+        "role": "Komparativní pojetí mediálních systémů podle mediálního trhu, politického paralelismu, profesionalizace a role státu. ~"
+      },
+      {
+        "name": "Pierre Bourdieu",
+        "role": "Pole, kapitál, habitus a symbolická moc; materiály jej používají pro mocenské asymetrie a nerovnosti, které lze aplikovat i na mediální pole."
+      },
+      {
+        "name": "Nick Couldry",
+        "role": "Doplněn pro kritické využití Bourdieuovy teorie médií a symbolické moci médií ve společnosti. ~"
+      }
+    ],
     "examiner_focus": [
-      "Otázka chybí."
+      "Studující má umět popsat média jako organizace a instituce, ne jen jako kanály komunikace.",
+      "Má vysvětlit, jak ekonomické podmínky ovlivňují produkci obsahů, redakční autonomii a pluralitu.",
+      "Má znát pojem mediální systém a umět jej propojit s vlastnictvím, regulací, profesionalizací a politikou. ~",
+      "Má umět vysvětlit současný tlak digitalizace a platforem na ekonomiku médií. ~"
     ],
-    "followup_questions": [],
-    "common_mistakes": [],
-    "source_refs": [],
-    "review_status": "missing_question_placeholder"
+    "followup_questions": [
+      "Co je mediální organizace?",
+      "Jak podle Thompsona média proměňují symbolickou produkci modernity?",
+      "Co znamená dvojí trh médií? ~",
+      "Jaké typy koncentrace médií znáte? ~",
+      "Jaké dimenze mediálního systému rozlišují Hallin a Mancini? ~",
+      "Jak platformy mění ekonomické podmínky médií? ~"
+    ],
+    "common_mistakes": [
+      "Zaměnit mediální organizaci za konkrétní mediální titul.",
+      "Popisovat ekonomiku médií bez role publika, reklamy, vlastnictví a distribuce.",
+      "Opomenout, že vlastnictví a regulace jsou součástí mediálního systému.",
+      "Zaměnit technologickou digitalizaci za ekonomickou platformizaci. ~"
+    ],
+    "source_refs": [
+      {
+        "file": "02_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 1–10",
+        "relevance": "core"
+      },
+      {
+        "file": "05_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 4–20",
+        "relevance": "supporting"
+      },
+      {
+        "file": "04_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 1–15",
+        "relevance": "supporting"
+      }
+    ],
+    "review_status": "reviewed_from_zip_supplemented_marked"
   },
   {
     "id": "q18",
     "title": "18. Tvůrci a tvůrkyně mediálních obsahů",
     "short_title": "Tvůrci obsahů",
     "outline": [
-      "Otázka chybí."
+      "Vymezit tvůrce mediálních obsahů jako aktéry, kteří se podílejí na produkci, výběru, rámování, estetické podobě a distribuci mediálních sdělení.",
+      "Vysvětlit vliv novinářů a dalších mediálních pracovníků na obsah: profesní normy, rutiny, role, zdroje, redakční hierarchie a ekonomické tlaky. ~",
+      "Představit žurnalistiku jako řemeslo a profesi: profesionalizace, vzdělávání, profesní socializace, autonomie, etika a odpovědnost. ~",
+      "Rozlišit profesní role novinářů: informátor, watchdog, interpret, mobilizátor, service journalist, advokát, moderátor veřejné debaty. ~",
+      "Ukázat, jak se do tvorby obsahů promítá moc, pole a kapitál: tvůrci jednají v mediálním poli, kde působí ekonomický, kulturní, sociální a symbolický kapitál.",
+      "Popsat redakční a profesní kultury: sdílené normy, rutiny, hodnoty, pojetí publika, tlak času a vztahy ke zdrojům. ~",
+      "Zahrnout digitální proměnu tvůrců: multiskilling, metriky, datafikace práce, platformní závislost, influenceři, tvůrci obsahu a participativní publika. ~",
+      "Uvést základní charakteristiky českých novinářů tam, kde jsou dostupné: profesionalizace, vztah k autonomii, proměna pracovních podmínek a tlak vlastníků či trhu. ~"
     ],
-    "key_terms": [],
-    "authors": [],
+    "key_terms": [
+      {
+        "term": "tvůrci mediálních obsahů",
+        "definition": "Široká skupina aktérů zahrnující novináře, editory, producenty, dramaturgy, fotografy, kameramany, grafiky, moderátory, influencery, platformní tvůrce a další osoby podílející se na vzniku mediálních textů. ~",
+        "authors": []
+      },
+      {
+        "term": "novinářská profese",
+        "definition": "Profesní oblast založená na specializovaných dovednostech, normách, rolích a odpovědnosti vůči veřejnosti; její autonomie je ovlivňována redakcí, trhem, vlastníky, zdroji a politickým prostředím. ~",
+        "authors": [
+          "Brian McNair",
+          "Denis McQuail"
+        ]
+      },
+      {
+        "term": "profesionalizace novinářů",
+        "definition": "Proces, v němž se žurnalistika ustavuje jako profese s vlastními normami, vzděláváním, etikou, profesní identitou a relativní autonomií. ~",
+        "authors": [
+          "Denis McQuail"
+        ]
+      },
+      {
+        "term": "profesní role novináře",
+        "definition": "Normativní a praktické pojetí toho, co má novinář dělat: informovat, kontrolovat moc, interpretovat, mobilizovat, poskytovat servis nebo moderovat veřejnou debatu. ~",
+        "authors": []
+      },
+      {
+        "term": "redakční rutina",
+        "definition": "Ustálený postup práce, který usnadňuje produkci obsahu v časovém tlaku, ale zároveň formuje, co a jak se dostane do médií. ~",
+        "authors": [
+          "Gaye Tuchman"
+        ]
+      },
+      {
+        "term": "gatekeeping",
+        "definition": "Výběr a filtrování témat, zdrojů a informací; tvůrci a editorská hierarchie rozhodují, co se stane mediálním obsahem. ~",
+        "authors": [
+          "David Manning White"
+        ]
+      },
+      {
+        "term": "mediální pole",
+        "definition": "Relativně autonomní prostor produkce mediálních obsahů, v němž aktéři bojují o pozice, kapitál, uznání, publikum a vliv. ~",
+        "authors": [
+          "Pierre Bourdieu"
+        ]
+      },
+      {
+        "term": "habitus",
+        "definition": "Vtělené dispozice, které formují vkus, jednání a profesní praktiky; v materiálech je habitus spojován se sociální pozicí a nerovností.",
+        "authors": [
+          "Pierre Bourdieu"
+        ]
+      },
+      {
+        "term": "symbolický kapitál",
+        "definition": "Uznání, prestiž, legitimita a autorita, které mohou tvůrci nebo instituce proměňovat ve vliv na definici reality. ~",
+        "authors": [
+          "Pierre Bourdieu"
+        ]
+      },
+      {
+        "term": "multiskilling",
+        "definition": "Požadavek, aby mediální pracovník zvládal více činností najednou, například psaní, natáčení, editaci, fotografii, sociální sítě a práci s daty. ~",
+        "authors": []
+      },
+      {
+        "term": "datafikace redakční práce",
+        "definition": "Proměna tvorby obsahu pod tlakem měření kliků, sledovanosti, času stráveného u obsahu, engagementu a algoritmické viditelnosti. ~",
+        "authors": []
+      },
+      {
+        "term": "participativní tvorba obsahů",
+        "definition": "Stav, kdy se na produkci a cirkulaci mediálních obsahů podílí také publikum, fanoušci, uživatelé platforem a neprofesionální tvůrci. ~",
+        "authors": [
+          "Henry Jenkins"
+        ]
+      }
+    ],
+    "authors": [
+      {
+        "name": "Pierre Bourdieu",
+        "role": "Materiály jej používají pro habitus, sociální pozici, kapitál a mocenské asymetrie; tyto pojmy pomáhají vysvětlit mediální pole a postavení tvůrců."
+      },
+      {
+        "name": "Max Weber",
+        "role": "Materiály jej uvádějí u autority a moci; použitelný pro rozlišení typů legitimity a autority v institucích."
+      },
+      {
+        "name": "Erving Goffman",
+        "role": "Materiály jej uvádějí u moci a sociální interakce; vhodný pro výklad rolí, prezentace sebe sama a situovanosti komunikace."
+      },
+      {
+        "name": "Brian McNair",
+        "role": "Sociologie žurnalistiky: žurnalistika jako profese, role novinářů, vztah žurnalistiky k politice, trhu a veřejnosti. ~"
+      },
+      {
+        "name": "Gaye Tuchman",
+        "role": "Novinářské rutiny a zpravodajská produkce; ukazuje, jak organizace redakce ovlivňuje obsah. ~"
+      },
+      {
+        "name": "David Manning White",
+        "role": "Gatekeeping: editor jako aktér výběru zpráv a témat. ~"
+      },
+      {
+        "name": "Henry Jenkins",
+        "role": "Participativní kultura a proměna hranice mezi producenty a publikem v digitálním prostředí. ~"
+      }
+    ],
     "examiner_focus": [
-      "Otázka chybí."
+      "Studující má umět vysvětlit, že mediální obsah nevzniká jen individuální kreativitou, ale v organizaci, profesní kultuře a mocenském poli.",
+      "Má znát základní profesní role a normy žurnalistiky. ~",
+      "Má propojit Bourdieuovy pojmy habitus, pole a kapitál s mediální produkcí.",
+      "Má umět popsat, jak digitalizace a platformy mění práci tvůrců obsahů. ~"
     ],
-    "followup_questions": [],
-    "common_mistakes": [],
-    "source_refs": [],
-    "review_status": "missing_question_placeholder"
+    "followup_questions": [
+      "Jak může novinář ovlivnit výsledný mediální obsah?",
+      "Co je profesionalizace žurnalistiky? ~",
+      "Jak funguje gatekeeping? ~",
+      "Jak lze na mediální tvorbu aplikovat Bourdieuův pojem pole?",
+      "Jak se liší profesionální novinář, editor, influencer a participativní uživatel? ~"
+    ],
+    "common_mistakes": [
+      "Redukovat tvůrce obsahu jen na novináře a ignorovat editory, producenty, platformy a publika.",
+      "Předpokládat, že obsah je čistým výsledkem individuálního názoru autora.",
+      "Opomenout redakční rutiny, zdroje, hierarchie a tržní tlaky. ~",
+      "Použít Bourdieuovy pojmy jen jako jména bez vysvětlení vztahu pole–kapitál–habitus."
+    ],
+    "source_refs": [
+      {
+        "file": "05_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 4–20",
+        "relevance": "core"
+      },
+      {
+        "file": "04_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 1–12",
+        "relevance": "supporting"
+      },
+      {
+        "file": "06_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 1–8",
+        "relevance": "supporting"
+      }
+    ],
+    "review_status": "reviewed_from_zip_supplemented_marked"
   },
   {
     "id": "q19",
     "title": "19. Současná mediální publika a jejich proměny",
     "short_title": "Mediální publika",
     "outline": [
-      "Otázka chybí."
+      "Vymezit mediální publikum jako soubor aktuálních nebo potenciálních uživatelů mediálních obsahů a služeb; publikum není pouze masa pasivních příjemců. ~",
+      "Odlišit publikum, veřejnost a masu: materiály upozorňují na vztah davu, masy, veřejnosti, publik a paralelních veřejností.",
+      "Vysvětlit veřejnost jako forma málo organizovaného kolektivního jednání formovaná kolem tématu a společného zájmu.",
+      "Představit Habermasův pojem veřejné sféry: prostor debaty, v němž se může formovat veřejné mínění; moderní média tento prostor rozšiřují i komercializují. ~",
+      "Popsat důsledky digitalizace a online médií pro publika: fragmentace, individualizace, interaktivita, participace, datafikace, algoritmická distribuce a konvergence. ~",
+      "Vysvětlit konvergentní publika: publika užívají stará i nová média v každodenních mediálních repertoárech a přecházejí mezi platformami. ~",
+      "Vysvětlit rozptýlená publika: mediální příjem není vázán na jednotný čas, prostor ani jeden kanál; publika jsou situovaná v každodennosti, sítích a platformách. ~",
+      "Ukázat vztah médií, publik a moci: publika jsou měřena, komodifikována, aktivizována, segmentována a zároveň mohou tvořit, sdílet a odporovat dominantním významům. ~"
     ],
-    "key_terms": [],
-    "authors": [],
+    "key_terms": [
+      {
+        "term": "mediální publikum",
+        "definition": "Soubor aktuálních nebo potenciálních příjemců, uživatelů a interpretů mediálních služeb a obsahů; publikum lze chápat jako trh, veřejnost, komunitu, fanoušky nebo aktivní uživatele. ~",
+        "authors": [
+          "Denis McQuail"
+        ]
+      },
+      {
+        "term": "masa",
+        "definition": "Rozptýlená forma kolektivního jednání nebo příjemců, která není fyzicky shromážděná jako dav; v materiálech je odlišena od davu a veřejnosti.",
+        "authors": []
+      },
+      {
+        "term": "veřejnost",
+        "definition": "Kolektiv formovaný kolem tématu nebo společného zájmu; historicky proměnlivý pojem spojený s politickou mocí a rozšiřováním účasti.",
+        "authors": [
+          "Jürgen Habermas"
+        ]
+      },
+      {
+        "term": "paralelní veřejnosti",
+        "definition": "Různé veřejnosti vznikající vedle dominantní veřejné sféry, často kolem odlišných zkušeností, identit, zájmů nebo nerovností.",
+        "authors": []
+      },
+      {
+        "term": "veřejná sféra",
+        "definition": "Prostor společenského života, v němž mohou lidé diskutovat záležitosti obecného zájmu a formovat veřejné mínění; média jsou její infrastrukturou i problémem. ~",
+        "authors": [
+          "Jürgen Habermas"
+        ]
+      },
+      {
+        "term": "aktivní publikum",
+        "definition": "Pojetí, podle něhož publika mediální obsahy nejen pasivně přijímají, ale interpretují, používají, odmítají, sdílejí a začleňují do svých životů. ~",
+        "authors": [
+          "Stuart Hall",
+          "Ien Ang"
+        ]
+      },
+      {
+        "term": "publikum jako trh",
+        "definition": "Pojetí publika jako měřitelného souboru spotřebitelů mediálních služeb a pozornosti; důležité pro reklamu a ekonomiku médií. ~",
+        "authors": [
+          "Denis McQuail"
+        ]
+      },
+      {
+        "term": "publikum jako veřejnost",
+        "definition": "Normativní pojetí publika jako občanů a účastníků veřejné debaty, nejen jako spotřebitelů mediálního zboží. ~",
+        "authors": [
+          "Jürgen Habermas",
+          "Denis McQuail"
+        ]
+      },
+      {
+        "term": "konvergentní publikum",
+        "definition": "Publikum, které kombinuje stará a nová média, platformy a zařízení; jeho mediální praxe se skládá z každodenních mediálních repertoárů. ~",
+        "authors": [
+          "Henry Jenkins",
+          "Jakub Macek"
+        ]
+      },
+      {
+        "term": "mediální repertoár",
+        "definition": "Soubor médií, platforem, žánrů a uživatelských rutin, které lidé pravidelně kombinují v každodenním životě. ~",
+        "authors": [
+          "Jakub Macek"
+        ]
+      },
+      {
+        "term": "rozptýlené publikum",
+        "definition": "Publikum rozptýlené v prostoru, čase i platformách; jeho pozornost je fragmentovaná a mediální užívání probíhá v různých situacích každodennosti. ~",
+        "authors": [
+          "Nick Abercrombie",
+          "Brian Longhurst"
+        ]
+      },
+      {
+        "term": "participativní kultura",
+        "definition": "Kultura, v níž uživatelé nejsou jen příjemci, ale také tvůrci, komentátoři, distributoři a hodnotitelé mediálních obsahů. ~",
+        "authors": [
+          "Henry Jenkins"
+        ]
+      },
+      {
+        "term": "datafikace publika",
+        "definition": "Proměna publika na měřitelná data o sledovanosti, klikání, sdílení, engagementu a preferencích; tato data slouží platformám, médiím i inzerci. ~",
+        "authors": []
+      },
+      {
+        "term": "algoritmická distribuce",
+        "definition": "Způsob šíření obsahu, v němž viditelnost a dosah určuje platformní algoritmus, nikoli pouze redakční výběr nebo chronologické pořadí. ~",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Jürgen Habermas",
+        "role": "Veřejná sféra a historická proměna veřejnosti; materiály pokrývají veřejnost, veřejný prostor a vztah médií k veřejnému."
+      },
+      {
+        "name": "Denis McQuail",
+        "role": "Publikum jako trh, veřejnost, sociální skupina a soubor uživatelů médií; doplněno pro systematické vymezení publika. ~"
+      },
+      {
+        "name": "Stuart Hall",
+        "role": "Aktivní publikum a dekódování mediálních sdělení: dominantní, vyjednávané a opoziční čtení. ~"
+      },
+      {
+        "name": "Ien Ang",
+        "role": "Doplněna pro interpretativní výzkum publik a kritiku představy publika jako snadno měřitelné masy. ~"
+      },
+      {
+        "name": "Henry Jenkins",
+        "role": "Konvergence a participativní kultura; publika se podílejí na cirkulaci a tvorbě mediálních obsahů. ~"
+      },
+      {
+        "name": "Jakub Macek",
+        "role": "Proměna současných českých publik, mediální repertoáry, konvergentní publika a každodenní užívání starých i nových médií. ~"
+      },
+      {
+        "name": "Nick Abercrombie a Brian Longhurst",
+        "role": "Doplněni pro pojem rozptýleného publika a proměnu recepce v každodenní mediální zkušenosti. ~"
+      }
+    ],
     "examiner_focus": [
-      "Otázka chybí."
+      "Studující má umět odlišit publikum, veřejnost, masu a trh.",
+      "Má vysvětlit historickou i současnou proměnu veřejnosti v souvislosti s médii.",
+      "Má ukázat, že digitalizace nemění jen technologii distribuce, ale i každodenní praktiky publika. ~",
+      "Má vysvětlit konvergentní a rozptýlená publika a uvést příklady z online prostředí. ~"
     ],
-    "followup_questions": [],
-    "common_mistakes": [],
-    "source_refs": [],
-    "review_status": "missing_question_placeholder"
+    "followup_questions": [
+      "Jaký je rozdíl mezi publikem a veřejností?",
+      "Jak materiály odlišují dav, masu a veřejnost?",
+      "Co znamená veřejná sféra? ~",
+      "Co je aktivní publikum? ~",
+      "Jak se mění publika v prostředí platforem a algoritmů? ~",
+      "Co znamená mediální repertoár? ~"
+    ],
+    "common_mistakes": [
+      "Zaměnit publikum za homogenní masu.",
+      "Předpokládat, že online publika jsou automaticky svobodnější nebo aktivnější.",
+      "Opomenout ekonomickou stránku měření a komodifikace publika. ~",
+      "Zaměnit veřejnost jako politický pojem s publikem jako příjemci obsahu.",
+      "Vykládat konvergenci jen jako technické spojení zařízení, nikoli jako proměnu mediálních praktik. ~"
+    ],
+    "source_refs": [
+      {
+        "file": "06_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 1–10",
+        "relevance": "core"
+      },
+      {
+        "file": "02_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 1–8",
+        "relevance": "supporting"
+      },
+      {
+        "file": "01_2026.md",
+        "source_type": "zip: sociologie_medii / pdf-derived markdown",
+        "pages_or_slides": "Pages 10–20",
+        "relevance": "supporting"
+      }
+    ],
+    "review_status": "reviewed_from_zip_supplemented_marked"
   },
   {
     "id": "q20",

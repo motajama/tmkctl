@@ -6,8 +6,32 @@ from __future__ import annotations
 import argparse
 import json
 import re
+from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Iterable
+
+SUPPORTED_EXTENSIONS = {".txt", ".md", ".pdf", ".docx", ".pptx"}
+TYPE_BY_EXTENSION = {
+    ".txt": "txt",
+    ".md": "md",
+    ".pdf": "pdf",
+    ".docx": "docx",
+    ".pptx": "pptx",
+}
+MISSING_MESSAGES = {
+    "pdf": "Skipping PDF extraction; install pymupdf.",
+    "docx": "Skipping DOCX extraction; install python-docx.",
+    "pptx": "Skipping PPTX extraction; install python-pptx.",
+}
+
+
+@dataclass
+class ExtractStats:
+    files_scanned: int = 0
+    files_processed: int = 0
+    files_skipped: int = 0
+    unsupported: int = 0
+    chunks_written: int = 0
+    missing_dependencies: set[str] = field(default_factory=set)
 
 
 def normalize_text(text: str) -> str:
@@ -45,105 +69,145 @@ def safe_stem(path: Path) -> str:
     return re.sub(r"[^A-Za-z0-9]+", "_", path.stem).strip("_").lower() or "source"
 
 
-def read_txt_like(path: Path) -> list[tuple[int | None, str]]:
-    return [(None, path.read_text(encoding="utf-8", errors="replace"))]
+def is_ignored_path(path: Path) -> bool:
+    return (
+        any(part.startswith(".") for part in path.parts)
+        or path.name == ".gitkeep"
+        or path.name.startswith("~$")
+    )
 
 
-def read_pdf(path: Path) -> list[tuple[int | None, str]]:
+def read_text_with_fallback(path: Path) -> str:
+    for encoding in ["utf-8", "utf-8-sig", "cp1250", "latin-1"]:
+        try:
+            return path.read_text(encoding=encoding)
+        except UnicodeDecodeError:
+            continue
+    return path.read_text(encoding="utf-8", errors="replace")
+
+
+def read_txt_like(path: Path) -> list[dict[str, object]]:
+    return [{"page": None, "slide": None, "text": read_text_with_fallback(path)}]
+
+
+def read_pdf(path: Path, stats: ExtractStats) -> list[dict[str, object]]:
     try:
         import fitz  # type: ignore
     except ImportError:
-        print("Skipping PDF extraction; install pymupdf.")
+        stats.missing_dependencies.add("pdf")
         return []
 
-    pages: list[tuple[int | None, str]] = []
+    pages: list[dict[str, object]] = []
     with fitz.open(path) as document:
         for index, page in enumerate(document, start=1):
-            pages.append((index, page.get_text("text")))
+            pages.append({"page": index, "slide": None, "text": page.get_text("text")})
     return pages
 
 
-def read_docx(path: Path) -> list[tuple[int | None, str]]:
+def read_docx(path: Path, stats: ExtractStats) -> list[dict[str, object]]:
     try:
         import docx  # type: ignore
     except ImportError:
-        print("Skipping DOCX extraction; install python-docx.")
+        stats.missing_dependencies.add("docx")
         return []
 
     document = docx.Document(path)
     text = "\n".join(paragraph.text for paragraph in document.paragraphs)
-    return [(None, text)]
+    return [{"page": None, "slide": None, "text": text}]
 
 
-def read_pptx(path: Path) -> list[tuple[int | None, str]]:
+def read_pptx(path: Path, stats: ExtractStats) -> list[dict[str, object]]:
     try:
         from pptx import Presentation  # type: ignore
     except ImportError:
-        print("Skipping PPTX extraction; install python-pptx.")
+        stats.missing_dependencies.add("pptx")
         return []
 
     presentation = Presentation(path)
-    slides: list[tuple[int | None, str]] = []
+    slides: list[dict[str, object]] = []
     for index, slide in enumerate(presentation.slides, start=1):
         parts: list[str] = []
         for shape in slide.shapes:
             text = getattr(shape, "text", "")
             if text:
                 parts.append(text)
-        slides.append((index, "\n".join(parts)))
+        slides.append({"page": None, "slide": index, "text": "\n".join(parts)})
     return slides
 
 
-def iter_sources(materials_dir: Path) -> Iterable[tuple[Path, str]]:
-    mapping = {
-        "txt": ".txt",
-        "md": ".md",
-        "pdf": ".pdf",
-        "docx": ".docx",
-        "pptx": ".pptx",
-    }
-    for subdir, suffix in mapping.items():
-        root = materials_dir / subdir
-        if not root.is_dir():
-            continue
-        for path in sorted(root.rglob(f"*{suffix}")):
-            if path.name.startswith("."):
-                continue
-            yield path, subdir
-
-
-def extract_source(path: Path, kind: str) -> list[tuple[int | None, str]]:
-    if kind in {"txt", "md"}:
+def extract_source(path: Path, source_type: str, stats: ExtractStats) -> list[dict[str, object]]:
+    if source_type in {"txt", "md"}:
         return read_txt_like(path)
-    if kind == "pdf":
-        return read_pdf(path)
-    if kind == "docx":
-        return read_docx(path)
-    if kind == "pptx":
-        return read_pptx(path)
+    if source_type == "pdf":
+        return read_pdf(path, stats)
+    if source_type == "docx":
+        return read_docx(path, stats)
+    if source_type == "pptx":
+        return read_pptx(path, stats)
     return []
 
 
-def build_corpus(materials_dir: Path, chunk_chars: int, overlap_chars: int) -> list[dict[str, object]]:
+def iter_material_files(materials_dir: Path, stats: ExtractStats) -> list[Path]:
+    paths: list[Path] = []
+    if not materials_dir.exists():
+        return paths
+    for path in sorted(materials_dir.rglob("*")):
+        if not path.is_file() or is_ignored_path(path):
+            continue
+        stats.files_scanned += 1
+        if path.suffix.lower() not in SUPPORTED_EXTENSIONS:
+            stats.files_skipped += 1
+            stats.unsupported += 1
+            continue
+        paths.append(path)
+    return paths
+
+
+def chunk_marker(page: object, slide: object) -> str:
+    if isinstance(slide, int):
+        return f"s{slide:03d}"
+    if isinstance(page, int):
+        return f"p{page:03d}"
+    return "p000"
+
+
+def build_corpus(materials_dir: Path, chunk_chars: int, overlap_chars: int) -> tuple[list[dict[str, object]], ExtractStats]:
+    stats = ExtractStats()
     rows: list[dict[str, object]] = []
-    for source_path, kind in iter_sources(materials_dir):
-        extracted = extract_source(source_path, kind)
-        for page, text in extracted:
-            chunks = chunk_text(text, chunk_chars, overlap_chars)
+    for source_path in iter_material_files(materials_dir, stats):
+        source_type = TYPE_BY_EXTENSION[source_path.suffix.lower()]
+        extracted = extract_source(source_path, source_type, stats)
+        if not extracted:
+            stats.files_skipped += 1
+            continue
+
+        wrote_for_file = False
+        for unit in extracted:
+            chunks = chunk_text(str(unit.get("text", "")), chunk_chars, overlap_chars)
             for index, chunk in enumerate(chunks, start=1):
-                page_part = f"p{page:03d}" if page is not None else "p000"
-                chunk_id = f"{safe_stem(source_path)}_{page_part}_c{index:03d}"
+                page = unit.get("page")
+                slide = unit.get("slide")
+                marker = chunk_marker(page, slide)
+                chunk_id = f"{safe_stem(source_path)}_{marker}_c{index:03d}"
                 rows.append(
                     {
                         "chunk_id": chunk_id,
                         "source": source_path.name,
                         "source_path": source_path.as_posix(),
+                        "source_type": source_type,
                         "page": page,
+                        "slide": slide,
                         "text": chunk,
                         "char_count": len(chunk),
                     }
                 )
-    return rows
+                wrote_for_file = True
+        if wrote_for_file:
+            stats.files_processed += 1
+        else:
+            stats.files_skipped += 1
+    stats.chunks_written = len(rows)
+    return rows, stats
 
 
 def main() -> int:
@@ -159,13 +223,24 @@ def main() -> int:
     if args.overlap_chars < 0 or args.overlap_chars >= args.chunk_chars:
         parser.error("--overlap-chars must be non-negative and smaller than --chunk-chars")
 
-    rows = build_corpus(args.materials_dir, args.chunk_chars, args.overlap_chars)
+    rows, stats = build_corpus(args.materials_dir, args.chunk_chars, args.overlap_chars)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("w", encoding="utf-8") as handle:
         for row in rows:
             handle.write(json.dumps(row, ensure_ascii=False) + "\n")
 
-    print(f"Wrote {len(rows)} chunks to {args.output}")
+    for key in sorted(stats.missing_dependencies):
+        print(MISSING_MESSAGES[key])
+    print(f"files scanned: {stats.files_scanned}")
+    print(f"files processed: {stats.files_processed}")
+    print(f"files skipped: {stats.files_skipped}")
+    print(f"unsupported files skipped: {stats.unsupported}")
+    print(
+        "missing optional dependencies: "
+        + (", ".join(sorted(stats.missing_dependencies)) if stats.missing_dependencies else "none")
+    )
+    print(f"chunks written: {stats.chunks_written}")
+    print(f"output: {args.output}")
     return 0
 
 

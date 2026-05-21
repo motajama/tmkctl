@@ -1,0 +1,1412 @@
+[
+  {
+    "id": "metodologie-q01",
+    "title": "Věda a vědecké poznání",
+    "short_title": "Vědecké poznání",
+    "outline": [
+      "Vymezit vědu jako systematizovaný soubor poznatků i jako proces generování poznání podle pravidel.",
+      "Odlišit vědecké poznání od každodenního poznání: systematičnost, metoda, organizované poznávání, práce s pochybností, abstraktní jazyk, transparentnost a intersubjektivita.",
+      "Vysvětlit základní cíle vědy: popis, vysvětlení/porozumění a předpověď.",
+      "Představit hlavní přístupy v teorii vědy: pozitivismus/empirismus, Popperův falzifikacionismus, Kuhnovo paradigma a vědecké revoluce, Lakatosův výzkumný program, Feyerabendův epistemologický anarchismus.",
+      "Popsat hlavní paradigmata sociálních věd: pozitivismus, interpretativismus a kritický realismus.",
+      "Vysvětlit mediální studia jako interdisciplinární vědeckou disciplínu a pojmenovat jejich hlavní výzkumné tradice a oblasti."
+    ],
+    "key_terms": [
+      {
+        "term": "věda",
+        "definition": "Soubor systematicky utříděných poznatků o určité tematické oblasti i proces generování těchto poznatků pomocí pevně stanovených pravidel. V materiálech je zdůrazněna systematičnost, metoda, veřejnost, ověřitelnost, kredibilita, konzistence, kumulativnost, intersubjektivita, transparentnost, sebereflexivita a etika.",
+        "authors": []
+      },
+      {
+        "term": "vědecké poznání",
+        "definition": "Poznání, které je reflektované, metodické, organizované, pracuje s pochybnostmi, hledá alternativy, užívá abstraktní jazyk a musí být veřejně kontrolovatelné. Na rozdíl od každodenních znalostí nespoléhá pouze na rutinu a nezpochybňované zkušenosti.",
+        "authors": [
+          "Jan Hendl"
+        ]
+      },
+      {
+        "term": "metoda vědy podle Peirce",
+        "definition": "Jedna ze čtyř cest od pochybování ke stavu trvalé víry. Vedle metody vytrvalosti, autority a metody a priori je metoda vědy založena na kontrole přesvědčení prostřednictvím zkušenosti, argumentace a veřejně ověřitelných postupů.",
+        "authors": [
+          "Charles S. Peirce"
+        ]
+      },
+      {
+        "term": "pozitivismus / empirismus",
+        "definition": "Pojetí, podle něhož legitimní poznání vychází ze smyslové zkušenosti, empirických faktů a objektivně kontrolovatelných procedur. Materiály zároveň upozorňují na limity naivního empirismu: pozorování není čistý přístup k realitě, je ovlivněno očekáváním, jazykem a teorií.",
+        "authors": [
+          "Auguste Comte"
+        ]
+      },
+      {
+        "term": "falzifikacionismus",
+        "definition": "Pojetí vědy, podle něhož teorie nikdy definitivně nedokazujeme jako pravdivé, ale testujeme je pokusy o vyvrácení. Vědecká teorie má být formulována tak, aby byla principiálně empiricky falzifikovatelná.",
+        "authors": [
+          "Karl Raimund Popper"
+        ]
+      },
+      {
+        "term": "falibilismus",
+        "definition": "Přesvědčení, že vědecké poznání je dočasné, zkusmé a otevřené revizi. I dobře podložené tvrzení může být v budoucnu nahrazeno odolnější teorií.",
+        "authors": [
+          "Karl Raimund Popper"
+        ]
+      },
+      {
+        "term": "paradigma",
+        "definition": "Celek předpokladů, poznatků a správných postupů, který poskytuje poznávací východisko pro určitou tradici vědeckého výzkumu. V normální vědě je paradigma rozvíjeno, hromadění anomálií může vést k vědecké revoluci.",
+        "authors": [
+          "Thomas S. Kuhn"
+        ]
+      },
+      {
+        "term": "vědecký výzkumný program",
+        "definition": "Lakatosovo pojetí vědy jako souboru teorií s tvrdým jádrem a ochranným pásmem pomocných hypotéz. Falzifikace nemusí ihned zrušit celou teorii, protože chyba může být v ochranném pásmu; progres spočívá v nahrazení degenerujícího programu progresivním.",
+        "authors": [
+          "Imre Lakatos"
+        ]
+      },
+      {
+        "term": "epistemologický anarchismus",
+        "definition": "Feyerabendovo odmítnutí univerzální závazné vědecké metody. Materiály jej shrnují principem „anything goes“ a zároveň uvádějí kritiku, že takové pojetí může vést k problému, jak vůbec srovnávat teorie a obhájit vývoj poznání.",
+        "authors": [
+          "Paul K. Feyerabend"
+        ]
+      },
+      {
+        "term": "pozitivismus v sociálních vědách",
+        "definition": "Paradigma, které chce sociální vědy budovat po vzoru věd přírodních: pracuje s empirickými daty, přímým pozorováním, čísly, objektivitou, hypotézami, generalizacemi a izolováním vztahů mezi sociálními fakty.",
+        "authors": [
+          "Auguste Comte"
+        ]
+      },
+      {
+        "term": "interpretativismus",
+        "definition": "Paradigma, které zdůrazňuje, že lidé a instituce se nemají zkoumat stejně jako přírodní objekty. Hlavní zájem není kauzální zákon, ale porozumění smyslům, které aktéři dávají svému jednání a sociálním světům.",
+        "authors": [
+          "Max Weber"
+        ]
+      },
+      {
+        "term": "kritický realismus",
+        "definition": "Paradigma, které se snaží skloubit pozitivismus a interpretativismus: sociální realita je podle něj externí a poznatelná, ale každodenní jednání je zároveň reprodukováno a transformováno v kontextu širších sociálních a kulturních formací.",
+        "authors": []
+      },
+      {
+        "term": "mediální studia jako vědecká disciplína",
+        "definition": "Interdisciplinární obor, který nezkoumá jen média jako technické prostředky, ale i mediální organizace, obsahy, publika, politicko-ekonomické podmínky, důsledky, účinky a efekty mediální komunikace.",
+        "authors": [
+          "Volek",
+          "Jirák",
+          "Köpplová"
+        ]
+      },
+      {
+        "term": "čtyři výzkumné tradice mediálních studií",
+        "definition": "Materiály rozlišují tradici kognitivně-empirickou, kriticko-spekulativní, kulturální a komunikačně-technologickou. První se zaměřuje na empirický výzkum účinků, druhá na kritiku médií a ideologie, třetí na text i recepční strategie a čtvrtá na média jako technologie proměňující společnost a komunikaci.",
+        "authors": [
+          "Adorno",
+          "Horkheimer",
+          "Harold Innis",
+          "Marshall McLuhan"
+        ]
+      }
+    ],
+    "authors": [
+      {
+        "name": "Charles S. Peirce",
+        "role": "V materiálech slouží k výkladu cest od pochybování ke stavu trvalé víry: metoda vytrvalosti, metoda autority, metoda a priori a metoda vědy."
+      },
+      {
+        "name": "Jan Hendl",
+        "role": "Materiály jej používají pro odlišení každodenních znalostí a vědeckého poznání: věda je systematizovaná, metodická, organizovaná, otevřená pochybnostem a používá abstraktní jazyk."
+      },
+      {
+        "name": "Auguste Comte",
+        "role": "Autor spojovaný s pozitivismem a zákonem tří stádií: teologické, metafyzické a pozitivní/vědecké stadium."
+      },
+      {
+        "name": "Karl Raimund Popper",
+        "role": "Falzifikacionismus, hypoteticko-deduktivní metoda a falibilismus; vědecké tvrzení je dočasné a musí zůstat otevřené vyvrácení."
+      },
+      {
+        "name": "Thomas S. Kuhn",
+        "role": "Paradigma, normální věda, anomálie a vědecká revoluce jako změna dominantního paradigmatu."
+      },
+      {
+        "name": "Imre Lakatos",
+        "role": "Vědecký výzkumný program, tvrdé jádro a ochranné pásmo; rozlišení progresivních a degenerujících programů."
+      },
+      {
+        "name": "Paul K. Feyerabend",
+        "role": "Epistemologický anarchismus a princip „anything goes“; kritika univerzální vědecké metody."
+      },
+      {
+        "name": "Max Weber",
+        "role": "V materiálech reprezentuje sociologii jako chápající/rozumějící vědu a interpretativní důraz na smysl jednání."
+      },
+      {
+        "name": "Ien Ang",
+        "role": "Příklad interpretativního paradigmatu v mediálním výzkumu: Watching Dallas a aktivní divácké strategie."
+      },
+      {
+        "name": "Harold Innis a Marshall McLuhan",
+        "role": "Torontská komunikační škola v komunikačně-technologické tradici mediálních studií: média jako technologie proměňující společenské systémy a komunikační chování."
+      }
+    ],
+    "examiner_focus": [
+      "Studující má vysvětlit, proč vědecké poznání není totéž co běžná zkušenost nebo názor.",
+      "Má umět ukázat, že empirická data nejsou „čistá fakta“ bez teorie, jazyka a pozorovacího rámce.",
+      "Má odlišit Popperovu falzifikaci, Kuhnovo paradigma, Lakatosův výzkumný program a Feyerabendovu kritiku metody.",
+      "Má umět popsat pozitivismus, interpretativismus a kritický realismus jako odlišné odpovědi na otázku povahy sociální reality a poznání.",
+      "Má propojit obecnou teorii vědy s mediálními studii jako interdisciplinárním oborem."
+    ],
+    "followup_questions": [
+      "Proč nestačí říct, že věda je založena na faktech?",
+      "Jaký je rozdíl mezi verifikací a falzifikací?",
+      "Co je paradigma a co se podle Kuhna děje při vědecké revoluci?",
+      "Jak by se lišil pozitivistický a interpretativní výzkum stejného mediálního problému?",
+      "Proč jsou mediální studia multiparadigmatická?"
+    ],
+    "common_mistakes": [
+      "Ztotožnění vědeckého poznání s jakýmkoliv přesvědčením podloženým čísly.",
+      "Naivní empirismus: představa, že pozorování samo o sobě stačí k pravdivému poznání.",
+      "Záměna Popperovy falzifikace za běžné ověřování hypotéz.",
+      "Redukce paradigmat sociálních věd jen na kvantitativní versus kvalitativní metody.",
+      "Opomenutí toho, že mediální studia nejsou jen studiem obsahů, ale také institucí, publik, technologií, ekonomiky, účinků a společenských podmínek médií."
+    ],
+    "source_refs": [
+      {
+        "file": "prednaska3.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–32",
+        "relevance": "core"
+      },
+      {
+        "file": "prednaska4.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–40",
+        "relevance": "core"
+      },
+      {
+        "file": "prednaska5.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–43",
+        "relevance": "core"
+      },
+      {
+        "file": "metodologie_prednaska1_uvod.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 3–10",
+        "relevance": "supporting"
+      },
+      {
+        "file": "szz_tmk_jednoobor_hlavni_vedlejsi_verze_03_2025.pdf",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "D. Metodologie mediálního výzkumu: otázky 38/35",
+        "relevance": "official_question_list"
+      }
+    ],
+    "review_status": "source_based_draft"
+  },
+  {
+    "id": "metodologie-q02",
+    "title": "Logika a design sociálně-vědného výzkumu",
+    "short_title": "Design výzkumu",
+    "outline": [
+      "Vymezit účel výzkumu: explorativní, deskriptivní a explanační výzkum; základní a aplikovaný výzkum.",
+      "Vysvětlit logiku výzkumu: indukce a dedukce, vztah mezi teorií, hypotézami a empirickými daty.",
+      "Popsat hlavní fáze empirického výzkumu od tématu a problému přes rešerši, cíl, výzkumné otázky/hypotézy, konceptualizaci, operacionalizaci a výběr metody až po interpretaci a limity.",
+      "Srovnat kvantitativní, kvalitativní a smíšený výzkum podle logiky, cíle, typu dat, výběru vzorku a způsobu práce s teorií.",
+      "Vyložit rozdíl mezi metodou, technikou sběru dat, výzkumným nástrojem a analýzou dat.",
+      "Popsat časovou dimenzi výzkumu: průřezové a longitudinální studie, retrospektivní a prospektivní přístupy, analýza trendů, kohortová a panelová studie."
+    ],
+    "key_terms": [
+      {
+        "term": "explorativní výzkum",
+        "definition": "Výzkum používaný tam, kde je existující poznání velmi omezené nebo neexistuje. Jeho hlavní otázky jsou typu „co se děje?“ a cílem je počáteční seznámení s tématem a rozvinutí teorie.",
+        "authors": []
+      },
+      {
+        "term": "deskriptivní výzkum",
+        "definition": "Výzkum pro situace, kdy poznání existuje, ale je nekompletní. Ptá se zejména „jak, kdo, kde, kdy?“ a usiluje o přesný popis, kategorizaci a klasifikaci jevů.",
+        "authors": []
+      },
+      {
+        "term": "explanační výzkum",
+        "definition": "Výzkum používaný u dobře rozpracovaných témat. Ptá se „proč?“ a usiluje o testování teorie nebo hypotézy a vysvětlení jevů a situací.",
+        "authors": []
+      },
+      {
+        "term": "základní výzkum",
+        "definition": "Výzkum orientovaný na poznání pro poznání, s nepřímým použitím a primárním publikem ve vědecké komunitě.",
+        "authors": []
+      },
+      {
+        "term": "aplikovaný výzkum",
+        "definition": "Výzkum s bezprostředním praktickým použitím jako podklad pro rozhodování, hodnocení sociálních dopadů nebo řešení problémů; materiály upozorňují i na riziko zneužití pro soukromé či politické cíle.",
+        "authors": []
+      },
+      {
+        "term": "indukce",
+        "definition": "Výzkumná logika od jednotlivého k všeobecnému. Z jednotlivých případů se vytváří obecnější závěr, teorie nebo konceptuální porozumění.",
+        "authors": []
+      },
+      {
+        "term": "dedukce",
+        "definition": "Výzkumná logika od všeobecného k jednotlivému. Z obecného tvrzení nebo teorie se odvozují konkrétní očekávání či hypotézy, které se dále testují.",
+        "authors": []
+      },
+      {
+        "term": "výzkumné téma a výzkumný problém",
+        "definition": "Téma označuje, co zkoumáme; výzkumný problém je užší vymezení konkrétního problému v rámci tématu. Materiály zdůrazňují akademickou i společenskou relevanci problému.",
+        "authors": []
+      },
+      {
+        "term": "výzkumná otázka",
+        "definition": "Otázka obsahující základní proměnné nebo koncepty, které chceme zkoumat. Materiály uvádějí tři základní typy: „co?“ pro popis, „proč?“ pro vysvětlení a „jak?“ pro intervenci.",
+        "authors": []
+      },
+      {
+        "term": "hypotéza",
+        "definition": "Předběžný předpoklad nebo domněnka ve formě tvrzení. Musí být podložená, zdůvodněná a empiricky testovatelná; používá se k testování teorií.",
+        "authors": []
+      },
+      {
+        "term": "konceptualizace",
+        "definition": "Specifikace toho, co přesně myslíme jednotlivými termíny nebo koncepty. V designu výzkumu předchází operacionalizaci.",
+        "authors": []
+      },
+      {
+        "term": "operacionalizace",
+        "definition": "Stanovení indikátorů, prostřednictvím kterých budeme koncepty měřit nebo empiricky zachycovat. Materiály uvádějí příklad operacionalizace bulvarizace přes délku textu, vizualizaci, hard/soft news, témata, negativitu, personalizaci, zdroje či sportovní zprávy.",
+        "authors": []
+      },
+      {
+        "term": "indikátor",
+        "definition": "Empirická reprezentace pojmu nebo konceptu; konkrétní ukazatel, přes který se abstraktní koncept převádí do výzkumně uchopitelné podoby.",
+        "authors": []
+      },
+      {
+        "term": "kvantitativní výzkum",
+        "definition": "Přístup spojovaný v materiálech spíše s dedukcí, deskriptivním/explanačním cílem, měřením, náhodným výběrem, reprezentativitou, atomistickým pohledem a redukcí komplexity na měřitelné proměnné.",
+        "authors": [
+          "Jan Hendl",
+          "Norman Blaikie"
+        ]
+      },
+      {
+        "term": "kvalitativní výzkum",
+        "definition": "Přístup spojovaný v materiálech spíše s indukcí, explorací, hledáním smyslu, porozuměním, cíleným výběrem, holistickým pohledem, pružností designu a kontextovou interpretací.",
+        "authors": [
+          "Jan Hendl",
+          "Norman Blaikie"
+        ]
+      },
+      {
+        "term": "smíšený výzkum",
+        "definition": "Kombinace kvantitativních a kvalitativních přístupů v přípravě výzkumu, jeho realizaci nebo analýze dat.",
+        "authors": []
+      },
+      {
+        "term": "triangulace",
+        "definition": "Získávání více perspektiv na tentýž fenomén kombinací metod, dat, výzkumníků, zkoumaných skupin, lokálních a časových okolností nebo teoretických perspektiv.",
+        "authors": []
+      },
+      {
+        "term": "průřezová studie",
+        "definition": "Výzkum zachycující stav v jednom časovém bodě nebo období. Umožňuje popsat vztahy a rozdíly v daném okamžiku, nikoli přímo sledovat změnu v čase.",
+        "authors": []
+      },
+      {
+        "term": "longitudinální studie",
+        "definition": "Výzkum sledující proměnu v čase. Materiály uvádějí retrospektivní a prospektivní studie, analýzu trendů, kohortovou a panelovou studii.",
+        "authors": []
+      },
+      {
+        "term": "analýza trendů",
+        "definition": "Longitudinální design sledující změny ve stejné populaci v různých časech, nikoli nutně u stejných jedinců.",
+        "authors": []
+      },
+      {
+        "term": "kohortová studie",
+        "definition": "Longitudinální design sledující určitou kohortu nebo skupinu definovanou společnou charakteristikou v čase.",
+        "authors": []
+      },
+      {
+        "term": "panelová studie",
+        "definition": "Longitudinální design, který sleduje stejné jednotky opakovaně v čase.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Jan Hendl",
+        "role": "V materiálech je uveden u srovnání kvantitativního a kvalitativního výzkumu; kvalitativní výzkum je spojován s indukcí, porozuměním, cíleným výběrem a holistickým přístupem."
+      },
+      {
+        "name": "Norman Blaikie",
+        "role": "V materiálech je uveden u srovnání kvantitativního a kvalitativního výzkumu; slouží jako opora pro rozlišení výzkumných strategií a logiky designu."
+      },
+      {
+        "name": "Westerstahl",
+        "role": "V materiálech je uveden u vztahu teorie a konceptu: koncept jako abstrakce reprezentující objekt, vlastnost nebo fenomén, teorie jako specifikace vztahů mezi koncepty."
+      },
+      {
+        "name": "Creswell",
+        "role": "V seznamu povinné literatury k metodologii je uveden Research Design: Qualitative, Quantitative, and Mixed Methods Approaches; vztahuje se k návrhu kvalitativního, kvantitativního a smíšeného výzkumu."
+      },
+      {
+        "name": "Bryman",
+        "role": "V seznamu povinné literatury je uveden Social Research Methods; vztahuje se k designu sociálně-vědného výzkumu a srovnání metod."
+      }
+    ],
+    "examiner_focus": [
+      "Studující má umět odlišit účel výzkumu od použité metody.",
+      "Má umět vysvětlit, proč musí výzkum začít jasným problémem, otázkou a konceptualizací.",
+      "Má znát posloupnost fází empirického výzkumu a umět ji aplikovat na konkrétní mediální téma.",
+      "Má odlišit kvantitativní, kvalitativní a smíšený výzkum nejen podle technik, ale podle logiky poznání a typu dat.",
+      "Má umět vysvětlit, co je operacionalizace, a ukázat ji na příkladu mediálního konceptu.",
+      "Má rozumět časové dimenzi výzkumu a rozdílu mezi průřezovým, trendovým, kohortovým a panelovým designem."
+    ],
+    "followup_questions": [
+      "Jaký je rozdíl mezi výzkumným tématem a výzkumným problémem?",
+      "Jak byste operacionalizoval/a důvěru ve veřejnoprávní média?",
+      "Kdy byste zvolil/a explorativní a kdy explanační výzkum?",
+      "Jak se liší induktivní a deduktivní logika výzkumu?",
+      "Co znamená triangulace a kdy je užitečná?",
+      "Jaký design by byl vhodný pro sledování změn důvěry mladých lidí ve zpravodajská média v čase?"
+    ],
+    "common_mistakes": [
+      "Záměna výzkumné otázky za dotazníkovou otázku.",
+      "Přeskočení konceptualizace a operacionalizace a přímý skok k dotazníku nebo rozhovorům.",
+      "Mechanické přiřazení kvantitativní = lepší a kvalitativní = méně vědecký.",
+      "Nezdůvodněná kombinace metod bez jasné triangulační nebo smíšené logiky.",
+      "Záměna průřezového výzkumu za výzkum změny v čase.",
+      "Tvrzení kauzality na základě designu, který kauzalitu neumožňuje spolehlivě prokázat."
+    ],
+    "source_refs": [
+      {
+        "file": "prednaska6.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–28",
+        "relevance": "core"
+      },
+      {
+        "file": "prednaska8.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–32",
+        "relevance": "core"
+      },
+      {
+        "file": "metodologie_prednaska1_uvod.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 8–10",
+        "relevance": "supporting"
+      },
+      {
+        "file": "szz_tmk_jednoobor_hlavni_vedlejsi_verze_03_2025.pdf",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "D. Metodologie mediálního výzkumu: otázky 39/36",
+        "relevance": "official_question_list"
+      }
+    ],
+    "review_status": "source_based_draft"
+  },
+  {
+    "id": "metodologie-q03",
+    "title": "Role teorie ve výzkumu, vztah teorie a empirie",
+    "short_title": "Teorie a empirie",
+    "outline": [
+      "Vymezit teorii jako specifikaci vztahů mezi koncepty a vysvětlení, proč tyto vztahy existují.",
+      "Rozlišit koncept, teorii, hypotézu, empirická data a výzkumnou otázku.",
+      "Vysvětlit roli teorie v kvantitativním a kvalitativním výzkumu: testování teorií versus tvorba teorií.",
+      "Představit přehled literatury jako součást výzkumu a odlišit jej od samostatné přehledové studie.",
+      "Vysvětlit základní typy přehledových studií a logiku systematického přehledu.",
+      "Zařadit etiku v mediálním výzkumu a etiku publikování do celého výzkumného procesu."
+    ],
+    "key_terms": [
+      {
+        "term": "teorie",
+        "definition": "Specifikuje vztahy mezi koncepty a vysvětluje, proč tyto vztahy existují. Může popisovat nebo vysvětlovat určitý výsek reality; výzkum teorie vytváří, testuje, reviduje, zpřesňuje nebo vyvrací.",
+        "authors": []
+      },
+      {
+        "term": "koncept",
+        "definition": "Abstrakce reprezentující určitý fenomén, objekt nebo jeho vlastnost. Materiály uvádějí příklady jako zpravodajská hodnota, rámec, stereotyp, motivace nebo objektivita.",
+        "authors": []
+      },
+      {
+        "term": "teorie malého dosahu",
+        "definition": "Teorie zaměřená na jednotlivé vztahy a události, případně empirické generalizace. Materiály jako příklad uvádějí teorii zpravodajských hodnot.",
+        "authors": [
+          "Galtung",
+          "Ruge"
+        ]
+      },
+      {
+        "term": "teorie středního dosahu",
+        "definition": "Teorie vztahující se k ohraničené oblasti sociálních věd, která je relativně snadno testovatelná, ale má širší platnost než jednotlivá empirická generalizace.",
+        "authors": []
+      },
+      {
+        "term": "role teorie v kvantitativním výzkumu",
+        "definition": "Teorie stojí zpravidla na začátku výzkumu; na jejím základě se formulují hypotézy, které se prostřednictvím dat testují.",
+        "authors": []
+      },
+      {
+        "term": "role teorie v kvalitativním výzkumu",
+        "definition": "Teorie stojí zpravidla na konci výzkumu; cílem je na základě porozumění datům teorii vytvářet nebo rozvíjet, nikoli pouze testovat předem stanovenou hypotézu.",
+        "authors": []
+      },
+      {
+        "term": "teoretická stať",
+        "definition": "Akademický text zaměřený na rozvoj teorie nebo konceptuálního rámce. Obvykle neobsahuje vlastní empirický výzkum, ale analyzuje, systematizuje nebo kriticky rozvíjí existující poznatky.",
+        "authors": []
+      },
+      {
+        "term": "rešerše literatury",
+        "definition": "Práce s odbornými zdroji, jejímž účelem je popsat stav poznání k výzkumnému tématu a problému, vyhnout se objevování objeveného, najít mezery v poznání a zasadit vlastní výzkum do odborné diskuse.",
+        "authors": []
+      },
+      {
+        "term": "přehled literatury",
+        "definition": "Součást odborného textu, která vyhledává, shrnuje a vztahuje k vlastnímu výzkumu relevantní teoretickou, empirickou a kontextuální literaturu.",
+        "authors": []
+      },
+      {
+        "term": "přehledová studie",
+        "definition": "Samostatný typ odborného textu, který systematicky nebo narativně shrnuje existující poznatky, teorie, koncepty, metody a empirická zjištění o určitém tématu.",
+        "authors": [
+          "Jesson",
+          "Matheson",
+          "Lacey"
+        ]
+      },
+      {
+        "term": "systematický přehled",
+        "definition": "Přehledová studie s jasně definovanou otázkou, transparentní strategií vyhledávání, kritérii zařazení/vyřazení studií, hodnocením kvality studií a syntézou výsledků pomocí vědecké metodologie.",
+        "authors": [
+          "Kahn et al."
+        ]
+      },
+      {
+        "term": "PRISMA",
+        "definition": "Standard pro systematické přehledy a meta-analýzy; materiály jej popisují jako 17položkový checklist a průvodní diagram. Slouží k transparentnímu reportování systematického přehledu.",
+        "authors": []
+      },
+      {
+        "term": "etika ve výzkumu",
+        "definition": "Týká se celého výzkumného procesu od definice problému přes design, sběr dat, interpretaci a publikaci až po fungování vědeckých institucí, financování a rozhodování o vědě.",
+        "authors": []
+      },
+      {
+        "term": "informovaný souhlas",
+        "definition": "Souhlas obsahující účel a cíl výzkumu, průběh, rizika, výhody nebo odměnu, dobrovolnost, právo odstoupit, právo vědět, jak byla data použita, kontakt na výzkumníka a informace o nakládání s osobními údaji.",
+        "authors": []
+      },
+      {
+        "term": "anonymizace",
+        "definition": "Úprava dat tak, aby neobsahovala údaje přímo ani nepřímo umožňující identifikovat jedince nebo organizaci.",
+        "authors": []
+      },
+      {
+        "term": "pseudonymizace",
+        "definition": "Zpracování osobních údajů tak, že jsou identifikační údaje uchovány odděleně od výzkumných dat.",
+        "authors": []
+      },
+      {
+        "term": "etika publikování",
+        "definition": "Požadavek opakovatelné a ověřitelné studie, reportování všech dat včetně nepohodlných, nezměňování ani nezkreslování dat, jednorázové publikování téhož zjištění, vyhýbání se plagiátorství a autoplagiátorství a transparentnost práce s AI.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Galtung a Ruge",
+        "role": "V materiálech jsou uvedeni jako příklad teorie malého dosahu: teorie zpravodajských hodnot."
+      },
+      {
+        "name": "Jesson, Matheson a Lacey",
+        "role": "V materiálech jsou uvedeni u přehledových studií a rozlišení tradičních a systematických technik práce s literaturou."
+      },
+      {
+        "name": "Mareš",
+        "role": "V materiálech je uveden u typologie přehledových studií; rozlišuje typy podle cílů, otázek, dat, práce s daty a obecného cíle studie."
+      },
+      {
+        "name": "Kahn et al.",
+        "role": "V materiálech jsou citováni u definice systematického přehledu jako výzkumného článku, který identifikuje relevantní studie, hodnotí jejich kvalitu a shrnuje výsledky vědeckou metodologií."
+      },
+      {
+        "name": "Booth, Colomb a Williams",
+        "role": "V materiálech slouží k výkladu vědeckého argumentu: claim, reason, evidence a práce s otázkami, námitkami a alternativami."
+      },
+      {
+        "name": "Tuskegee Study",
+        "role": "Není autor, ale klíčový etický milník v materiálech: příklad výzkumného poškození, absence informovaného souhlasu a zatajování léčby."
+      }
+    ],
+    "examiner_focus": [
+      "Studující má umět vysvětlit, že teorie není dekorace v úvodu práce, ale určuje koncepty, vztahy, hypotézy, design a interpretaci.",
+      "Má odlišit koncept, teorii, hypotézu, indikátor a empirická data.",
+      "Má vysvětlit rozdíl mezi rolí teorie v kvantitativním a kvalitativním výzkumu.",
+      "Má umět rozlišit běžný přehled literatury v empirické stati od samostatné přehledové studie.",
+      "Má znát základní logiku systematického přehledu a proč je důležitá transparentnost výběru literatury.",
+      "Má umět zasadit etiku do celého výzkumného procesu, nikoli ji zúžit jen na podpis souhlasu."
+    ],
+    "followup_questions": [
+      "Jaký je rozdíl mezi konceptem a teorií?",
+      "Proč je selektivní čtení literatury problém?",
+      "Kdy je vhodné udělat systematický přehled místo nového empirického výzkumu?",
+      "Jaký je rozdíl mezi informovaným souhlasem, anonymizací a pseudonymizací?",
+      "Proč je Tuskegee Study eticky důležitý příklad?",
+      "Jak se eticky reportují data, která nepotvrzují očekávání výzkumníka?"
+    ],
+    "common_mistakes": [
+      "Chápat teorii jen jako seznam autorů, nikoli jako rámec vztahů mezi koncepty.",
+      "Zaměňovat rešerši literatury za libovolné shrnutí několika textů.",
+      "Uvádět systematický přehled bez jasných kritérií výběru a vyřazení studií.",
+      "Předstírat, že etika se týká jen rozhovorů, a ne designu, interpretace a publikace.",
+      "Zapomenout, že použití AI musí být transparentně přiznáno a že odpovědnost za přesnost práce zůstává na autorovi/autorce.",
+      "Neodlišit anonymizaci od pseudonymizace."
+    ],
+    "source_refs": [
+      {
+        "file": "prednaska7.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–44",
+        "relevance": "core"
+      },
+      {
+        "file": "prednaska3.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 20–31",
+        "relevance": "core"
+      },
+      {
+        "file": "metodologie_prednaska1_uvod.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 8–10",
+        "relevance": "supporting"
+      },
+      {
+        "file": "szz_tmk_jednoobor_hlavni_vedlejsi_verze_03_2025.pdf",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "D. Metodologie mediálního výzkumu: otázky 40/37",
+        "relevance": "official_question_list"
+      }
+    ],
+    "review_status": "source_based_draft"
+  },
+  {
+    "id": "metodologie-q04",
+    "title": "Výběr výzkumného souboru, validita, reliabilita",
+    "short_title": "Výběr, validita, reliabilita",
+    "outline": [
+      "Vymezit základní soubor/populaci a výběrový soubor/vzorek.",
+      "Vysvětlit rozdíl mezi parametrem a statistikou a vztah selekce a generalizace.",
+      "Odlišit pravděpodobnostní a nepravděpodobnostní výběry.",
+      "Popsat typy náhodného výběru: prostý náhodný, systematický, stratifikovaný, vícestupňový a skupinkový/cluster.",
+      "Popsat typy nenáhodného výběru: kvótní, sněhová koule, teoretický výběr, typické případy, kritické případy, maximální variace, homogenní a účelový výběr.",
+      "Vysvětlit velikost vzorku, bod nasycení, výběrovou chybu a proč velikost vzorku sama nezajišťuje reprezentativitu.",
+      "Vyložit reliabilitu a validitu včetně jejich vztahu a základních typů validity."
+    ],
+    "key_terms": [
+      {
+        "term": "základní soubor / populace",
+        "definition": "Celek jednotek, o kterém chce výzkum vypovídat. Z něj se vybírá výběrový soubor a na něj se při generalizaci vztahují závěry.",
+        "authors": []
+      },
+      {
+        "term": "výběrový soubor / vzorek",
+        "definition": "Část populace, která je skutečně zkoumána. Jeho vlastnosti slouží k odhadu vlastností celé populace, pokud to design výběru dovoluje.",
+        "authors": []
+      },
+      {
+        "term": "parametr",
+        "definition": "Vlastnost celé populace, kterou obvykle neznáme.",
+        "authors": []
+      },
+      {
+        "term": "statistika",
+        "definition": "Hodnota vypočtená z výběrového souboru, která se používá k odhadu parametru populace.",
+        "authors": []
+      },
+      {
+        "term": "reprezentativita",
+        "definition": "Míra, do jaké vzorek a jeho vlastnosti věrně odrážejí populaci. Materiály zdůrazňují, že velikost vzorku sama o sobě reprezentativitu nezaručuje.",
+        "authors": []
+      },
+      {
+        "term": "pravděpodobnostní výběr",
+        "definition": "Výběr, ve kterém má každá jednotka základního souboru stejnou a nenulovou pravděpodobnost být vybrána. Umožňuje určit, jak se výběrový soubor liší od základního souboru, ale vyžaduje oporu výběru.",
+        "authors": []
+      },
+      {
+        "term": "prostý náhodný výběr",
+        "definition": "Každé jednotce základního souboru se přidělí číslo a jednotky se vybírají generováním náhodných čísel. Vyžaduje dobrou oporu výběru.",
+        "authors": []
+      },
+      {
+        "term": "systematický výběr",
+        "definition": "Do vzorku je zahrnuta každá N-tá jednotka ze seznamu; N se počítá jako velikost populace dělená velikostí vzorku a první jednotka se vybírá náhodně.",
+        "authors": []
+      },
+      {
+        "term": "stratifikovaný náhodný výběr",
+        "definition": "Populace se rozdělí do homogenních skupin podle kritéria, u kterého chceme ve vzorku dosáhnout přesné reprezentace, a z těchto skupin se vybírá náhodně.",
+        "authors": []
+      },
+      {
+        "term": "vícestupňový náhodný výběr",
+        "definition": "Výběr probíhá ve dvou nebo více krocích, často nejprve výběrem přirozených seskupení a následně výběrem jednotek uvnitř nich.",
+        "authors": []
+      },
+      {
+        "term": "skupinkový / cluster výběr",
+        "definition": "Varianta vícestupňového výběru, při níž se nejprve vybírají přirozená seskupení, o nichž předpokládáme, že jsou vzájemně zastupitelná.",
+        "authors": []
+      },
+      {
+        "term": "nenáhodný výběr",
+        "definition": "Výběr používaný často v kvalitativním výzkumu nebo tam, kde nemáme oporu výběru či neznáme populaci. Výzkumník vybírá jednotky vědomě a využívá logický úsudek; reprezentativita se zpravidla zanedbává, s výjimkou kvótního výběru.",
+        "authors": []
+      },
+      {
+        "term": "kvótní výběr",
+        "definition": "Nenáhodný výběr napodobující ve struktuře vzorku známé vlastnosti populace tak, aby byly podstatné skupiny zastoupeny ve stejných proporcích jako v populaci.",
+        "authors": []
+      },
+      {
+        "term": "technika sněhové koule",
+        "definition": "Výběr, při kterém původní participanti vedou výzkumníka k dalším členům cílové skupiny.",
+        "authors": []
+      },
+      {
+        "term": "teoretický výběr",
+        "definition": "Výběr založený na úsudku výzkumníka o tom, co by mělo být pozorováno; dán rozvíjející se teorií a potřebou doplnit relevantní případy.",
+        "authors": []
+      },
+      {
+        "term": "výběr typických případů",
+        "definition": "Výběr normálních nebo průměrných případů, přičemž typičnost je nutné vyargumentovat.",
+        "authors": []
+      },
+      {
+        "term": "výběr kritických případů",
+        "definition": "Výběr obzvláště důležitých případů, které umožní získat zásadní informace a logicky zobecnit i na jiné případy.",
+        "authors": []
+      },
+      {
+        "term": "maximální variace",
+        "definition": "Nenáhodný výběr usilující o co největší pestrost případů.",
+        "authors": []
+      },
+      {
+        "term": "homogenní výběr",
+        "definition": "Výběr, který zaostřuje, redukuje a zjednodušuje zkoumanou skupinu výběrem podobných případů.",
+        "authors": []
+      },
+      {
+        "term": "účelový / convenience sampling",
+        "definition": "Slabá forma vybírá ty, kteří jsou zrovna po ruce; silná forma využívá dostupnost strategicky a musí být zdůvodněna výzkumným cílem.",
+        "authors": []
+      },
+      {
+        "term": "bod nasycení",
+        "definition": "V kvalitativním výzkumu bod, kdy další sběr dat už nepřináší podstatně nové informace.",
+        "authors": []
+      },
+      {
+        "term": "výběrová chyba",
+        "definition": "Náhodná statistická odchylka mezi výsledky z výběrového souboru a skutečnými hodnotami v celé populaci, vznikající proto, že zkoumáme jen část populace.",
+        "authors": []
+      },
+      {
+        "term": "reliabilita",
+        "definition": "Stupeň konzistence měření vykonaného opakovaně za stejných podmínek. Materiály ji spojují se stabilitou, replikabilitou a přesností; nízká reliabilita vede k nízké validitě.",
+        "authors": []
+      },
+      {
+        "term": "validita",
+        "definition": "Platnost měření: měření je validní tehdy, když měří to, co jsme zamýšleli měřit. Materiály uvádějí interní, externí, zjevnou, souběžnou a prediktivní validitu.",
+        "authors": []
+      },
+      {
+        "term": "interní validita",
+        "definition": "Míra, v níž lze věřit, že zjištěný vztah nebo výsledek odpovídá zkoumanému mechanismu uvnitř výzkumného designu.",
+        "authors": []
+      },
+      {
+        "term": "externí validita",
+        "definition": "Míra, v níž lze závěry zobecnit mimo zkoumaný vzorek, prostředí nebo časové období.",
+        "authors": []
+      },
+      {
+        "term": "zjevná validita",
+        "definition": "Intuitivní odhad platnosti měřicího nástroje: zda se na první pohled zdá, že měří zamýšlený koncept.",
+        "authors": []
+      },
+      {
+        "term": "souběžná validita",
+        "definition": "Validita posuzovaná tak, že měření konceptu je provedeno dvěma nebo více různými postupy.",
+        "authors": []
+      },
+      {
+        "term": "prediktivní validita",
+        "definition": "Validita posuzovaná podle schopnosti měření předvídat budoucí nebo související jev.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Gallup",
+        "role": "V materiálech vystupuje v příkladu Literary Digest vs. Gallup jako ilustrace, že velikost vzorku sama nezaručuje reprezentativitu."
+      },
+      {
+        "name": "Literary Digest",
+        "role": "V materiálech slouží jako varovný příklad nereprezentativního výběru: velmi velký počet respondentů nemusí odstranit chybu výběru."
+      },
+      {
+        "name": "Babbie",
+        "role": "V seznamu povinné literatury je uveden The Practice of Social Research; vztahuje se k základním pojmům sociálního výzkumu, výběru souboru, validitě a reliabilitě."
+      },
+      {
+        "name": "Goodwin",
+        "role": "V seznamu povinné literatury je uveden Research in Psychology: Methods and Design; vztahuje se k metodám a designu výzkumu včetně kvality měření."
+      }
+    ],
+    "examiner_focus": [
+      "Studující má přesně odlišit populaci, vzorek, parametr a statistiku.",
+      "Má umět vysvětlit, kdy lze generalizovat a proč reprezentativita není totéž co velký vzorek.",
+      "Má znát rozdíl mezi pravděpodobnostním a nenáhodným výběrem a umět uvést příklady.",
+      "Má umět pro konkrétní výzkumný problém zvolit a obhájit techniku výběru.",
+      "Má vysvětlit výběrovou chybu a faktory ovlivňující její velikost.",
+      "Má odlišit reliabilitu a validitu a vysvětlit, proč reliabilní měření nemusí být validní."
+    ],
+    "followup_questions": [
+      "Co je opora výběru a proč ji potřebujeme u náhodného výběru?",
+      "Jaký je rozdíl mezi stratifikovaným a kvótním výběrem?",
+      "Kdy byste použil/a techniku sněhové koule?",
+      "Proč výběr dvou milionů respondentů nemusí být reprezentativní?",
+      "Co je bod nasycení v kvalitativním výzkumu?",
+      "Může být měření reliabilní a zároveň nevalidní?"
+    ],
+    "common_mistakes": [
+      "Záměna základního a výběrového souboru.",
+      "Představa, že reprezentativita se automaticky zajistí velkým počtem respondentů.",
+      "Záměna kvótního výběru za stratifikovaný náhodný výběr.",
+      "Používání convenience samplingu bez přiznání jeho limitů.",
+      "Tvrzení, že nenáhodný kvalitativní výběr má statisticky reprezentovat celou populaci.",
+      "Záměna reliability a validity nebo tvrzení, že vysoká reliabilita sama dokazuje validitu."
+    ],
+    "source_refs": [
+      {
+        "file": "prednaska9.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–38",
+        "relevance": "core"
+      },
+      {
+        "file": "prednaska13.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slide 12",
+        "relevance": "supporting",
+        "note": "Reliabilita a validita v obsahové analýze."
+      },
+      {
+        "file": "szz_tmk_jednoobor_hlavni_vedlejsi_verze_03_2025.pdf",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "D. Metodologie mediálního výzkumu: otázky 41/38",
+        "relevance": "official_question_list"
+      }
+    ],
+    "review_status": "source_based_draft"
+  },
+  {
+    "id": "metodologie-q05",
+    "title": "Kvantitativní výzkum",
+    "short_title": "Kvantitativní výzkum",
+    "outline": [
+      "Vymezit kvantitativní výzkum a jeho logiku: měření, proměnné, standardizace, práce s většími vzorky a obvykle deduktivní testování hypotéz.",
+      "Představit survey jako výběrové šetření a popsat formy administrace dotazníku.",
+      "Vysvětlit dotazník, typy otázek, formáty odpovědí, pilotáž a typické chyby při formulaci otázek.",
+      "Popsat minimální standardy informování o výzkumech veřejného mínění a chyby médií při interpretaci výzkumů.",
+      "Vyložit experiment: nezávislá a závislá proměnná, kontrola vnějších proměnných, kauzalita, mezisubjektový/vnitrosubjektový design, pretest/posttest, randomizace, kontrolní a experimentální skupina.",
+      "Popsat kvantitativní obsahovou analýzu: kódovací jednotky, kódovací klíč, datová matice, reliabilita a validita kódování."
+    ],
+    "key_terms": [
+      {
+        "term": "kvantitativní výzkum",
+        "definition": "Výzkumný přístup orientovaný na měření, proměnné, standardizované postupy, často větší vzorky a statistickou analýzu. Materiály jej spojují s dedukcí, deskriptivním/explanačním cílem, náhodným výběrem, reprezentativitou a redukcí komplexních dat na měřitelné znaky.",
+        "authors": [
+          "Jan Hendl",
+          "Norman Blaikie"
+        ]
+      },
+      {
+        "term": "survey / výběrové šetření",
+        "definition": "Průzkum nebo výběrové šetření, jehož hlavními rysy jsou způsob sběru dat a metoda analýzy. V mediálním výzkumu se používá zejména pro výzkum publika nebo reprezentantů mediálních institucí, například novinářů.",
+        "authors": []
+      },
+      {
+        "term": "dotazník",
+        "definition": "Vysoce strukturovaná technika získávání dat, v níž každý respondent odpovídá na stejný soubor otázek.",
+        "authors": []
+      },
+      {
+        "term": "SAQ",
+        "definition": "Self-Administered Questionnaire: dotazník vyplňovaný respondentem bez tazatele; může mít podobu poštovní, online, skupinově administrovanou nebo household drop-off.",
+        "authors": []
+      },
+      {
+        "term": "CAWI",
+        "definition": "Computer-Aided Web Interviewing: online forma dotazníkového šetření.",
+        "authors": []
+      },
+      {
+        "term": "PAPI",
+        "definition": "Pen-and-Pencil Interview: face-to-face dotazování s papírovým dotazníkem.",
+        "authors": []
+      },
+      {
+        "term": "CAPI",
+        "definition": "Computer-Assisted Personal Interview: osobní dotazování s využitím počítače.",
+        "authors": []
+      },
+      {
+        "term": "CATI",
+        "definition": "Computer-Assisted Telephone Interview: telefonické dotazování s využitím počítačové podpory.",
+        "authors": []
+      },
+      {
+        "term": "obsah otázek v survey",
+        "definition": "Materiály uvádějí otázky na chování, vlastnosti a charakteristiky, názory, postoje s kognitivní, afektivní a konativní složkou, hodnoty, víry a přesvědčení.",
+        "authors": []
+      },
+      {
+        "term": "uzavřená otázka",
+        "definition": "Otázka s předem stanovenými odpověďmi. Materiály uvádějí dichotomické, polytomické a bateriové otázky.",
+        "authors": []
+      },
+      {
+        "term": "Likertova škála",
+        "definition": "Formát odpovědi měřící míru souhlasu nebo nesouhlasu respondenta s určitým výrokem.",
+        "authors": []
+      },
+      {
+        "term": "sémantický diferenciál",
+        "definition": "Formát odpovědi mezi dvěma extrémy, které tvoří kontinuum hodnocení.",
+        "authors": []
+      },
+      {
+        "term": "pilotáž",
+        "definition": "Testování dotazníku nebo nového výzkumného nástroje před ostrým sběrem dat. Sleduje logiku toku, srozumitelnost, jednoznačnost, úplnost odpovědí, redundance, míru vynechaných odpovědí, pozornost respondentů a technické fungování.",
+        "authors": []
+      },
+      {
+        "term": "dvouhlavňová otázka",
+        "definition": "Chybná otázka, která se ptá na dvě věci najednou, takže odpověď není jednoznačně interpretovatelná.",
+        "authors": []
+      },
+      {
+        "term": "sugestivní otázka",
+        "definition": "Otázka, která navádí respondenta k určité odpovědi nebo jej ovlivňuje formulací či autoritou.",
+        "authors": []
+      },
+      {
+        "term": "haló efekt",
+        "definition": "Zkreslení vzniklé v důsledku řazení otázek; určitá otázka stimuluje určité odpovědi na otázky následující.",
+        "authors": []
+      },
+      {
+        "term": "AAPOR/WAPOR minimální standard",
+        "definition": "Minimální standard reportování výzkumů veřejného mínění: sponzor, realizátor, přesné znění otázek, definice populace, opora výběru, postup výběru, velikost vzorku, návratnost, nezahrnuté jednotky, přesnost výsledků, metoda, lokalita, čas a další parametry.",
+        "authors": [
+          "AAPOR",
+          "WAPOR"
+        ]
+      },
+      {
+        "term": "experiment",
+        "definition": "Výzkumný design zkoumající efekt nezávislé proměnné na závislou proměnnou za co největší kontroly vnějších proměnných. Výzkumník manipuluje nezávislou proměnnou a měří změnu závislé proměnné.",
+        "authors": []
+      },
+      {
+        "term": "nezávislá proměnná",
+        "definition": "Proměnná, s níž výzkumník v experimentu manipuluje; v materiálech je také označena jako faktor X.",
+        "authors": []
+      },
+      {
+        "term": "závislá proměnná",
+        "definition": "Proměnná, u níž se měří, zda se mění v reakci na manipulaci nezávislé proměnné; v materiálech označena jako Y.",
+        "authors": []
+      },
+      {
+        "term": "intervenující / vnější / třetí proměnná",
+        "definition": "Proměnná, která může ovlivnit vztah mezi nezávislou a závislou proměnnou a kterou se experiment snaží kontrolovat.",
+        "authors": []
+      },
+      {
+        "term": "kauzální překážky",
+        "definition": "Materiály uvádějí čtyři otázky: existuje věrohodný mechanismus propojující X a Y, lze vyloučit opačný směr vztahu, pozorujeme kovariaci mezi X a Y a vyloučili jsme další vlivy.",
+        "authors": []
+      },
+      {
+        "term": "Millova metoda shody a rozdílu",
+        "definition": "Metoda shody hledá společný faktor u více případů se stejným jevem; metoda rozdílu srovnává případy, z nichž jeden obsahuje zkoumaný jev a druhý ne. Materiály je používají k výkladu kauzální logiky experimentu.",
+        "authors": [
+          "Mill"
+        ]
+      },
+      {
+        "term": "mezisubjektový design",
+        "definition": "Between-subjects design: porovnává různé skupiny lidí vystavené různým experimentálním podmínkám. Vyžaduje co nejpodobnější skupiny lišící se hlavně podmínkou X.",
+        "authors": []
+      },
+      {
+        "term": "vnitrosubjektový design",
+        "definition": "Repeated-measures design: tentýž účastník je vystaven více podmínkám nebo měřením. Vyžaduje méně lidí, ale nese riziko progresivních a carryover efektů.",
+        "authors": []
+      },
+      {
+        "term": "bloková randomizace",
+        "definition": "Způsob vytváření skupin, kdy má každý účastník stejnou šanci být zařazen do určité skupiny; slouží k omezení rozdílů mezi skupinami.",
+        "authors": []
+      },
+      {
+        "term": "pretest a posttest",
+        "definition": "Měření před a po experimentální manipulaci. Pretest pomáhá určit výchozí úroveň, ale může účastníky upozornit na účel experimentu.",
+        "authors": []
+      },
+      {
+        "term": "kvaziexperiment",
+        "definition": "Design, v němž nelze uplatnit náhodné rozdělení. Nezávislá proměnná se manipuluje, ale nepřiděluje náhodně; důvodem mohou být pragmatické nebo etické překážky.",
+        "authors": []
+      },
+      {
+        "term": "ex post facto experiment",
+        "definition": "Design, který vůbec nemanipuluje s nezávislou proměnnou, ale pracuje se situací, která už nastala.",
+        "authors": []
+      },
+      {
+        "term": "interní validita experimentu",
+        "definition": "Míra jistoty, že zjištěný vztah mezi nezávislou a závislou proměnnou odpovídá skutečně zamýšlenému efektu. Dobře plánovaný experiment má vysokou interní validitu, ale ohrožují ji špatně vytvořené skupiny, absence kontroly, vliv pretestu a biasy.",
+        "authors": []
+      },
+      {
+        "term": "externí validita experimentu",
+        "definition": "Možnost zobecnit závěry experimentu na širší populaci, jiná prostředí a jiná období. Materiály upozorňují, že u experimentů bývá omezená.",
+        "authors": []
+      },
+      {
+        "term": "kvantitativní obsahová analýza",
+        "definition": "Systematické a replikovatelné zkoumání komunikačních symbolů, kterým byly podle validních pravidel měření přiřazeny číselné hodnoty, a analýza vztahů mezi nimi pomocí statistických metod.",
+        "authors": [
+          "Riffe",
+          "Lacy",
+          "Fico"
+        ]
+      },
+      {
+        "term": "obsahová analýza podle Berelsona",
+        "definition": "Výzkumná technika pro objektivní, systematický a kvantitativní popis manifestního obsahu komunikace.",
+        "authors": [
+          "B. Berelson"
+        ]
+      },
+      {
+        "term": "kódování",
+        "definition": "Dvojstupňový proces: segmentace obsahu na jednotlivé kódovací jednotky a jejich kódování podle pevně stanovených kritérií.",
+        "authors": []
+      },
+      {
+        "term": "kódovací klíč",
+        "definition": "Soubor pravidel určujících analytické jednotky, proměnné a hodnoty proměnných. Umožňuje systematické kódování obsahu.",
+        "authors": []
+      },
+      {
+        "term": "datová matice",
+        "definition": "Tabulková reprezentace kódovaných dat, kde řádky zpravidla reprezentují jednotky analýzy a sloupce proměnné.",
+        "authors": []
+      },
+      {
+        "term": "interkodérská reliabilita",
+        "definition": "Konzistence kódování mezi různými kodéry. Materiály doporučují jasné definice proměnných, instrukce, trénink kodérů a měření shody, např. Krippendorffovou alfou.",
+        "authors": []
+      },
+      {
+        "term": "Krippendorffova alfa",
+        "definition": "Indikátor interkodérské reliability, který materiály uvádějí jako lepší než pouhé procento shody; doporučená hodnota je více než 0,8.",
+        "authors": [
+          "Krippendorff"
+        ]
+      },
+      {
+        "term": "obtrusivní a neobtrusivní techniky",
+        "definition": "Obtrusivní techniky, jako rozhovory nebo dotazníky, mohou ovlivnit zkoumané subjekty samotným výzkumným kontaktem. Neobtrusivní techniky, jako obsahová analýza zaznamenané komunikace, kontakt nevyžadují.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "B. Berelson",
+        "role": "Definice obsahové analýzy jako objektivního, systematického a kvantitativního popisu manifestního obsahu komunikace."
+      },
+      {
+        "name": "Riffe, Lacy a Fico",
+        "role": "Definice kvantitativní obsahové analýzy jako systematického a replikovatelného zkoumání komunikačních symbolů s přiřazenými číselnými hodnotami."
+      },
+      {
+        "name": "Albert Bandura",
+        "role": "Materiály jej uvádějí u Bobo Doll Experiment jako klasický příklad experimentální logiky v sociálních vědách."
+      },
+      {
+        "name": "Mill",
+        "role": "Materiály používají Millovy metody shody a rozdílu k výkladu určování příčinných vztahů."
+      },
+      {
+        "name": "AAPOR a WAPOR",
+        "role": "Organizace uvedené u minimálního standardu pro prezentaci výzkumů veřejného mínění."
+      },
+      {
+        "name": "SIMAR",
+        "role": "V materiálech je uveden jako zdroj přehledu častých chyb médií při interpretaci výzkumu."
+      },
+      {
+        "name": "Neuendorf",
+        "role": "V seznamu povinné literatury je uvedena The Content Analysis Guidebook; vztahuje se k obsahové analýze."
+      }
+    ],
+    "examiner_focus": [
+      "Studující má znát nejen názvy survey, experiment a obsahová analýza, ale i jejich logiku, typická využití a limity.",
+      "Má umět rozpoznat špatně formulovanou dotazníkovou otázku a vysvětlit problém.",
+      "Má znát základní formy administrace survey a zkratky CAWI, PAPI, CAPI, CATI.",
+      "Má chápat experiment jako design pro testování kauzality, nikoli jen jako „výzkum v laboratoři“.",
+      "Má umět vysvětlit interní a externí validitu experimentu a typické experimentální biasy.",
+      "Má umět popsat, jak se dělá kvantitativní obsahová analýza: jednotka analýzy, proměnné, kódovací klíč, kódování, datová matice, reliabilita."
+    ],
+    "followup_questions": [
+      "Jaký je rozdíl mezi anketou a seriózním survey?",
+      "Co musí médium uvést, když informuje o výzkumu veřejného mínění?",
+      "Jak poznáte dvouhlavňovou nebo sugestivní otázku?",
+      "Jaký je rozdíl mezi mezisubjektovým a vnitrosubjektovým experimentálním designem?",
+      "Proč má experiment obvykle silnější interní než externí validitu?",
+      "Jak se v obsahové analýze měří interkodérská reliabilita?"
+    ],
+    "common_mistakes": [
+      "Záměna survey za jakékoliv online hlasování nebo anketu.",
+      "Neuvádění přesného znění otázky, metody sběru a výběru vzorku při interpretaci výsledků.",
+      "Formulace nejednoznačných, sugestivních nebo dvouhlavňových otázek.",
+      "Tvrzení kauzality ze survey bez experimentální nebo jiné kauzální opory.",
+      "Ignorování externí validity experimentu: výsledky na studentech v laboratoři nemusí automaticky platit pro širší populaci.",
+      "Redukce obsahové analýzy na volné čtení textů bez kódovacího klíče a kontroly reliability."
+    ],
+    "source_refs": [
+      {
+        "file": "prednaska8.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–14",
+        "relevance": "core"
+      },
+      {
+        "file": "metodologie_prednaska10_experiment.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–31",
+        "relevance": "core"
+      },
+      {
+        "file": "prednaska11.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–41",
+        "relevance": "core"
+      },
+      {
+        "file": "prednaska13.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–14",
+        "relevance": "core"
+      },
+      {
+        "file": "szz_tmk_jednoobor_hlavni_vedlejsi_verze_03_2025.pdf",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "D. Metodologie mediálního výzkumu: otázky 42/39",
+        "relevance": "official_question_list"
+      }
+    ],
+    "review_status": "source_based_draft"
+  },
+  {
+    "id": "metodologie-q06",
+    "title": "Kvalitativní výzkum",
+    "short_title": "Kvalitativní výzkum",
+    "outline": [
+      "Vymezit kvalitativní výzkum jako přístup zaměřený na porozumění smyslu, kontextu, zkušenosti a významům.",
+      "Popsat hlavní kvalitativní metody a techniky: polostrukturovaný a hloubkový rozhovor, focus group, orální historie/biografie, etnografie, pozorování a kvalitativní analýzy mediálního obsahu.",
+      "Vysvětlit rozdíly mezi standardizovaným, polostrukturovaným, hloubkovým a skupinovým rozhovorem.",
+      "Popsat plánování a vedení rozhovoru: interview guide, typy otázek, informovaný souhlas, rapport, poznámky a memo.",
+      "Vysvětlit analýzu kvalitativních dat: přepis, tematická analýza, induktivní a deduktivní kódování, práce s tématy a interpretace.",
+      "Vyložit kvalitativní obsahovou analýzu, diskurzivní analýzu/CDA, sémiotickou analýzu a etnografii včetně jejich silných a slabých stránek."
+    ],
+    "key_terms": [
+      {
+        "term": "kvalitativní výzkum",
+        "definition": "Přístup zaměřený na popis, porozumění, hledání smyslu, kontext a detailní zkoumání menších souborů. Materiály jej spojují s indukcí, explorativním cílem, měkkými metodami, cíleným výběrem, holistickým pohledem a pružností designu.",
+        "authors": [
+          "Jan Hendl",
+          "Norman Blaikie"
+        ]
+      },
+      {
+        "term": "standardizovaný rozhovor",
+        "definition": "Rozhovor, v němž je přesné znění a pořadí otázek předem stanoveno; patří spíše ke strukturovaným/kvantitativním technikám.",
+        "authors": []
+      },
+      {
+        "term": "polostrukturovaný rozhovor",
+        "definition": "Rozhovor s předem připravenými otázkami a osnovou, která se odvíjí od výzkumných otázek. Tazatel může během rozhovoru pružně určovat pořadí a znění otázek.",
+        "authors": []
+      },
+      {
+        "term": "hloubkový rozhovor",
+        "definition": "Rozhovor, v němž je dopředu připraveno pouze téma nebo tematické okruhy; konkrétní otázky vznikají pružně podle výpovědí účastníka.",
+        "authors": []
+      },
+      {
+        "term": "focus group / skupinový rozhovor",
+        "definition": "Moderovaný rozhovor skupiny lidí. Předpokládá, že účastníci si lépe uvědomí vlastní perspektivu při konfrontaci s názory ostatních.",
+        "authors": []
+      },
+      {
+        "term": "orální historie / biografie",
+        "definition": "Přístup upřednostňující subjektivní „history from below“ před oficiální „history from above“; rekonstruuje historické události prostřednictvím přímých svědků, jejich paměti a významů, které pro ně události měly.",
+        "authors": []
+      },
+      {
+        "term": "interview guide",
+        "definition": "Osnova rozhovoru odvozená od cíle a výzkumných otázek. Obvykle postupuje od širokých k konkrétnějším otázkám a zahrnuje úvod, ujištění o důvěrnosti, ice-breaking otázky, otevřené otázky, doplňující a nudging otázky.",
+        "authors": []
+      },
+      {
+        "term": "ice-breaking otázka",
+        "definition": "Krátká, jednoduchá, spíše faktická a nekontroverzní úvodní otázka, která má pomoci rozběhnout rozhovor nebo skupinovou diskusi.",
+        "authors": []
+      },
+      {
+        "term": "nudging otázky",
+        "definition": "Doplňující otázky používané k rozvedení odpovědi, například parafráze, otázky ďáblova advokáta, hypotetické otázky nebo srovnávání.",
+        "authors": []
+      },
+      {
+        "term": "rapport",
+        "definition": "Vztah založený na důvěře, porozumění a uvolněné komunikaci; cílem je vytvořit bezpečnou a respektující atmosféru, v níž účastník mluví otevřeně a má pocit, že je mu nasloucháno.",
+        "authors": []
+      },
+      {
+        "term": "memo",
+        "definition": "Poznámka nebo záznam po rozhovoru obsahující faktické informace, průběh rozhovoru, pokrytá témata, zajímavá slovní spojení a reflexe výzkumníka.",
+        "authors": []
+      },
+      {
+        "term": "přepis",
+        "definition": "Převod rozhovoru nebo skupinové diskuse do textové podoby; může být úplný/doslovný nebo selektivní. Materiály zdůrazňují, že přepis je zároveň začátkem analýzy.",
+        "authors": []
+      },
+      {
+        "term": "tematická analýza",
+        "definition": "Analýza hledající témata, společné a odlišné rysy a vzorce. Zahrnuje prvotní čtení, segmentaci textu, kódování, redukci redundantních kódů, seskupování kódů do témat, zkoumání vztahů mezi tématy a kontrolu spolehlivosti informací.",
+        "authors": []
+      },
+      {
+        "term": "induktivní a deduktivní kódování",
+        "definition": "Induktivní kódování vychází z dat, deduktivní z výzkumných otázek, literatury nebo teorie. Materiály zdůrazňují interaktivní vztah kódů, výzkumných otázek a literatury.",
+        "authors": []
+      },
+      {
+        "term": "kvalitativní obsahová analýza",
+        "definition": "Metoda systematického popisu významu kvalitativního materiálu tříděním materiálu do kategorií kódovacího rámce. Je systematická, flexibilní a může pracovat s textem i obrazovým materiálem.",
+        "authors": [
+          "Schreier"
+        ]
+      },
+      {
+        "term": "latentní význam",
+        "definition": "Skrytější, kontextově interpretovaný význam textu. Materiály jej uvádějí jako jeden z rozdílů kvalitativní obsahové analýzy oproti kvantitativní obsahové analýze zaměřené hlavně na manifestní význam.",
+        "authors": []
+      },
+      {
+        "term": "diskurz",
+        "definition": "Sada textů o určitém tématu ve společnosti, které budují význam a reflektují mocenské uspořádání. Diskurz formuje způsoby uvažování a nastavuje pravidla toho, co je považováno za legitimní nebo normální.",
+        "authors": []
+      },
+      {
+        "term": "kritická diskurzivní analýza (CDA)",
+        "definition": "Přístup, jehož cílem je odhalit mocenské vztahy v pozadí diskurzu a ukázat, jak jsou skrze diskurz vytvářeny sociální identity, pozice a vztahy. Sleduje reprodukci nerovných mocenských vztahů jazykem.",
+        "authors": [
+          "Fairclough",
+          "Sedláková"
+        ]
+      },
+      {
+        "term": "sémiotická analýza",
+        "definition": "Analýza znaků a tvorby významů v kulturním kontextu. Ptá se, z jakých znaků se text skládá, proč jsou uspořádány právě takto a jaké významy mají v dané kultuře.",
+        "authors": [
+          "de Saussure",
+          "Peirce",
+          "Roland Barthes"
+        ]
+      },
+      {
+        "term": "denotace a konotace",
+        "definition": "Denotace označuje základní popisnou rovinu významu, konotace kulturně a symbolicky rozšířený význam. Materiály používají Barthesovu analýzu reklamy Panzani jako příklad přechodu od denotace přes konotaci k mýtu.",
+        "authors": [
+          "Roland Barthes"
+        ]
+      },
+      {
+        "term": "etnografie",
+        "definition": "Metoda výzkumu i psaný produkt usilující o detailní holistický popis a analýzu kultur na základě intenzivní participativní práce v terénu. Cílem je zachytit perspektivu aktérů v přirozeném prostředí.",
+        "authors": [
+          "Barker",
+          "B. Malinowski",
+          "R. Park"
+        ]
+      },
+      {
+        "term": "cultural immersion",
+        "definition": "Život ve zkoumané kultuře a střídání fází splynutí s prostředím („going native“) a reflexivního odstupu.",
+        "authors": []
+      },
+      {
+        "term": "going native",
+        "definition": "Riziko nebo fáze etnografického výzkumu, kdy výzkumník příliš splyne se zkoumanou skupinou a ztrácí reflexivní odstup.",
+        "authors": []
+      },
+      {
+        "term": "pozorování",
+        "definition": "Technika sběru dat v přirozeném nebo strukturovaném prostředí. Materiály rozlišují strukturované a nestrukturované, zúčastněné a nezúčastněné, skryté a otevřené pozorování.",
+        "authors": []
+      },
+      {
+        "term": "terénní poznámky",
+        "definition": "Poznámky z pozorování, které mohou být popisné, reflexivní nebo analytické. Jsou základní součástí etnografického sběru dat.",
+        "authors": []
+      },
+      {
+        "term": "silné stránky etnografie",
+        "definition": "Data z první ruky přímo v terénu, zachycení rozdílu mezi tím, co lidé říkají a co dělají, holistický pohled, bohatá data, hluboké porozumění a vysoká validita.",
+        "authors": [
+          "Geertz"
+        ]
+      },
+      {
+        "term": "slabé stránky etnografie",
+        "definition": "Časová náročnost, obtrusivita otevřeného pozorování, reaktivita účastníků, nároky na výzkumníka, obtížná práce s velkým množstvím dat, problém reliability, subjektivní vklad a omezená možnost zobecnění.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Schreier",
+        "role": "V materiálech je citována definice kvalitativní obsahové analýzy jako systematického popisu významu kvalitativního materiálu pomocí kategorií kódovacího rámce."
+      },
+      {
+        "name": "Fairclough",
+        "role": "V materiálech je uveden jako autor/proud, který může specifikovat, jak pojmout diskurzivní analýzu; u CDA je spojován s otázkami moci a legitimity v textu."
+      },
+      {
+        "name": "Sedláková",
+        "role": "V materiálech je citována u definice CDA jako odhalování mocenských vztahů v pozadí diskurzu a tvorby sociálních identit, pozic a vztahů."
+      },
+      {
+        "name": "Foucault",
+        "role": "V materiálech je uveden jako jeden z autorů/proudů, podle nichž je nutné specifikovat, co v diskurzivní analýze znamená diskurz a na co se analyticky dívat."
+      },
+      {
+        "name": "de Saussure a Peirce",
+        "role": "V materiálech jsou uvedeni jako opora sémiotiky/sémiologie, tedy studia znaků ve společnosti."
+      },
+      {
+        "name": "Roland Barthes",
+        "role": "Materiály používají jeho analýzu reklamy Panzani k vysvětlení denotace, konotace a mýtu."
+      },
+      {
+        "name": "B. Malinowski a R. Park",
+        "role": "V materiálech jsou uvedeni u kořenů etnografie v sociální antropologii a výzkumu člověka jako kulturní a sociální bytosti."
+      },
+      {
+        "name": "Barker",
+        "role": "V materiálech je citován u definice etnografie jako empirického a teoretického přístupu usilujícího o detailní holistický popis kultur na základě intenzivní participativní práce v terénu."
+      },
+      {
+        "name": "Geertz",
+        "role": "V materiálech je citován u reflexe etnografických dat jako konstrukcí výzkumníka o konstrukcích zkoumaných lidí."
+      },
+      {
+        "name": "White, Tuchman, Gans a Breed",
+        "role": "Materiály je uvádějí jako příklady etnografických/produkčních výzkumů v mediálních studiích: gatekeeping, mediální rutiny a sociální kontrola v redakcích."
+      },
+      {
+        "name": "Wengraf",
+        "role": "V seznamu povinné literatury je uvedena Qualitative Research Interviewing; vztahuje se k biografickým narativním a polostrukturovaným metodám rozhovorů."
+      },
+      {
+        "name": "Creswell a Poth",
+        "role": "V seznamu povinné literatury je uvedena Qualitative Inquiry and Research Design; vztahuje se k návrhu kvalitativního výzkumu."
+      }
+    ],
+    "examiner_focus": [
+      "Studující má chápat kvalitativní výzkum jako systematický způsob poznání, nikoli jako volné dojmy.",
+      "Má umět rozlišit polostrukturovaný, hloubkový a skupinový rozhovor.",
+      "Má znát principy vedení rozhovoru: informovaný souhlas, důvěrnost, rapport, neodsuzující vystupování, naslouchání, poznámky a memo.",
+      "Má umět popsat, jak se z rozhovorů nebo textů vytvářejí kódy a témata.",
+      "Má odlišit kvalitativní obsahovou analýzu, diskurzivní analýzu/CDA a sémiotickou analýzu.",
+      "Má umět popsat etnografii jako dlouhodobý, reflexivní a terénní výzkum se silnými i slabými stránkami."
+    ],
+    "followup_questions": [
+      "Jaký je rozdíl mezi polostrukturovaným a hloubkovým rozhovorem?",
+      "Co je interview guide a proč nezačínat rozhovor hned nejcitlivější otázkou?",
+      "Jak moderátor/ka focus group pracuje s dominantními a pasivními účastníky?",
+      "Jaký je rozdíl mezi manifestním a latentním významem?",
+      "Jaké otázky si klade kritická diskurzivní analýza?",
+      "Proč je v etnografii důležitý reflexivní odstup?"
+    ],
+    "common_mistakes": [
+      "Záměna kvalitativního výzkumu za nesystematické vyprávění bez metody.",
+      "Představa, že malý vzorek je automaticky chyba; u kvalitativního výzkumu se obhajuje jinou logikou výběru a nasycením.",
+      "Vedení rozhovoru jako ankety se striktně stejnými otázkami bez práce s odpověďmi.",
+      "Ignorování vztahu důvěry a atmosféry rozhovoru.",
+      "Záměna CDA za jakoukoliv kritiku obsahu bez analýzy diskurzu, moci a legitimity.",
+      "Redukce sémiotické analýzy na prostý popis obrázku bez rozlišení znaků, denotace, konotace a kulturního kontextu.",
+      "Záměna etnografie za krátké pozorování nebo soubor anekdotických příkladů."
+    ],
+    "source_refs": [
+      {
+        "file": "prednaska8.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 15–21",
+        "relevance": "supporting"
+      },
+      {
+        "file": "prednaska12.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 1–48",
+        "relevance": "core"
+      },
+      {
+        "file": "prednaska13.md",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "Slides 15–33",
+        "relevance": "core"
+      },
+      {
+        "file": "szz_tmk_jednoobor_hlavni_vedlejsi_verze_03_2025.pdf",
+        "source_type": "pptx-derived markdown/txt",
+        "pages_or_slides": "D. Metodologie mediálního výzkumu: otázky 43/40",
+        "relevance": "official_question_list"
+      }
+    ],
+    "review_status": "source_based_draft"
+  }
+]

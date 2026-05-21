@@ -1,0 +1,993 @@
+[
+  {
+    "id": "dejiny-medii-q01",
+    "title": "Přenos a uchovávání slova a textu",
+    "short_title": "Slovo, text, pošta a knihtisk",
+    "outline": [
+      "Vyložit symbolickou komunikaci jako překonávání prostorové, časové a sociální izolace.",
+      "Popsat přechod od archaických a tradičních komunikačních systémů ke komunikaci masové podle typologie G. Bragy.",
+      "Vysvětlit význam písma a uvést příklady písemných systémů navazujících na fénické písmo.",
+      "Rozlišit analogické a analytické myšlení a ukázat, jak se mění způsoby vysvětlování světa.",
+      "Popsat zpravodajské mechanismy starověku a informační bázi vrcholného středověku.",
+      "Vysvětlit význam dopisu, korespondence, korespondenčních center a poštovních linek v raném novověku.",
+      "Popsat psané noviny, korespondenční sítě a předpoklady vzniku novin a časopisů.",
+      "Vyložit význam knihtisku a sociální důsledky knihtisku podle E. Eisensteinové."
+    ],
+    "key_terms": [
+      {
+        "term": "symbolická komunikace",
+        "definition": "Komunikace, která podle přednášky umožňuje slaďovat aktivity v přítomnosti, imaginovat realitu mimo bezprostřední zkušenost a využívat poznatky z minulosti pro plánování budoucnosti.",
+        "authors": []
+      },
+      {
+        "term": "komunikační typologie G. Bragy",
+        "definition": "Typologie uvedená v materiálech: kapilární komunikace v archaické společnosti, systém organizované kultury v tradiční společnosti a masová komunikace v moderní společnosti.",
+        "authors": [
+          "G. Braga"
+        ]
+      },
+      {
+        "term": "kapilární komunikace",
+        "definition": "Typ komunikace spojovaný v přednášce s archaickou společností; stojí před organizovanými kulturními systémy a před masovou komunikací modernity.",
+        "authors": [
+          "G. Braga"
+        ]
+      },
+      {
+        "term": "písemné systémy vycházející z fénického písma",
+        "definition": "Materiály uvádějí větve spojené s řeckou alfabetou, starohebrejským a aramejským písmem, včetně latiny, azbuky, arabského, etiopského, indického či tibetského písma jako přímých či nepřímých návazností.",
+        "authors": []
+      },
+      {
+        "term": "analogické versus analytické myšlení",
+        "definition": "Rozlišení mezi teleologickým a kauzálním způsobem uvažování: analogické vysvětlení hledá podobnosti a účel, analytické vysvětlení skládá racionální kauzální řetězec.",
+        "authors": [
+          "Seneca",
+          "Zdeněk Smetánka"
+        ]
+      },
+      {
+        "term": "antika a masová komunikace",
+        "definition": "Materiály zdůrazňují, že antika neznala masovou komunikaci v pravém slova smyslu, protože postrádala technologie masové reprodukce písemných či obrazových sdělení umožňující časoprostorovou distanci adresátů.",
+        "authors": []
+      },
+      {
+        "term": "zpravodajské mechanismy starověku",
+        "definition": "Formy přenosu informací uvedené v materiálech: běžci, jízdní spojení, lodní spojení, poštovní holubi, vlajková signalizace, optická a akustická signalizace a pošta.",
+        "authors": []
+      },
+      {
+        "term": "dopis ve středověku",
+        "definition": "Dopis je v materiálech popsán jako nástroj jednorázového poselství, korespondence uvnitř stavů, politické propagandy i postupného rozšiřování komunikace napříč sociálními vrstvami.",
+        "authors": []
+      },
+      {
+        "term": "korespondenční systém",
+        "definition": "Rutinní a systematické korespondenční styky, které zapojovaly vzdělané, ekonomicky aktivní a politicky sebevědomé elity středověké společnosti.",
+        "authors": []
+      },
+      {
+        "term": "pošta a poštovní linky",
+        "definition": "Materiály uvádějí vznik pošty v Miláně okolo roku 1400, rozvoj v Benátkách, Francii, Burgundsku a Říši, thurn-taxisovskou poštu a v habsburském soustátí rod Paarů.",
+        "authors": [
+          "Thurn-Taxisové",
+          "Paarové"
+        ]
+      },
+      {
+        "term": "psané noviny",
+        "definition": "Přednáška rozlišuje soukromé psané noviny se zpravodajským obsahem a utilitaristickými cíli a ilegální psané noviny kombinující zpravodajský a publicistický obsah s náboženskými či politickými cíli.",
+        "authors": []
+      },
+      {
+        "term": "sociální důsledky knihtisku podle E. Eisensteinové",
+        "definition": "Přednáška uvádí multiplikační, standardizační, konzervační, racionalizační a individualizační efekt knihtisku.",
+        "authors": [
+          "E. Eisensteinová"
+        ]
+      }
+    ],
+    "authors": [
+      {
+        "name": "G. Braga",
+        "role": "autor typologie kapilární komunikace, systému organizované kultury a masové komunikace"
+      },
+      {
+        "name": "Seneca",
+        "role": "v materiálech použit pro ilustraci rozdílu mezi teleologickým a kauzálním způsobem uvažování"
+      },
+      {
+        "name": "Zdeněk Smetánka",
+        "role": "citován k analogii, magii podobnosti a kontaktní magii jako příkladům analogického uvažování"
+      },
+      {
+        "name": "Jan Arnolt z Dobroslavína",
+        "role": "uveden u pražských německy vydávaných novin jako příklad informačního zpoždění raně novověkého zpravodajství"
+      },
+      {
+        "name": "E. Eisensteinová",
+        "role": "sociální důsledky knihtisku: multiplikační, standardizační, konzervační, racionalizační a individualizační efekt"
+      },
+      {
+        "name": "Gutenberg",
+        "role": "materiály zmiňují první Gutenbergovy tisky, odpustkové formuláře a Türkenkalender auf das Jahr 1455"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má ukázat, že vývoj slova a textu není jen dějinami techniky, ale také změnou sociálních sítí, institucí a způsobů myšlení.",
+      "Má propojit písmo, korespondenci, poštu a knihtisk jako předpoklady vzniku periodické zpravodajské komunikace.",
+      "Má umět vyložit konkrétní důsledky knihtisku podle E. Eisensteinové, ne pouze říci, že knihtisk byl významný."
+    ],
+    "followup_questions": [
+      "Proč antika podle materiálů ještě neznala masovou komunikaci v pravém slova smyslu?",
+      "Jak pošta a korespondenční sítě připravily vznik novin?",
+      "Co znamená multiplikační a standardizační efekt knihtisku?",
+      "Jaký je rozdíl mezi analogickým a analytickým výkladem světa?"
+    ],
+    "common_mistakes": [
+      "Redukce otázky pouze na vynález knihtisku bez vysvětlení starších komunikačních mechanismů.",
+      "Zaměnění pošty, korespondence a novin jako totožných forem komunikace.",
+      "Opomenutí rozdílu mezi zpravodajskými mechanismy a masovou komunikací.",
+      "Vyjmenování efektů knihtisku bez jejich stručného vysvětlení."
+    ],
+    "source_refs": [
+      {
+        "file": "001_p_udcd6enos_a_uchov_udcedv_udcedn_udca1_slova_a_textu_i.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–14",
+        "relevance": "core"
+      },
+      {
+        "file": "002_p_udcd6enos_a_uchov_udcedv_udcedn_udca1_slova_a_textu_ii.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–16",
+        "relevance": "core"
+      }
+    ],
+    "review_status": "source_based_draft"
+  },
+  {
+    "id": "dejiny-medii-q02",
+    "title": "Telekomunikace",
+    "short_title": "Telekomunikace a agentury",
+    "outline": [
+      "Vysvětlit dopravu jako podmínku moderního informačního oběhu.",
+      "Popsat dopravní proměny dlouhého 19. století, zejména význam železnice a námořních průplavů.",
+      "Vyložit optickou telegrafii jako předstupeň moderních telekomunikací.",
+      "Popsat elektrickou telegrafii, podmořské kabely a proměnu časoprostorových struktur.",
+      "Vysvětlit vznik a funkci zpravodajských agentur.",
+      "Uvést první světové agentury a rozdělení světa mezi Havas, Reuters, WTB a AP.",
+      "Rozlišit typy agentur podle dosahu a podle vlastnictví."
+    ],
+    "key_terms": [
+      {
+        "term": "telekomunikace",
+        "definition": "Okruh v materiálech spojuje dopravu, telegrafii a proměnu časoprostorových struktur v modernitě.",
+        "authors": []
+      },
+      {
+        "term": "dopravní revoluce",
+        "definition": "Industrializace založená na páře zvýšila teritoriální mobilitu společnosti, rychlost, objem i cenu dopravy oproti předindustriálním zdrojům pohybu.",
+        "authors": []
+      },
+      {
+        "term": "železnice",
+        "definition": "V dlouhém 19. století je v materiálech označena za rozhodující typ dopravy; sjednocovala trhy i stát a rozbíjela tradiční sociální vazby.",
+        "authors": []
+      },
+      {
+        "term": "Suezský průplav",
+        "definition": "Otevřen roku 1869; zkrátil plavbu z Evropy do Indie a na Dálný východ a měl zásadní význam pro britské impérium.",
+        "authors": [
+          "Ferdinand de Lesseps"
+        ]
+      },
+      {
+        "term": "Panamský průplav",
+        "definition": "Materiály popisují francouzský pokus z let 1881–1889 pod vedením Ferdinanda de Lessepse a dokončení Američany v letech 1901–1914.",
+        "authors": [
+          "Ferdinand de Lesseps"
+        ]
+      },
+      {
+        "term": "optická telegrafie",
+        "definition": "Přednáška uvádí první francouzské linky z let 1793–1794 mezi Paříží a Lille, pozdější linky do Štrasburku, Milána a Mohuče a evropské rozšíření systému.",
+        "authors": []
+      },
+      {
+        "term": "elektrická telegrafie",
+        "definition": "Materiály zdůrazňují propojení Evropy pozemními linkami v polovině 50. let 19. století a význam podmořských i transkontinentálních kabelů.",
+        "authors": []
+      },
+      {
+        "term": "podmořské kabely",
+        "definition": "Přednáška uvádí překonání kanálu La Manche roku 1851, Irského moře roku 1853, první transatlantický kabel roku 1858 a trvalé spojení Evropy a Ameriky od roku 1866.",
+        "authors": []
+      },
+      {
+        "term": "zpravodajská agentura",
+        "definition": "Instituce sběru, zpracování a distribuce zpráv; materiály uvádějí světové, mezinárodní, národní, regionální a specializované agentury.",
+        "authors": []
+      },
+      {
+        "term": "zpravodajské rozdělení světa",
+        "definition": "Materiály uvádějí sféry Havasu, Reuters, WTB a AP: Havas pro Francii a románské jazyky, Reuters pro britskou koloniální říši a Dálný východ, WTB pro střední a východní Evropu a AP pro USA.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Ferdinand de Lesseps",
+        "role": "v materiálech spojen se Suezským průplavem a s neúspěšným francouzským pokusem o Panamský průplav"
+      },
+      {
+        "name": "Charles Louis Havas",
+        "role": "zakladatel Agence Havas, Francie, 1835"
+      },
+      {
+        "name": "Bernhard Wolff",
+        "role": "zakladatel Wolff's Telegrafisches Bureau, Německo, 1849"
+      },
+      {
+        "name": "Paul Julius Reuter",
+        "role": "zakladatel Reuter's, Velká Británie, 1851"
+      },
+      {
+        "name": "Associated Press",
+        "role": "americká agentura uvedená v materiálech jako založená roku 1848"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má spojit dopravní a informační revoluci: nejde jen o technické vynálezy, ale o změnu časoprostorového uspořádání moderní společnosti.",
+      "Má umět uvést konkrétní data a příklady: železniční tratě, průplavy, optické linky, transatlantický kabel, agentury.",
+      "Má vysvětlit, proč zpravodajské agentury souvisejí s telegrafií a globálním informačním trhem."
+    ],
+    "followup_questions": [
+      "Jak železnice měnila sociální a ekonomické struktury?",
+      "V čem se lišila optická a elektrická telegrafie?",
+      "Proč byly podmořské kabely důležité pro globální komunikaci?",
+      "Jak si Havas, Reuters a WTB rozdělily zpravodajský svět?"
+    ],
+    "common_mistakes": [
+      "Oddělení dopravní revoluce od telekomunikací, jako by šlo o nesouvisející témata.",
+      "Zaměnění telegrafie a zpravodajských agentur: agentury využívají infrastrukturu, ale nejsou s ní totožné.",
+      "Opomenutí mocenského a koloniálního rozměru průplavů, kabelů a agenturních sítí."
+    ],
+    "source_refs": [
+      {
+        "file": "003_telekomunikace.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–9",
+        "relevance": "core"
+      },
+      {
+        "file": "004_zpravodajsk_udcae_agentury.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–5",
+        "relevance": "core"
+      }
+    ],
+    "review_status": "source_based_draft"
+  },
+  {
+    "id": "dejiny-medii-q03",
+    "title": "Vývoj tištěných médií",
+    "short_title": "Tištěná média",
+    "outline": [
+      "Vyložit technologické a výrobní předpoklady tištěných médií: papír, sazbu, tisk a obrazovou reprodukci.",
+      "Popsat mimoevropské počátky papíru, transfer papírenství do Evropy a expanzi výroby papíru.",
+      "Vysvětlit strojovou výrobu papíru a nové suroviny pro papír v 19. století.",
+      "Popsat vývoj strojového tisku od celokovového knihtisku přes rychlolis po rotační tisk.",
+      "Vyložit automatickou sazbu: linotyp a monotyp.",
+      "Vysvětlit autotypii, offsetový tisk, fotosazbu a DTP jako technologické proměny tištěných médií.",
+      "Upozornit, že dodaný ZIP pokrývá hlavně technologii a výrobu; ekonomická základna, typy tiskovin, periodicita, obsah a náklady nejsou v dodaných materiálech samostatně rozpracovány."
+    ],
+    "key_terms": [
+      {
+        "term": "papír",
+        "definition": "Materiály uvádějí, že papír se poprvé objevil v Číně už ve 3. tisíciletí př. n. l. a do Evropy se dostal perským a arabským prostřednictvím.",
+        "authors": []
+      },
+      {
+        "term": "Fabriano",
+        "definition": "První italská papírna vznikla podle materiálů v letech 1268–1276 ve Fabrianu a inovovala výrobu použitím mechanického pěchovadla k drcení hadrů.",
+        "authors": []
+      },
+      {
+        "term": "strojová výroba papíru",
+        "definition": "Nicholas Louis Robert zavedl stroj umožňující strojové nabírání papírové hmoty; bratři Fourdrinierové zavedli výrobu v rolích.",
+        "authors": [
+          "Nicholas Louis Robert",
+          "Henry Fourdrinier",
+          "Sealy Fourdrinier"
+        ]
+      },
+      {
+        "term": "papír z dřevitého vlákna",
+        "definition": "Friedrich Gottlob Keller získal v polovině 40. let 19. století patent na výrobu papíru z dřevitého vlákna.",
+        "authors": [
+          "Friedrich Gottlob Keller"
+        ]
+      },
+      {
+        "term": "celulóza",
+        "definition": "Anselm Payen objevil roku 1838 celulózu, v materiálech popsanou jako hlavní součást rostlinné buněčné stěny a polysacharid.",
+        "authors": [
+          "Anselm Payen"
+        ]
+      },
+      {
+        "term": "buničina",
+        "definition": "Experimenty C. B. Tilghmana a C. F. Dahla vedly podle materiálů k průmyslové výrobě buničiny v poslední pětině 19. století.",
+        "authors": [
+          "C. B. Tilghman",
+          "C. F. Dahl"
+        ]
+      },
+      {
+        "term": "rychlolis",
+        "definition": "Andreas König a Andreas Friedrich Bauer přišli v letech 1810–1814 s rychlolisem; v 50. letech 19. století byl k dispozici dvojitý rychlolis.",
+        "authors": [
+          "Andreas König",
+          "Andreas Friedrich Bauer"
+        ]
+      },
+      {
+        "term": "rotační tisk",
+        "definition": "J. C. McDonald a John Calverley zkonstruovali rotační tiskařský stroj v letech 1862–1866; William Bullock sestavil rotačku v USA roku 1865.",
+        "authors": [
+          "J. C. McDonald",
+          "John Calverley",
+          "William Bullock"
+        ]
+      },
+      {
+        "term": "linotyp",
+        "definition": "Stroj Ottmara Mergenthalera z let 1885–1886: pomocí klávesnice se sázely negativní matrice a hotový řádek se odlil vcelku.",
+        "authors": [
+          "Ottmar Mergenthaler"
+        ]
+      },
+      {
+        "term": "monotyp",
+        "definition": "Stroj Tolberta Lanstona z roku 1887: děrovaná papírová páska řídila odlévání a sázení jednotlivých liter.",
+        "authors": [
+          "Tolbert Lanston"
+        ]
+      },
+      {
+        "term": "autotypie",
+        "definition": "Georg Meisenbach roku 1882 vyvinul autotypii, která umožnila přenos fotografie na stránky tištěných médií rozkladem tónového obrazu do sítě bodů.",
+        "authors": [
+          "Georg Meisenbach"
+        ]
+      },
+      {
+        "term": "offsetový tisk",
+        "definition": "Ira Washington Rubel a Kaspar Herrmann přišli na začátku 20. století s nepřímým tiskem z plochy přes přenosový válec s gumovým povrchem.",
+        "authors": [
+          "Ira Washington Rubel",
+          "Kaspar Herrmann"
+        ]
+      },
+      {
+        "term": "fotosazba",
+        "definition": "René A. Higonnet a Louis Moyroud ukázali roku 1946 princip fotosazby založený na promítání znaků z negativů na film.",
+        "authors": [
+          "René A. Higonnet",
+          "Louis Moyroud"
+        ]
+      },
+      {
+        "term": "DTP",
+        "definition": "Desktop publishing nastupuje od poloviny 80. let 20. století; materiály uvádějí společnost Aldus a program PageMaker z roku 1985.",
+        "authors": [
+          "Aldus"
+        ]
+      }
+    ],
+    "authors": [
+      {
+        "name": "Nicholas Louis Robert",
+        "role": "stroj pro strojové nabírání papírové hmoty na přelomu 18. a 19. století"
+      },
+      {
+        "name": "Henry a Sealy Fourdrinierové",
+        "role": "výroba papíru v rolích v první pětině 19. století"
+      },
+      {
+        "name": "Friedrich Gottlob Keller",
+        "role": "patent na výrobu papíru z dřevitého vlákna"
+      },
+      {
+        "name": "Anselm Payen",
+        "role": "objev celulózy roku 1838"
+      },
+      {
+        "name": "Charles Stanhope",
+        "role": "celokovový knihtisk a úprava pákového mechanismu okolo roku 1800"
+      },
+      {
+        "name": "Andreas König a Andreas Friedrich Bauer",
+        "role": "rychlolis v letech 1810–1814"
+      },
+      {
+        "name": "Ottmar Mergenthaler",
+        "role": "linotyp, automatická sazba řádků"
+      },
+      {
+        "name": "Tolbert Lanston",
+        "role": "monotyp, sazba řízená děrovanou páskou"
+      },
+      {
+        "name": "Georg Meisenbach",
+        "role": "autotypie umožňující tisk fotografického obrazu"
+      },
+      {
+        "name": "Ira Washington Rubel a Kaspar Herrmann",
+        "role": "offsetový tisk jako nepřímý tisk z plochy"
+      },
+      {
+        "name": "René A. Higonnet a Louis Moyroud",
+        "role": "princip fotosazby roku 1946"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má umět vysvětlit technologickou logiku levnější, rychlejší a obrazově bohatší tiskové produkce.",
+      "Má odlišit papírenství, tiskovou techniku, sazbu a reprodukci obrazu.",
+      "Má vědět, že dodaný materiál nepokrývá plně všechny položky oficiální otázky, zejména ekonomickou základnu, typy tiskovin, periodicitu, obsah a vývoj nákladů."
+    ],
+    "followup_questions": [
+      "Jak spolu souvisí levnější papír, rychlejší tisk a rozvoj tištěných médií?",
+      "Jaký je rozdíl mezi linotypem a monotypem?",
+      "Proč byla autotypie významná pro tištěná média?",
+      "Co mění offset, fotosazba a DTP na výrobě novin a časopisů?"
+    ],
+    "common_mistakes": [
+      "Zaměnění dějin tištěných médií za samotný vynález knihtisku.",
+      "Opomenutí papíru a sazby jako klíčových předpokladů masovější tiskové produkce.",
+      "Přeskakování 19. století a jeho výrobních inovací.",
+      "Tvrzení o typologii a ekonomice tištěných médií bez opory v dodaném ZIPu."
+    ],
+    "source_refs": [
+      {
+        "file": "005_ti_udcedt-_udcf8n_udced_m_udcaedia_i_technologie_v_udca2roba.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–12",
+        "relevance": "core"
+      }
+    ],
+    "review_status": "source_based_draft_incomplete_sources"
+  },
+  {
+    "id": "dejiny-medii-q04",
+    "title": "Přenos a uchovávání obrazového sdělení",
+    "short_title": "Obrazové sdělení",
+    "outline": [
+      "Vymezit raná obrazová média uvedená v seznamu otázek: dřevoryt, mědiryt, xylografie a litografie.",
+      "Popsat vznik a vývoj fotografie.",
+      "Popsat experimenty s pohyblivým obrazem a počátky filmu.",
+      "Doplnit výklad až po dodání zdrojových materiálů, protože v poslaném ZIPu k této otázce není samostatný podklad."
+    ],
+    "key_terms": [
+      {
+        "term": "raná obrazová média",
+        "definition": "Oficiální seznam pod tento bod řadí dřevoryt, mědiryt, xylografii a litografii; dodaný ZIP k nim neobsahuje samostatný výklad.",
+        "authors": []
+      },
+      {
+        "term": "dřevoryt",
+        "definition": "Pojem je uveden v oficiálním seznamu otázek; v dodaném ZIPu není výklad.",
+        "authors": []
+      },
+      {
+        "term": "mědiryt",
+        "definition": "Pojem je uveden v oficiálním seznamu otázek; v dodaném ZIPu není výklad.",
+        "authors": []
+      },
+      {
+        "term": "xylografie",
+        "definition": "Pojem je uveden v oficiálním seznamu otázek; v dodaném ZIPu není výklad.",
+        "authors": []
+      },
+      {
+        "term": "litografie",
+        "definition": "Pojem je uveden v oficiálním seznamu otázek; v dodaném ZIPu není výklad.",
+        "authors": []
+      },
+      {
+        "term": "fotografie",
+        "definition": "Oficiální seznam požaduje vznik a vývoj fotografie; dodaný ZIP obsahuje pouze návazný bod digitálního fotoaparátu v otázce globální komunikační revoluce, nikoli dějiny fotografie jako celku.",
+        "authors": []
+      },
+      {
+        "term": "pohyblivý obraz a počátky filmu",
+        "definition": "Oficiální seznam požaduje experimenty s pohyblivým obrazem a počátky filmu; v dodaném ZIPu není samostatný výklad.",
+        "authors": []
+      }
+    ],
+    "authors": [],
+    "examiner_focus": [
+      "Tato položka je v JSONu ponechána jako rozpracovaná podle oficiálního seznamu, protože poslaný ZIP neobsahuje samostatné materiály k raným obrazovým médiím, fotografii ani filmu.",
+      "Zkoušející by měl před použitím doplnit zdrojový výklad nebo dodat další materiály."
+    ],
+    "followup_questions": [
+      "Jak se liší jednotlivá raná obrazová média uvedená v seznamu otázek?",
+      "Jaké technické a sociální změny přinesla fotografie?",
+      "Jaké experimenty vedly k pohyblivému obrazu a filmu?"
+    ],
+    "common_mistakes": [
+      "Doplňování konkrétních dat a jmen bez opory v dodaných materiálech.",
+      "Zaměnění digitální fotografie z otázky globální komunikační revoluce za celý výklad dějin fotografie."
+    ],
+    "source_refs": [],
+    "review_status": "needs_source_material"
+  },
+  {
+    "id": "dejiny-medii-q05",
+    "title": "Vysílací média",
+    "short_title": "Rozhlas a televize",
+    "outline": [
+      "Vysvětlit rozdíl mezi bezdrátovým spojením a rozhlasem jako veřejnou komunikací a institucí.",
+      "Popsat technické předpoklady rozhlasu: přenos hlasu, audion, krystalky, střední, krátké a ultrakrátké vlny.",
+      "Vyložit vznik rozhlasových institucí v Evropě a ekonomické modely rozhlasu.",
+      "Rozlišit státní, soukromoprávní a veřejnoprávní model vysílání.",
+      "Popsat mezinárodní, koloniální a propagandistická rozhlasová vysílání.",
+      "Popsat programovou skladbu a specifičnost rozhlasového vysílání.",
+      "Vyložit dvě cesty k televizi: elektromechanickou a elektronickou.",
+      "Popsat klíčové technické prvky televize: rozklad obrazu, Nipkowův systém, katodový oscilograf, ikonoskop, barevnou televizi.",
+      "Popsat rozšíření televize, poválečné inovace, modely legislativního zakotvení a fenomén plného zásobení televizory."
+    ],
+    "key_terms": [
+      {
+        "term": "bezdrátové spojení versus rozhlas",
+        "definition": "Materiály zdůrazňují, že bezdrátové spojení pouze přenáší informace, zatímco rozhlas je veřejnou komunikací a institucí.",
+        "authors": []
+      },
+      {
+        "term": "audion",
+        "definition": "Elektronka se třemi elektrodami, kterou roku 1906 vynalezl Lee de Forest; první efektivní zesilovač elektrického signálu a součást rozhlasových a televizních přijímačů do vynálezu tranzistoru.",
+        "authors": [
+          "Lee de Forest"
+        ]
+      },
+      {
+        "term": "první rozhlasové vysílání",
+        "definition": "Materiály uvádějí vysílání z Brant Rocku v Massachusetts o Štědrém večeru 1906, připisované Reginaldu A. Fessendenovi.",
+        "authors": [
+          "Reginald A. Fessenden"
+        ]
+      },
+      {
+        "term": "krystalky",
+        "definition": "Přijímací zařízení založená na zjištění kolem roku 1907, že určité minerály dokáží snadno přijímat rádiové signály.",
+        "authors": []
+      },
+      {
+        "term": "krátké vlny",
+        "definition": "Od pozdních 20. let umožnily mezikontinentální dimenzi vysílání a posílily mezinárodní charakter rozhlasu.",
+        "authors": []
+      },
+      {
+        "term": "UKV",
+        "definition": "Ultrakrátké vlny se v USA objevují ojediněle na konci 20. let; frekvenční modulace umožnila ostřejší odlišení programů a vysílačů.",
+        "authors": []
+      },
+      {
+        "term": "ekonomická základna rozhlasu",
+        "definition": "Materiály rozlišují komerční financování prodejem přijímačů nebo reklamou a financování rozhlasu jako veřejného statku skrze daně či poplatky.",
+        "authors": []
+      },
+      {
+        "term": "státní model vysílání",
+        "definition": "Vysílatelé jsou závislí na státu personálně, programově, strukturálně i finančně; systém není plurální, ale je mluvčím vlády nebo vládnoucí strany.",
+        "authors": []
+      },
+      {
+        "term": "soukromoprávní model vysílání",
+        "definition": "Vysílatel má soukromoprávní odpovědnost, zákonodárce stanovuje rámec tržní organizace a pluralita je vytvářena množstvím vysílatelů.",
+        "authors": []
+      },
+      {
+        "term": "veřejnoprávní model vysílání",
+        "definition": "Vysílatelé jsou samostatné právní osoby, zákonodárce stanovuje veřejnou objednávku a zákonné rámce, rozhodování je autonomní a financování probíhá zejména daněmi či poplatky.",
+        "authors": []
+      },
+      {
+        "term": "specifičnost rozhlasového vysílání",
+        "definition": "Materiály uvádějí interpretativnost, prostorovost, dynamičnost, nepřetržitost a komornost poslechu.",
+        "authors": []
+      },
+      {
+        "term": "elektromechanická televize",
+        "definition": "Cesta k televizi založená na mechanickém rozkladu obrazu; klíčovým bodem je Nipkowův patent z roku 1884 a prototypy Herberta E. Ivese a Johna L. Bairda ve 20. letech.",
+        "authors": [
+          "Paul Gottlieb Nipkow",
+          "Herbert E. Ives",
+          "John L. Baird"
+        ]
+      },
+      {
+        "term": "elektronická televize",
+        "definition": "Cesta založená na elektronickém snímání a zobrazování; materiály uvádějí Campbell Swintonův koncept, Braunův katodový oscilograf, von Ardenneho zlepšení a Zvorykinův ikonoskop.",
+        "authors": [
+          "Alan Archibald Campbell Swinton",
+          "Ferdinand Braun",
+          "Manfred von Ardenne",
+          "Vladimir Zvorykin"
+        ]
+      },
+      {
+        "term": "ikonoskop",
+        "definition": "Snímací elektronka s akumulačním účinkem, kterou podle materiálů nabídl Vladimir Zvorykin a která odstranila problémy dosavadní kamerové techniky.",
+        "authors": [
+          "Vladimir Zvorykin"
+        ]
+      },
+      {
+        "term": "barevná televize",
+        "definition": "Materiály uvádějí patent principu barevné televize Janem Szczepanikem roku 1897, projekt z roku 1908 v Německu a experimenty Zvorykina s rozkladem bílého světla na modrou, zelenou a červenou.",
+        "authors": [
+          "Jan Szczepanik",
+          "Vladimir Zvorykin"
+        ]
+      },
+      {
+        "term": "plné zásobení televizory",
+        "definition": "Více než 95% vlastnictví televizních přijímačů v domácnostech; podle materiálů bylo v USA dosaženo počátkem 70. let, v SRN a Velké Británii v polovině 70. let.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "Lee de Forest",
+        "role": "audion, elektronka se třemi elektrodami a efektivní zesilovač elektrického signálu"
+      },
+      {
+        "name": "Reginald A. Fessenden",
+        "role": "první rozhlasové vysílání z Brant Rocku v Massachusetts podle materiálů"
+      },
+      {
+        "name": "Alexander Bain",
+        "role": "rozklad obrazu do jednotlivých bodů v roce 1843"
+      },
+      {
+        "name": "Paul Gottlieb Nipkow",
+        "role": "patent elektromechanického rozkladu obrazu z roku 1884"
+      },
+      {
+        "name": "John L. Baird",
+        "role": "funkční prototyp elektromechanické televize a model barevné televize à la Nipkow"
+      },
+      {
+        "name": "Alan Archibald Campbell Swinton",
+        "role": "koncept televize na plně elektronické bázi z roku 1908"
+      },
+      {
+        "name": "Ferdinand Braun",
+        "role": "katodový oscilograf z roku 1897"
+      },
+      {
+        "name": "Manfred von Ardenne",
+        "role": "vylepšení Braunova katodového oscilografu v letech 1929–1930"
+      },
+      {
+        "name": "Vladimir Zvorykin",
+        "role": "ikonoskop a experimenty důležité pro elektronickou a barevnou televizi"
+      },
+      {
+        "name": "Philo T. Farnsworth",
+        "role": "citlivější řešení elektronického přenosu, při němž se obraz rozložený na segmenty přenášel simultánně"
+      },
+      {
+        "name": "Jan Szczepanik",
+        "role": "patent principu barevné televize roku 1897"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má odlišit technické dějiny vysílání od institucionálních, ekonomických a legislativních modelů vysílání.",
+      "Má umět vysvětlit, proč rozhlas a televize nevznikají jen technicky, ale také politickým rozhodnutím a institucionálním ukotvením.",
+      "Má umět porovnat státní, soukromoprávní a veřejnoprávní model vysílání.",
+      "Má rozlišit elektromechanickou a elektronickou cestu vývoje televize."
+    ],
+    "followup_questions": [
+      "Proč materiály říkají, že rozhlas je veřejná komunikace a instituce, ne jen bezdrátový přenos?",
+      "Jaký význam měl audion pro rozhlas?",
+      "Jak se liší státní, soukromoprávní a veřejnoprávní model vysílání?",
+      "Jaké jsou základní vlastnosti rozhlasového poslechu?",
+      "Jaký je rozdíl mezi Nipkowovou elektromechanickou televizí a elektronickou televizí?",
+      "Co znamená plné zásobení televizory?"
+    ],
+    "common_mistakes": [
+      "Redukce rozhlasu a televize na technické vynálezy bez ekonomických a institucionálních souvislostí.",
+      "Zaměnění bezdrátové telegrafie za rozhlasové vysílání.",
+      "Směšování státního a veřejnoprávního modelu.",
+      "Opomenutí politizace rozhlasu ve 30. letech a mezinárodního/propagandistického rozměru vysílání.",
+      "Neodlišení elektromechanické a elektronické televize."
+    ],
+    "source_refs": [
+      {
+        "file": "008_audi_udcedln_udca1_m_udcaedia_a_rozhlas.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–13",
+        "relevance": "core"
+      },
+      {
+        "file": "011a_televize.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–14",
+        "relevance": "core"
+      }
+    ],
+    "review_status": "source_based_draft"
+  },
+  {
+    "id": "dejiny-medii-q06",
+    "title": "Tvůrci médií",
+    "short_title": "Tvůrci médií",
+    "outline": [
+      "Vymezit tvůrce letákových novin, pamfletů a periodických tištěných médií novověku podle oficiálního seznamu: korespondenti, poštmistři, tiskaři a novinspisovatelé.",
+      "Propojit tento bod s materiály o korespondenčních systémech, psaných novinách, poště a knihtisku.",
+      "Vysvětlit, že dodaný ZIP obsahuje podklady ke korespondentům, komunikátorům, poštovním sítím a tiskařské technologii, ale neobsahuje samostatný výklad profesionalizace novináře v moderní éře.",
+      "Doplnit výklad o utváření profese novináře až po dodání odpovídajícího zdroje."
+    ],
+    "key_terms": [
+      {
+        "term": "korespondenti a komunikátoři",
+        "definition": "Materiály k počátkům novin uvádějí hustou síť korespondentů a komunikátorů, která zajišťovala pravidelnou a stálou informační výměnu v Evropě.",
+        "authors": []
+      },
+      {
+        "term": "korespondenční systém",
+        "definition": "Rutinní a systematické korespondenční styky zapojující vzdělané, ekonomicky aktivní a politicky sebevědomé elity.",
+        "authors": []
+      },
+      {
+        "term": "poštmistři",
+        "definition": "Oficiální seznam je uvádí mezi tvůrci/aktéry novověkých tištěných médií; dodaný ZIP je podpírá výkladem pošty a poštovních linek, ale neobsahuje samostatnou charakteristiku poštmistrů jako mediálních aktérů.",
+        "authors": []
+      },
+      {
+        "term": "tiskaři",
+        "definition": "Oficiální seznam je uvádí mezi aktéry novověkých tištěných médií; dodaný ZIP podrobně pokrývá technologii papíru, tisku, sazby a DTP, nikoli sociální roli tiskařů jako profese.",
+        "authors": []
+      },
+      {
+        "term": "novinspisovatelé",
+        "definition": "Pojem je uveden v oficiálním seznamu otázek; v dodaném ZIPu není samostatně rozpracován.",
+        "authors": []
+      },
+      {
+        "term": "profese novináře v moderní éře",
+        "definition": "Oficiální seznam požaduje výklad utváření profese novináře v moderní éře; v dodaném ZIPu k tomu není samostatný podklad.",
+        "authors": []
+      }
+    ],
+    "authors": [],
+    "examiner_focus": [
+      "Studující má podle dostupných materiálů propojit vznik mediálních tvůrců s korespondencí, poštou a tiskem, ale položka vyžaduje doplnění o profesionalizaci novináře.",
+      "Zkoušející by měl vědět, že tato otázka je v poslaném ZIPu pokryta jen částečně."
+    ],
+    "followup_questions": [
+      "Jakou roli hráli korespondenti a komunikátoři ve vzniku novin?",
+      "Proč jsou poštovní sítě důležité pro tvůrce raně novověkých médií?",
+      "Jak by bylo třeba doplnit výklad profesionalizace novináře?"
+    ],
+    "common_mistakes": [
+      "Nahrazení otázky o tvůrcích médií čistě technologickým výkladem knihtisku.",
+      "Tvrzení o moderní profesi novináře bez zdrojové opory v dodaném ZIPu.",
+      "Opomenutí korespondenčních sítí jako předpokladu raného zpravodajství."
+    ],
+    "source_refs": [
+      {
+        "file": "001_p_udcd6enos_a_uchov_udcedv_udcedn_udca1_slova_a_textu_i.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 12–14",
+        "relevance": "supporting"
+      },
+      {
+        "file": "002_p_udcd6enos_a_uchov_udcedv_udcedn_udca1_slova_a_textu_ii.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 6–16",
+        "relevance": "supporting"
+      },
+      {
+        "file": "005_ti_udcedt-_udcf8n_udced_m_udcaedia_i_technologie_v_udca2roba.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–12",
+        "relevance": "supporting"
+      }
+    ],
+    "review_status": "source_based_draft_incomplete_sources"
+  },
+  {
+    "id": "dejiny-medii-q07",
+    "title": "Regulace a kontrola médií",
+    "short_title": "Regulace a kontrola",
+    "outline": [
+      "Podle oficiálního seznamu vymezit obsahovou kontrolu: tradiční předběžná cenzura versus moderní následná cenzura.",
+      "Podle oficiálního seznamu uvést nástroje ekonomické a fiskální kontroly.",
+      "Podle oficiálního seznamu uvést profesní a distribuční kontrolu.",
+      "Vysvětlit zdrojově doložené modely legislativního zakotvení rozhlasu a televize: státní, soukromoprávní a veřejnoprávní model.",
+      "Upozornit, že obecný výklad cenzury, fiskální kontroly a profesní/distribuční kontroly není v dodaném ZIPu samostatně zpracován."
+    ],
+    "key_terms": [
+      {
+        "term": "předběžná cenzura",
+        "definition": "Pojem je uveden v oficiálním seznamu jako tradiční forma obsahové kontroly; v dodaném ZIPu není samostatně vyložen.",
+        "authors": []
+      },
+      {
+        "term": "následná cenzura",
+        "definition": "Pojem je uveden v oficiálním seznamu jako moderní forma obsahové kontroly; v dodaném ZIPu není samostatně vyložen.",
+        "authors": []
+      },
+      {
+        "term": "ekonomická a fiskální kontrola",
+        "definition": "Oficiální seznam uvádí ekonomické a fiskální nástroje kontroly; dodaný ZIP podrobněji pokrývá ekonomické modely rozhlasového a televizního vysílání, nikoli obecné fiskální nástroje kontroly médií.",
+        "authors": []
+      },
+      {
+        "term": "profesní a distribuční kontrola",
+        "definition": "Pojem je uveden v oficiálním seznamu; v dodaném ZIPu není samostatně rozpracován.",
+        "authors": []
+      },
+      {
+        "term": "státní model vysílání",
+        "definition": "Rozhlasoví či televizní vysílatelé jsou závislí na státu personálně, programově, strukturálně i finančně; systém nepřináší plurální názorovou různorodost.",
+        "authors": []
+      },
+      {
+        "term": "soukromoprávní model vysílání",
+        "definition": "Zákonodárce poskytuje tržní rámec, vysílatel má soukromoprávní odpovědnost a názorová různorodost je vytvářena množstvím vysílatelů.",
+        "authors": []
+      },
+      {
+        "term": "veřejnoprávní model vysílání",
+        "definition": "Vysílatelé jsou samostatné právní osoby, zákonodárce formuluje veřejnou objednávku a rámce, rozhodování je autonomní a kontrola má vyvažovat společenské a politické skupiny včetně menšin.",
+        "authors": []
+      }
+    ],
+    "authors": [],
+    "examiner_focus": [
+      "Tato otázka je v dodaném ZIPu pokryta zejména přes legislativní modely rozhlasu a televize, nikoli jako obecné dějiny cenzury a kontroly médií.",
+      "Studující má jasně odlišit státní, soukromoprávní a veřejnoprávní model vysílání.",
+      "Pro úplný zkouškový výklad je třeba doplnit zdroje k předběžné/následné cenzuře, ekonomické/fiskální kontrole a profesní/distribuční kontrole."
+    ],
+    "followup_questions": [
+      "Jak se liší státní a veřejnoprávní model vysílání?",
+      "Proč soukromoprávní model vytváří pluralitu jiným způsobem než veřejnoprávní model?",
+      "Které části oficiální otázky nejsou v dodaném ZIPu samostatně pokryty?"
+    ],
+    "common_mistakes": [
+      "Zaměnění veřejnoprávního modelu za státní model.",
+      "Doplňování dějin cenzury bez opory v dodaném ZIPu.",
+      "Redukce regulace pouze na právní předpisy, bez ekonomické a institucionální roviny."
+    ],
+    "source_refs": [
+      {
+        "file": "008_audi_udcedln_udca1_m_udcaedia_a_rozhlas.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 6–9",
+        "relevance": "supporting"
+      },
+      {
+        "file": "011a_televize.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 12–14",
+        "relevance": "supporting"
+      }
+    ],
+    "review_status": "source_based_draft_incomplete_sources"
+  },
+  {
+    "id": "dejiny-medii-q08",
+    "title": "Globální komunikační revoluce",
+    "short_title": "Internet, mobil, digitální fotoaparát",
+    "outline": [
+      "Vyložit globální komunikační revoluci přes digitalizaci komunikace, internet, digitální fotoaparát a mobilní telefon.",
+      "Popsat kořeny internetu v poválečném vývoji počítačů a počítačových sítí.",
+      "Vysvětlit ARPAnet jako experimentální síť vytvořenou roku 1969 agenturou ARPA.",
+      "Popsat vznik e-mailu na počátku 70. let podle materiálů.",
+      "Vysvětlit World Wide Web jako soustavu propojených hypertextových dokumentů a uvést rok 1989 a Tima Berners-Leeho.",
+      "Popsat digitální fotoaparát: kosmický program, prototyp Steva Sassona roku 1975, komerční Fuji roku 1988 a ovládnutí trhu v polovině prvního desetiletí.",
+      "Popsat mobilní telefon: kořeny v 50. letech, širší vývoj od 80. let, boom na konci 20. století a smartphony od přelomu prvního a druhého desetiletí 21. století."
+    ],
+    "key_terms": [
+      {
+        "term": "globální komunikační revoluce",
+        "definition": "V dodaném materiálu je vyložena přes internet, digitální fotoaparát a mobilní telefon jako technologie digitalizované komunikace.",
+        "authors": []
+      },
+      {
+        "term": "ARPAnet",
+        "definition": "Experimentální síť vytvořená roku 1969 v USA agenturou ARPA; materiály ji spojují se snahou vytvořit síť bez řídících uzlů, kterou by nebylo možné snadno vyřadit z provozu ve válce.",
+        "authors": [
+          "ARPA"
+        ]
+      },
+      {
+        "term": "e-mail",
+        "definition": "Materiály uvádějí, že první e-mailový program se objevil na počátku 70. let.",
+        "authors": []
+      },
+      {
+        "term": "World Wide Web",
+        "definition": "Soustava propojených hypertextových dokumentů fungující na bázi hypertextových odkazů; koncept prezentoval Tim Berners-Lee roku 1989.",
+        "authors": [
+          "Tim Berners-Lee"
+        ]
+      },
+      {
+        "term": "HTTP",
+        "definition": "Hypertext Transfer Protocol, v materiálech uvedený jako protokol pro opatřování informací v rámci webu.",
+        "authors": []
+      },
+      {
+        "term": "digitální fotoaparát",
+        "definition": "Materiály spojují první pokusy s digitální fotografií s kosmickým programem v 60. letech, prototyp Steva Sassona s firmou Kodak roku 1975 a první komerčně vyráběný digitální fotoaparát Fuji roku 1988.",
+        "authors": [
+          "Steve Sasson"
+        ]
+      },
+      {
+        "term": "mobilní telefon",
+        "definition": "Kořeny sahají podle materiálů do 50. let 20. století, širší využití se rozvíjelo od 80. let a boom nastal na konci 20. století.",
+        "authors": []
+      },
+      {
+        "term": "smartphone",
+        "definition": "Dotykové mobilní telefony, které se podle materiálů začaly šířit od přelomu prvního a druhého desetiletí 21. století.",
+        "authors": []
+      }
+    ],
+    "authors": [
+      {
+        "name": "ARPA",
+        "role": "agentura, která roku 1969 vytvořila experimentální síť ARPAnet"
+      },
+      {
+        "name": "Tim Berners-Lee",
+        "role": "prezentoval koncept World Wide Web roku 1989 a o dvě léta později vytvořil první webovou stránku"
+      },
+      {
+        "name": "Steve Sasson",
+        "role": "zkonstruoval roku 1975 ve firmě Kodak prototyp přenosného digitálního fotoaparátu"
+      },
+      {
+        "name": "Kodak",
+        "role": "firma spojená v materiálech s prototypem digitálního fotoaparátu Steva Sassona"
+      },
+      {
+        "name": "Fuji",
+        "role": "značka prvního komerčně vyráběného digitálního fotoaparátu uvedeného na trh roku 1988 podle materiálů"
+      }
+    ],
+    "examiner_focus": [
+      "Studující má ukázat, že globální komunikační revoluce není jedna technologie, ale souběh internetu, webu, digitální fotografie a mobilní komunikace.",
+      "Má umět rozlišit internet/ARPAnet a World Wide Web.",
+      "Má uvést základní chronologii: ARPAnet 1969, e-mail na počátku 70. let, WWW 1989, digitální fotoaparát 1975/1988, boom mobilů na konci 20. století a smartphony po roce 2010 podle materiálů."
+    ],
+    "followup_questions": [
+      "Jaký je rozdíl mezi internetem a World Wide Webem?",
+      "Proč materiály zdůrazňují síť bez řídících uzlů?",
+      "Jak souvisí digitální fotografie s kosmickým programem a pozdějším spotřebitelským trhem?",
+      "Jak se liší tlačítkový mobilní telefon a smartphone v rámci této otázky?"
+    ],
+    "common_mistakes": [
+      "Zaměnění internetu a webu.",
+      "Přeskočení ARPAnetu a vojensko-bezpečnostního kontextu sítí bez řídících uzlů.",
+      "Redukce globální komunikační revoluce pouze na internet bez digitální fotografie a mobilního telefonu.",
+      "Opomenutí základních dat uvedených v materiálech."
+    ],
+    "source_refs": [
+      {
+        "file": "011b_glob_udcedln_udca1_komunika-_udcecn_udca1_revoluce.md",
+        "source_type": "pptx/markdown",
+        "pages_or_slides": "Slide 1–5",
+        "relevance": "core"
+      }
+    ],
+    "review_status": "source_based_draft"
+  }
+]

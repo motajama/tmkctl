@@ -204,7 +204,7 @@ Sample file:
 data/students.sample.csv
 ```
 
-## Import z IS MU
+## Import From IS MU
 
 For SZZ pages in IS MU, open the exam terms page, press `Ctrl+A`, then `Ctrl+C`, and paste the whole page text into **Import z IS MU**.
 
@@ -223,102 +223,102 @@ Parser sample:
 data/is-mu-paste.sample.txt
 ```
 
-## Provoz zkouškového dne
+## Exam-Day Operation
 
-Ve spodním stavovém řádku nastav název aktuálního termínu, například `TMK - 10. 6. 2026`, a ulož ho tlačítkem **ULOŽIT TERMÍN**. Název se ukládá jako workspace-scoped `current_exam_label` a zobrazuje se ve spodním stavovém řádku.
+Set the current exam-term label in the bottom status bar, for example `TMK - 10. 6. 2026`, and save it with **ULOŽIT TERMÍN**. The label is stored as workspace-scoped `current_exam_label` and shown in the bottom status bar.
 
-Doporučený postup pro jeden termín:
+Recommended workflow for one exam term:
 
-1. Nastav název termínu.
-2. Importuj studující z CSV nebo z IS MU.
-3. Proveď zkoušení přes frontu, potítko, zkoušení a hotovo.
-4. Průběžně ukládej poznámky.
-5. Po skončení použij spodní příkaz **EXPORTUJ VŠE**.
-6. Před dalším termínem použij spodní příkaz **RESET**.
+1. Set the exam-term label.
+2. Import students from CSV or IS MU.
+3. Run the exam through the waiting, preparation, examination, and done states.
+4. Save notes continuously.
+5. After the exam term, use the bottom **EXPORTUJ VŠE** command.
+6. Before the next exam term, use the bottom **RESET** command.
 
-Exporty:
+Exports:
 
-- **MARKDOWN FILE** stáhne Markdown soubor se všemi poznámkami.
-- **TXT FILE** stáhne prostý text se všemi poznámkami.
-- **JSON/ZIP** stáhne ZIP s `notes.md`, `notes.txt`, `students.csv` a `exam_state.json`, pokud je dostupné PHP rozšíření `ZipArchive`. Bez něj stáhne JSON export.
-- **KOPÍROVAT VŠE** zkopíruje všechny poznámky do schránky, pokud ji prohlížeč zpřístupní.
+- **MARKDOWN FILE** downloads a Markdown file with all notes.
+- **TXT FILE** downloads a plain-text file with all notes.
+- **JSON/ZIP** downloads a ZIP with `notes.md`, `notes.txt`, `students.csv`, and `exam_state.json` when the PHP `ZipArchive` extension is available. Without it, the app downloads a JSON export.
+- **KOPÍROVAT VŠE** copies all notes to the clipboard when the browser allows it.
 
-Reset termínu je dostupný jen přes POST s CSRF tokenem a vyžaduje přesné potvrzení `RESET`. Smaže studující, stack a poznámky aktuálního běhu a vyčistí aktuální výběr v dané relaci. Otázky v `data/questions.reviewed.json`, konfigurace aplikace a databázové schéma zůstávají zachované. Název termínu zůstává zachovaný, pokud nezaškrtneš **Smazat i název termínu**.
+Exam-term reset is available only through POST with a CSRF token and requires exact confirmation text `RESET`. It deletes students, stack state, and notes for the current run, and clears the current selection in that workspace. Questions in `data/questions.reviewed.json`, app configuration, and the database schema remain unchanged. The exam-term label remains unchanged unless **Smazat i název termínu** is checked.
 
-Před resetem vždy nejdřív udělej export. Reset neslouží jako záloha a nemaže otázky.
+Always export before resetting. Reset is not a backup mechanism and it does not delete questions.
 
-## Správa otázek
+## Question Management
 
-Otázky žijí v:
+Questions live in:
 
 ```text
 data/questions.reviewed.json
 ```
 
-Spodní příkaz **OTÁZKY** otevře okno pro kontrolu, nahrání nového ručně zkontrolovaného JSON souboru a sloučení více JSON souborů. Stejné okno otevře konzolový příkaz `:questions`.
+The bottom **OTÁZKY** command opens a window for inspecting the current pack, uploading a new manually reviewed JSON file, and merging multiple JSON files. The same window opens through console command `:questions`.
 
-Validace kontroluje jen strukturu souboru:
+Validation checks only file structure:
 
-- platný JSON a kořenové pole
-- povinné `id`, `title`, pole osnovy a metadat
-- duplicity `id`
-- povolené `review_status`: `reviewed`, `generated`, `needs_review`
-- varování pro prázdné `source_refs` a položky, které nejsou `reviewed`
+- valid JSON and top-level array
+- required `id`, `title`, outline fields, and metadata fields
+- duplicate `id` values
+- allowed `review_status` values: `reviewed`, `generated`, `needs_review`
+- warnings for empty `source_refs` and items that are not `reviewed`
 
-Validace nekontroluje odbornou správnost. Nahrávej jen soubor, který byl ručně zkontrolovaný. Tlačítko **NAHRÁT NOVÝ BALÍK** nahradí celý `questions.reviewed.json`, ale pouze po úspěšné validaci. Před nahrazením se původní soubor automaticky zálohuje do:
+Validation does not check academic correctness. Upload only a manually reviewed file. The **NAHRÁT NOVÝ BALÍK** button replaces the entire `questions.reviewed.json`, but only after successful validation. Before replacement, the previous file is backed up automatically to:
 
 ```text
 data/backups/questions.reviewed.YYYYMMDD-HHMMSS.json
 ```
 
-Obnova ze zálohy je v této fázi ruční: zkopíruj vybranou zálohu zpět jako `data/questions.reviewed.json` a zkontroluj ji v okně **OTÁZKY**.
+Backup restore is manual at this stage: copy the selected backup back to `data/questions.reviewed.json` and validate it in the **OTÁZKY** window.
 
-### Merge více JSON souborů
+### Merging Multiple JSON Files
 
-Sekce **MERGE JSON** bere aktuální `data/questions.reviewed.json` jako základ. Vyber jeden nebo více JSON souborů a nejdřív použij **VALIDOVAT MERGE**. Náhled ukáže:
+The **MERGE JSON** section uses the current `data/questions.reviewed.json` as the base. Select one or more JSON files and run **VALIDOVAT MERGE** first. The preview shows:
 
-- počet aktuálních otázek
-- počet přidaných otázek
-- počet nahrazených otázek
-- konfliktní duplicitní `id`
-- validační varování a chyby
+- current question count
+- added question count
+- replaced question count
+- conflicting duplicate `id` values
+- validation warnings and errors
 
-Konflikty `id` se řeší globální strategií:
+Conflicting `id` values are resolved with one global strategy:
 
-- `ponechat existující` je výchozí a nikdy nepřepíše otázku z aktuálního souboru
-- `nahradit nahranými` použije otázku z nahraného JSON souboru pro stejné `id`
+- `ponechat existující` is the default and never overwrites a question from the current file
+- `nahradit nahranými` uses the uploaded JSON question for the same `id`
 
-Tlačítko **SLOUČIT / MERGE** zapíše výsledek jen tehdy, když jsou všechny vstupní soubory platné a platný je i výsledný sloučený balík. Před zápisem se vždy vytvoří záloha v `data/backups/`.
+The **SLOUČIT / MERGE** button writes the result only when every input file is valid and the merged pack is valid too. A backup is always created in `data/backups/` before writing.
 
-## Nápověda
+## Help Content
 
-Okno **NÁPOVĚDA** načítá obsah z fragmentu:
+The **NÁPOVĚDA** window loads content from this fragment:
 
 ```text
 public/assets/help.html
 ```
 
-Fragment neobsahuje `<html>`, `<head>`, `<body>` ani CSS. Formát a vkládání obrázků popisuje `docs/help-format.md`.
+The fragment does not contain `<html>`, `<head>`, `<body>`, or CSS. Formatting and image embedding are described in `docs/help-format.md`.
 
-Později přibude AI generátor, který může připravit `generated` JSON. Tato fáze pouze spravuje finální reviewed soubor a negeneruje otázky.
+A later phase may add an AI generator that prepares `generated` JSON. This phase only manages the final reviewed file and does not generate questions.
 
-## Sdílené relace / workspaces
+## Shared Workspaces
 
-Po přihlášení aplikace otevře **VÝBĚR RELACE / TERMÍNU**. Relace představuje jeden sdílený běh zkoušení. Více uživatelů může vstoupit do stejné relace a společně vidí studenty, frontu, potítko, zkoušené, poznámky a exporty daného termínu.
+After login, the app opens **VÝBĚR RELACE / TERMÍNU**. A workspace represents one shared exam run. Multiple users can enter the same workspace and see the students, queue, preparation slot, active examination, notes, and exports for that term together.
 
-Aktivní relace jsou vidět jen tehdy, když je v nich čerstvá přítomnost alespoň jednoho prohlížeče. Přítomnost se obnovuje heartbeat požadavkem. Identita prohlížeče používá cookie `tmkctl_client_id`; cookies musí být povolené, jinak nelze vstoupit do relace.
+Active workspaces are visible only while at least one browser has fresh presence in them. Presence is refreshed by a heartbeat request. Browser identity uses the `tmkctl_client_id` cookie; cookies must be enabled, otherwise the user cannot enter a workspace.
 
-Studenti, stack, poznámky, reset a exporty jsou oddělené podle relace. Otázky v `data/questions.reviewed.json` zůstávají globální pro celou instalaci. Detaily jsou v `docs/workspaces.md`.
+Students, stack state, notes, reset, and exports are scoped by workspace. Questions in `data/questions.reviewed.json` remain global for the whole installation. Details are in `docs/workspaces.md`.
 
-## Debug režim
+## Debug Mode
 
-Pokud je v konfiguraci `debug => true`, po vstupu do dashboardu se zobrazí červené varování **DEBUG REŽIM — NEFINÁLNÍ VERZE**. Text aktuální fáze se čte z:
+When config `debug => true`, entering the dashboard shows a red warning window titled **DEBUG REŽIM — NEFINÁLNÍ VERZE**. The current phase text is read from:
 
 ```text
 data/debug-stage.txt
 ```
 
-Soubor je obyčejný editovatelný TXT. Když chybí, aplikace zobrazí bezpečnou fallback zprávu bez interních cest nebo tajných hodnot.
+The file is plain editable TXT. If it is missing, the app shows a safe fallback message without internal paths or secret values.
 
 ## Offline Question Generator
 

@@ -741,7 +741,7 @@
     "followup_questions": [],
     "common_mistakes": [],
     "source_refs": [],
-    "review_status": "missing_question_placeholder"
+    "review_status": "needs_review"
   },
   {
     "id": "q09",
@@ -909,7 +909,7 @@
         "relevance": "supporting"
       }
     ],
-    "review_status": "reviewed_from_zip_supplemented_marked"
+    "review_status": "reviewed"
   },
   {
     "id": "q10",
@@ -1068,7 +1068,7 @@
         "relevance": "supporting"
       }
     ],
-    "review_status": "reviewed_from_zip_supplemented_marked"
+    "review_status": "reviewed"
   },
   {
     "id": "q11",
@@ -1228,7 +1228,7 @@
         "note": "ZIP se otázky dotýká obecně přes sociologii médií; konkrétní modely byly doplněny online rešerší a označeny tildou."
       }
     ],
-    "review_status": "reviewed_supplemented_marked"
+    "review_status": "reviewed"
   },
   {
     "id": "q12",
@@ -1396,7 +1396,7 @@
         "relevance": "supporting"
       }
     ],
-    "review_status": "reviewed_from_zip_supplemented_marked"
+    "review_status": "reviewed"
   },
   {
     "id": "q13",
@@ -1563,7 +1563,7 @@
         "relevance": "supporting"
       }
     ],
-    "review_status": "reviewed_supplemented_marked"
+    "review_status": "reviewed"
   },
   {
     "id": "q14",
@@ -1724,7 +1724,7 @@
         "relevance": "supporting"
       }
     ],
-    "review_status": "reviewed_supplemented_marked"
+    "review_status": "reviewed"
   },
   {
     "id": "q15",
@@ -1904,7 +1904,7 @@
         "relevance": "supporting"
       }
     ],
-    "review_status": "reviewed_from_zip_supplemented_marked"
+    "review_status": "reviewed"
   },
   {
     "id": "q16",
@@ -2043,7 +2043,7 @@
         "note": "ZIP se vizuální kultury dotýká pouze okrajově přes veřejný prostor; výklad vizuální kultury byl doplněn online rešerší a označen tildou."
       }
     ],
-    "review_status": "reviewed_supplemented_marked"
+    "review_status": "reviewed"
   },
   {
     "id": "q17",
@@ -2210,7 +2210,7 @@
         "relevance": "supporting"
       }
     ],
-    "review_status": "reviewed_from_zip_supplemented_marked"
+    "review_status": "reviewed"
   },
   {
     "id": "q18",
@@ -2374,7 +2374,7 @@
         "relevance": "supporting"
       }
     ],
-    "review_status": "reviewed_from_zip_supplemented_marked"
+    "review_status": "reviewed"
   },
   {
     "id": "q19",
@@ -2557,7 +2557,7 @@
         "relevance": "supporting"
       }
     ],
-    "review_status": "reviewed_from_zip_supplemented_marked"
+    "review_status": "reviewed"
   },
   {
     "id": "q20",
@@ -2790,7 +2790,7 @@
         "relevance": "supporting"
       }
     ],
-    "review_status": "reviewed_from_zip"
+    "review_status": "reviewed"
   },
   {
     "id": "q21",
@@ -3013,7 +3013,7 @@
         "relevance": "supporting"
       }
     ],
-    "review_status": "reviewed_from_zip"
+    "review_status": "reviewed"
   },
   {
     "id": "q22",
@@ -3264,7 +3264,7 @@
         "relevance": "supporting"
       }
     ],
-    "review_status": "reviewed_from_zip"
+    "review_status": "reviewed"
   },
   {
     "id": "q23",
@@ -3482,7 +3482,7 @@
         "relevance": "supporting"
       }
     ],
-    "review_status": "reviewed_from_zip"
+    "review_status": "reviewed"
   },
   {
     "id": "q24",
@@ -3737,7 +3737,7 @@
         "relevance": "supporting"
       }
     ],
-    "review_status": "reviewed_from_zip"
+    "review_status": "reviewed"
   },
   {
     "id": "q25",
@@ -3935,7 +3935,7 @@
         "relevance": "supporting"
       }
     ],
-    "review_status": "reviewed_from_zip"
+    "review_status": "reviewed"
   },
   {
     "id": "q26",
@@ -4181,7 +4181,7 @@
         "relevance": "supporting"
       }
     ],
-    "review_status": "reviewed_from_zip"
+    "review_status": "reviewed"
   },
   {
     "id": "q27",
@@ -4375,7 +4375,7 @@
         "relevance": "official_question"
       }
     ],
-    "review_status": "reviewed_supplemented_marked"
+    "review_status": "reviewed"
   },
   {
     "id": "q28",
@@ -4536,7 +4536,7 @@
         "relevance": "official_question"
       }
     ],
-    "review_status": "reviewed_supplemented_marked"
+    "review_status": "reviewed"
   },
   {
     "id": "q29",
@@ -4722,7 +4722,7 @@
         "relevance": "official_question"
       }
     ],
-    "review_status": "reviewed_supplemented_marked"
+    "review_status": "reviewed"
   },
   {
     "id": "q30",
@@ -4889,7 +4889,7 @@
         "relevance": "official_question"
       }
     ],
-    "review_status": "reviewed_supplemented_marked"
+    "review_status": "reviewed"
   },
   {
     "id": "q31",
@@ -5063,7 +5063,7 @@
         "relevance": "official_question"
       }
     ],
-    "review_status": "reviewed_supplemented_marked"
+    "review_status": "reviewed"
   },
   {
     "id": "q32",
@@ -5250,7 +5250,7 @@
         "relevance": "official_question"
       }
     ],
-    "review_status": "reviewed_supplemented_marked"
+    "review_status": "reviewed"
   },
   {
     "id": "q33",
@@ -5431,7 +5431,7 @@
         "relevance": "official_question"
       }
     ],
-    "review_status": "reviewed_supplemented_marked"
+    "review_status": "reviewed"
   },
   {
     "id": "q34",
@@ -5632,7 +5632,7 @@
         "relevance": "official_question"
       }
     ],
-    "review_status": "reviewed_supplemented_marked"
+    "review_status": "reviewed"
   },
   {
     "id": "q35",
@@ -5777,7 +5777,7 @@
         "relevance": "official_question"
       }
     ],
-    "review_status": "reviewed_supplemented_marked"
+    "review_status": "reviewed"
   },
   {
     "id": "q36",
@@ -5929,7 +5929,7 @@
         "relevance": "official_question"
       }
     ],
-    "review_status": "reviewed_supplemented_marked"
+    "review_status": "reviewed"
   },
   {
     "id": "q37",
@@ -6103,7 +6103,7 @@
         "relevance": "official_question"
       }
     ],
-    "review_status": "reviewed_supplemented_marked"
+    "review_status": "reviewed"
   },
   {
     "id": "q38",
@@ -6313,7 +6313,7 @@
         "relevance": "official_question_list"
       }
     ],
-    "review_status": "source_based_draft"
+    "review_status": "needs_review"
   },
   {
     "id": "q39",
@@ -6517,7 +6517,7 @@
         "relevance": "official_question_list"
       }
     ],
-    "review_status": "source_based_draft"
+    "review_status": "needs_review"
   },
   {
     "id": "q40",
@@ -6703,7 +6703,7 @@
         "relevance": "official_question_list"
       }
     ],
-    "review_status": "source_based_draft"
+    "review_status": "needs_review"
   },
   {
     "id": "q41",
@@ -6928,7 +6928,7 @@
         "relevance": "official_question_list"
       }
     ],
-    "review_status": "source_based_draft"
+    "review_status": "needs_review"
   },
   {
     "id": "q42",
@@ -7241,7 +7241,7 @@
         "relevance": "official_question_list"
       }
     ],
-    "review_status": "source_based_draft"
+    "review_status": "needs_review"
   },
   {
     "id": "q43",
@@ -7513,6 +7513,6 @@
         "relevance": "official_question_list"
       }
     ],
-    "review_status": "source_based_draft"
+    "review_status": "needs_review"
   }
 ]

@@ -22,9 +22,31 @@ function is_authenticated(): bool
 function require_auth(): void
 {
     if (!is_authenticated()) {
-        header('Location: login.php');
+        if (request_expects_json()) {
+            http_response_code(401);
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['ok' => false, 'error' => 'Přihlášení vypršelo. Přihlaste se znovu.'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+            exit;
+        }
+        header('Location: ' . login_url());
         exit;
     }
+}
+
+function request_expects_json(): bool
+{
+    $script = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '');
+    $accept = strtolower((string)($_SERVER['HTTP_ACCEPT'] ?? ''));
+    $requestedWith = strtolower((string)($_SERVER['HTTP_X_REQUESTED_WITH'] ?? ''));
+    return str_contains($script, '/api/')
+        || str_contains($accept, 'application/json')
+        || $requestedWith === 'xmlhttprequest';
+}
+
+function login_url(): string
+{
+    $script = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '');
+    return str_contains($script, '/api/') ? '../login.php' : 'login.php';
 }
 
 function login_with_password(string $password): bool

@@ -161,7 +161,7 @@ Recommended models:
 - `qwen3:4b` for stronger laptops
 - `qwen3:8b` for stronger Apple Silicon or machines with more memory
 
-## Lokální Ollama v /home
+## Local Ollama In /home
 
 Start Ollama outside the web app:
 

@@ -32,6 +32,9 @@ function public_error_message(Throwable $e): string
     if (function_exists('app_config')) {
         try {
             $config = app_config();
+            if (empty($config['debug']) && !($e instanceof InvalidArgumentException)) {
+                return 'Požadavek se nepodařilo zpracovat. Zkontrolujte nastavení aplikace nebo kontaktujte správce.';
+            }
             $secrets = [
                 $config['db_pass'] ?? null,
                 $config['database']['pass'] ?? null,

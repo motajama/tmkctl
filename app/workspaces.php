@@ -94,12 +94,18 @@ function require_current_workspace(PDO $pdo): int
     $clientId = current_client_id();
     if ($clientId === null) {
         ensure_client_cookie_queued();
+        if (function_exists('request_expects_json') && request_expects_json()) {
+            json_response(['ok' => false, 'error' => client_cookie_warning()], 400);
+        }
         header('Location: ' . workspace_selection_url());
         exit;
     }
     $workspaceId = current_workspace_id();
     if (!$workspaceId || !get_workspace($pdo, $workspaceId)) {
         clear_current_workspace_id();
+        if (function_exists('request_expects_json') && request_expects_json()) {
+            json_response(['ok' => false, 'error' => 'Vyberte relaci / termín.'], 409);
+        }
         header('Location: ' . workspace_selection_url());
         exit;
     }

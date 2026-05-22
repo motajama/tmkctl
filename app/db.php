@@ -177,7 +177,7 @@ function install_schema(PDO $pdo): void
             workspace_id INT UNSIGNED NULL,
             student_id INT UNSIGNED NOT NULL,
             state VARCHAR(24) NOT NULL DEFAULT 'waiting',
-            question_id VARCHAR(64) NULL,
+            question_id VARCHAR(64) NOT NULL DEFAULT '__general__',
             position INT NOT NULL DEFAULT 0,
             preparation_started_at DATETIME NULL,
             examination_started_at DATETIME NULL,
@@ -206,6 +206,7 @@ function install_schema(PDO $pdo): void
             question_id VARCHAR(64) NULL,
             note_text MEDIUMTEXT NULL,
             suggested_grade VARCHAR(64) NULL,
+            lock_version INT UNSIGNED NOT NULL DEFAULT 0,
             created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
             UNIQUE KEY exam_notes_workspace_student_question_unique (workspace_id, student_id, question_id),
@@ -215,13 +216,74 @@ function install_schema(PDO $pdo): void
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
     ");
     add_column_if_missing($pdo, $dbName, $examNotesName, 'workspace_id', 'INT UNSIGNED NULL AFTER id');
-    make_column_nullable_if_needed($pdo, $dbName, $examNotesName, 'question_id', 'VARCHAR(64) NULL');
-    $pdo->exec("UPDATE {$examNotes} SET question_id = NULL WHERE question_id = \"__general__\"");
+    add_column_if_missing($pdo, $dbName, $examNotesName, 'lock_version', 'INT UNSIGNED NOT NULL DEFAULT 0 AFTER suggested_grade');
+    normalize_general_note_rows($pdo, $examNotes);
+    $pdo->exec("UPDATE {$examNotes} SET question_id = \"__general__\" WHERE question_id IS NULL OR question_id = \"\"");
+    make_column_not_nullable_if_needed($pdo, $dbName, $examNotesName, 'question_id', 'VARCHAR(64) NOT NULL DEFAULT "__general__"');
     add_index_if_missing($pdo, $dbName, $examNotesName, 'exam_notes_workspace_student_question_unique', 'UNIQUE KEY exam_notes_workspace_student_question_unique (workspace_id, student_id, question_id)');
     add_index_if_missing($pdo, $dbName, $examNotesName, 'exam_notes_student_idx', 'KEY exam_notes_student_idx (student_id)');
     add_index_if_missing($pdo, $dbName, $examNotesName, 'exam_notes_student_question_idx', 'KEY exam_notes_student_question_idx (workspace_id, student_id, question_id)');
 
     migrate_existing_data_to_default_workspace($pdo);
+}
+
+function normalize_general_note_rows(PDO $pdo, string $examNotes): void
+{
+    $groups = $pdo->query("
+        SELECT workspace_id, student_id, COUNT(*) AS duplicate_count
+        FROM {$examNotes}
+        WHERE question_id IS NULL OR question_id = '' OR question_id = '__general__'
+        GROUP BY workspace_id, student_id
+        HAVING duplicate_count > 1
+    ")->fetchAll();
+
+    foreach ($groups as $group) {
+        $stmt = $pdo->prepare("
+            SELECT id, note_text, suggested_grade, lock_version
+            FROM {$examNotes}
+            WHERE workspace_id <=> :workspace_id
+              AND student_id = :student_id
+              AND (question_id IS NULL OR question_id = '' OR question_id = '__general__')
+            ORDER BY updated_at ASC, id ASC
+        ");
+        $stmt->execute([
+            ':workspace_id' => $group['workspace_id'] === null ? null : (int)$group['workspace_id'],
+            ':student_id' => (int)$group['student_id'],
+        ]);
+        $rows = $stmt->fetchAll();
+        if (count($rows) < 2) {
+            continue;
+        }
+
+        $keep = array_pop($rows);
+        $noteParts = [];
+        $grade = '';
+        $lockVersion = 0;
+        foreach (array_merge($rows, [$keep]) as $row) {
+            $text = trim((string)($row['note_text'] ?? ''));
+            if ($text !== '') {
+                $noteParts[] = $text;
+            }
+            if (trim((string)($row['suggested_grade'] ?? '')) !== '') {
+                $grade = trim((string)$row['suggested_grade']);
+            }
+            $lockVersion = max($lockVersion, (int)($row['lock_version'] ?? 0));
+        }
+        $mergedText = implode("\n\n---\n\n", array_values(array_unique($noteParts)));
+        $idsToDelete = array_map(fn (array $row): int => (int)$row['id'], $rows);
+
+        $stmt = $pdo->prepare("UPDATE {$examNotes} SET note_text = :note_text, suggested_grade = :suggested_grade, lock_version = :lock_version WHERE id = :id");
+        $stmt->execute([
+            ':id' => (int)$keep['id'],
+            ':note_text' => $mergedText,
+            ':suggested_grade' => $grade,
+            ':lock_version' => $lockVersion + 1,
+        ]);
+
+        if ($idsToDelete) {
+            $pdo->exec("DELETE FROM {$examNotes} WHERE id IN (" . implode(',', $idsToDelete) . ")");
+        }
+    }
 }
 
 function normalize_students_table_for_foreign_keys(PDO $pdo, string $dbName, string $studentsName): void
@@ -360,6 +422,19 @@ function make_column_nullable_if_needed(PDO $pdo, string $dbName, string $table,
     ');
     $stmt->execute([':schema' => $dbName, ':table' => $table, ':column' => $column]);
     if ((string)$stmt->fetchColumn() === 'NO') {
+        $pdo->exec(sprintf('ALTER TABLE `%s` MODIFY `%s` %s', $table, $column, $definition));
+    }
+}
+
+function make_column_not_nullable_if_needed(PDO $pdo, string $dbName, string $table, string $column, string $definition): void
+{
+    $stmt = $pdo->prepare('
+        SELECT IS_NULLABLE
+        FROM information_schema.COLUMNS
+        WHERE TABLE_SCHEMA = :schema AND TABLE_NAME = :table AND COLUMN_NAME = :column
+    ');
+    $stmt->execute([':schema' => $dbName, ':table' => $table, ':column' => $column]);
+    if ((string)$stmt->fetchColumn() === 'YES') {
         $pdo->exec(sprintf('ALTER TABLE `%s` MODIFY `%s` %s', $table, $column, $definition));
     }
 }

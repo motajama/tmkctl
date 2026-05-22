@@ -1,9 +1,11 @@
 <?php
 
+const GENERAL_NOTE_QUESTION_ID = '__general__';
+
 function normalize_note_question_id(?string $questionId): ?string
 {
     $questionId = trim((string)$questionId);
-    return $questionId === '' ? null : $questionId;
+    return $questionId === '' || $questionId === GENERAL_NOTE_QUESTION_ID ? null : $questionId;
 }
 
 function is_general_note_question_id(?string $questionId): bool
@@ -11,7 +13,21 @@ function is_general_note_question_id(?string $questionId): bool
     return normalize_note_question_id($questionId) === null;
 }
 
-function get_note(PDO $pdo, int $workspaceId, int $studentId, string $questionId): array
+function note_storage_question_id(?string $questionId): string
+{
+    return normalize_note_question_id($questionId) ?? GENERAL_NOTE_QUESTION_ID;
+}
+
+function public_note_row(array $note): array
+{
+    if (($note['question_id'] ?? null) === GENERAL_NOTE_QUESTION_ID) {
+        $note['question_id'] = null;
+    }
+    $note['lock_version'] = (int)($note['lock_version'] ?? 0);
+    return $note;
+}
+
+function get_note(PDO $pdo, int $workspaceId, int $studentId, ?string $questionId): array
 {
     $questionId = normalize_note_question_id($questionId);
     if (!get_student($pdo, $studentId, $workspaceId)) {
@@ -21,22 +37,23 @@ function get_note(PDO $pdo, int $workspaceId, int $studentId, string $questionId
         throw new InvalidArgumentException('Otázka neexistuje.');
     }
     $examNotes = db_table('exam_notes');
-    if ($questionId === null) {
-        $stmt = $pdo->prepare("SELECT * FROM {$examNotes} WHERE workspace_id = :workspace_id AND student_id = :student_id AND question_id IS NULL");
-        $stmt->execute([':workspace_id' => $workspaceId, ':student_id' => $studentId]);
-    } else {
-        $stmt = $pdo->prepare("SELECT * FROM {$examNotes} WHERE workspace_id = :workspace_id AND student_id = :student_id AND question_id = :question_id");
-        $stmt->execute([':workspace_id' => $workspaceId, ':student_id' => $studentId, ':question_id' => $questionId]);
-    }
-    return $stmt->fetch() ?: [
+    $stmt = $pdo->prepare("SELECT * FROM {$examNotes} WHERE workspace_id = :workspace_id AND student_id = :student_id AND question_id = :question_id");
+    $stmt->execute([
+        ':workspace_id' => $workspaceId,
+        ':student_id' => $studentId,
+        ':question_id' => note_storage_question_id($questionId),
+    ]);
+    $note = $stmt->fetch();
+    return $note ? public_note_row($note) : [
         'student_id' => $studentId,
         'question_id' => $questionId,
         'note_text' => '',
         'suggested_grade' => '',
+        'lock_version' => 0,
     ];
 }
 
-function save_note(PDO $pdo, int $workspaceId, int $studentId, string $questionId, string $noteText, string $suggestedGrade): void
+function save_note(PDO $pdo, int $workspaceId, int $studentId, string $questionId, string $noteText, string $suggestedGrade, int $baseLockVersion): array
 {
     $questionId = normalize_note_question_id($questionId);
     if (!get_student($pdo, $studentId, $workspaceId)) {
@@ -47,34 +64,79 @@ function save_note(PDO $pdo, int $workspaceId, int $studentId, string $questionI
     }
     $suggestedGrade = function_exists('mb_substr') ? mb_substr(trim($suggestedGrade), 0, 64) : substr(trim($suggestedGrade), 0, 64);
     $examNotes = db_table('exam_notes');
-    if ($questionId === null) {
-        $stmt = $pdo->prepare("SELECT id FROM {$examNotes} WHERE workspace_id = :workspace_id AND student_id = :student_id AND question_id IS NULL");
-        $stmt->execute([':workspace_id' => $workspaceId, ':student_id' => $studentId]);
-        $noteId = $stmt->fetchColumn();
-        if ($noteId !== false) {
-            $stmt = $pdo->prepare("UPDATE {$examNotes} SET note_text = :note_text, suggested_grade = :suggested_grade WHERE id = :id");
+    $storageQuestionId = note_storage_question_id($questionId);
+
+    try {
+        $pdo->beginTransaction();
+        $stmt = $pdo->prepare("SELECT * FROM {$examNotes} WHERE workspace_id = :workspace_id AND student_id = :student_id AND question_id = :question_id FOR UPDATE");
+        $stmt->execute([
+            ':workspace_id' => $workspaceId,
+            ':student_id' => $studentId,
+            ':question_id' => $storageQuestionId,
+        ]);
+        $existing = $stmt->fetch();
+
+        if ($existing) {
+            $currentVersion = (int)($existing['lock_version'] ?? 0);
+            if ($currentVersion !== $baseLockVersion) {
+                $pdo->rollBack();
+                throw new NoteConflictException(public_note_row($existing));
+            }
+            $stmt = $pdo->prepare("
+                UPDATE {$examNotes}
+                SET note_text = :note_text,
+                    suggested_grade = :suggested_grade,
+                    lock_version = lock_version + 1
+                WHERE id = :id
+            ");
             $stmt->execute([
-                ':id' => (int)$noteId,
+                ':id' => (int)$existing['id'],
                 ':note_text' => $noteText,
                 ':suggested_grade' => $suggestedGrade,
             ]);
-            return;
+        } else {
+            if ($baseLockVersion !== 0) {
+                $pdo->rollBack();
+                throw new NoteConflictException(get_note($pdo, $workspaceId, $studentId, $questionId));
+            }
+            $stmt = $pdo->prepare("
+                INSERT INTO {$examNotes} (workspace_id, student_id, question_id, note_text, suggested_grade, lock_version)
+                VALUES (:workspace_id, :student_id, :question_id, :note_text, :suggested_grade, 1)
+            ");
+            $stmt->execute([
+                ':workspace_id' => $workspaceId,
+                ':student_id' => $studentId,
+                ':question_id' => $storageQuestionId,
+                ':note_text' => $noteText,
+                ':suggested_grade' => $suggestedGrade,
+            ]);
         }
+
+        $pdo->commit();
+    } catch (Throwable $e) {
+        if ($pdo->inTransaction()) {
+            $pdo->rollBack();
+        }
+        if ($e instanceof PDOException && $e->getCode() === '23000') {
+            throw new NoteConflictException(get_note($pdo, $workspaceId, $studentId, $questionId));
+        }
+        throw $e;
     }
-    $stmt = $pdo->prepare("
-        INSERT INTO {$examNotes} (workspace_id, student_id, question_id, note_text, suggested_grade)
-        VALUES (:workspace_id, :student_id, :question_id, :note_text, :suggested_grade)
-        ON DUPLICATE KEY UPDATE
-            note_text = VALUES(note_text),
-            suggested_grade = VALUES(suggested_grade)
-    ");
-    $stmt->execute([
-        ':workspace_id' => $workspaceId,
-        ':student_id' => $studentId,
-        ':question_id' => $questionId,
-        ':note_text' => $noteText,
-        ':suggested_grade' => $suggestedGrade,
-    ]);
+
+    return get_note($pdo, $workspaceId, $studentId, $questionId);
+}
+
+class NoteConflictException extends RuntimeException
+{
+    public function __construct(private array $currentNote)
+    {
+        parent::__construct('Poznámku mezitím upravil jiný uživatel. Načtěte aktuální verzi a sloučte změny ručně.');
+    }
+
+    public function currentNote(): array
+    {
+        return $this->currentNote;
+    }
 }
 
 function export_note_text(PDO $pdo, int $workspaceId, int $studentId, string $questionId, string $format): string

@@ -37,7 +37,7 @@ function export_students_rows(PDO $pdo, int $workspaceId): array
         FROM {$students} s
         LEFT JOIN {$examStack} es ON es.student_id = s.id AND es.workspace_id = :workspace_id
         LEFT JOIN {$examNotes} en ON en.student_id = s.id AND (
-            en.question_id = es.question_id OR (es.question_id IS NULL AND en.question_id IS NULL)
+            en.question_id = es.question_id OR (en.question_id = '__general__' AND es.question_id IS NULL)
         ) AND en.workspace_id = :workspace_id
         WHERE s.workspace_id = :workspace_id
         ORDER BY COALESCE(NULLIF(FIELD(es.state, 'examining', 'done', 'preparing', 'waiting'), 0), 5), s.name ASC, s.id ASC
@@ -85,7 +85,7 @@ function export_notes_rows(PDO $pdo, int $workspaceId): array
 
     $rows = $stmt->fetchAll();
     foreach ($rows as &$row) {
-        $questionId = $row['question_id'] === null ? '' : (string)$row['question_id'];
+        $questionId = $row['question_id'] === null || $row['question_id'] === '__general__' ? '' : (string)$row['question_id'];
         $isGeneral = $questionId === '';
         $row['question_title'] = $isGeneral ? 'Obecná poznámka ke studujícímu' : ($questions[$questionId]['title'] ?? $questionId);
         $row['question_id_export'] = $isGeneral ? '' : $questionId;

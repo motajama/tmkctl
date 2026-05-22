@@ -14,6 +14,8 @@
     manualQuestionId: null,
     currentNoteKey: "",
     noteDirty: false,
+    noteLockVersion: 0,
+    noteConflict: false,
     isImportStudents: [],
     accordions: {
       examining: true,
@@ -435,12 +437,17 @@
     const studentId = currentStudentId();
     const questionId = selectedQuestionId();
     const key = `${studentId || ""}:${questionId || ""}`;
+    if (state.currentNoteKey === key && state.noteDirty) {
+      return;
+    }
     state.currentNoteKey = key;
     if (!studentId) {
       $("note-text").value = "";
       $("suggested-grade").value = "";
       $("note-text").disabled = true;
       $("suggested-grade").disabled = true;
+      state.noteLockVersion = 0;
+      state.noteConflict = false;
       return;
     }
     $("note-text").disabled = false;
@@ -448,10 +455,38 @@
     try {
       const payload = await api(`api/notes.php?student_id=${encodeURIComponent(studentId)}&question_id=${encodeURIComponent(questionId || "")}`);
       if (state.currentNoteKey !== key) return;
-      $("note-text").value = payload.note.note_text || "";
-      $("suggested-grade").value = payload.note.suggested_grade || "";
+      applyLoadedNote(payload.note);
       state.noteDirty = false;
+      state.noteConflict = false;
       setStatus("");
+    } catch (error) {
+      setStatus(error.message);
+    }
+  }
+
+  function applyLoadedNote(note) {
+    $("note-text").value = note.note_text || "";
+    $("suggested-grade").value = note.suggested_grade || "";
+    state.noteLockVersion = Number(note.lock_version || 0);
+  }
+
+  async function refreshCurrentNote() {
+    const studentId = currentStudentId();
+    if (!studentId || state.noteConflict) return;
+    const questionId = selectedQuestionId();
+    const key = `${studentId || ""}:${questionId || ""}`;
+    try {
+      const payload = await api(`api/notes.php?student_id=${encodeURIComponent(studentId)}&question_id=${encodeURIComponent(questionId || "")}`);
+      if (state.currentNoteKey !== key) return;
+      const remoteVersion = Number(payload.note.lock_version || 0);
+      if (remoteVersion === state.noteLockVersion) return;
+      if (state.noteDirty) {
+        state.noteConflict = true;
+        setStatus("Poznámku mezitím upravil jiný uživatel. Uložení je pozastavené, aby se změny nepřepsaly.");
+        return;
+      }
+      applyLoadedNote(payload.note);
+      setStatus("Poznámka aktualizována z jiné obrazovky.");
     } catch (error) {
       setStatus(error.message);
     }
@@ -464,16 +499,25 @@
       setStatus("Nelze uložit: chybí studující.");
       return;
     }
+    if (state.noteConflict && !manual) {
+      return;
+    }
     const data = new FormData();
     data.append("student_id", studentId);
     data.append("question_id", questionId || "");
     data.append("note_text", $("note-text").value);
     data.append("suggested_grade", $("suggested-grade").value);
+    data.append("base_lock_version", String(state.noteLockVersion || 0));
     try {
       const payload = await postForm("api/notes.php", data);
+      applyLoadedNote(payload.note);
       state.noteDirty = false;
+      state.noteConflict = false;
       setStatus((payload.message || "Poznámka byla uložena.") + (manual ? "" : " (autosave)"));
     } catch (error) {
+      if (error.payload && error.payload.conflict) {
+        state.noteConflict = true;
+      }
       setStatus(error.message);
     }
   }
@@ -1181,6 +1225,9 @@
     setInterval(() => {
       if (state.noteDirty) saveNote(false);
     }, 8000);
+    setInterval(() => {
+      if (!state.noteDirty) refreshCurrentNote();
+    }, 5000);
     setInterval(() => {
       api("api/heartbeat.php").catch(() => {});
     }, 30000);

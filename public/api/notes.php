@@ -17,19 +17,27 @@ try {
     }
     require_post();
     verify_csrf();
-    save_note(
+    $note = save_note(
         $pdo,
         $workspaceId,
         (int)($_POST['student_id'] ?? 0),
         (string)($_POST['question_id'] ?? ''),
         (string)($_POST['note_text'] ?? ''),
-        (string)($_POST['suggested_grade'] ?? '')
+        (string)($_POST['suggested_grade'] ?? ''),
+        (int)($_POST['base_lock_version'] ?? 0)
     );
     json_response([
         'ok' => true,
         'message' => 'Poznámka byla uložena.',
-        'note' => get_note($pdo, $workspaceId, (int)$_POST['student_id'], (string)$_POST['question_id']),
+        'note' => $note,
     ]);
+} catch (NoteConflictException $e) {
+    json_response([
+        'ok' => false,
+        'error' => $e->getMessage(),
+        'conflict' => true,
+        'note' => $e->currentNote(),
+    ], 409);
 } catch (Throwable $e) {
     json_response(['ok' => false, 'error' => public_error_message($e)], 400);
 }

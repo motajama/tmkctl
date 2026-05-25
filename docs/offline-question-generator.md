@@ -151,6 +151,30 @@ python tools/validate_question_pack.py data/generated/questions.generated.json
 
 The no-LLM output is skeletal but structurally valid.
 
+## Export Question Packs
+
+Question packs can be exported to DOCX, PDF, or CSV with the local exporter:
+
+```sh
+python tools/export_question_pack.py data/questions.reviewed.json data/generated/questions.reviewed.docx
+python tools/export_question_pack.py data/questions.reviewed.json data/generated/questions.reviewed.pdf
+python tools/export_question_pack.py data/questions.reviewed.json data/generated/questions.reviewed.csv
+```
+
+The output format is inferred from the file extension. You can also choose it explicitly:
+
+```sh
+python tools/export_question_pack.py \
+  --format pdf \
+  --title "TMK Exam Questions" \
+  data/questions.reviewed.json \
+  data/generated/questions.reviewed-export
+```
+
+By default, the exporter validates the JSON against the shared question-pack schema and stops on schema errors. Use `--no-validate` only for best-effort exports of work-in-progress files.
+
+DOCX and CSV export use only the Python standard library. PDF export uses LibreOffice or `soffice` when available so non-ASCII text is preserved; if neither command is installed, the exporter falls back to a simple built-in PDF writer.
+
 ## Ollama Workflow
 
 Ollama support is local-only and optional.

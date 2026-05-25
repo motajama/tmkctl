@@ -1,61 +1,65 @@
 # tmkctl
 
-**tmkctl** is a lightweight PHP/MySQL oral exam dashboard for the course *Teorie masové kultury*.
+![PHP](https://img.shields.io/badge/PHP-8%2B-777BB4?logo=php&logoColor=white)
+![Database](https://img.shields.io/badge/database-MySQL%20%7C%20MariaDB-4479A1?logo=mysql&logoColor=white)
+![No build step](https://img.shields.io/badge/build-no%20frontend%20build-2ea44f)
+![Status](https://img.shields.io/badge/status-MVP-orange)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-It targets shared PHP/MySQL hosting, including Active24-style environments.
+![tmkctl login artwork](public/assets/ascii-art-text.png)
 
-## MVP Scope
+**tmkctl** is a small web app for running oral exams for *Teorie masové komunikace / Teorie masové kultury*. It helps examiners keep a shared list of students, move students through the exam queue, see exam questions, write notes, and export the results after the exam.
 
-Implemented:
+The app is intentionally simple: it is written in PHP, stores exam-day data in MySQL or MariaDB, and works on ordinary shared web hosting. It does not require a JavaScript build step, Node.js, Docker, or a cloud AI service.
 
-- shared-password login with PHP sessions
-- CSRF protection for POST actions
-- MySQL/MariaDB schema installer
-- student entry and CSV import
-- exam stack management
-- read-only question display from `data/questions.reviewed.json`
-- examiner notes with autosave
-- TXT/Markdown export
-- disabled AI chat placeholder
+## Who It Is For
 
-Not implemented yet:
+tmkctl is meant for examiners or course administrators who need one shared dashboard during an oral exam. Several people can open the same exam workspace and see the same queue, preparation slot, active examination, notes, and exports.
 
-- AI chat
-- Hugging Face integration
-- embeddings or vector database
+It is not a public student portal. Access is protected by one shared password for the exam team.
 
-## Directory Structure
+## Main Features
+
+- Shared-password login with PHP sessions.
+- Workspace selection for separate exam terms or exam rooms.
+- Manual student entry, CSV import, and paste import from IS MU exam-term pages.
+- Exam stack with waiting, preparation, examination, and done states.
+- Question display from `data/questions.reviewed.json`.
+- Examiner notes with autosave.
+- Markdown, TXT, CSV, JSON, and ZIP exports.
+- Question-pack validation, upload, and merge tools.
+- Basic CSRF protection for state-changing actions.
+- Installer for MySQL/MariaDB tables.
+
+Not included in the current MVP:
+
+- AI chat inside the dashboard.
+- Hugging Face integration.
+- Embeddings or vector database search.
+- Per-user accounts or role management.
+
+## Project Layout
 
 ```text
 app/        PHP application code and configuration loader
-data/       reviewed question JSON and sample student data
-docs/       project notes and deployment documentation
-public/     web root for the PHP app
-public/api/ PHP JSON/download endpoints
+data/       question pack, sample data, and development text files
+docs/       deployment notes and project documentation
+public/     web root; point the website here when possible
+public/api/ JSON and download endpoints
 sql/        database schema and database notes
-tools/      future offline tools
+tools/      optional local helper tools for question packs and imports
+materials/  optional local source materials for offline question generation
 ```
 
-## Configuration Strategy
+## Requirements
 
-Committed:
+- PHP 8 or newer.
+- MySQL or MariaDB.
+- PHP PDO MySQL extension, for example `php8.2-mysql` on Debian/Ubuntu.
+- Optional: PHP `ZipArchive` extension for ZIP exports. Without it, the app still exports JSON.
+- Optional: Python 3 for local question-pack helper tools. The web app itself does not need Python.
 
-- `app/config.php` - safe loader with defaults and environment variable support
-- `app/config.example.php` - template documenting all required keys
-
-Not committed:
-
-- `app/config.local.php` - local or production credentials and password hash
-
-`app/config.php` automatically loads `app/config.local.php` when it exists. Never commit `app/config.local.php`.
-
-## Local Development Quickstart
-
-Requirements:
-
-- PHP 8+
-- MySQL or MariaDB
-- PHP PDO MySQL extension, for example `php8.2-mysql` on Debian/Ubuntu
+## Quick Local Setup
 
 Create a database:
 
@@ -66,13 +70,13 @@ GRANT ALL PRIVILEGES ON tmkctl.* TO 'tmkctl'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
-Create local config:
+Create local configuration:
 
 ```sh
 cp app/config.example.php app/config.local.php
 ```
 
-For the local database above, use:
+For the database above, set these values in `app/config.local.php`:
 
 ```php
 'db_host' => '127.0.0.1',
@@ -85,19 +89,19 @@ For the local database above, use:
 'debug' => true,
 ```
 
-The example config uses development login password:
+The example config uses this development login password:
 
 ```text
 tmkctl
 ```
 
-Start PHP:
+Start the local PHP server:
 
 ```sh
 php -S localhost:8000 -t public
 ```
 
-Run installer:
+Open the installer:
 
 ```text
 http://localhost:8000/install.php
@@ -109,78 +113,87 @@ Then log in:
 http://localhost:8000/login.php
 ```
 
-After successful installation, `install.php` attempts to set this automatically in `app/config.local.php`:
+After successful installation, `install.php` attempts to set these values automatically in `app/config.local.php`:
 
 ```php
 'install_enabled' => false,
 'debug' => false,
 ```
 
-If that automatic hardening fails because the file is missing or not writable, set both values manually. For local development, re-enable them manually when you need to rerun the installer.
+If that automatic update fails because the file is missing or not writable, set both values manually.
 
-## Deployment Overview
+## Configuration
+
+Committed files:
+
+- `app/config.php` loads defaults and optional local overrides.
+- `app/config.example.php` documents the expected configuration keys.
+
+Private file:
+
+- `app/config.local.php` stores local or production credentials and the login password hash.
+
+Do not commit `app/config.local.php`.
+
+For production, generate a real shared password hash:
+
+```sh
+php -r "echo password_hash('your-shared-password', PASSWORD_DEFAULT), PHP_EOL;"
+```
+
+Paste the hash into the password hash keys in `app/config.local.php`, replacing the development password.
+
+## Deployment
 
 Preferred deployment:
 
-- configure the hosting web root to `public/`
-- keep `app/`, `data/`, `docs/`, `sql/`, and `tools/` outside public web access
+- Configure the hosting web root to `public/`.
+- Keep `app/`, `data/`, `docs/`, `sql/`, `tools/`, and `materials/` outside direct public web access.
 
-If shared hosting requires uploading everything into one public directory, keep the included `.htaccess` files. They deny direct access to non-public folders.
+If shared hosting requires uploading everything into one public directory, keep the included `.htaccess` files. They deny direct access to non-public folders on Apache-compatible hosting.
 
-Production steps:
+Basic production flow:
 
-1. Create a MySQL database and user in the hosting control panel.
+1. Create a MySQL or MariaDB database and user in the hosting control panel.
 2. Copy `app/config.example.php` to `app/config.local.php`.
-3. Fill production DB credentials in `app/config.local.php`.
-4. Generate a real password hash:
-
-   ```sh
-   php -r "echo password_hash('your-shared-password', PASSWORD_DEFAULT), PHP_EOL;"
-   ```
-
+3. Fill in production database credentials.
+4. Generate and paste a real shared password hash.
 5. Set `install_enabled => true`.
-6. Upload files.
+6. Upload the files.
 7. Open `public/install.php` through the browser.
-8. Confirm the installer reports that `install_enabled` and `debug` were disabled automatically. If it cannot update `app/config.local.php`, set both values to `false` manually.
+8. Confirm that installer access and debug mode were disabled automatically, or set both to `false` manually.
 9. Log in and import students.
 
-Detailed instructions are in [docs/deployment-active24.md](docs/deployment-active24.md).
+Detailed Active24-style deployment notes are in [docs/deployment-active24.md](docs/deployment-active24.md).
 
-## Database Schema
+## Database
 
-The installer and schema file create:
+The installer and schema create these prefixed tables by default:
 
+- `tmkctl_workspaces`
+- `tmkctl_workspace_presence`
 - `tmkctl_app_settings`
 - `tmkctl_students`
 - `tmkctl_exam_stack`
 - `tmkctl_exam_notes`
 
-The default table prefix is `tmkctl_`. It can be changed with the `table_prefix` config key before installation.
+The default table prefix is `tmkctl_`. Change `table_prefix` before installation if you need a different prefix.
 
-Schema export:
+Schema file:
 
 ```text
 sql/schema.sql
 ```
 
-Questions are not inserted into the database in the MVP. They are loaded from:
+Questions are not stored in the database. They are loaded from:
 
 ```text
 data/questions.reviewed.json
 ```
 
-If you previously ran an older installer, remove old unprefixed tables manually before reinstalling:
+## Student Import
 
-```sql
-DROP TABLE IF EXISTS exam_notes;
-DROP TABLE IF EXISTS exam_stack;
-DROP TABLE IF EXISTS students;
-DROP TABLE IF EXISTS app_settings;
-```
-
-## CSV Import
-
-CSV must include:
+CSV import requires a `name` column:
 
 ```csv
 name
@@ -194,28 +207,22 @@ uco,email,study_type
 
 Recognized `study_type` values:
 
-- `jednoobor`, `jednooborové`, `jednooborovy`, `1obor`, `single` -> `single`
-- `dvouobor`, `dvouoborové`, `dvouoborovy`, `2obor`, `double` -> `double`
-- empty or unknown values -> `unknown`
+- `jednoobor`, `jednooborové`, `jednooborovy`, `1obor`, `single` become `single`.
+- `dvouobor`, `dvouoborové`, `dvouoborovy`, `2obor`, `double` become `double`.
+- Empty or unknown values become `unknown`.
 
-Sample file:
+Sample CSV:
 
 ```text
 data/students.sample.csv
 ```
 
-## Import From IS MU
+For IS MU import, open the SZZ exam terms page, press `Ctrl+A`, then `Ctrl+C`, and paste the whole page text into **Import z IS MU**. The importer looks for TMK-related exam terms and ignores unrelated thesis-defense blocks.
 
-For SZZ pages in IS MU, open the exam terms page, press `Ctrl+A`, then `Ctrl+C`, and paste the whole page text into **Import z IS MU**.
+Study-code mapping defaults to:
 
-The importer detects exam-term blocks and offers only terms related to **Teorie masové komunikace / TMK**. Thesis defense terms and unrelated SZZ blocks are ignored even when they contain MSZU students. Choose the TMK date/day, preview students, then import selected rows or all importable rows.
-
-Study codes are mapped as:
-
-- `MSZU01` -> `single` / `jednoobor`
-- `MSZU02` -> `double` / `dvouobor`
-
-The preview shows duplicates before import. Rows with an existing UČO are skipped by default. Questions are still loaded from `data/questions.reviewed.json`; the IS import only adds students to the waiting stack.
+- `MSZU01` -> `single`
+- `MSZU02` -> `double`
 
 Parser sample:
 
@@ -223,133 +230,80 @@ Parser sample:
 data/is-mu-paste.sample.txt
 ```
 
-## Exam-Day Operation
+## Exam-Day Workflow
 
-Set the current exam-term label in the bottom status bar, for example `TMK - 10. 6. 2026`, and save it with **ULOŽIT TERMÍN**. The label is stored as workspace-scoped `current_exam_label` and shown in the bottom status bar.
+1. Log in.
+2. Create or select a workspace for the exam term.
+3. Set the current exam-term label, for example `TMK - 10. 6. 2026`.
+4. Import or enter students.
+5. Move students through waiting, preparation, examination, and done states.
+6. Save notes during the exam.
+7. Export notes and exam state after the term.
+8. Reset the workspace only after exports are safely stored.
 
-Recommended workflow for one exam term:
+Reset requires the exact confirmation text `RESET`. It deletes students, stack state, notes, and the current selection for the workspace. It does not delete questions, configuration, or the database schema. The exam-term label remains unless **Smazat i název termínu** is checked.
 
-1. Set the exam-term label.
-2. Import students from CSV or IS MU.
-3. Run the exam through the waiting, preparation, examination, and done states.
-4. Save notes continuously.
-5. After the exam term, use the bottom **EXPORTUJ VŠE** command.
-6. Before the next exam term, use the bottom **RESET** command.
+## Question Pack
 
-Exports:
-
-- **MARKDOWN FILE** downloads a Markdown file with all notes.
-- **TXT FILE** downloads a plain-text file with all notes.
-- **JSON/ZIP** downloads a ZIP with `notes.md`, `notes.txt`, `students.csv`, and `exam_state.json` when the PHP `ZipArchive` extension is available. Without it, the app downloads a JSON export.
-- **KOPÍROVAT VŠE** copies all notes to the clipboard when the browser allows it.
-
-Exam-term reset is available only through POST with a CSRF token and requires exact confirmation text `RESET`. It deletes students, stack state, and notes for the current run, and clears the current selection in that workspace. Questions in `data/questions.reviewed.json`, app configuration, and the database schema remain unchanged. The exam-term label remains unchanged unless **Smazat i název termínu** is checked.
-
-Always export before resetting. Reset is not a backup mechanism and it does not delete questions.
-
-## Question Management
-
-Questions live in:
+The dashboard reads questions from:
 
 ```text
 data/questions.reviewed.json
 ```
 
-The bottom **OTÁZKY** command opens a window for inspecting the current pack, uploading a new manually reviewed JSON file, and merging multiple JSON files. The same window opens through console command `:questions`.
+The **OTÁZKY** window can inspect the current pack, validate a replacement JSON file, upload a new pack, and merge multiple JSON files.
 
-Validation checks only file structure:
+Validation checks structure, not academic correctness:
 
 - valid JSON and top-level array
-- required `id`, `title`, outline fields, and metadata fields
+- required fields
 - duplicate `id` values
 - allowed `review_status` values: `reviewed`, `generated`, `needs_review`
-- warnings for empty `source_refs` and items that are not `reviewed`
+- warnings for empty `source_refs` and items that are not marked `reviewed`
 
-Validation does not check academic correctness. Upload only a manually reviewed file. The **NAHRÁT NOVÝ BALÍK** button replaces the entire `questions.reviewed.json`, but only after successful validation. Before replacement, the previous file is backed up automatically to:
-
-```text
-data/backups/questions.reviewed.YYYYMMDD-HHMMSS.json
-```
-
-Backup restore is manual at this stage: copy the selected backup back to `data/questions.reviewed.json` and validate it in the **OTÁZKY** window.
-
-### Merging Multiple JSON Files
-
-The **MERGE JSON** section uses the current `data/questions.reviewed.json` as the base. Select one or more JSON files and run **VALIDOVAT MERGE** first. The preview shows:
-
-- current question count
-- added question count
-- replaced question count
-- conflicting duplicate `id` values
-- validation warnings and errors
-
-Conflicting `id` values are resolved with one global strategy:
-
-- `ponechat existující` is the default and never overwrites a question from the current file
-- `nahradit nahranými` uses the uploaded JSON question for the same `id`
-
-The **SLOUČIT / MERGE** button writes the result only when every input file is valid and the merged pack is valid too. A backup is always created in `data/backups/` before writing.
-
-## Help Content
-
-The **NÁPOVĚDA** window loads content from this fragment:
+Upload only a human-reviewed question pack for real exams. Before a replacement or merge is written, the app creates a backup in:
 
 ```text
-public/assets/help.html
+data/backups/
 ```
 
-The fragment does not contain `<html>`, `<head>`, `<body>`, or CSS. Formatting and image embedding are described in `docs/help-format.md`.
+Manual restore means copying the chosen backup back to `data/questions.reviewed.json` and validating it again in the **OTÁZKY** window.
 
-A later phase may add an AI generator that prepares `generated` JSON. This phase only manages the final reviewed file and does not generate questions.
+## Optional Offline Question Tools
 
-## Shared Workspaces
+The `tools/` directory contains optional Python helpers for preparing draft question packs from local teaching materials. These tools are separate from the web dashboard.
 
-After login, the app opens **VÝBĚR RELACE / TERMÍNU**. A workspace represents one shared exam run. Multiple users can enter the same workspace and see the students, queue, preparation slot, active examination, notes, and exports for that term together.
+Read more in [docs/offline-question-generator.md](docs/offline-question-generator.md).
 
-Active workspaces are visible only while at least one browser has fresh presence in them. Presence is refreshed by a heartbeat request. Browser identity uses the `tmkctl_client_id` cookie; cookies must be enabled, otherwise the user cannot enter a workspace.
+## Backups
 
-Students, stack state, notes, reset, and exports are scoped by workspace. Questions in `data/questions.reviewed.json` remain global for the whole installation. Details are in `docs/workspaces.md`.
+Before exams or deployments, back up:
 
-## Debug Mode
+- MySQL/MariaDB database dump.
+- `data/questions.reviewed.json`.
+- `data/backups/` if question packs were changed through the app.
+- `app/config.local.php` privately.
+- Exported notes, if they are used as exam records.
 
-When config `debug => true`, entering the dashboard shows a red warning window titled **DEBUG REŽIM — NEFINÁLNÍ VERZE**. The current phase text is read from:
-
-```text
-data/debug-stage.txt
-```
-
-The file is plain editable TXT. If it is missing, the app shows a safe fallback message without internal paths or secret values.
-
-## Offline Question Generator
-
-Optional local Python tools can prepare draft question packs from seed questions and local teaching materials:
-
-```text
-docs/offline-question-generator.md
-```
-
-The PHP web dashboard does not require Python and does not call AI. Generated files must be reviewed by a human before they become `data/questions.reviewed.json` and are uploaded through **OTÁZKY**.
-
-## Security Notes
-
-- Do not commit `app/config.local.php`.
-- Do not deploy with the example password.
-- After setup, keep `install_enabled => false` and `debug => false`. The installer attempts to set both automatically.
-- Back up `app/config.local.php` privately.
-- Back up the MySQL database before exams or deployments.
-- Back up `data/questions.reviewed.json`; the web app treats it as read-only.
-
-## Manual Backup
-
-Back up:
-
-- MySQL database dump
-- `data/questions.reviewed.json`
-- `app/config.local.php` privately
-- exported notes, if needed as separate exam records
-
-Example:
+Example database dump:
 
 ```sh
 mysqldump -h HOST -u USER -p DATABASE_NAME > tmkctl-backup.sql
 ```
+
+## Security Notes
+
+- Do not deploy with the example password.
+- Do not commit `app/config.local.php`.
+- Keep `install_enabled => false` after setup.
+- Keep `debug => false` on production.
+- Keep database dumps and exported exam records out of public web folders.
+- Use HTTPS on production hosting.
+
+## Current Consistency Notes
+
+Recent checks show that the PHP files parse successfully and the IS MU parser sample works. The current question pack is structurally valid, but it still contains warnings: 7 questions are not marked `reviewed`, and one question has empty `source_refs` and `key_terms`. Review those entries before relying on the pack for a final exam.
+
+## License
+
+This project is released under the MIT License. See [LICENSE](LICENSE).

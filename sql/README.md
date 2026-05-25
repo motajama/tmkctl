@@ -4,6 +4,8 @@ This directory contains the database schema for the PHP/MySQL MVP.
 
 Tables:
 
+- tmkctl_workspaces
+- tmkctl_workspace_presence
 - tmkctl_app_settings
 - tmkctl_students
 - tmkctl_exam_stack

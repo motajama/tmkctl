@@ -91,6 +91,8 @@ If `install_enabled` is false, the installer will refuse to run. For local devel
 
 The installer creates prefixed tables by default:
 
+- `tmkctl_workspaces`
+- `tmkctl_workspace_presence`
 - `tmkctl_app_settings`
 - `tmkctl_students`
 - `tmkctl_exam_stack`

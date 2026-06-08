@@ -53,7 +53,7 @@ function export_students_rows(PDO $pdo, int $workspaceId): array
     $rows = $stmt->fetchAll();
     foreach ($rows as &$row) {
         $questionId = (string)($row['question_id'] ?? '');
-        $row['question_title'] = $questions[$questionId]['title'] ?? '';
+        $row['question_title'] = isset($questions[$questionId]) ? question_display_label($questions[$questionId]) : '';
         $row['study_type_label'] = study_type_label($row['study_type'] ?? 'unknown');
         $row['stack_status_label'] = stack_state_label($row['stack_status'] ?? '');
     }
@@ -87,7 +87,9 @@ function export_notes_rows(PDO $pdo, int $workspaceId): array
     foreach ($rows as &$row) {
         $questionId = $row['question_id'] === null || $row['question_id'] === '__general__' ? '' : (string)$row['question_id'];
         $isGeneral = $questionId === '';
-        $row['question_title'] = $isGeneral ? 'Obecná poznámka ke studujícímu' : ($questions[$questionId]['title'] ?? $questionId);
+        $row['question_title'] = $isGeneral
+            ? 'Obecná poznámka ke studujícímu'
+            : (isset($questions[$questionId]) ? question_display_label($questions[$questionId]) : $questionId);
         $row['question_id_export'] = $isGeneral ? '' : $questionId;
         $row['note_mode'] = $isGeneral ? 'general' : 'question';
         $row['study_type_label'] = study_type_label($row['study_type'] ?? 'unknown');

@@ -3,7 +3,7 @@
 ![PHP](https://img.shields.io/badge/PHP-8%2B-777BB4?logo=php&logoColor=white)
 ![Database](https://img.shields.io/badge/database-MySQL%20%7C%20MariaDB-4479A1?logo=mysql&logoColor=white)
 ![No build step](https://img.shields.io/badge/build-no%20frontend%20build-2ea44f)
-![Status](https://img.shields.io/badge/status-MVP-orange)
+![Version](https://img.shields.io/badge/version-0.1-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 ![tmkctl login artwork](public/assets/ascii-art-text.png)

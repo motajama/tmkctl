@@ -61,3 +61,16 @@ function find_question(?string $questionId): ?array
     $map = question_map();
     return $map[$questionId] ?? null;
 }
+
+function question_display_label(array $question): string
+{
+    $id = trim((string)($question['id'] ?? ''));
+    $title = trim((string)($question['title'] ?? ''));
+    if ($id === '') {
+        return $title;
+    }
+    if ($title === '') {
+        return $id;
+    }
+    return $id . ' · ' . $title;
+}

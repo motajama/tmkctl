@@ -127,11 +127,6 @@ php -S 127.0.0.1:8000 -t public</pre>
         </section>
     </div>
     <?php endif; ?>
-    <button id="ai-chat-toggle" class="ai-chat-toggle" type="button" aria-expanded="false" aria-controls="ai-chat-window">AI</button>
-    <section id="ai-chat-window" class="panel window ai-chat-window hidden" role="dialog" aria-modal="false" aria-labelledby="ai-chat-title">
-        <div class="panel-title ai-chat-title"><span id="ai-chat-title">AI CHAT</span><button id="ai-chat-close" class="modal-close" type="button">[X]</button></div>
-        <div class="disabled-ai">AI chat bude doplněn v další fázi.</div>
-    </section>
     <div id="modal-layer" class="modal-layer hidden" aria-live="polite">
         <section id="modal-add" class="modal-window hidden" role="dialog" aria-modal="true" aria-labelledby="modal-add-title">
             <div class="modal-title"><span id="modal-add-title">PŘIDAT STUDUJÍCÍHO</span><button class="modal-close" type="button" data-close-modal>[X]</button></div>

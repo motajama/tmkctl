@@ -220,9 +220,14 @@
     return Array.from(document.querySelectorAll(".is-import-check:checked")).map((input) => Number(input.value));
   }
 
+  function formatQuestionTitle(question) {
+    if (!question) return "bez otázky";
+    return `${question.id} · ${question.title}`;
+  }
+
   function questionLabel(questionId) {
     const question = questionById(questionId);
-    return question ? (question.short_title || question.title) : "bez otázky";
+    return question ? formatQuestionTitle(question) : "bez otázky";
   }
 
   function renderQueueRow(student, item) {
@@ -264,7 +269,7 @@
         <span>${escapeHtml(questionLabel(item.question_id))}</span>
         <select class="inline-question-select" aria-label="Otázka pro studujícího">
           <option value="">bez otázky</option>
-          ${state.questions.map((q) => `<option value="${escapeHtml(q.id)}"${q.id === item.question_id ? " selected" : ""}>${escapeHtml(q.id)} · ${escapeHtml(q.short_title || q.title)}</option>`).join("")}
+          ${state.questions.map((q) => `<option value="${escapeHtml(q.id)}"${q.id === item.question_id ? " selected" : ""}>${escapeHtml(formatQuestionTitle(q))}</option>`).join("")}
         </select>
         <button type="button" data-action="assign-inline">${hasQuestion ? "UPRAVIT OTÁZKU" : "PŘIŘADIT"}</button>
       </div>
@@ -335,7 +340,7 @@
 
   function renderQuestionSelect() {
     const select = $("manual-question-select");
-    select.innerHTML = state.questions.map((q) => `<option value="${escapeHtml(q.id)}">${escapeHtml(q.short_title || q.title)}</option>`).join("");
+    select.innerHTML = state.questions.map((q) => `<option value="${escapeHtml(q.id)}">${escapeHtml(formatQuestionTitle(q))}</option>`).join("");
     if (!state.manualQuestionId && state.questions[0]) {
       state.manualQuestionId = state.questions[0].id;
     }
@@ -367,7 +372,7 @@
 
     panel.innerHTML = `
       <div class="mode-line">${state.mode === "manual" ? "ZOBRAZENÍ: RUČNÍ VÝBĚR" : "ZOBRAZENÍ: AKTIVNÍ STUDUJÍCÍ"}</div>
-      <h1>${escapeHtml(question.title)}</h1>
+      <h1>${escapeHtml(formatQuestionTitle(question))}</h1>
       <div class="short-title">${escapeHtml(question.short_title || "")}</div>
       ${(!question.source_refs || question.source_refs.length === 0) ? '<div class="source-warning">Bez ověřených zdrojů — placeholder.</div>' : ""}
       ${renderList("Osnova", question.outline)}
@@ -406,7 +411,7 @@
     const question = questionById(selectedQuestionId());
     const modeLabel = $("note-mode-label");
     $("note-context").textContent = student && question
-      ? `${student.name} · ${student.uco || "bez UČO"} · ${question.short_title || question.title}`
+      ? `${student.name} · ${student.uco || "bez UČO"} · ${formatQuestionTitle(question)}`
       : (!student ? "Vyber studujícího pro psaní poznámek." : `${student.name} · ${student.uco || "bez UČO"} · obecná poznámka`);
     if (modeLabel) {
       modeLabel.textContent = !student
@@ -717,21 +722,6 @@
       box.dataset.loaded = "1";
     } catch (error) {
       box.textContent = "Nápovědu se nepodařilo načíst.";
-    }
-  }
-
-  function toggleAiChat(open) {
-    const win = $("ai-chat-window");
-    const button = $("ai-chat-toggle");
-    if (!win || !button) return;
-    const nextOpen = typeof open === "boolean" ? open : win.classList.contains("hidden");
-    win.classList.toggle("hidden", !nextOpen);
-    button.setAttribute("aria-expanded", nextOpen ? "true" : "false");
-    if (nextOpen) {
-      const closeButton = $("ai-chat-close");
-      if (closeButton) closeButton.focus();
-    } else {
-      button.focus();
     }
   }
 
@@ -1191,11 +1181,6 @@
         window.setTimeout(() => { mergeFileName.textContent = "no file selected"; }, 0);
       });
     }
-
-    const aiToggle = $("ai-chat-toggle");
-    const aiClose = $("ai-chat-close");
-    if (aiToggle) aiToggle.addEventListener("click", () => toggleAiChat());
-    if (aiClose) aiClose.addEventListener("click", () => toggleAiChat(false));
 
     const debugLayer = $("debug-modal-layer");
     const debugClose = $("debug-modal-close");

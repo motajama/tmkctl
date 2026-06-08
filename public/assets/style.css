@@ -12,6 +12,7 @@
 html {
   min-height: 100%;
   background: var(--ui-white);
+  color-scheme: light;
 }
 
 body {
@@ -46,6 +47,11 @@ select,
 textarea {
   font: inherit;
   color: var(--ui-black);
+}
+
+option {
+  color: var(--ui-black);
+  background: var(--ui-white);
 }
 
 button,
@@ -207,7 +213,6 @@ label {
 .right-panel > .panel-controls,
 .right-panel > label,
 .right-panel > textarea,
-.ai-panel > .disabled-ai,
 .setup-error > :not(.panel-title) {
   margin-left: 8px;
   margin-right: 8px;
@@ -277,6 +282,7 @@ label {
 
 .file-name {
   min-width: 0;
+  color: var(--ui-black);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -889,6 +895,7 @@ label {
   min-height: 20px;
   margin-top: 5px;
   margin-bottom: 7px;
+  color: var(--ui-black);
   font-size: 12px;
 }
 
@@ -907,45 +914,6 @@ label {
 .window-menu select {
   min-height: 24px;
   padding: 1px 6px;
-}
-
-.disabled-ai {
-  flex: 1 1 auto;
-  display: flex;
-  align-items: center;
-  min-height: 42px;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  padding: 8px;
-  color: var(--ui-black);
-  background: var(--ui-white);
-  border: 2px solid var(--ui-black);
-}
-
-.ai-chat-toggle {
-  position: fixed;
-  right: 8px;
-  bottom: 88px;
-  left: auto;
-  z-index: 40;
-  min-width: 58px;
-  min-height: 34px;
-  font-weight: bold;
-}
-
-.ai-chat-window {
-  position: fixed;
-  right: 8px;
-  bottom: 128px;
-  z-index: 45;
-  width: min(520px, calc(100vw - 2rem));
-  max-height: min(520px, calc(100vh - 5rem));
-}
-
-.ai-chat-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .setup-error {
@@ -993,6 +961,7 @@ label {
   min-width: 120px;
   max-height: 32px;
   padding: 0 8px;
+  color: var(--ui-black);
   overflow: auto;
   font-size: 12px;
   line-height: 1.1;
@@ -1095,6 +1064,17 @@ label {
 
 .export-actions {
   margin-bottom: 8px;
+}
+
+.help-text,
+.help-text p,
+.help-text li,
+.help-text th,
+.help-text td,
+.question-pack-grid,
+.validation-list,
+.backup-list {
+  color: var(--ui-black);
 }
 
 .help-text p {
@@ -1313,18 +1293,6 @@ label {
 
   body {
     padding-bottom: 126px;
-  }
-
-  .ai-chat-toggle {
-    right: 8px;
-    bottom: 132px;
-  }
-
-  .ai-chat-window {
-    right: 8px;
-    bottom: 172px;
-    width: min(520px, calc(100vw - 16px));
-    max-height: calc(100vh - 190px);
   }
 
   .global-status-message {

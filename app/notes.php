@@ -158,7 +158,7 @@ function export_note_text(PDO $pdo, int $workspaceId, int $studentId, string $qu
         'E-mail' => $student['email'] ?: '',
         'Typ studia' => study_type_label($student['study_type'] ?? 'unknown'),
         'Režim poznámky' => is_general_note_question_id($questionId) ? 'Obecná poznámka ke studujícímu' : 'Poznámka k otázce',
-        'Otázka' => $question['title'] ?? '',
+        'Otázka' => $question ? question_display_label($question) : '',
         'Navržené hodnocení' => $note['suggested_grade'] ?? '',
     ];
     $notes = (string)($note['note_text'] ?? '');
